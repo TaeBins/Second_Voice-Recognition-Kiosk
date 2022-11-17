@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="com.KSCT.work.model.Menu"%>
-<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +19,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="li" items="${list}">
+				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${li.Menu_Type}</td>
-						<td>${li.Menu_Name}</td>
-						<td>${li.Menu_Price}</td>
-						<td>${li.Menu_Stock}</td>
+						<td>${vo.Type}</td>
+						<td>${vo.Name}</td>
+						<td>${vo.Price}</td>
+						<td>${vo.Stock}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

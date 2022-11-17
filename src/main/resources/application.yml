@@ -1,3 +1,4 @@
+# 서버 설정
 server:
   port: 8081
   servlet:
@@ -7,21 +8,26 @@ server:
       enabled: true
       force: true
 
+# 스프링 설정
 spring:
+  # JSP 접두사, 접미사 설정
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
       
+  # 오라클 DB 연동
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521/xe
     username: KSCT
     password: KSCT1234
 
-
+# 마이바티스 설정
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  # resultType 같은곳에 경로를 적을때 model 안에있는 클래스명만 적어도 인식가능
   type-aliases-package: com.KSCT.work.model
+  # mapper 위치 찾아주기 mybatis안에 mapper 폴더안에 있는 어떤 폴더안에 있든 .xml로 끝나는파일은 연결가능
   mapper-locations: mybatis/mapper/**/*.xml

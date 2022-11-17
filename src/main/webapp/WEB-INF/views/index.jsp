@@ -10,11 +10,9 @@
 
 	<!-- contenteditable : div태그에서도 text기능을 가능하게해줌 -->
 	<div class="words" contenteditable="true"></div>
-	
+
 	<form id="formTag" action="/menu">
-		<input name="menu" placeholder="메뉴명" />
-		<input name="amount" placeholder="주문수량" />	
-		<input type="submit" value="주문"/>
+		<input name="menu" placeholder="메뉴명" /> <input name="amount" placeholder="주문수량" /> <input type="submit" value="주문" />
 	</form>
 
 	<select id="select-lang">
