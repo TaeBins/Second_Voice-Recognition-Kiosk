@@ -19,6 +19,7 @@ spring:
     username: KSCT
     password: KSCT1234
 
+
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

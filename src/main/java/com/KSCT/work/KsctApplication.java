@@ -18,11 +18,13 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @SpringBootApplication
 public class KsctApplication {
 
+	// SpringApplication.run()을 호출해서 웹 애플리케이션을 실행하는 역할
 	public static void main(String[] args) {
 		SpringApplication.run(KsctApplication.class, args);
 	}
 
 	
+	// sqlsessionfactory 기능을 어디서든 사용할수 있도록 bean에 등록
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

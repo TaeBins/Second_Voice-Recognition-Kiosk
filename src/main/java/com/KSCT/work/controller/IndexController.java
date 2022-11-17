@@ -1,17 +1,25 @@
 package com.KSCT.work.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
 
-@RestController
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.KSCT.work.model.Menu;
+import com.KSCT.work.service.IndexService;
+
+@Controller
 public class IndexController {
 
-	
-	@RequestMapping("/")
-	public ModelAndView Index(ModelAndView mav) {
-		
-		mav.setViewName("index");
-		return mav;
+	@Autowired
+	private IndexService indexService;
+
+	@GetMapping("/menu")
+	public String MenuList(Model model) {
+		List<Menu> list = indexService.getList();
+		model.addAttribute("list", list);
+		return "list";
 	}
 }

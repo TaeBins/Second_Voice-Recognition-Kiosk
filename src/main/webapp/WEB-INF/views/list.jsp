@@ -1,39 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.KSCT.work.model.Menu"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>목록확인</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<div>
-		<h1>db연동 확인</h1>
-
+		메뉴목록
 		<table border="1">
 			<thead>
 				<tr>
-					<th>userCode</th>
-					<th>userName</th>
+					<td>종류</td>
+					<td>이름</td>
+					<td>가격</td>
+					<td>재고</td>
 				</tr>
 			</thead>
 			<tbody>
-				<c:choose>
-					<c:when test="${fn:length(AllList) > 0}">
-						<c:forEach items="${AllList}" var="AllList">
-							<tr>
-								<td>${AllList.USERCODE}</td>
-								<td>${AllList.USERNAME}</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="4">조회된 결과 없음</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
+				<c:forEach var="li" items="${list}">
+					<tr>
+						<td>${li.Menu_Type}</td>
+						<td>${li.Menu_Name}</td>
+						<td>${li.Menu_Price}</td>
+						<td>${li.Menu_Stock}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

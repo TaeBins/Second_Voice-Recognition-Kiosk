@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* html전체에 적용되는 스타일 */
+html {
+	font-size: 10px; /* 글씨 크기 */
+}
+
+/* body전체에 적용되는 스타일*/
+body {
+	background: #ffc600; /* 배경색 */
+	font-family: 'helvetica neue'; /* 글씨체 */
+	font-weight: 200; /* 글씨 굵기 */
+	font-size: 20px; /* 글씨 크기 */
+}
+
+/* words 클래스에 적용되는 스타일 */
+.words {
+	max-width: 500px; /* 가로 최대값 */
+	margin: 50px auto; /* 상하좌우값 균등하게(auto) */
+	background: white; /* 배경색 */
+	border-radius: 5px; /* 박스 모서리처리 */
+	box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+	padding: 1rem 2rem 1rem 5rem; /* 상우하좌 간격띄우기 */
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px; /* 배경종류(선형 그래디언트) */
+	background-size: 100% 3rem; /* 배경 크기 */
+	position: relative; /* 요소들을 자기자신(words 클래스)기준으로 배치 */
+	line-height: 3rem; /* 선두께 */
+}
+
+/* p태그에 적용되는 스타일 */
+p {
+	margin: 0 0 3rem; /* 상 좌우 하*/
+}
+
+/* words 클래스 앞에 적용되는 스타일 */
+/* 노트처럼 보이게 왼쪽에 세로선 그어줌 */
+.words:before {
+	content: ''; /* 시작 구문 */
+	position: absolute; /* 부모를 기준으로 배치 */
+	width: 4px; /* 가로 길이 */
+	top: 0; /* 위 */
+	left: 30px; /* 왼쪽 */
+	bottom: 0; /* 아래 */
+	border: 1px solid; /* 보더 종류 */
+	border-color: transparent #efe4e4; /* transparent : 색상겹칠시 투명화 */
+}
