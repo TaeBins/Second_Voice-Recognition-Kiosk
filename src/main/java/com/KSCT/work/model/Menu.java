@@ -12,8 +12,8 @@ import lombok.Data;
 // @Builder : 어느 필드에 어떤 값을 채워야 할지 명확하게 인지하여 생성
 @Data
 public class Menu {
-	private String Type;
-	private String Name;
-	private int Price;
-	private int Stock;
+	private String type;
+	private String name;
+	private int price;
+	private int stock;
 }
