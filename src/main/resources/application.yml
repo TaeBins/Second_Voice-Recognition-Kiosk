@@ -1,6 +1,6 @@
 # 서버 설정
 server:
-  port: 8081
+  port: 8082
   servlet:
     context-path:
     encoding:
@@ -12,6 +12,7 @@ server:
 spring:
   # JSP 접두사, 접미사 설정
   mvc:
+    static-path-pattern: /resources/**
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
@@ -20,8 +21,8 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521/xe
-    username: KSCT
-    password: KSCT1234
+    username: hr
+    password: hr
 
 # 마이바티스 설정
 mybatis:
