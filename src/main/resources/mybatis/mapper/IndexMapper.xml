@@ -6,7 +6,7 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<select id="getList" resultType="com.KSCT.work.model.Menu">
+	<select id="getList" resultType="Menu">
 		select * from Menu_Table
 	</select>
 

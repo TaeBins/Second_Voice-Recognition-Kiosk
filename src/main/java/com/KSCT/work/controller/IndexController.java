@@ -36,7 +36,7 @@ public class IndexController {
 	@Autowired
 	private IndexService indexService;
 
-	@GetMapping("/menu")
+	@GetMapping("/list")
 	public String MenuList(Model model) {
 		List<Menu> list = indexService.getList();
 		model.addAttribute("list", list);

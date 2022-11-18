@@ -4,7 +4,6 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +28,7 @@ public class KsctApplication {
 		
 		Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/mapper/*.xml");
         sessionFactory.setMapperLocations(res);
+        sessionFactory.setTypeAliasesPackage("com.KSCT.work.model");
         
         return sessionFactory.getObject();
 	}
