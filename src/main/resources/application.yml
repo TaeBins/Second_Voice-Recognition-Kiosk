@@ -12,7 +12,6 @@ server:
 spring:
   # JSP 접두사, 접미사 설정
   mvc:
-    static-path-pattern: /resources/**
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
