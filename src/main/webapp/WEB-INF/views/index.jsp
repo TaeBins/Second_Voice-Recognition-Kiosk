@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +19,13 @@
 
 </head>
 <body id="page-top">
-	<!-- Navigation-->
+	<!-- 로고헤더-->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 		<div class="container px-4 px-lg-5">
-			<a href="#" class="navbar-brand"><img src="assets/index/logo.png" height="70" width="200"></a>
+			<a href="/" class="navbar-brand"><img src="assets/index/logo.png" height="70" width="200"></a>
 		</div>
 	</nav>
-	<!-- Masthead-->
+	<!-- 간판-->
 	<header class="masthead">
 		<div class="container px-4 px-lg-5 h-100">
 			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
@@ -34,33 +35,22 @@
 				</div>
 				<div class="col-lg-8 align-self-baseline">
 					<p class="text-white-75 mb-5">
+						<!-- 마이크 아이콘 -->
 						<i style="font-size: 40px;" class="bi bi-mic"></i>
 					<ul class="music">
-
-						<li id="bar1"></li>
-						<li id="bar2"></li>
-						<li id="bar3"></li>
-						<li id="bar4"></li>
-						<li id="bar5"></li>
-						<li id="bar6"></li>
-						<li id="bar7"></li>
-						<li id="bar8"></li>
-						<li id="bar9"></li>
-						<li id="bar10"></li>
-						<li id="bar11"></li>
-						<li id="bar12"></li>
-						<li id="bar13"></li>
-						<li id="bar14"></li>
-						<li id="bar15"></li>
-						<li id="bar16"></li>
-						<li id="bar17"></li>
+						<!-- 음성막대 효과 -->
+						<c:forEach var="i" begin="1" end="17">
+							<li id="bar${i}"></li>
+						</c:forEach>
 					</ul>
 					</p>
 
+					<!-- 안내문 -->
 					<p style="color: white">
 						1. "하이키코"를 부릅니다. <br>2. "메인 메뉴 보여줘" 라고 카테고리를 말합니다.<br> 3. "생맥주 2잔이랑 바지락 술국 주문해줘" 라고 주문사항을 말합니다.<br> <br> <br>
 					</p>
-					<a class="btn btn-primary btn-xl" href="#">터치로 주문하기</a>
+					<!-- 터치주문 버튼 -->
+					<a class="btn btn-primary btn-xl" href="menu">터치로 주문하기</a>
 
 				</div>
 			</div>
