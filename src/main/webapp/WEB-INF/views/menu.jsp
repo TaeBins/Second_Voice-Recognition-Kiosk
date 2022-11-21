@@ -309,6 +309,9 @@
     </div>
     </div>
     <div id="formContainer" style="display:none">
+    <input name="id" value="1" />
+    <input name="menu" />
+    <input name="count" />
 </div>
     <!-- Footer-->
 

@@ -13,4 +13,5 @@ import com.KSCT.work.model.Menu;
 public interface IndexMapper {
 
 	public List<Menu> getList();
+	
 }

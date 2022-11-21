@@ -79,7 +79,7 @@ h_speech.onresult = function (e) {
 		restart();
 	}
 	console.log(h_text);
-	if(h_text.indexOf("메인 메뉴") !== -1){
+	if(h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1){
 		goMainMenu();
 	}
 
