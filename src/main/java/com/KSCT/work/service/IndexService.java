@@ -23,7 +23,11 @@ public class IndexService {
 		List<Menu> list = indexMapper.getList();
 		return list;
 	}
-	
+	public List<test> getOrderList() {
+		List<test> OrderList = indexMapper.getOrderList();
+		return OrderList;
+		
+	}
 	public void insertList(test menu) {
 		indexMapper.insertList(menu);
 	}
