@@ -73,13 +73,16 @@ h_speech.onresult = function(e) {
 				}
 				modalTextChange();
 
-			}, 1000)
-			restart();
-		}
-		console.log(h_text);
+
+		}, 1000)
+		restart();
+	}
+	console.log(h_text);
+
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
 			goMainMenu();
 		}
+
 
 		if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
 			ordering = false;
