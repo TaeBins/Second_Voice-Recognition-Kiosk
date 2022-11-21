@@ -1,319 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Shop Homepage - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Start-Screen</title>
+
+<!-- Bootstrap Icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/index.css" rel="stylesheet" />
+
+
+
 </head>
+<body id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+		<div class="container px-4 px-lg-5">
+			<a href="#" class="navbar-brand"><img src="assets/index/logo.png" height="70" width="200"></a>
+		</div>
+	</nav>
+	<!-- Masthead-->
+	<header class="masthead">
+		<div class="container px-4 px-lg-5 h-100">
+			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+				<div class="col-lg-8 align-self-end">
+					<h1 class="text-white font-weight-bold">키코네 맥주</h1>
+					<hr class="divider" />
+				</div>
+				<div class="col-lg-8 align-self-baseline">
+					<p class="text-white-75 mb-5">
+						<i style="font-size: 40px;" class="bi bi-mic"></i>
+					<ul class="music">
 
-<body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Shop in style</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            </div>
-        </div>
-    </header>
-    <!-- Section-->
-    <div style="width: 100%;">
-        <section class="py-5" style="float: left; width: 20%;  height: 700px;   background-color: #212529;
-            ">
-            <div class="container px-4 px-lg-5 mt-5">
+						<li id="bar1"></li>
+						<li id="bar2"></li>
+						<li id="bar3"></li>
+						<li id="bar4"></li>
+						<li id="bar5"></li>
+						<li id="bar6"></li>
+						<li id="bar7"></li>
+						<li id="bar8"></li>
+						<li id="bar9"></li>
+						<li id="bar10"></li>
+						<li id="bar11"></li>
+						<li id="bar12"></li>
+						<li id="bar13"></li>
+						<li id="bar14"></li>
+						<li id="bar15"></li>
+						<li id="bar16"></li>
+						<li id="bar17"></li>
+					</ul>
+					</p>
 
-                <div class="col mb-6">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-                <div class="col mb-7">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="card h-100">
-                        <a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-5" style="float: right; width: 80%;   height: 700px;   background-color: #212529;
-">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
-                                        options</a></div>
-                            </div>
-                        </div>
-                    </div>
+					<p style="color: white">
+						1. "하이키코"를 부릅니다. <br>2. "메인 메뉴 보여줘" 라고 카테고리를 말합니다.<br> 3. "생맥주 2잔이랑 바지락 술국 주문해줘" 라고 주문사항을 말합니다.<br> <br> <br>
+					</p>
+					<a class="btn btn-primary btn-xl" href="#">터치로 주문하기</a>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $120.00 - $280.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
-                                        options</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <ul style="color:white">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </ul>
-            </div>
-        </section>
-    </div>
-    </div>
-    <!-- Footer-->
-
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/index.js"></script>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- SimpleLightbox plugin JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 </body>
-
 </html>

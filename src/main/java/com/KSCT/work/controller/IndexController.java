@@ -43,8 +43,12 @@ public class IndexController {
 		return "list";
 	}
 	
-	@GetMapping("/test")
-	public String test() {
-		return "test";
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	@GetMapping("/menu")
+	public String start() {
+		return "menu";
 	}
 }
