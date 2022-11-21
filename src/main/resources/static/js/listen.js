@@ -1,5 +1,42 @@
+//TTS API 불러오기
+
+/**
+ * 
+ */
+ const synth = window.speechSynthesis;
+ const voices = synth.getVoices();
+ var audio = new Audio('js/testvoice.mp3');
+
+ 
+ const speechMsg = new SpeechSynthesisUtterance()
+ console.dir(window.speechSynthesis.getVoices());
+ function speak(text) {
+	
+
+	window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
+
+	
+
+	
+	speechMsg.rate =  1 // 속도: 0.1 ~ 10      
+	speechMsg.pitch = 1 // 음높이: 0 ~ 2
+	speechMsg.lang =  "ko-KR"
+	speechMsg.text = text
+
+	// SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
+	window.speechSynthesis.speak(speechMsg)
+}
+
+
+
+
+
+
 // index 화면
 // speech api 불러오기
+
+
+
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 //speech api 초기 설정
 const h_speech = new SpeechRecognition();
@@ -56,9 +93,11 @@ h_speech.onresult = function(e) {
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (!starting) {
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
+			 audio.play();
 			setTimeout(() => { starting = true }, 1000);
 			h_speech.interimResults = false;
 			//하이 키코가 인식되면 transcript 초기화
+			
 			restart();
 
 		}

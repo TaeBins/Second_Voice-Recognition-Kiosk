@@ -10,11 +10,13 @@
 	
 
 	
-	speechMsg.rate = prop.rate || 0.1 // 속도: 0.1 ~ 10      
-	speechMsg.pitch = prop.pitch || 1 // 음높이: 0 ~ 2
-	speechMsg.lang = prop.lang || "ko-KR"
+	speechMsg.rate =  0.1 // 속도: 0.1 ~ 10      
+	speechMsg.pitch = 1 // 음높이: 0 ~ 2
+	speechMsg.lang =  "ko-KR"
 	speechMsg.text = text
 
 	// SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
 	window.speechSynthesis.speak(speechMsg)
 }
+
+

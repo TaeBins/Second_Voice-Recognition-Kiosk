@@ -73,6 +73,8 @@
 	<!-- SimpleLightbox plugin JS-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	
-	<script src="js/listen.js"></script>
+
+	<script type="module" src="/js/listen.js"></script>
+
 </body>
 </html>

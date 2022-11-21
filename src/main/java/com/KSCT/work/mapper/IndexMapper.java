@@ -16,9 +16,8 @@ public interface IndexMapper {
 
 	public List<Menu> getList();
 	
-<<<<<<< HEAD
-=======
+
 	@Insert("insert into order_list values(#{id}, #{menu}, #{count})")
 	public void insertList(test Menu);
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
+
 }
