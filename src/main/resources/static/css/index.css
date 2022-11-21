@@ -11479,7 +11479,6 @@ ul.music {
     list-style-type: none;
     padding: 0;
     transform: rotateX(180deg);
-    /* margin-bottom: 15px; */
 }
 
 body {
@@ -11487,12 +11486,10 @@ body {
 }
 
 ul li {
-    position: relative;
     float: left;
     left: 0;
-    margin: auto 2px;
-    background-color: white;
-    width: 5px;
+    margin: auto 1.5px;
+    width: 7px;
     height: 25px;
     border-radius: 50px;
 }

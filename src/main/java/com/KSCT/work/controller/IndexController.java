@@ -48,6 +48,7 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
+	
 	@GetMapping("/menu")
 	public String start() {
 		return "menu";
