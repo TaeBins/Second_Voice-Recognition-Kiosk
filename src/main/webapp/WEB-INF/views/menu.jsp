@@ -306,6 +306,11 @@
 				<input type="submit" value="전송" />
 				</form>
 				</div>
+				<div class="order_list">
+					<form action="/order_list">
+					<input type="submit" value="주문목록" />
+					</form>
+				</div>
 			</div>
 		</section>
 	</div>

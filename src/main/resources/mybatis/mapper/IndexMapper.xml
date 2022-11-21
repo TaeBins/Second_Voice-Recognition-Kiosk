@@ -10,4 +10,10 @@
 		select * from Menu_Table
 	</select>
 
+	<select id="getOrderList" parameterType="test" resultType="test">
+		select ol.*, ml.price
+		from order_list ol, menu_list ml
+		where ol.menu = ml.name
+	</select>
+
 </mapper>

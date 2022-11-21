@@ -20,4 +20,7 @@ public interface IndexMapper {
 	@Insert("insert into order_list values(#{id}, #{menu}, #{count})")
 	public void insertList(test Menu);
 
+	
+	public List<test> getOrderList();
+
 }

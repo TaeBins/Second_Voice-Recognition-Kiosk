@@ -8,4 +8,8 @@ public class test {
 	private int id;
 	private String menu;
 	private int count;
+	private String name;
+	private int price;
+		
+	
 }

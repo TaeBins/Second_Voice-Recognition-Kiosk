@@ -53,6 +53,12 @@ public class IndexController {
 		
 		return "index";
 	}
+	@GetMapping("/order_list")
+	public String OrderList(Model model) {
+		List<test> OrderList = indexService.getOrderList();
+		model.addAttribute("OrderList", OrderList);
+		return "list";
+	}
 	
 	@GetMapping("/")
 	public String index() {
