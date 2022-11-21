@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.KSCT.work.model.Menu;
+import com.KSCT.work.model.test;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -42,6 +44,14 @@ public class IndexController {
 		List<Menu> list = indexService.getList();
 		model.addAttribute("list", list);
 		return "list";
+	}
+	
+	@PostMapping("/menu")
+	public String InsertMenu(test menu, Model model) {
+		
+		indexService.insertList(menu);
+		
+		return "index";
 	}
 	
 	@GetMapping("/")
