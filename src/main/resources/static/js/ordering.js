@@ -56,15 +56,7 @@ h_speech.onresult = function (e) {
 
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
-	if(!starting){
-	if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
-		setTimeout(()=>{starting = true}, 1000);
-		h_speech.interimResults = false;
-		//하이 키코가 인식되면 transcript 초기화
-		restart();
 
-	}
-	}else{
 	let countDown = 0;
 	if (h_text.indexOf("주문 완료") !== -1 || h_text.indexOf("주문완료") !== -1) {
 		order.click();
@@ -105,7 +97,7 @@ h_speech.onresult = function (e) {
 	if (h_text.indexOf("메인 화면") !== -1) {
 		location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
 	}
-	}
+	
 
 
 };
