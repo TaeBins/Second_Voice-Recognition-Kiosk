@@ -126,3 +126,11 @@ speech.onresult = function(e) {
 	// texts에 담은 음성인식 값을 <p></p>안에 text타입으로 작성
 	p.textContent = texts;
 };
+
+const testing = document.getElementById("test");
+
+testing.addEventListener("change", onChange)
+
+const onChange = () =>{
+	console.log(h_text);
+}

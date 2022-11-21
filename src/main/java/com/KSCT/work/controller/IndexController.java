@@ -42,4 +42,9 @@ public class IndexController {
 		model.addAttribute("list", list);
 		return "list";
 	}
+	
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
 }
