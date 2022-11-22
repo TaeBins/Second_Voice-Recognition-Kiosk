@@ -233,47 +233,33 @@
 							</div>
 						</div>
 					</div>
-			
-
-                </div>
-                <ul style="color:white">
-             
-                </ul>
-            </div>
-        </section>
-    </div>
-    </div>
-    <div id="formContainer" style="display:none">
-    <input name="id" value="1" />
-    <input name="menu" />
-    <input name="count" />
-</div>
-<<<<<<< HEAD
-
-    <!-- Footer-->
-
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 				</div>
-				<div id="formContainer">
-				<form id="formTag" "action="/menu" method="post">
-				<input id="id" name="id" type="text" value="1" />
-				<input id="menu" name="menu" type="text" value="test" />
-				<input id="count" name="count" type="number" value="1" />
-				<input type="submit" value="전송" />
-				</form>
-				</div>
-				<div class="order_list">
-					<form action="/order_list">
-					<input type="submit" value="주문목록" />
-					</form>
-				</div>
+				<ul style="color: white">
+				</ul>
 			</div>
 		</section>
 	</div>
 	</div>
-
+	<div id="formContainer" style="display: none">
+		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+	</div>
 	<!-- Footer-->
-
+	</div>
+	<div id="formContainer">
+		<form id="formTag" "action="/menu" method="post">
+			<input id="id" name="id" type="text" value="1" /> <input id="menu" name="menu" type="text" value="test" /> <input id="count" name="count" type="number" value="1" /> <input type="submit" value="전송" />
+		</form>
+	</div>
+	<div class="order_list">
+		<form action="/order_list">
+			<input type="submit" value="주문목록" />
+		</form>
+	</div>
+	</div>
+	</section>
+	</div>
+	</div>
+	<!-- Footer-->
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->

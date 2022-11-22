@@ -52,8 +52,8 @@
 			</div>
 		</div>
 	</nav>
-	
-	
+
+
 	<!-- Header-->
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
@@ -235,88 +235,74 @@
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								
-<div id="cart" class="cart" data-totalitems="0">
-  <i class="fas fa-shopping-cart"></i>
-  <span style="color:white;"class="material-symbols-outlined">
-shopping_cart
-</span>
-</div>
 
-<div class="page-wrapper">
-  <button id="addtocart">
-    Add to Cart
-    <span class="cart-item"></span>
-  </button>
-</div>
+								<div id="cart" class="cart" data-totalitems="0">
+									<i class="fas fa-shopping-cart"></i> <span style="color: white;" class="material-symbols-outlined"> shopping_cart </span>
+								</div>
+
+								<div class="page-wrapper">
+									<button id="addtocart">
+										Add to Cart <span class="cart-item"></span>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
-			
-
-                </div>
-                <ul style="color:white">
-             
-                </ul>
-            </div>
-        </section>
-    </div>
-    </div>
-    <div id="formContainer" style="display:none">
-    <input name="id" value="1" />
-    <input name="menu" />
-    <input name="count" />
-</div>
-<<<<<<< HEAD
-
-    <!-- Footer-->
-
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 				</div>
-				<div id="formContainer">
-				<form id="formTag" "action="/menu" method="">
-				<input id="id" name="id" type="text" value="1" />
-				<input id="menu" name="menu" type="text" value="test" />
-				<input id="count" name="count" type="number" value="1" />
-				<input type="submit" value="전송" />
-				</form>
-				</div>
-				<div class="order_list">
-					<form action="/order_list">
-					<input type="submit" value="주문목록" />
-					</form>
-				</div>
+				<ul style="color: white">
+				</ul>
 			</div>
 		</section>
 	</div>
 	</div>
-
+	<div id="formContainer" style="display: none">
+		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+	</div>
 	<!-- Footer-->
-
+	</div>
+	<div id="formContainer">
+		<form id="formTag" "action="/menu" method="">
+			<input id="id" name="id" type="text" value="1" /> <input id="menu" name="menu" type="text" value="test" /> <input id="count" name="count" type="number" value="1" /> <input type="submit" value="전송" />
+		</form>
+	</div>
+	<div class="order_list">
+		<form action="/order_list">
+			<input type="submit" value="주문목록" />
+		</form>
+	</div>
+	</div>
+	</section>
+	</div>
+	</div>
+	<!-- Footer-->
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/ordering.js"></script>
 	<script type="text/javascript">
-$(document).ready(function(){
-	  $('#addtocart').on('click',function(){
-	    
-	    var button = $(this);
-	    var cart = $('#cart');
-	    var cartTotal = cart.attr('data-totalitems');
-	    var newCartTotal = parseInt(cartTotal) + 1;
-	    
-	    button.addClass('sendtocart');
-	    setTimeout(function(){
-	      button.removeClass('sendtocart');
-	      cart.addClass('shake').attr('data-totalitems', newCartTotal);
-	      setTimeout(function(){
-	        cart.removeClass('shake');
-	      },500)
-	    },1000)
-	  })
-	})
-</script>
+		$(document).ready(
+				function() {
+					$('#addtocart').on(
+							'click',
+							function() {
+
+								var button = $(this);
+								var cart = $('#cart');
+								var cartTotal = cart.attr('data-totalitems');
+								var newCartTotal = parseInt(cartTotal) + 1;
+
+								button.addClass('sendtocart');
+								setTimeout(function() {
+									button.removeClass('sendtocart');
+									cart.addClass('shake').attr(
+											'data-totalitems', newCartTotal);
+									setTimeout(function() {
+										cart.removeClass('shake');
+									}, 500)
+								}, 1000)
+							})
+				})
+	</script>
 </body>
 
 </html>

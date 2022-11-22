@@ -19,14 +19,9 @@
 
 </head>
 <body id="page-top">
-<<<<<<< HEAD
-
-
 	</div>
 	<!-- Navigation-->
-=======
 	<!-- 로고헤더-->
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 		<div class="container px-4 px-lg-5">
 			<a href="/" class="navbar-brand"><img src="assets/index/logo.png" height="70" width="200"></a>
@@ -63,18 +58,14 @@
 			</div>
 		</div>
 	</header>
-	
-<div id="formContainer" style="display:none">
-<form id="formTag" "action="/menu" method="post">
-</div>
 
-
+	<div id="formContainer" style="display: none">
+		<form id="formTag" "action="/menu" method="post">
+	</div>
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-	
-
 	<script type="module" src="/js/listen.js"></script>
 
 </body>
