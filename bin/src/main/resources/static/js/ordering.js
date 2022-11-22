@@ -41,7 +41,7 @@ const goMainMenu = () => {
 
 const goIndex = () => {
 
-	formTag.action = "/menu";
+	formTag.action = "/";
 	document.getElementById("formContainer").appendChild(formTag);
 	formTag.submit();
 	restart();
@@ -80,7 +80,7 @@ h_speech.onresult = function(e) {
 	if (h_text.indexOf("메인 메뉴") !== -1) {
 		goMainMenu();
 	}
-	 
+
 
 
 	if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
