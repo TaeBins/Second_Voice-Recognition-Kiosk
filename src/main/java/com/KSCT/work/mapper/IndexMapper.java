@@ -16,7 +16,7 @@ public interface IndexMapper {
 
 	public List<Menu> getList();
 
-	@Insert("insert into order_list values(#{id}, #{menu}, #{count})")
+	@Insert("insert into order_list values(#{menu}, #{count}, #{id})")
 	public void insertList(test Menu);
 	
 	public List<test> getOrderList();

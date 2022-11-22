@@ -65,6 +65,7 @@
 	</header>
 	
 <div id="formContainer" style="display:none">
+<form id="formTag" "action="/menu" method="post">
 </div>
 
 
