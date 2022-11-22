@@ -33,7 +33,7 @@ const orderCount = document.getElementById("count");
 const goMainMenu = () => {
 
 	formTag.action = "/menu";
-	
+	document.getElementById("formContainer").appendChild(formTag);
 	formTag.submit();
 	restart();
 
@@ -41,14 +41,13 @@ const goMainMenu = () => {
 
 const goIndex = () => {
 
-	formTag.action = "/menu";
+	formTag.action = "/";
 	document.getElementById("formContainer").appendChild(formTag);
 	formTag.submit();
 	restart();
 }
 const order = (id, menu, count) => {
-	formTag.action="/menu";
-	formTag.method="post";
+
 	formTag.submit();
 	restart();
 }
@@ -78,10 +77,10 @@ h_speech.onresult = function(e) {
 
 	}
 	console.log(h_text);
-	if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1){
+	if (h_text.indexOf("메인 메뉴") !== -1) {
 		goMainMenu();
 	}
-	 
+
 
 
 	if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
