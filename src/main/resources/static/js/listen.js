@@ -3,11 +3,10 @@
 /**
  * 
  */
- const synth = window.speechSynthesis;
- const voices = synth.getVoices();
- var audio = new Audio('js/testvoice.mp3');
+const synth = window.speechSynthesis;
 
- 
+var audio = new Audio('js/testvoice.mp3');
+
 
 
 // index 화면
@@ -31,7 +30,7 @@ const restart = async () => {
 	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
-const formTag = document.createElement("form")
+let formTag = document.getElementById("formTag");
 
 
 
@@ -44,17 +43,27 @@ let ordering = false;
 const goMainMenu = () => {
 
 	formTag.action = "/menu";
-	document.getElementById("formContainer").appendChild(formTag);
+	formTag.method = "get";
 	formTag.submit();
 	restart();
 
 }
 
-const goIndex = () => {
-
-	formTag.action = "/";
-	document.getElementById("formContainer").appendChild(formTag);
+const orderComplete = () => {
+formTag.method = "post";
+	formTag.action = "/menu";
+	
+	
 	formTag.submit();
+	restart();
+}
+
+const goIndex = () => {
+	formTag.action = "/";
+	formTag.method = "get";
+	setTimeout(() =>formTag.submit(), 500);
+	starting = false;
+	order = false;
 	restart();
 }
 
@@ -71,42 +80,25 @@ h_speech.onresult = function(e) {
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (!starting) {
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
-			 audio.play();
+			audio.play();
 			setTimeout(() => { starting = true }, 1000);
+			starting = true;
 			h_speech.interimResults = false;
 			//하이 키코가 인식되면 transcript 초기화
-			
+
 			restart();
 
 		}
 	} else {
-		let countDown = 0;
-		if (h_text.indexOf("주문 완료") !== -1 || h_text.indexOf("주문완료") !== -1) {
-			order.click();
-			setInterval(() => {
-				countDown += 1;
-				if (countDown === 3) {
-					orderChecked = true;
-				}
-				modalTextChange();
 
-
-		}, 1000)
-		restart();
-	}
-	console.log(h_text);
+		console.log(h_text);
 
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
 			goMainMenu();
 		}
 
 
-		if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
-			ordering = false;
-			starting = false;
-			goIndex();
-			restart();
-		}
+
 
 		if (starting && !ordering) {
 
@@ -120,7 +112,7 @@ h_speech.onresult = function(e) {
 		// 	h_speech.onend;
 		// 	speech.start();
 		// }
-		if (h_text.indexOf("메인 화면") !== -1) {
+		if (h_text.indexOf("메인 화면") !== -1 || h_text.indexOf("메인화면") !== -1) {
 			location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
 		}
 	}
