@@ -277,9 +277,6 @@
 							</div>
 						</div>
 					</div>
-
-
-<<<<<<< HEAD
                 </div>
                 <ul style="color:white">
                     <li>1</li>
@@ -296,7 +293,6 @@
     <input name="count" />
 </div>
     <!-- Footer-->
-=======
 				</div>
 				<div id="formContainer">
 				<form id="formTag" "action="/menu" method="post">
@@ -315,9 +311,6 @@
 		</section>
 	</div>
 	</div>
-	<!-- Footer-->
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
-
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->

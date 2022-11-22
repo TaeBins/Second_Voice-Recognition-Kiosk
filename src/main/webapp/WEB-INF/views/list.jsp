@@ -29,10 +29,11 @@
 						<td>${vo.count}</td>
 						<td>${vo.price*vo.count}원</td>
 					</tr>
+					<c:set var="sum" value="${sum+(vo.price*vo.count)}" />
 				</c:forEach>
 				<tr>
 				<td colspan="3" style="text-align: center;">합계</td>
-				<td>${vo.price*vo.count}원</td>
+				<td>${sum}원</td>
 				</tr>
 		</tbody>
 		</table>
