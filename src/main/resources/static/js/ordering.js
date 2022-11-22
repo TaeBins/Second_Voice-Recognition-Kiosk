@@ -33,7 +33,7 @@ const orderCount = document.getElementById("count");
 const goMainMenu = () => {
 
 	formTag.action = "/menu";
-	document.getElementById("formContainer").appendChild(formTag);
+	
 	formTag.submit();
 	restart();
 
@@ -77,7 +77,7 @@ h_speech.onresult = function(e) {
 
 	}
 	console.log(h_text);
-	if (h_text.indexOf("메인 메뉴") !== -1) {
+	if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1){
 		goMainMenu();
 	}
 	 
