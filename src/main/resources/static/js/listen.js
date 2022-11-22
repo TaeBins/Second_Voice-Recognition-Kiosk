@@ -4,9 +4,8 @@
  * 
  */
 const synth = window.speechSynthesis;
-const voices = synth.getVoices();
-var audio = new Audio('js/testvoice.mp3');
 
+var audio = new Audio('js/testvoice.mp3');
 
 
 
@@ -31,7 +30,7 @@ const restart = async () => {
 	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
-const formTag = document.getElementById("formTag");
+let formTag = document.getElementById("formTag");
 
 
 
@@ -51,11 +50,20 @@ const goMainMenu = () => {
 }
 
 const orderComplete = () => {
-
+formTag.method = "post";
 	formTag.action = "/menu";
-	formTag.method = "post";
+	
 	
 	formTag.submit();
+	restart();
+}
+
+const goIndex = () => {
+	formTag.action = "/";
+	formTag.method = "get";
+	setTimeout(() =>formTag.submit(), 500);
+	starting = false;
+	order = false;
 	restart();
 }
 
@@ -74,6 +82,7 @@ h_speech.onresult = function(e) {
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
 			audio.play();
 			setTimeout(() => { starting = true }, 1000);
+			starting = true;
 			h_speech.interimResults = false;
 			//하이 키코가 인식되면 transcript 초기화
 
@@ -81,11 +90,7 @@ h_speech.onresult = function(e) {
 
 		}
 	} else {
-		let countDown = 0;
-		if (h_text.indexOf("주문 완료") !== -1 || h_text.indexOf("주문완료") !== -1) {
-			orderComplete();
-			restart();
-		}
+
 		console.log(h_text);
 
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
@@ -93,12 +98,7 @@ h_speech.onresult = function(e) {
 		}
 
 
-		if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
-			ordering = false;
-			starting = false;
-		
-			restart();
-		}
+
 
 		if (starting && !ordering) {
 
@@ -112,7 +112,7 @@ h_speech.onresult = function(e) {
 		// 	h_speech.onend;
 		// 	speech.start();
 		// }
-		if (h_text.indexOf("메인 화면") !== -1) {
+		if (h_text.indexOf("메인 화면") !== -1 || h_text.indexOf("메인화면") !== -1) {
 			location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
 		}
 	}

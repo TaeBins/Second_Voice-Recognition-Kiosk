@@ -297,7 +297,7 @@
 
 				</div>
 				<div id="formContainer">
-				<form id="formTag" "action="/menu" method="post">
+				<form id="formTag" "action="/menu" method="">
 				<input id="id" name="id" type="text" value="1" />
 				<input id="menu" name="menu" type="text" value="test" />
 				<input id="count" name="count" type="number" value="1" />

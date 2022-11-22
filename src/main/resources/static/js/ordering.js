@@ -47,7 +47,8 @@ const goIndex = () => {
 	restart();
 }
 const order = (id, menu, count) => {
-
+	formTag.action="/menu";
+	formTag.method="post";
 	formTag.submit();
 	restart();
 }
