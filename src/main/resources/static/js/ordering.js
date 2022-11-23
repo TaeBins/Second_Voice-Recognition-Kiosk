@@ -133,10 +133,11 @@ cartButton.forEach((cartButton) =>{
 				check=true;
 				
 				//주문해놓은 메뉴의 수량 가지고오기
-				orderCount = orderList.children[i].textContent.split(" ")[orderList.children[i].textContent.split(" ").length-1];
+				orderCounts = orderList.children[i].textContent.split(" ")[orderList.children[i].textContent.split(" ").length-1];
 				//주문한 메뉴 수량 +1 시키기
-				orderCount++;
-				orderList.children[i].textContent = cartButton.name + " " + a;
+			
+				orderCounts++;
+				orderList.children[i].textContent = cartButton.name + " " + orderCounts;
 				
 			}
 		

@@ -170,17 +170,7 @@
 const testButton = document.getElementById("testButton");
 testButton.addEventListener("click", ()=>console.log("test"))
 </script>
-<script>
-var settings = {
-        "url": "https://testnet-api.blocksdk.com/v3/eth/block/66402?api_token=zF9LCYEE7LvWhpFpQ5cWqtGwXVKRcV374L8xXClI&offset=0&limit=10",
-        "method": "GET",
-        "timeout": 0,
-      };
 
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
-      </script>
 </body>
 
 </html>
