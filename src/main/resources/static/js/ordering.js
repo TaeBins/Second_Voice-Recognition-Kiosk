@@ -120,24 +120,36 @@ const orderList = document.querySelector("#orderList")
 
 let check = false;
 let a = 0;
+//버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) =>{
 	cartButton.addEventListener("click", () => {
-		tempList.innerText = "메롱"
 		
 		
+	
 		for( i=0; i<orderList.children.length; i++){
-			if(orderList.children[i].textContent.split(" ")[0] == tempList.innerText){
+				//만약 현재 주문해놓은 메뉴가 orderList에 존재한다면
+			if(orderList.children[i].textContent.indexOf(cartButton.name) !== -1){
+				// 주문해놓은 메뉴가 있다고 체크
 				check=true;
-				a ++;
-				orderList.children[i].textContent = orderList.children[i].textContent + " " + a;
-				console.log(orderList.children[i].textContent)
-				console.log(orderList.children[i].textContent.split(" "))
+				
+				//주문해놓은 메뉴의 수량 가지고오기
+				orderCount = orderList.children[i].textContent.split(" ")[orderList.children[i].textContent.split(" ").length-1];
+				//주문한 메뉴 수량 +1 시키기
+				orderCount++;
+				orderList.children[i].textContent = cartButton.name + " " + a;
+				
 			}
 		
 		}
+		//현재 주문한 메뉴가 orderList에 없다면?
 			if(!check){
+				//메뉴 추가
+				const tempList = document.createElement("li");
+				tempList.innerText = `${cartButton.name} 1`
 				orderList.appendChild(tempList);
+				
 			}
+			check=false;
 //	children.forEach((child)=>{if(tempList.innerText != child.textContent){
 //		orderList.appendChild(tempList);
 //	}})
