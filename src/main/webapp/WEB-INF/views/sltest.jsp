@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<% response.setHeader("Access-Control-Allow-Origin","*"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,36 +35,11 @@
 		<section class="py-5" style="float: right; width: 17%; height: 700px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-7">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
+				<ul id="orderList" style="list-style:none">
+				
+				
+				</ul>
+			
 			</div>
 		</section>
 		<section class="py-5" style="float: left; width: 17%; height: 700px; background-color: #212529;">
@@ -126,7 +101,7 @@
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-										<button class="cartbutton">
+										<button name="${vo.name}" class="cartbutton">
 											<span>Add to cart</span>
 											<div class="cart">
 												<svg viewBox="0 0 36 26">
@@ -189,7 +164,13 @@
 
 	</script>
 
-	</button>
+<button id ="testButton">test</button>
+
+<script>
+const testButton = document.getElementById("testButton");
+testButton.addEventListener("click", ()=>console.log("test"))
+</script>
+
 </body>
 
 </html>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.RestTemplate;
 
 import com.KSCT.work.model.Menu;
 import com.KSCT.work.model.test;
@@ -50,7 +51,7 @@ public class IndexController {
 	public String InsertMenu(test menu, Model model) {
 		
 		indexService.insertList(menu);
-		
+	
 		return "index";
 	}
 	@GetMapping("/order_list")
@@ -62,6 +63,8 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String index() {
+
+		
 		return "index";
 	}
 	
@@ -77,8 +80,13 @@ public class IndexController {
 		return "sltest";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 }
+
+
