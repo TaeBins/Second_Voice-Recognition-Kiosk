@@ -10,12 +10,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@font-face {
-  font-family: 'LINESeedKR-Bd';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -84,7 +79,7 @@
 
 body {
   margin: 0;
-  font-family: 'LINESeedKR-Bd';
+  font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -102,124 +97,163 @@ hr {
   border: 0;
   opacity: 0.25;
 }
+.cartbutton {
+      --background: black;
+      --text: #fff;
+      --cart: #fff;
+      --tick: var(--background);
+      position: relative;
+      border: none;
+      background: none;
+      padding: 8px 0px;
+      border-radius: 8px;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      width:120px;
+      align-self:center;
+      color: var(--text);
+      background: var(--background);
+      transform: scale(var(--scale, 1));
+      transition: transform 0.4s cubic-bezier(0.36, 1.01, 0.32, 1.27);
+   }
 
+   .cartbutton:active {
+      --scale: .95;
+   }
+
+   .cartbutton span {
+      font-size: 14px;
+      font-weight: 500;
+      display: block;
+      position: relative;
+      padding-left: 0px;
+      margin-left: 0px;
+      line-height: 26px;
+      transform: translateY(var(--span-y, 0));
+      transition: transform 0.7s ease;
+   }
+
+
+
+   .cartbutton span:after {
+      --w: 14px;
+      --h: 2px;
+      --l: 2px;
+      --t: 12px;
+   }
+
+   .cartbutton .cart {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -13px 0 0 -18px;
+      transform-origin: 12px 23px;
+      transform: translateX(-120px) rotate(-18deg);
+   }
+
+   .cartbutton .cart:before,
+   .cartbutton .cart:after {
+      content: "";
+      position: absolute;
+   }
+
+   .cartbutton .cart:before {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px var(--cart);
+      bottom: 0;
+      left: 9px;
+      filter: drop-shadow(11px 0 0 var(--cart));
+   }
+
+   .cartbutton .cart:after {
+      width: 16px;
+      height: 9px;
+      background: var(--cart);
+      left: 9px;
+      bottom: 7px;
+      transform-origin: 50% 100%;
+      transform: perspective(4px) rotateX(-6deg) scaleY(var(--fill, 0));
+      transition: transform 1.2s ease var(--fill-d);
+   }
+
+   .cartbutton .cart svg {
+      z-index: 1;
+      width: 36px;
+      height: 26px;
+      display: block;
+      position: relative;
+      fill: none;
+      stroke: var(--cart);
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+   }
+
+   .cartbutton .cart svg polyline:last-child {
+      stroke: var(--tick);
+      stroke-dasharray: 10px;
+      stroke-dashoffset: var(--offset, 10px);
+      transition: stroke-dashoffset 0.4s ease var(--offset-d);
+   }
+
+   .cartbutton.loading {
+      --scale: .95;
+      --span-y: -32px;
+      --icon-r: 180deg;
+      --fill: 1;
+      --fill-d: .8s;
+      --offset: 0;
+      --offset-d: 1.73s;
+   }
+
+   .cartbutton.loading .cart {
+      animation: cart 3.4s linear forwards 0.2s;
+   }
+
+   @keyframes cart {
+      12.5% {
+         transform: translateX(-60px) rotate(-18deg);
+      }
+
+      25%,
+      45%,
+      55%,
+      75% {
+         transform: none;
+      }
+
+      50% {
+         transform: scale(0.9);
+      }
+
+      44%,
+      56% {
+         transform-origin: 12px 23px;
+      }
+
+      45%,
+      55% {
+         transform-origin: 50% 50%;
+      }
+
+      87.5% {
+         transform: translateX(70px) rotate(-18deg);
+      }
+
+      100% {
+         transform: translateX(140px) rotate(-18deg);
+      }
+   }
 hr:not([size]) {
   height: 1px;
 }
-html, body {
-  height: 100%;
-  min-height: 100%;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-.page-wrapper {
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.page-wrapper button {
-  padding: 20px;
-  border: none;
-  background: #d5d8e7;
-  position: relative;
-  outline: none;
-  border-radius: 5px;
-  color: #292d48;
-  font-size: 18px;
-}
-.page-wrapper button .cart-item {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  top: -10px;
-  right: -10px;
-}
-.page-wrapper button .cart-item:before {
-  content: "1";
-  display: block;
-  line-height: 24px;
-  height: 24px;
-  width: 24px;
-  font-size: 12px;
-  font-weight: 600;
-  background: #2bd156;
-  color: white;
-  border-radius: 20px;
-  text-align: center;
-}
-.page-wrapper button.sendtocart .cart-item {
-  display: block;
-  animation: xAxis 1s forwards cubic-bezier(1, 0.44, 0.84, 0.165);
-}
-.page-wrapper button.sendtocart .cart-item:before {
-  animation: yAxis 1s alternate forwards cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #292d48;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-}
-.cart i {
-  font-size: 25px;
-  color: white;
-}
-.cart:before {
-  content: attr(data-totalitems);
-  font-size: 12px;
-  font-weight: 600;
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  background: #2bd156;
-  line-height: 24px;
-  padding: 0 5px;
-  height: 24px;
-  min-width: 24px;
-  color: white;
-  text-align: center;
-  border-radius: 24px;
-}
-.cart.shake {
-  animation: shakeCart 0.4s ease-in-out forwards;
-}
-
-@keyframes xAxis {
-  100% {
-    transform: translateX(calc(50vw - 105px));
-  }
-}
-@keyframes yAxis {
-  100% {
-    transform: translateY(calc(-50vh + 75px));
-  }
-}
-@keyframes shakeCart {
-  25% {
-    transform: translateX(6px);
-  }
-  50% {
-    transform: translateX(-4px);
-  }
-  75% {
-    transform: translateX(2px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -9931,8 +9965,8 @@ textarea.form-control-lg {
   }
 
   .px-lg-5 {
-    padding-right: 3rem !important;
-    padding-left: 3rem !important;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
   }
 
   .py-lg-0 {

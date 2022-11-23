@@ -1,71 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Shop Homepage - Start Bootstrap Template</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/menu.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
 
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#!">All Products</a></li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
-							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-						</ul></li>
-				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
-			</div>
-		</div>
-	</nav>
+
 
 
 	<!-- Header-->
-	<header class="bg-dark py-5">
-		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">Shop in style</h1>
-				<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-			</div>
-		</div>
-	</header>
+
 	<!-- Section-->
 	<div style="width: 100%;">
-		<section class="py-5" style="float: left; width: 20%; height: 700px; background-color: #212529;">
+		<section class="py-5"
+			style="float: right; width: 17%; height: 700px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -100,154 +73,322 @@
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 80%; height: 700px; background-color: #212529;">
+		<section class="py-5"
+			style="float: left; width: 17%; height: 700px; background-color: #212529;">
 			<div class="container px-4 px-lg-5 mt-5">
-				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<div class="col mb-5">
+
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+				<div class="col mb-7">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="py-5"
+			style="float: right; width:66%; height: 700px; background-color: #212529;">
+			<div class="container px-4 px-lg-5 mt-5">
+				<div
+					class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					
+
+					<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
 						<div class="card h-100">
+							<!-- Sale badge-->
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
 							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
-									<h5 class="fw-bolder">Fancy Product</h5>
+									<h5 class="fw-bolder">Sale Item</h5>
 									<!-- Product price-->
-									$40.00 - $80.00
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="col mb-5">
+							<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
 						<div class="card h-100">
 							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
 							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder">Sale Item</h5>
 									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col mb-5">
+							<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
 						<div class="card h-100">
 							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
 							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder">Sale Item</h5>
 									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col mb-5">
+					</div>		<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
 						<div class="card h-100">
 							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
 							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder">Sale Item</h5>
 									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col mb-5">
+					</div>		<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
 						<div class="card h-100">
 							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
 							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder">Sale Item</h5>
 									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-
-								<div id="cart" class="cart" data-totalitems="0">
-									<i class="fas fa-shopping-cart"></i> <span style="color: white;" class="material-symbols-outlined"> shopping_cart </span>
+								<div class="text-center">
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
-
-								<div class="page-wrapper">
-									<button id="addtocart">
-										Add to Cart <span class="cart-item"></span>
-									</button>
+							</div>
+						</div>
+					</div>		<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
+						<div class="card h-100">
+							<!-- Sale badge-->
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<!-- Product image-->
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder">Sale Item</h5>
+									<!-- Product price-->
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
+								</div>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>		<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
+						<div class="card h-100">
+							<!-- Sale badge-->
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<!-- Product image-->
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder">Sale Item</h5>
+									<!-- Product price-->
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
+								</div>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>		<div class="col mb-5" style="10px;padding-left: 15px;padding-right: 15px;">
+						<div class="card h-100">
+							<!-- Sale badge-->
+							<div class="badge bg-dark text-white position-absolute"
+								style="top: 0.5rem; right: 0.5rem">Sale</div>
+							<!-- Product image-->
+							<img class="card-img-top"
+								src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder">Sale Item</h5>
+									<!-- Product price-->
+									<span class="text-muted text-decoration-line-through">$50.00</span>
+									$25.00
+								</div>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<button class="cartbutton">
+										<span>Add to cart</span>
+										<div class="cart">
+											<svg viewBox="0 0 36 26">
+            <polyline
+													points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+										</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
+					
+				
+			
 				</div>
 				<ul style="color: white">
 				</ul>
@@ -256,13 +397,17 @@
 	</div>
 	</div>
 	<div id="formContainer" style="display: none">
-		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+		<input name="id" value="1" /> <input name="menu" /> <input
+			name="count" />
 	</div>
 	<!-- Footer-->
 	</div>
 	<div id="formContainer">
 		<form id="formTag" "action="/menu" method="">
-			<input id="id" name="id" type="text" value="1" /> <input id="menu" name="menu" type="text" value="test" /> <input id="count" name="count" type="number" value="1" /> <input type="submit" value="전송" />
+			<input id="id" name="id" type="text" value="1" /> <input id="menu"
+				name="menu" type="text" value="test" /> <input id="count"
+				name="count" type="number" value="1" /> <input type="submit"
+				value="전송" />
 		</form>
 	</div>
 	<div class="order_list">
@@ -275,34 +420,27 @@
 	</div>
 	</div>
 	<!-- Footer-->
+
 	<!-- Bootstrap core JS-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/ordering.js"></script>
 	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$('#addtocart').on(
-							'click',
-							function() {
+	document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
+	    if(!button.classList.contains('loading')) {
 
-								var button = $(this);
-								var cart = $('#cart');
-								var cartTotal = cart.attr('data-totalitems');
-								var newCartTotal = parseInt(cartTotal) + 1;
+	        button.classList.add('loading');
 
-								button.addClass('sendtocart');
-								setTimeout(function() {
-									button.removeClass('sendtocart');
-									cart.addClass('shake').attr(
-											'data-totalitems', newCartTotal);
-									setTimeout(function() {
-										cart.removeClass('shake');
-									}, 500)
-								}, 1000)
-							})
-				})
+	        setTimeout(() => button.classList.remove('loading'), 3700);
+
+	    }
+	    e.preventDefault();
+	}));
+
 	</script>
+
+	</button>
 </body>
 
 </html>
