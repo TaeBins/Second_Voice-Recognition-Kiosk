@@ -76,4 +76,9 @@ public class IndexController {
 		model.addAttribute("sllist", sllist);
 		return "sltest";
 	}
+	
+	@GetMapping("/animation")
+	public String ani() {
+		return "animation";
+	}
 }
