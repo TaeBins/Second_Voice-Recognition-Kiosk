@@ -10,6 +10,5 @@ public class test {
 	private int count;
 	private String name;
 	private int price;
-		
-	
+
 }

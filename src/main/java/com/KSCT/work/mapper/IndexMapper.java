@@ -21,4 +21,5 @@ public interface IndexMapper {
 	
 	public List<test> getOrderList();
 
+	public List<test> getsllist();
 }

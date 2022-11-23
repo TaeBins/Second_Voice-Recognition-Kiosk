@@ -69,4 +69,11 @@ public class IndexController {
 	public String start() {
 		return "menu";
 	}
+	
+	@GetMapping("/sltest")
+	public String sl(Model model) {
+		List<test> sllist = indexService.getsllist();
+		model.addAttribute("sllist", sllist);
+		return "sltest";
+	}
 }

@@ -31,5 +31,10 @@ public class IndexService {
 	public void insertList(test menu) {
 		indexMapper.insertList(menu);
 	}
+	
+	public List<test> getsllist(){
+		List<test> sllist = indexMapper.getsllist();
+		return sllist;
+	}
 
 }
