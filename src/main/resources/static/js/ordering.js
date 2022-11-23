@@ -110,3 +110,36 @@ h_speech.onresult = function(e) {
 
 
 };
+
+const cartButton = document.querySelectorAll(".cartbutton")
+const orderList = document.querySelector("#orderList")
+
+		const tempList = document.createElement("li")
+			
+
+
+let check = false;
+let a = 0;
+cartButton.forEach((cartButton) =>{
+	cartButton.addEventListener("click", () => {
+		tempList.innerText = "메롱"
+		
+		
+		for( i=0; i<orderList.children.length; i++){
+			if(orderList.children[i].textContent.split(" ")[0] == tempList.innerText){
+				check=true;
+				a ++;
+				orderList.children[i].textContent = orderList.children[i].textContent + " " + a;
+				console.log(orderList.children[i].textContent)
+				console.log(orderList.children[i].textContent.split(" "))
+			}
+		
+		}
+			if(!check){
+				orderList.appendChild(tempList);
+			}
+//	children.forEach((child)=>{if(tempList.innerText != child.textContent){
+//		orderList.appendChild(tempList);
+//	}})
+	console.dir(orderList);
+	})});

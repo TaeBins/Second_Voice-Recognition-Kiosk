@@ -41,6 +41,9 @@
 			style="float: right; width: 17%; height: 700px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 
+	<ul id="orderList" style="list-style:none;">
+						
+				</ul>		
 				<div class="col mb-6">
 					<div class="card h-100">
 						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
@@ -76,7 +79,9 @@
 		<section class="py-5"
 			style="float: left; width: 17%; height: 700px; background-color: #212529;">
 			<div class="container px-4 px-lg-5 mt-5">
-
+				
+				
+			
 				<div class="col mb-6">
 					<div class="card h-100">
 						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
@@ -390,8 +395,7 @@
 				
 			
 				</div>
-				<ul style="color: white">
-				</ul>
+			
 			</div>
 		</section>
 	</div>
