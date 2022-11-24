@@ -20,7 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" >
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
@@ -32,7 +32,7 @@
 
    <!-- Section-->
    <div style="width: 100%;">
-      <section class="py-5" style="float: right; width: 17%; height: 700px; background-color: white;">
+      <section class="py-5" style="float: right; width: 17%; height: 773px; background-color: white;">
          
          
          
@@ -45,7 +45,7 @@
          
          </div>
       </section>
-      <section class="py-5" style="float: left; width: 17%; height: 700px; background-color: #212529;">
+      <section class="py-5" style="float: left; width: 17%; height: 773px; background-color: #F2F2F2;">
          <div class="container px-4 px-lg-5 mt-5">
 
             <div class="col mb-6">
@@ -80,14 +80,14 @@
             </div>
          </div>
       </section>
-      <section class="py-5" style="float: right; width: 66%; height: 700px; background-color: #212529;">
+      <section class="py-5" style="float: right; width: 66%; height: 773px; background-color: #F2F2F2;">
          
           <div class="slide slide_wrap">
       <div class="slide_item">      <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 
-               <c:forEach var="vo" items="${sllist}" begin="0" end="7">
+               <c:forEach var="vo" items="${sllist}" begin="0" end="5">
                   <div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
                      <div class="card h-100">
                         <!-- Sale badge-->
@@ -132,7 +132,7 @@
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 
-               <c:forEach var="vo" items="${sllist}" begin="8" end="16">
+               <c:forEach var="vo" items="${sllist}" begin="6" end="11">
                   <div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
                      <div class="card h-100">
                         <!-- Sale badge-->
@@ -218,7 +218,6 @@
 
    </script>
 
-<button id ="testButton">test</button>
 
 <script>
 const testButton = document.getElementById("testButton");
@@ -226,7 +225,6 @@ testButton.addEventListener("click", ()=>console.log("test"))
 
 
 </script>
-<script src="js/ordering.js"></script>
 
 </body>
 
