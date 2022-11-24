@@ -7,10 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.client.RestTemplate;
 
-import com.KSCT.work.model.Menu;
-import com.KSCT.work.model.test;
+import com.KSCT.work.model.Menus;
+import com.KSCT.work.model.testMenu;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -40,15 +39,9 @@ public class IndexController {
 	private IndexService indexService;
 
 	
-	@GetMapping("/list")
-	public String MenuList(Model model) {
-		List<Menu> list = indexService.getList();
-		model.addAttribute("list", list);
-		return "list";
-	}
 	
 	@PostMapping("/menu")
-	public String InsertMenu(test menu, Model model) {
+	public String InsertMenu(testMenu menu, Model model) {
 		
 		indexService.insertList(menu);
 	
@@ -56,7 +49,7 @@ public class IndexController {
 	}
 	@GetMapping("/order_list")
 	public String OrderList(Model model) {
-		List<test> OrderList = indexService.getOrderList();
+		List<testMenu> OrderList = indexService.getOrderList();
 		model.addAttribute("OrderList", OrderList);
 		return "list";
 	}
@@ -64,23 +57,33 @@ public class IndexController {
 	@GetMapping("/")
 	public String index() {
 
-		
+	
 		return "index";
 	}
+
 	
 	@GetMapping("/menu")
-	public String start() {
+	public String sl(Model model) {
+		List<Menus> menuList  = indexService.gettlist();
+		
+		model.addAttribute("menuList",menuList);
+		System.out.println(menuList.get(0).getMenu_name());
 		return "menu";
 	}
 	
-	@GetMapping("/sltest")
-	public String sl(Model model) {
-		List<test> sllist = indexService.getsllist();
-		model.addAttribute("sllist", sllist);
-		return "sltest";
+//	@GetMapping("/sltestAjax")
+//		@ResponseBody
+//		public List<test> sl2(int i) {
+//			System.out.println(i);
+//			List<test> sl = indexService.getList2(i);
+//			System.out.println(sl);
+//			return sl;
+//			
+//		}
 	}
 	
 
+<<<<<<< HEAD
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
@@ -92,5 +95,7 @@ public class IndexController {
 	}
 
 }
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 
 

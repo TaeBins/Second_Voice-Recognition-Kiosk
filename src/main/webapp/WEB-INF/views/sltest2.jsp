@@ -93,15 +93,16 @@
 								<div class="card-body p-4">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder">${vo.name}</h5>
+										${vo.name }
+										<h5 class="fw-bolder"></h5>
 										<!-- Product price-->
-										${vo.price}원
+										${vo.price }원
 									</div>
 								</div>
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-										<button name="${vo.name}" class="cartbutton">
+										<button name="${vo.name }" class="cartbutton">
 											<span>Add to cart</span>
 											<div class="cart">
 												<svg viewBox="0 0 36 26">

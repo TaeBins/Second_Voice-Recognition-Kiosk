@@ -6,17 +6,22 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<select id="getList" resultType="Menu">
-		select * from Menu_Table
+	<select id="getList" resultType="testMenu">
+		select * from menu_list
 	</select>
 
-	<select id="getOrderList" parameterType="test" resultType="test">
+	<select id="getOrderList" parameterType="testMenu" resultType="testMenu">
 		select ol.*, ml.price
 		from order_list ol, menu_list ml
 		where ol.menu = ml.name
 	</select>
 
-	<select id="getsllist" resultType="test">
-		select * from menu_list
+	<select id="gettlist" resultType="Menus">
+		select * from menus
 	</select>
+	
+<!-- 	<select id="getList2"  resultType="test">
+	select * from menu_list where id between #{i}+((#{i}-1)*6) and #{i}*6
+	</select> -->
+	
 </mapper>
