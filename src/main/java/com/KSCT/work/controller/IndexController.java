@@ -80,20 +80,6 @@ public class IndexController {
 //			return sl;
 //			
 //		}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
-	@GetMapping("/animation")
-	public String ani() {
-		return "animation";
-	}
-	
-	@GetMapping("/menu2")
-	public String menu2() {
-		return "menu2";
-	}
 
 }
 

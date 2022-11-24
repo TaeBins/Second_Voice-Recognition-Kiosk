@@ -38,7 +38,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 	<!-- Section-->
 	<div style="width: 100%;">
-		<section class="py-5" style="float: right; width: 17%; height: 650px; background-color: white;">
+		<section class="py-5" style="float: right; width: 17%; height: 711px; background-color: white;">
 
 
 
@@ -51,7 +51,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 			</div>
 		</section>
-		<section class="py-5" style="float: left; width: 17%; height: 650px; background-color: #F2F2F2;">
+		<section class="py-5" style="float: left; width: 17%; height: 711px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -86,7 +86,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 66%; height: 650px; background-color: #F2F2F2;">
+		<section class="py-5" style="float: right; width: 66%; height: 711px; background-color: #F2F2F2;">
 
 			<div class="slide slide_wrap">
 				<div class="slide_item">
