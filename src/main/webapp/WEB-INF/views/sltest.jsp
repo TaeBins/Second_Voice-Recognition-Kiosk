@@ -350,7 +350,7 @@ function nextMove() {
     } else {
         currSlide--;
     }
-    
+/*     
     $.ajax({
         url: "/sltestAjax", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
         data: {"i": currSlide },  // HTTP 요청과 함께 서버로 보낼 데이터
@@ -361,7 +361,7 @@ function nextMove() {
         },
         error : (error) => alert(error)
         
-    })
+    }) */
  
 }
 function prevMove() {
