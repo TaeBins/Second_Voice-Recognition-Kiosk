@@ -19,4 +19,9 @@
 	<select id="getsllist" resultType="test">
 		select * from menu_list
 	</select>
+	
+	<select id="getList2"  resultType="test">
+	select * from menu_list where id between #{i}+((#{i}-1)*6) and #{i}*6
+	</select>
+	
 </mapper>
