@@ -6,26 +6,26 @@ import lombok.Data;
 // 메뉴 리스트
 public class Menus {
 	// 메뉴 순번
-	private Double menuseq;
+	private Double menu_seq;
 	// 메뉴 명
-	private String menuname;
+	private String menu_name;
 	// 메뉴 타입
-	private String menutype;
+	private String menu_type;
 	// 메뉴 가격
-	private Double menuprice;
+	private int menu_price;
 	// 메뉴 재고수량
-	private Double menustockcnt;
+	private Double menu_stock_cnt;
 	// 메뉴 주문횟수
-	private Double menuordercnt;
+	private Double menu_order_cnt;
 	// 메뉴 사진1
-	private String menuimg1;
+	private String menu_img1;
 	// 주문 가능 여부
-	private String menuavailable;
+	private String menu_available;
 	// 메뉴 불가 사진
-	private String menusoldoutimg;
+	private String menu_soldout_img;
 	// 업체 번호
-	private String resno;
+	private String res_no;
 	// 평균 조리시간
-	private Double menutime;
+	private Double menu_time;
 
 }

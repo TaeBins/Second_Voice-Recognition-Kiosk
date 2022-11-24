@@ -101,16 +101,16 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 										<div class="card-body p-4">
 											<div class="text-center">
 												<!-- Product name-->
-												${vo.menuname}
+												${vo.menu_name}
 												<h5 class="fw-bolder"></h5>
 												<!-- Product price-->
-												${vo.menuprice}원
+												${vo.menu_price}원
 											</div>
 										</div>
 										<!-- Product actions-->
 										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
-												<button name="${vo.menuname}" class="cartbutton">
+												<button name="${vo.menu_name}" class="cartbutton">
 													<span>Add to cart</span>
 													<div class="cart">
 														<svg viewBox="0 0 36 26">
@@ -148,16 +148,16 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 										<div class="card-body p-4">
 											<div class="text-center">
 												<!-- Product name-->
-												${vo.menuname}
+												${vo.menu_name}
 												<h5 class="fw-bolder"></h5>
 												<!-- Product price-->
-												${vo.menuprice}원
+												${vo.menu_price}원
 											</div>
 										</div>
 										<!-- Product actions-->
 										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
-												<button name="${vo.menuname}" class="cartbutton">
+												<button name="${vo.menu_name}" class="cartbutton">
 													<span>Add to cart</span>
 													<div class="cart">
 														<svg viewBox="0 0 36 26">
