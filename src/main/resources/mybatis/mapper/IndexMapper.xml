@@ -16,8 +16,8 @@
 		where ol.menu = ml.name
 	</select>
 
-	<select id="getsllist" resultType="testMenu">
-		select * from menu_list
+	<select id="gettlist" resultType="Menus">
+		select * from menus
 	</select>
 	
 <!-- 	<select id="getList2"  resultType="test">

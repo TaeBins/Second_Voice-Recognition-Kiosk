@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.KSCT.work.mapper.IndexMapper;
-import com.KSCT.work.model.Menu;
+import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.testMenu;
 
 // @Transactional : 메소드 내부에서 일어나는 DB 로직이 전부성공 or 하나라도 실패시 다시롤백 해줌
@@ -32,9 +32,9 @@ public class IndexService {
 		indexMapper.insertList(menu);
 	}
 	
-	public List<testMenu> getsllist(){
-		List<testMenu> sllist = indexMapper.getsllist();
-		return sllist;
+	public List<Menus> gettlist(){
+		List<Menus> menuList = indexMapper.gettlist();
+		return menuList;
 	}
 //	public List<test> getList2(int i){
 //		
