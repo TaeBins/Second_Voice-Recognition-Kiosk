@@ -3,7 +3,7 @@ package com.KSCT.work.model;
 import lombok.Data;
 
 @Data
-public class test {
+public class testMenu {
 
 	private int id;
 	private String menu;

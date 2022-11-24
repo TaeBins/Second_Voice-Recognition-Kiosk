@@ -10,13 +10,13 @@
 		select * from Menu_Table
 	</select>
 
-	<select id="getOrderList" parameterType="test" resultType="test">
+	<select id="getOrderList" parameterType="testMenu" resultType="testMenu">
 		select ol.*, ml.price
 		from order_list ol, menu_list ml
 		where ol.menu = ml.name
 	</select>
 
-	<select id="getsllist" resultType="test">
+	<select id="getsllist" resultType="testMenu">
 		select * from menu_list
 	</select>
 	
