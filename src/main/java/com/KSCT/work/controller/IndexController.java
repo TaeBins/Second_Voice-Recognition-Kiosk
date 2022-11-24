@@ -67,7 +67,7 @@ public class IndexController {
 		List<Menus> menuList  = indexService.gettlist();
 		
 		model.addAttribute("menuList",menuList);
-		System.out.println(menuList.get(0).getMenuname());
+		System.out.println(menuList.get(0).getMenu_name());
 		return "menu";
 	}
 	
