@@ -7,9 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.KSCT.work.model.Menu;
+import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.testMenu;
 import com.KSCT.work.service.IndexService;
 
@@ -65,9 +64,10 @@ public class IndexController {
 	
 	@GetMapping("/menu")
 	public String sl(Model model) {
-		List<testMenu> menuList  = indexService.getList();
+		List<Menus> menuList  = indexService.gettlist();
 		
 		model.addAttribute("menuList",menuList);
+		System.out.println(menuList.get(0).getMenuname());
 		return "menu";
 	}
 	
