@@ -83,5 +83,19 @@ public class IndexController {
 	}
 	
 
+<<<<<<< HEAD
+	@GetMapping("/animation")
+	public String ani() {
+		return "animation";
+	}
+	
+	@GetMapping("/menu2")
+	public String menu2() {
+		return "menu2";
+	}
+
+}
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 
 
