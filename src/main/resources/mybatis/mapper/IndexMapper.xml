@@ -17,7 +17,7 @@
 	</select>
 
 	<select id="gettlist" resultType="Menus">
-		select * from menus
+		select * from menus order by menu_price desc
 	</select>
 	
 <!-- 	<select id="getList2"  resultType="test">
