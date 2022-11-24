@@ -32,7 +32,7 @@
 
    <!-- Section-->
    <div style="width: 100%;">
-      <section class="py-5" style="float: right; width: 17%; height: 700px; background-color: white;">
+      <section class="py-5" style="float: right; width: 17%; height: 773px; background-color: white;">
          
          
          
@@ -45,7 +45,7 @@
          
          </div>
       </section>
-      <section class="py-5" style="float: left; width: 17%; height: 100%; background-color: #212529;">
+      <section class="py-5" style="float: left; width: 17%; height: 773px; background-color: #212529;">
          <div class="container px-4 px-lg-5 mt-5">
 
             <div class="col mb-6">
@@ -80,7 +80,7 @@
             </div>
          </div>
       </section>
-      <section class="py-5" style="float: right; width: 66%; height: 700px; background-color: #212529;">
+      <section class="py-5" style="float: right; width: 66%; height: 773px; background-color: #212529;">
          
           <div class="slide slide_wrap">
       <div class="slide_item">      <div class="container px-4 px-lg-5 mt-5">
