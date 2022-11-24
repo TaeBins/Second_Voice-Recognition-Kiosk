@@ -89,8 +89,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container px-4 px-lg-5">
-			<a href="/" class="navbar-brand"><img
-				src="assets/index/logowhite.png" height="70" width="200"></a>
+			<a class="navbar-brand"><img src="assets/index/logowhite.png" height="70" width="200"></a>
 		</div>
 	</nav>
 

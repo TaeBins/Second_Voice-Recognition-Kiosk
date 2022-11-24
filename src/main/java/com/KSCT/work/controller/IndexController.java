@@ -85,6 +85,11 @@ public class IndexController {
 	public String ani() {
 		return "animation";
 	}
+	
+	@GetMapping("/menu2")
+	public String menu2() {
+		return "menu2";
+	}
 
 }
 
