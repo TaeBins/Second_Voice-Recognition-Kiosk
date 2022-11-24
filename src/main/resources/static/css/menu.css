@@ -185,13 +185,13 @@ li {
 }
 .slide_pagination > li {
   /* 현재 슬라이드가 아닌 것은 투명도 부여 */
-  color: #7fb5ff88;
+  color: #FFC90E;
   cursor: pointer;
   font-size: 25px;
 }
 .slide_pagination > li.active {
   /* 현재 슬라이드 색상은 투명도 없이 */
-  color: #7fb5ff;
+  color: #FFA914;
 }
 body {
   margin: 0;
@@ -7610,7 +7610,7 @@ textarea.form-control-lg {
 }
 
 .mt-5 {
-  margin-top: 3rem !important;
+  margin-top: 1rem !important;
 }
 
 .mt-auto {

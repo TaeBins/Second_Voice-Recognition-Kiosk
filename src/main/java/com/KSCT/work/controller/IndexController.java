@@ -80,9 +80,17 @@ public class IndexController {
 //			return sl;
 //			
 //		}
+<<<<<<< HEAD
 
 	
 
+=======
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
@@ -94,6 +102,9 @@ public class IndexController {
 	}
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 
 
