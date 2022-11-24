@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.KSCT.work.model.Menu;
-import com.KSCT.work.model.test;
+import com.KSCT.work.model.testMenu;
 
 // @Repository : DAO class(mapper)같은 DataBase에 접근하는 method를 가진 클래스에 쓰임
 @Repository
@@ -17,9 +17,9 @@ public interface IndexMapper {
 	public List<Menu> getList();
 
 	@Insert("insert into order_list values(#{menu}, #{count}, #{id})")
-	public void insertList(test Menu);
+	public void insertList(testMenu Menu);
 	
-	public List<test> getOrderList();
+	public List<testMenu> getOrderList();
 
-	public List<test> getsllist();
+	public List<testMenu> getsllist();
 }

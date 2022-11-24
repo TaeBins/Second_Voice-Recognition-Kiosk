@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.KSCT.work.model.Menu;
-import com.KSCT.work.model.test;
+import com.KSCT.work.model.testMenu;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -48,7 +48,7 @@ public class IndexController {
 	}
 	
 	@PostMapping("/menu")
-	public String InsertMenu(test menu, Model model) {
+	public String InsertMenu(testMenu menu, Model model) {
 		
 		indexService.insertList(menu);
 	
@@ -56,7 +56,7 @@ public class IndexController {
 	}
 	@GetMapping("/order_list")
 	public String OrderList(Model model) {
-		List<test> OrderList = indexService.getOrderList();
+		List<testMenu> OrderList = indexService.getOrderList();
 		model.addAttribute("OrderList", OrderList);
 		return "list";
 	}
@@ -75,7 +75,8 @@ public class IndexController {
 	
 	@GetMapping("/sltest")
 	public String sl(Model model) {
-		List<test> sllist = indexService.getsllist();
+		List<testMenu> sllist = indexService.getsllist();
+		System.out.println(sllist.get(0).getName());
 		model.addAttribute("sllist", sllist);
 		return "sltest";
 	}
