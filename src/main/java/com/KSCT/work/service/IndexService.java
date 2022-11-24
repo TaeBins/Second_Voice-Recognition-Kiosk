@@ -36,5 +36,10 @@ public class IndexService {
 		List<testMenu> sllist = indexMapper.getsllist();
 		return sllist;
 	}
+//	public List<test> getList2(int i){
+//		
+//		List<test> sllist = indexMapper.getList2(i);
+//		return sllist;
+//	}
 
 }

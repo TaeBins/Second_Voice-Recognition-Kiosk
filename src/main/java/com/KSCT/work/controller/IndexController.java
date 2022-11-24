@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KSCT.work.model.Menu;
 import com.KSCT.work.model.testMenu;
@@ -64,7 +64,7 @@ public class IndexController {
 	@GetMapping("/")
 	public String index() {
 
-		
+	
 		return "index";
 	}
 	
@@ -81,6 +81,17 @@ public class IndexController {
 		return "sltest";
 	}
 	
-}
+//	@GetMapping("/sltestAjax")
+//		@ResponseBody
+//		public List<test> sl2(int i) {
+//			System.out.println(i);
+//			List<test> sl = indexService.getList2(i);
+//			System.out.println(sl);
+//			return sl;
+//			
+//		}
+	}
+	
+
 
 
