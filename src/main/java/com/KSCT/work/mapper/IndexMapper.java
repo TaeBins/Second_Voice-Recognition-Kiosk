@@ -15,7 +15,7 @@ import com.KSCT.work.model.testMenu;
 @Mapper
 public interface IndexMapper {
 
-	public List<Menu> getList();
+	public List<testMenu> getList();
 
 	@Insert("insert into order_list values(#{menu}, #{count}, #{id})")
 	public void insertList(testMenu Menu);

@@ -39,12 +39,6 @@ public class IndexController {
 	private IndexService indexService;
 
 	
-	@GetMapping("/list")
-	public String MenuList(Model model) {
-		List<Menu> list = indexService.getList();
-		model.addAttribute("list", list);
-		return "list";
-	}
 	
 	@PostMapping("/menu")
 	public String InsertMenu(testMenu menu, Model model) {
@@ -66,18 +60,14 @@ public class IndexController {
 	
 		return "index";
 	}
+
 	
 	@GetMapping("/menu")
-	public String start() {
-		return "menu";
-	}
-	
-	@GetMapping("/sltest")
 	public String sl(Model model) {
-		List<testMenu> sllist = indexService.getsllist();
-		System.out.println(sllist.get(0).getName());
-		model.addAttribute("sllist", sllist);
-		return "sltest";
+		List<testMenu> menuList  = indexService.getList();
+		
+		model.addAttribute("menuList",menuList);
+		return "menu";
 	}
 	
 //	@GetMapping("/sltestAjax")

@@ -147,7 +147,7 @@
 
 /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
 .slide_item:nth-child(1) {
-  background-color: #212529;
+  background-color: #F2F2F2;
 }
 .slide_item:nth-child(2) {
   background-color: ;
@@ -176,7 +176,9 @@ li {
 
   /* position */
   position: absolute;
-  bottom:10;
+
+  bottom: 10;
+
   /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
   left: 50%;
   transform: translateX(-50%);
