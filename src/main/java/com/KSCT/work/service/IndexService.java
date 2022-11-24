@@ -19,8 +19,8 @@ public class IndexService {
 	@Autowired
 	private IndexMapper indexMapper;
 
-	public List<Menu> getList() {
-		List<Menu> list = indexMapper.getList();
+	public List<testMenu> getList() {
+		List<testMenu> list = indexMapper.getList();
 		return list;
 	}
 	public List<testMenu> getOrderList() {

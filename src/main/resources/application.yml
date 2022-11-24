@@ -19,15 +19,9 @@ spring:
   # 오라클 DB 연동
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521/xe
-    username: hr
-    password: hr
-    
-#  datasource:
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    url: jdbc:oracle:thin:@project-db-stu.ddns.net:1524/xe
-#    username: kico
-#    password: kico1234
+    url: jdbc:oracle:thin:@project-db-stu.ddns.net:1524/xe
+    username: kico
+    password: kico1234
 
 # 마이바티스 설정
 mybatis:
