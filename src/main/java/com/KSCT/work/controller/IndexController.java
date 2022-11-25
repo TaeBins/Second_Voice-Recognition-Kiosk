@@ -94,6 +94,11 @@ public class IndexController {
 		return "menu2";
 	}
 	
+	@GetMapping("/receipt")
+	public String receipt() {
+		return "receipt";
+	}
+	
 	@GetMapping("/testTemplate")
 	public String testTemplate() {
 		return "testTemplate";

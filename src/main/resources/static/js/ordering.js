@@ -16,7 +16,8 @@ const restart = async () => {
 	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
-const formTag = document.getElementById("formTag");
+const formTag = document.createElement("form");
+//html에서 인식할 수 있도록 formContainer 안에 넣어주기
 
 
 //하이키코를 불렀을 경우 starting을 true로 바꿔서 인삿말 출력
@@ -33,7 +34,9 @@ const orderCount = document.getElementById("count");
 const goMainMenu = () => {
 
 	formTag.action = "/menu";
-	
+	formTag.method = "get"
+		document.getElementById("formContainer").appendChild(formTag);
+
 	formTag.submit();
 	restart();
 
@@ -42,7 +45,6 @@ const goMainMenu = () => {
 const goIndex = () => {
 
 	formTag.action = "/menu";
-	document.getElementById("formContainer").appendChild(formTag);
 	formTag.submit();
 	restart();
 }
@@ -53,6 +55,14 @@ const order = (id, menu, count) => {
 	restart();
 }
 
+const goReceipt = () => {
+	formTag.action="/receipt";
+	formTag.method="get";
+	document.getElementById("formContainer").appendChild(formTag);
+
+	formTag.submit();
+	restart();
+}
 
 
 
@@ -71,7 +81,9 @@ h_speech.onresult = function(e) {
 	}
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
-
+	if(h_text.indexOf("영수증") !== -1 || h_text.indexOf("주문 내역") !== -1){
+		goReceipt();
+	}
 
 	if (h_text.indexOf("주문 완료") !== -1 || h_text.indexOf("주문완료") !== -1) {
 		order();
