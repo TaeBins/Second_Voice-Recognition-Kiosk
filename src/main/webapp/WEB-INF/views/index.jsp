@@ -23,9 +23,15 @@
 </head>
 <body style="height: 100px;" id="page-top">
 	<!-- 배경 애니메이션 -->
+
+	<div class="context">
+
 	<div style="height: 100px;" class="context">
+
 		<!-- 간판-->
+
 		<header style="position: relative; bottom: 200px; height: 10px;" class="masthead">
+
 			<div class="container px-4 px-lg-5 h-100">
 
 				<div class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
