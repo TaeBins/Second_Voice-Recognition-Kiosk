@@ -114,7 +114,7 @@
          			</div>
          	</header>
          	<main>
-         		<table>
+         		<table style="width: 580px;">
          			<colgroup>
          				<col>
          				<col>
@@ -127,78 +127,14 @@
          				<th>가격</th>
          				<th>합계</th>
          			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<tr>
-         				<th>메뉴</th>
-         				<th>갯수</th>
-         				<th>가격</th>
-         				<th>합계</th>
-         			</tr>
-         			<c:forEach var="vo" items="${menuList}" begin="0" end="15">
+         		
+         			<c:forEach var="vo" items="${menuList}">
          			<tr>
          				<td>${vo.menu_name}</td>
          				<td>${vo.menu_order_cnt}</td>
-         				<td><span class="price">${vo.menu_price}</span></td>
-         				<td><span class="price">${vo.menu_order_cnt*vo.menu_price}</span></td>
+         				<td><span class="price">${vo.menu_price}원</span></td>
+         				<td><span class="price">${vo.menu_order_cnt*vo.menu_price}원</span></td>
+         				<c:set var="sum" value="${sum+(vo.menu_price*vo.menu_order_cnt)}"/>
          			</tr>
          			</c:forEach>
          		</table>
@@ -207,12 +143,12 @@
          		<dl class="info">
          			<div class="discount">
          				<dt>할인금액</dt>
-         				<dd><span class="price">00.00</span></dd>
+         				<dd><span class="price">0</span></dd>
          			</div>
          			<div class="total">
          				<dt><h2>총액</h2></dt>
          				<dd>
-         				<h2><span class="price">00.00</span></h2>
+         				<h2><span class="price">${sum}</span></h2>
          				</dd>
          			</div>
          		</dl>

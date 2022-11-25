@@ -93,16 +93,11 @@ main table col:nth-child(2){
 
 main table col:nth-child(3){
 	width : 20%;
-	
 }
 
-main table col:last-child{
-	width : 20%;
-	
-}
 
 main table th {
-	text-align: right;
+	text-align: center;
 }
 
 main table th:first-child {
@@ -120,7 +115,7 @@ main table td:first-child {
 }
 
 main table td:nth-child(2) {
-	text-align: center;
+	text-align: right;
 }
 footer .discount {
 	margin : 20px 0;
