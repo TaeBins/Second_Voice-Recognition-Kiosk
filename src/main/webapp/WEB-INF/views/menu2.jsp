@@ -22,17 +22,23 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" >
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link href="css/receipt.css" rel="stylesheet" />
+
 </head>
 
 <body>
    <!-- Navigation-->
-
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="/">키코네 맥주</a>
+      </div>
+   </nav>
 
    <!-- Header-->
 
    <!-- Section-->
    <div style="width: 100%;">
-      <section class="py-5" style="float: right; width: 17%; height: 773px; background-color: white;">
+      <section class="py-5" style="float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
          
          
          
@@ -80,23 +86,72 @@
             </div>
          </div>
       </section>
-      <section class="py-5" style="float: right; width: 66%; height: 773px; background-color: #F2F2F2;">
-         <h2 style="text-align : center">주문 현황</h2>
+      
+      <!-- receipt -->
+      <section class="py-6" style="float: right; width: 66%; height: 773px; background-color: #F2F2F2;">
+         <div class="wrap">
+         	<h1>영수증</h1>
+         	<header>
+         		<dl class="info">
+         			<div>
+         				<dt>키코네 맥주</dt>
+         				<dd>광주광역시 서구 경열로 20</dd>
+         			</div>
+         			<div>
+         				<dt>전화번호</dt>
+         				<dd>062-123-4567</dd>
+         			</div>
+         			<div>
+         				<dt>Date</dt>
+         				<dd>MM / DD / YYYY</dd>
+         			</div>
+         	</header>
+         	<main>
+         		<table>
+         			<colgroup>
+         				<col>
+         				<col>
+         				<col>
+         				<col>
+         			</colgroup>
+         			<tr>
+         				<th>메뉴</th>
+         				<th>갯수</th>
+         				<th>가격</th>
+         				<th>합계</th>
+         			</tr>
+         			<c:forEach var="vo" items="${menuList}" begin="0" end="15">
+         			<tr>
+         				<td>${vo.menu_name}</td>
+         				<td>${vo.menu_order_cnt}</td>
+         				<td><span class="price">${vo.menu_price}</span></td>
+         				<td><span class="price">${vo.menu_order_cnt*vo.menu_price}</span></td>
+         			</tr>
+         			</c:forEach>
+         		</table>
+         	</main>
+         	<footer>
+         		<dl class="info">
+         			<div class="discount">
+         				<dt>할인금액</dt>
+         				<dd><span class="price">00.00</span></dd>
+         			</div>
+         			<div class="total">
+         				<dt><h2>총액</h2></dt>
+         				<dd>
+         				<h2><span class="price">00.00</span></h2>
+         				</dd>
+         			</div>
+         		</dl>
+         		<p class="greeting"> 키코네 맥주를 방문해주셔서 감사합니다.</p>
+         	</footer>
+         </div>
       </section>
-   </div>
-   </div>
-   <div id="formContainer" style="display: none">
-      <input name="id" value="1" /> <input name="menu" /> <input name="count" />
-   </div>
-   <!-- Footer-->
-   </div>
+
+
+ 
    
-   
-   </div>
-   </section>
-   </div>
-   </div>
-   <!-- Footer-->
+ 
 
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
