@@ -61,12 +61,11 @@
 							3. "생맥주 2잔이랑 바지락 술국 주문해줘" 라고 주문사항을 말합니다.<br> <br> <br>
 						</p>
 						<!-- 터치주문 버튼 -->
+						<a class="btn btn-primary btn-xl" href="menu">터치로 주문하기</a>
 
 					</div>
 				</div>
 			</div>
-									<a class="btn btn-primary btn-xl" href="menu">터치로 주문하기</a>
-			
 		</header>
 	</div>
 
