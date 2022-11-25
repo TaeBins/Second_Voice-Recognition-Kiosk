@@ -68,10 +68,14 @@
             </div>
             
          </div>                                          
+<<<<<<< HEAD
 
  
          <button style="position:relative;z-index:1;top:350px;left:41%"class="btn btn-primary btn-xl" href="menu">터치로 주문하기</button>
 
+=======
+         <a style="position:relative;z-index:100;top:350px;left:41%"class="btn btn-primary btn-xl" href="menu">터치로 주문하기</a>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
          
          
       </header>
