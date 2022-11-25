@@ -41,7 +41,89 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
 
 
+  <div id="ct-content">
 
+	<h1>My Shopping Cart</h1>
+	
+
+	
+	
+	
+	  
+	
+	  
+	
+	  
+	
+	  
+	
+	  
+	
+	  
+	<div class="prodListDisplay">
+									
+	  <div class="product-box">			   
+	    <form action="">		   
+	
+	      <div class="productItem clearfix">
+	
+	        <div class="productTitle">
+	          <h3>
+	            <span class="product-url">
+	<ul id="orderList" style="list-style: none">
+
+
+				</ul>
+	            </span>	
+	          </h3>
+	
+	        </div><!-- /.productTitle -->
+	
+	        <div class="purchaseBlock clearfix">	
+	
+	          <div class="productInput">
+	            <input name="quantity" type="number" value="1" title="Quantity for Another Awesome Product">
+	          </div>
+	
+	          <div class="priceBlock">
+	
+	            <span class="price currency">
+	              <small>$</small>456.32
+	            </span>
+	
+	          </div>
+	
+	          <a href="#" role="link" class="ct-removeSingle">
+	            <span class="ico">Remove</span>
+	          </a>
+	
+	        </div><!-- /.purchaseBlock -->
+	
+	      </div><!-- /.productItem -->
+	
+	      <!-- Remove Single Product Confirmation -->
+	      <div class="ct-confirmation-single">
+	        <div class="centerContent">
+	          <div class="centerContentInner">
+	            <p class="ct-removeSingleConfirmation clearfix">
+	              <span class="message">Remove this item?</span>
+	              <span class="ct-buttons ct-inline-buttons">
+	                <button class="btn-red ct-singleRemoveOK">OK</button>
+	                <button class="btn-grey ct-singleRemoveCancel">Cancel</button>
+	              </span>
+	            </p>
+	
+	          </div>
+	        </div>
+	      </div><!-- /.remove Confirmation -->
+	
+	    </form>
+	
+	  </div><!-- /.product-box -->
+	
+	</div><!-- /.prodListDisplay -->
+  
+</div>
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<ul id="orderList" style="list-style: none">
@@ -190,6 +272,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			</div>
 			<ul class="slide_pagination"></ul>
 			<script src="js/slide.js"></script>
+			<script src="js/cart.js"></script>
 
 
 		</section>
