@@ -76,7 +76,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 				<div class="col mb-7">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">주문 내역</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/receipt">주문 내역</a>
 					</div>
 				</div>
 				<div class="col mb-6">

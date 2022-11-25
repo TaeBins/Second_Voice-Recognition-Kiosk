@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% response.setHeader("Access-Control-Allow-Origin","*"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,256 +17,170 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/menu.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" >
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link href="css/receipt.css" rel="stylesheet" />
+
 </head>
 
-<body>
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#!">All Products</a></li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
-							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-						</ul></li>
-				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
-			</div>
-		</div>
-	</nav>
-	<!-- Header-->
-	<header class="bg-dark py-5">
-		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">Shop in style</h1>
-				<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-			</div>
-		</div>
-	</header>
-	<!-- Section-->
-	<div style="width: 100%;">
-		<section class="py-5" style="float: left; width: 20%; height: 700px; background-color: #212529;">
-			<div class="container px-4 px-lg-5 mt-5">
+<body style="background-color:#F2F2F2;;">
+   <!-- Navigation-->
 
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-7">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-				<div class="col mb-6">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="py-5" style="float: right; width: 80%; height: 700px; background-color: #212529;">
-			<div class="container px-4 px-lg-5 mt-5">
-				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Fancy Product</h5>
-									<!-- Product price-->
-									$40.00 - $80.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-								</div>
-							</div>
-						</div>
-					</div>
+  <nav style="width:100%;position: fixed; z-index:1000;right:0" class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="/">키코네 맥주</a>
+      </div>
+   </nav>
 
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
+   <!-- Header-->
 
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<ul style="color: white">
-				</ul>
-			</div>
-		</section>
-	</div>
-	</div>
-	<div id="formContainer" style="display: none">
-		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
-	</div>
-	<!-- Footer-->
-	</div>
-	<div id="formContainer">
-		<form id="formTag" "action="/menu" method="post">
-			<input id="id" name="id" type="text" value="1" /> <input id="menu" name="menu" type="text" value="test" /> <input id="count" name="count" type="number" value="1" /> <input type="submit" value="전송" />
-		</form>
-	</div>
-	<div class="order_list">
-		<form action="/order_list">
-			<input type="submit" value="주문목록" />
-		</form>
-	</div>
-	</div>
-	</section>
-	</div>
-	</div>
-	<!-- Footer-->
-	<!-- Bootstrap core JS-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/ordering.js"></script>
+   <!-- Section-->
+
+      <section  class="py-5" style="float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
+         
+         
+         
+         <div class="container px-4 px-lg-5 mt-5">
+
+            <ul id="orderList" style="list-style:none">
+            
+            
+            </ul>
+         
+         </div>
+      </section>
+      
+      <section class="py-5" style="position:fixed;float: left; width: 17%; height: 100%; margin-top:100px;background-color: #F2F2F2;">
+         <div class="container px-4 px-lg-5 mt-5">
+
+            <div class="col mb-6">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">메인 메뉴</a>
+               </div>
+            </div>
+            <div class="col mb-6">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">사이드 메뉴</a>
+               </div>
+            </div>
+            <div class="col mb-6">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">주류</a>
+               </div>
+            </div>
+            <div class="col mb-6">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">음료</a>
+               </div>
+            </div>
+            <div class="col mb-7">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">주문 내역</a>
+               </div>
+            </div>
+            <div class="col mb-6">
+               <div class="card h-100">
+                  <a class="btn1 btn-outline-dark mt-auto" href="#">직원 호출</a>
+               </div>
+            </div>
+         </div>
+      </section>
+      
+      <!-- receipt -->
+      <section class="py-6" style="float: right; width: 66%; height: 773px; background-color: #F2F2F2;">
+         <div class="wrap">
+         	<h1>영수증</h1>
+         	<header>
+         		<dl class="info">
+         			<div>
+         				<dt>키코네 맥주</dt>
+         				<dd>광주광역시 서구 경열로 20</dd>
+         			</div>
+         			<div>
+         				<dt>전화번호</dt>
+         				<dd>062-123-4567</dd>
+         			</div>
+         			<div>
+         				<dt>Date</dt>
+         				<dd>MM / DD / YYYY</dd>
+         			</div>
+         	</header>
+         	<main>
+         		<table>
+         			<colgroup>
+         				<col>
+         				<col>
+         				<col>
+         				<col>
+         			</colgroup>
+         			<tr>
+         				<th>메뉴</th>
+         				<th>갯수</th>
+         				<th>가격</th>
+         				<th>합계</th>
+         			</tr>
+         			<c:forEach var="vo" items="${menuList}" begin="0" end="15">
+         			<tr>
+         				<td>${vo.menu_name}</td>
+         				<td>${vo.menu_order_cnt}</td>
+         				<td><span class="price">${vo.menu_price}</span></td>
+         				<td><span class="price">${vo.menu_order_cnt*vo.menu_price}</span></td>
+         			</tr>
+         			</c:forEach>
+         		</table>
+         	</main>
+         	<footer>
+         		<dl class="info">
+         			<div class="discount">
+         				<dt>할인금액</dt>
+         				<dd><span class="price">00.00</span></dd>
+         			</div>
+         			<div class="total">
+         				<dt><h2>총액</h2></dt>
+         				<dd>
+         				<h2><span class="price">00.00</span></h2>
+         				</dd>
+         			</div>
+         		</dl>
+         		<p class="greeting"> 키코네 맥주를 방문해주셔서 감사합니다.</p>
+         	</footer>
+         </div>
+      </section>
+
+
+ 
+   
+ 
+
+   <!-- Bootstrap core JS-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script src="js/ordering.js"></script>
+   <script type="text/javascript">
+   document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
+       if(!button.classList.contains('loading')) {
+
+           button.classList.add('loading');
+
+           setTimeout(() => button.classList.remove('loading'), 3700);
+
+       }
+       e.preventDefault();
+   }));
+
+   </script>
+
+
+<script>
+const testButton = document.getElementById("testButton");
+testButton.addEventListener("click", ()=>console.log("test"))
+
+
+</script>
+
 </body>
 
 </html>
