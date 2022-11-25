@@ -80,7 +80,7 @@ public class IndexController {
 //			return sl;
 //			
 //		}
-	
+
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
@@ -90,7 +90,4 @@ public class IndexController {
 	public String menu2() {
 		return "menu2";
 	}
-
-}
-
-
+	}
