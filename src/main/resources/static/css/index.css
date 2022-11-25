@@ -93,7 +93,7 @@ body {
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color:#FFFFFF;
+  /*-webkit-tap-highlight-color:#FFFFFF;*/
 }
 
 hr {
@@ -11399,7 +11399,7 @@ header.masthead h1, header.masthead .h1 {
 @media (min-width: 992px) {
   header.masthead {
     height: 100vh;
-    min-height: 40rem;
+    /*min-height: 40rem;*/
     padding-top: 4.5rem;
     padding-bottom: 0;
   }

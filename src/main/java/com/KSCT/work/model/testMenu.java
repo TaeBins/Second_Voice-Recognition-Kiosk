@@ -10,5 +10,7 @@ public class testMenu {
 	private int count;
 	private String name;
 	private int price;
+	private int totalPrice;
+
 
 }

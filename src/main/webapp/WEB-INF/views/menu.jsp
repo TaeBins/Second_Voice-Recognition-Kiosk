@@ -28,17 +28,17 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 <body>
 	<!-- Navigation-->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Logo</a>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Logo</a>
+		</div>
+	</nav>
 
 	<!-- Header-->
 
 	<!-- Section-->
 	<div style="width: 100%;">
-		<section class="py-5" style="float: right; width: 17%; height: 650px; background-color: white;">
+		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
 
 
 
@@ -51,7 +51,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 			</div>
 		</section>
-		<section class="py-5" style="float: left; width: 17%; height: 650px; background-color: #F2F2F2;">
+		<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -86,7 +86,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 66%; height: 650px; background-color: #F2F2F2;">
+		<section class="py-5" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
 
 			<div class="slide slide_wrap">
 				<div class="slide_item">
@@ -98,7 +98,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
-										<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
 										<!-- Product image-->
 										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
 										<!-- Product details-->
@@ -145,7 +144,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
-										<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
 										<!-- Product image-->
 										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
 										<!-- Product details-->

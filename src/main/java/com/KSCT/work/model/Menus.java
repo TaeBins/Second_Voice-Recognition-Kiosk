@@ -11,6 +11,7 @@ public class Menus {
 	private String menu_name;
 	// 메뉴 타입
 	private String menu_type;
+	
 	// 메뉴 가격
 	private int menu_price;
 	// 메뉴 재고수량
