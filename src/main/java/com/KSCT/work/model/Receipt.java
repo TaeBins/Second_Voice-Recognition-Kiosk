@@ -13,7 +13,7 @@ public class Receipt {
 	private int od_cnt;
 	
 	// 메뉴가격 * 주문수량
-	private int 
+
 	
 	// 주문 총금액
 }
