@@ -74,7 +74,7 @@ h_speech.onresult = function(e) {
 	console.log(h_text);
 	//main_menu request 함수
 	if (h_text.indexOf("아메리카노") !== -1) {
-		orderMenu.value = "아메리카노";
+		
 	}
 	if (h_text.indexOf("한 잔") !== -1 || h_text.indexOf("한잔") !== -1) {
 		orderCount.value = "1";
