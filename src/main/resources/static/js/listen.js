@@ -30,7 +30,7 @@ const restart = async () => {
 	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
-let formTag = document.getElementById("formTag");
+let formTag = document.createElement("form");
 
 
 
@@ -41,9 +41,10 @@ let ordering = false;
 
 //formTag 생성 및 이동할 url 설정
 const goMainMenu = () => {
-
+	document.getElementById("formContainer").appendChild(formTag);
 	formTag.action = "/menu";
 	formTag.method = "get";
+	
 	formTag.submit();
 	restart();
 
@@ -91,7 +92,7 @@ h_speech.onresult = function(e) {
 		}
 	} else {
 
-		console.log(h_text);
+
 
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
 			goMainMenu();
