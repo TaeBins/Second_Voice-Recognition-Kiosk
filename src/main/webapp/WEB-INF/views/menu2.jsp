@@ -26,7 +26,7 @@
 
 </head>
 
-<body style="background-color:#F2F2F2;;">
+<body style="background-color:#F2F2F2;">
    <!-- Navigation-->
 
   <nav style="width:100%;position: fixed; z-index:1000;right:0" class="navbar navbar-expand-sm bg-dark navbar-dark">
