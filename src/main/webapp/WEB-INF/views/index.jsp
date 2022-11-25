@@ -68,7 +68,7 @@
             </div>
             
          </div>                                          
-         <button style="position:relative;z-index:7;top:350px;left:45%"class="btn btn-primary btn-xl" href="menu">터치로 주문하기</button>
+         <a style="position:relative;z-index:7;top:350px;left:45%"class="btn btn-primary btn-xl" href="/menu">터치로 주문하기</a>
          
          
       </header>

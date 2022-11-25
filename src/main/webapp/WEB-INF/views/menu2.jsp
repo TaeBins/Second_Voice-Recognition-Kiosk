@@ -29,7 +29,7 @@
 <body style="background-color:#F2F2F2;;">
    <!-- Navigation-->
 
-  <nav style="position: fixed; z-index:1000;right:0" class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav style="width:100%;position: fixed; z-index:1000;right:0" class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">키코네 맥주</a>
       </div>
