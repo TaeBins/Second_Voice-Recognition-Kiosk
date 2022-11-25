@@ -175,6 +175,5 @@ cartButton.forEach((cartButton) =>{
 	
 	
 	
-	
-	
+
 	

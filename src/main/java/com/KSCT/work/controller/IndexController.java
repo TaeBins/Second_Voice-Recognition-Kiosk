@@ -50,6 +50,7 @@ public class IndexController {
 	@GetMapping("/order_list")
 	public String OrderList(Model model) {
 		List<testMenu> OrderList = indexService.getOrderList();
+		
 		model.addAttribute("OrderList", OrderList);
 		return "list";
 	}
@@ -81,6 +82,7 @@ public class IndexController {
 //			
 //		}
 
+
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
@@ -90,4 +92,8 @@ public class IndexController {
 	public String menu2() {
 		return "menu2";
 	}
-	}
+
+
+}
+
+
