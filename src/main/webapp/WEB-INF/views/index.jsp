@@ -61,16 +61,22 @@
                      3. "생맥주 2잔이랑 바지락 술국 주문해줘" 라고 주문사항을 말합니다.<br> <br> <br>
                   </p>
                   <!-- 터치주문 버튼 -->
-                  <a class="btn btn-primary btn-xl" href="menu">터치로 주문하기</a>
+                  
 
                </div>
+               
             </div>
-         </div>
+            
+         </div>                                          <button style="position:relative;z-index:7;top:300px"class="btn btn-primary btn-xl" href="menu">터치로 주문하기</button>
+         
+         
       </header>
+      
    </div>
 
 
    <div class="area">
+   
       <ul class="circles">
          <li></li>
          <li></li>
@@ -92,11 +98,7 @@
          <a class="navbar-brand"><img src="assets/index/logowhite.png" height="70" width="200"></a>
       </div>
    </nav>
-
-
-   <div id="formContainer" style="display: none">
-      <form id="formTag" "action="/menu" method="post">
-   </div>
+   
    <!-- Bootstrap core JS-->
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
