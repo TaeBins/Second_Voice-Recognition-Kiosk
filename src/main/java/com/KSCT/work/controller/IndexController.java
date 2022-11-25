@@ -93,5 +93,10 @@ public class IndexController {
 	public String sl2(Model model) {
 		return "menu2";
 	}
+	
+	@GetMapping("/testTemplate")
+	public String testTemplate() {
+		return "testTemplate";
+	}
 
 }
