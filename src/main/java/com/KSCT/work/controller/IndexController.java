@@ -89,9 +89,9 @@ public class IndexController {
 	}
 
 	
-	@GetMapping("/menu2")
-	public String sl2(Model model) {
-		return "menu2";
+	@GetMapping("/receipt")
+	public String receipt(Model model) {
+		return "receipt";
 	}
 	
 	@GetMapping("/testTemplate")

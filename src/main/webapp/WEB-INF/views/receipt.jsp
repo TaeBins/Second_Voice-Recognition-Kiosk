@@ -24,6 +24,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link href="css/receipt.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -38,7 +40,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 	<!-- Section-->
 	<div style="width: 100%;">
-		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
+		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: #F2F2F2;">
 
 
 
@@ -86,113 +88,68 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+		 <!-- receipt -->
+      <section class="py-6" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+         <div class="wrap" style="overflow:scroll;height:80% ">
+         	<h1>주문 내역</h1>
+         	<header>
+         		<dl class="info">
+         			<div>
+         				<dt>키코네 맥주</dt>
+         				<dd>광주광역시 서구 경열로 20</dd>
+         			</div>
+         			<div>
+         				<dt>전화번호</dt>
+         				<dd>062-123-4567</dd>
+         			</div>
+         			<div>
+         				<dt>Date</dt>
+         				<dd>MM / DD / YYYY</dd>
+         			</div>
+         	</header>
+         	<main>
+         		<table>
+         			<colgroup>
+         				<col>
+         				<col>
+         				<col>
+         				<col>
+         			</colgroup>
+         			<tr>
+         				<th>메뉴</th>
+         				<th>갯수</th>
+         				<th>가격</th>
+         				<th>합계</th>
+         			</tr>
+         			
+         			<c:forEach var="vo" items="${menuList}" begin="0" end="15">
+         			<tr>
+         				<td>${vo.menu_name}</td>
+         				<td>${vo.menu_order_cnt}</td>
+         				<td><span class="price">${vo.menu_price}</span></td>
+         				<td><span class="price">${vo.menu_order_cnt*vo.menu_price}</span></td>
+         			</tr>
+         			</c:forEach>
+         		</table>
+         	</main>
+         	<footer>
+         		<dl class="info">
+         			<div class="discount">
+         				<dt>할인금액</dt>
+         				<dd><span class="price">00.00</span></dd>
+         			</div>
+         			<div class="total">
+         				<dt><h2>총액</h2></dt>
+         				<dd>
+         				<h2><span class="price">00.00</span></h2>
+         				</dd>
+         			</div>
+         		</dl>
+         		<p class="greeting"> 키코네 맥주를 방문해주셔서 감사합니다.</p>
+         	</footer>
+         </div>
+      </section>
 
-			<div class="slide slide_wrap">
-				<div class="slide_item">
-					<div class="container px-4 px-lg-5 mt-5">
-						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-
-							<c:forEach var="vo" items="${menuList}" begin="0" end="5">
-								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
-									<div class="card h-100">
-										<!-- Sale badge-->
-										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
-										<!-- Product details-->
-										<div class="card-body p-4">
-											<div class="text-center">
-												<!-- Product name-->
-												${vo.menu_name}
-												<h5 class="fw-bolder"></h5>
-												<!-- Product price-->
-												${vo.menu_price}원
-											</div>
-										</div>
-										<!-- Product actions-->
-										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-											<div class="text-center">
-												<button name="${vo.menu_name}" class="cartbutton">
-													<span>Add to cart</span>
-													<div class="cart">
-														<svg viewBox="0 0 36 26">
-            <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
-            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
-        </svg>
-													</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-
-
-
-
-						</div>
-						<ul style="color: white">
-						</ul>
-					</div>
-				</div>
-				<div class="slide_item">
-					<div class="container px-4 px-lg-5 mt-5">
-						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-
-							<c:forEach var="vo" items="${vo.menuList}" begin="6" end="11">
-								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
-									<div class="card h-100">
-										<!-- Sale badge-->
-										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
-										<!-- Product details-->
-										<div class="card-body p-4">
-											<div class="text-center">
-												<!-- Product name-->
-												${vo.menu_name}
-												<h5 class="fw-bolder"></h5>
-												<!-- Product price-->
-												${vo.menu_price}원
-											</div>
-										</div>
-										<!-- Product actions-->
-										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-											<div class="text-center">
-												<button name="${vo.menu_name}" class="cartbutton">
-													<span>Add to cart</span>
-													<div class="cart">
-														<svg viewBox="0 0 36 26">
-            <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
-            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
-        </svg>
-													</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-
-
-
-
-						</div>
-						<ul style="color: white">
-						</ul>
-					</div>
-				</div>
-				<div class="slide_item">3</div>
-				<div class="slide_item">4</div>
-				<div class="slide_item">5</div>
-				<div class="slide_prev_button slide_button">◀</div>
-				<div class="slide_next_button slide_button">▶</div>
-
-			</div>
-			<ul class="slide_pagination"></ul>
-			<script src="js/slide.js"></script>
-
-
-		</section>
 	</div>
 	</div>
 	<div id="formContainer" style="display: none">
