@@ -25,6 +25,9 @@ public class IndexService {
 	}
 	public List<testMenu> getOrderList() {
 		List<testMenu> OrderList = indexMapper.getOrderList();
+		for( testMenu menu : OrderList) {
+			menu.setTotalPrice(menu.getCount() * menu.getPrice());
+		}
 		return OrderList;
 		
 	}
@@ -34,6 +37,7 @@ public class IndexService {
 	
 	public List<Menus> gettlist(){
 		List<Menus> menuList = indexMapper.gettlist();
+		
 		return menuList;
 	}
 //	public List<test> getList2(int i){
