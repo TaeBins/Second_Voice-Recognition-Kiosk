@@ -98,7 +98,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
-										<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
 										<!-- Product image-->
 										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
 										<!-- Product details-->
@@ -145,7 +144,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
-										<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
 										<!-- Product image-->
 										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
 										<!-- Product details-->
