@@ -16,7 +16,7 @@ public class Menus {
 	// 메뉴 재고수량
 	private Double menu_stock_cnt;
 	// 메뉴 주문횟수
-	private Double menu_order_cnt;
+	private int menu_order_cnt;
 	// 메뉴 사진1
 	private String menu_img1;
 	// 주문 가능 여부

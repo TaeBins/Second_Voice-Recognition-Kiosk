@@ -32,9 +32,9 @@
 </head>
 <body id="page-top">
 	<!-- 배경 애니메이션 -->
-	<div style="position:absolute; bottom:100px;"class="context">
+	<div class="context">
 		<!-- 간판-->
-		<header class="masthead">
+		<header style="position:relative;bottom:200px;"class="masthead">
 			<div class="container px-4 px-lg-5 h-100">
 				
 				<div 
