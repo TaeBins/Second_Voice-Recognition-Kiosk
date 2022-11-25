@@ -26,9 +26,10 @@
 
 </head>
 
-<body>
+<body style="background-color:#F2F2F2;;">
    <!-- Navigation-->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <nav style="position: fixed; z-index:1000;right:0" class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">키코네 맥주</a>
       </div>
@@ -37,8 +38,8 @@
    <!-- Header-->
 
    <!-- Section-->
-   <div style="width: 100%;">
-      <section class="py-5" style="float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
+
+      <section  class="py-5" style="float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
          
          
          
@@ -51,7 +52,8 @@
          
          </div>
       </section>
-      <section class="py-5" style="float: left; width: 17%; height: 773px; background-color: #F2F2F2;">
+      
+      <section class="py-5" style="position:fixed;float: left; width: 17%; height: 100%; margin-top:100px;background-color: #F2F2F2;">
          <div class="container px-4 px-lg-5 mt-5">
 
             <div class="col mb-6">
