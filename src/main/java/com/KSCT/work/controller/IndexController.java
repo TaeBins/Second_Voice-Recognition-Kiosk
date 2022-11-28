@@ -112,12 +112,7 @@ public class IndexController {
 	public String receipt(Model model) {
 		return "receipt";
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
-	
 	@GetMapping("/testTemplate")
 	public String testTemplate() {
 		return "testTemplate";
