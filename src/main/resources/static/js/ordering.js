@@ -130,7 +130,7 @@ h_speech.onresult = function(e) {
 	console.log(h_text);
 	//main_menu request 함수
 	if (h_text.indexOf("아메리카노") !== -1) {
-		orderMenu.value = "아메리카노";
+		
 	}
 	console.log(menus);
 	//메뉴 읽어들이는 함수
@@ -255,4 +255,5 @@ cartButton.forEach((cartButton) =>{
 	
 	
 	
+
 	

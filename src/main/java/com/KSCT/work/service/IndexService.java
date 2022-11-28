@@ -40,10 +40,21 @@ public class IndexService {
 		
 		return menuList;
 	}
-//	public List<test> getList2(int i){
-//		
-//		List<test> sllist = indexMapper.getList2(i);
-//		return sllist;
-//	}
+	public List<Menus> sideList(){
+		List<Menus> sideList = indexMapper.sideList();
+		
+		return sideList;
+	}
+	public List<Menus> beerList(){
+		List<Menus> beerList = indexMapper.beerList();
+		
+		return beerList;
+	}
+	public List<Menus> drinkList(){
+		List<Menus> drinkList = indexMapper.drinkList();
+		
+		return drinkList;
+	}
+
 
 }

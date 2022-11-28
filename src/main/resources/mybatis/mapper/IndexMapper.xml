@@ -17,11 +17,25 @@
 	</select>
 
 	<select id="gettlist" resultType="Menus">
-		select * from menus order by menu_price desc
+		select * from menus
+		where menu_type = '메인메뉴'
+		order by menu_price desc
+	</select>
+	<select id="sideList" resultType="Menus">
+		select * from menus
+		where menu_type = '사이드 메뉴'
+		order by menu_price desc
+	</select>
+	<select id="beerList" resultType="Menus">
+		select * from menus
+		where menu_type = '주류'
+		order by menu_price desc
+	</select>
+	<select id="drinkList" resultType="Menus">
+		select * from menus
+		where menu_type = '음료'
+		order by menu_price desc
 	</select>
 	
-<!-- 	<select id="getList2"  resultType="test">
-	select * from menu_list where id between #{i}+((#{i}-1)*6) and #{i}*6
-	</select> -->
 	
 </mapper>
