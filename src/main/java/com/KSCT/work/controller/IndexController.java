@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.KSCT.work.model.Menus;
-import com.KSCT.work.model.testMenu;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -37,86 +35,20 @@ public class IndexController {
 
 	@Autowired
 	private IndexService indexService;
-
 	
-	
-	@PostMapping("/menu")
-	public String InsertMenu(testMenu menu, Model model) {
-		
-		indexService.insertList(menu);
-	
-		return "index";
-	}
-	@GetMapping("/order_list")
-	public String OrderList(Model model) {
-		List<testMenu> OrderList = indexService.getOrderList();
-		
-		model.addAttribute("OrderList", OrderList);
-		return "list";
-	}
-	
+	// "/" 주소로 가면 첫화면 뜨게 하기
 	@GetMapping("/")
 	public String index() {
-
-	
 		return "index";
 	}
 
-	// 메인 메뉴
+	// 메뉴 가져오기
 	@GetMapping("/menu")
-	public String menu(Model model) {
-		List<Menus> menuList  = indexService.gettlist();
+	public String menulist(Model model) {
+		List<Menus> menuList  = indexService.menulist();
 		model.addAttribute("menuList",menuList);
 		return "menu";
 	}
-	// 사이드 메뉴
-	@GetMapping("/side")
-	public String side(Model model) {
-		List<Menus> sideList  = indexService.sideList();
-		model.addAttribute("sideList",sideList);
-		return "side";
-	}
-	// 주류
-	@GetMapping("/beer")
-	public String beer(Model model) {
-		List<Menus> beerList  = indexService.beerList();
-		model.addAttribute("beerList",beerList);
-		return "beer";
-	}
-	// 음료
-	@GetMapping("/drink")
-	public String drink(Model model) {
-		List<Menus> drinkList  = indexService.drinkList();
-		model.addAttribute("drinkList",drinkList);
-		return "drink";
-	}
-	
-//	@GetMapping("/sltestAjax")
-//		@ResponseBody
-//		public List<test> sl2(int i) {
-//			System.out.println(i);
-//			List<test> sl = indexService.getList2(i);
-//			System.out.println(sl);
-//			return sl;
-//			
-//		}
 
-
-	@GetMapping("/animation")
-	public String ani() {
-		return "animation";
-	}
-
-	
-	@GetMapping("/receipt")
-	public String receipt(Model model) {
-		return "receipt";
-	}
-
-	
-	@GetMapping("/testTemplate")
-	public String testTemplate() {
-		return "testTemplate";
-	}
 
 }

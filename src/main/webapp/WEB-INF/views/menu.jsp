@@ -125,7 +125,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -165,7 +165,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -205,7 +205,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">

@@ -6,36 +6,8 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<select id="getList" resultType="testMenu">
-		select * from menu_list
-	</select>
-
-	<select id="getOrderList" parameterType="testMenu" resultType="testMenu">
-		select ol.*, ml.price
-		from order_list ol, menu_list ml
-		where ol.menu = ml.name
-	</select>
-
-	<select id="gettlist" resultType="Menus">
+	<select id="menulist" resultType="Menus">
 		select * from menus
-		where menu_type = '메인메뉴'
-		order by menu_price desc
 	</select>
-	<select id="sideList" resultType="Menus">
-		select * from menus
-		where menu_type = '사이드 메뉴'
-		order by menu_price desc
-	</select>
-	<select id="beerList" resultType="Menus">
-		select * from menus
-		where menu_type = '주류'
-		order by menu_price desc
-	</select>
-	<select id="drinkList" resultType="Menus">
-		select * from menus
-		where menu_type = '음료'
-		order by menu_price desc
-	</select>
-	
 	
 </mapper>

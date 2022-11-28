@@ -1,19 +1,36 @@
 package com.KSCT.work.model;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
 public class Receipt {
 
-	// Menus 테이블(메뉴이름, 메뉴가격)
-	private String menu_name;
-	private String menu_price;
-	
-	// Order_Detail 테이블(주문 수량)
-	private int od_cnt;
-	
-	// 메뉴가격 * 주문수량
+	// 영수증 번호 
+    private int receipt_seq;
 
-	
-	// 주문 총금액
+    // 주문 테이블 번호 
+    private int tb_no;
+
+    // 주문 시간 
+    private Date receipt_date;
+
+    // 메뉴 명 
+    private String menu_name;
+
+    // 메뉴 단가 
+    private int menu_price;
+
+    // 주문 수량 
+    private int order_cnt;
+
+    // 가격 합계 
+    private int total_price;
+
+    // 할인 금액 
+    private int dc_amount;
+
+    // 최종 결제 금액 
+    private int total_amount;
 }
