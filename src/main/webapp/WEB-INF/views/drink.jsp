@@ -22,7 +22,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
@@ -73,44 +72,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
-						<script type="text/javascript">
-						/* onclick 으로 부른 callme 함수 실행 */
-						function callme(){
-							/* 첫 alert 창 */
-							Swal.fire({
-								  title: '직원을 호출 하시겠어요?',
-								  imageUrl: 'assets/immg.jpg',
-								  imageWidth: 400,
-								  imageHeight: 200,
-								  imageAlt: '으음',
-								  showDenyButton: true,
-								  confirmButtonText: '네 호출할게요!',
-								  denyButtonText: `잘못눌렀어요!`,
-								}).then((result) => {
-									/* 호출버튼 */
-								  if (result.isConfirmed) {
-								    Swal.fire({
-									  position: 'top',
-									  icon: 'success',
-									  title: '직원을 호출했습니다!',
-									  showConfirmButton: false,
-									  timer: 1500
-									})
-								    /* 취소버튼 */
-								  } else if (result.isDenied) {
-									  Swal.fire({
-										  position: 'top',
-										  icon: 'info',
-										  title: '아하! ',
-										  text: '다음부턴 신중히 눌러주시길 :)',
-										  showConfirmButton: false,
-										  timer: 1500
-										})
-									}
-								})
-						}
-						</script>
+					<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
 					</div>
 				</div>
 			</div>
@@ -120,7 +82,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-							<c:forEach var="vo" items="${menuList}" begin="0" end="5">
+							<c:forEach var="vo" items="${drinkList}" begin="0" end="5">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
@@ -160,7 +122,9 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-							<c:forEach var="vo" items="${menuList}" begin="6" end="11">
+
+
+							<c:forEach var="vo" items="${drinkList}" begin="6" end="11">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
@@ -200,7 +164,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-							<c:forEach var="vo" items="${menuList}" begin="12" end="14">
+							<c:forEach var="vo" items="${drinkList}" begin="12" end="14">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->

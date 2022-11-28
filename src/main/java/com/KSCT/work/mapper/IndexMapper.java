@@ -23,5 +23,8 @@ public interface IndexMapper {
 
 
 	public List<Menus> gettlist();
+	public List<Menus> sideList();
+	public List<Menus> beerList();
+	public List<Menus> drinkList();
 
 }

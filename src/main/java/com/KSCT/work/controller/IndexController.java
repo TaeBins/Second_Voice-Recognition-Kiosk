@@ -62,14 +62,33 @@ public class IndexController {
 		return "index";
 	}
 
-	
+	// 메인 메뉴
 	@GetMapping("/menu")
-	public String sl(Model model) {
+	public String menu(Model model) {
 		List<Menus> menuList  = indexService.gettlist();
-		
 		model.addAttribute("menuList",menuList);
-		System.out.println(menuList.get(0).getMenu_name());
 		return "menu";
+	}
+	// 사이드 메뉴
+	@GetMapping("/side")
+	public String side(Model model) {
+		List<Menus> sideList  = indexService.sideList();
+		model.addAttribute("sideList",sideList);
+		return "side";
+	}
+	// 주류
+	@GetMapping("/beer")
+	public String beer(Model model) {
+		List<Menus> beerList  = indexService.beerList();
+		model.addAttribute("beerList",beerList);
+		return "beer";
+	}
+	// 음료
+	@GetMapping("/drink")
+	public String drink(Model model) {
+		List<Menus> drinkList  = indexService.drinkList();
+		model.addAttribute("drinkList",drinkList);
+		return "drink";
 	}
 	
 //	@GetMapping("/sltestAjax")
