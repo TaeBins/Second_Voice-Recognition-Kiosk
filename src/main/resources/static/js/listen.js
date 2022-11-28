@@ -27,7 +27,7 @@ h_speech.start();
 //speech transcript 초기화 함수
 const restart = async () => {
 	await h_speech.stop();
-	await setTimeout(() => h_speech.start(), 500);
+	await setTimeout(() => h_speech.start(), 100);
 }
 //request 보낼 form태그 생성
 let formTag = document.createElement("form");
