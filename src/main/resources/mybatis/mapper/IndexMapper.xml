@@ -12,6 +12,7 @@
 	
 	<!-- 오른쪽 창에 뜨는 주문 목록 DB에 넣는 쿼리문 -->
 	<insert id="order"  parameterType="com.KSCT.work.model.Orders">
-	insert into orders(order_tb, menu_name, order_cnt) values(1, #{menu_name}, #{order_cnt})
+	insert into orders(order_tb, menu_name, order_cnt, menu_price) values(1, #{menu_name}, #{order_cnt}, (select menu_price from menus where menu_name = #{menu_name}))
+	 
 	</insert>
 </mapper>
