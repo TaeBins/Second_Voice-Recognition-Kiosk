@@ -13,7 +13,7 @@
 	</select>
 	
 	
-		<select id="manMenulist" parameterType="Menus" resultType="Menus">
+		<select id="womanMenulist" parameterType="Menus" resultType="Menus">
 	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
 		select * from menus where menu_type=#{menu_type} order by  menu_gender desc
 	</select>
