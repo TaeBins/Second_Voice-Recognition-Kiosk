@@ -28,7 +28,16 @@ public class IndexService {
 	
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	public void order(Orders orders) {
-		indexMapper.order(orders);
+		
+		// 이번 순번에서 주문했었던 메뉴라면 update 시키기
+		
+		
+		// 이번 순번에서 처음으로 주문한 메뉴라면 insert 시키기
+		indexMapper.order(orders); 
+		
+		
+		//DB 목록 출력해주기 위해 orders의 현재 순번에 있는 데이터 모두 가지고오기
+		
 	}
 	
 	
