@@ -6,10 +6,22 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
+<<<<<<< HEAD
 	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
 	<select id="menulist" parameterType="int" resultType="Menus">
 		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
 		select * from menus where menu_type=#{menu_type}
+=======
+	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto-->
+	<select id="manMenulist" parameterType="Menus" resultType="Menus">
+	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by  menu_gender
+	</select>
+	
+	
+		<select id="manMenulist" parameterType="Menus" resultType="Menus">
+	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by  menu_gender desc
 	</select>
 
 	<!-- 카트에 저장 하는 쿼리문 -->
