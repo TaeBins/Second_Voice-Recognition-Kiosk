@@ -8,10 +8,7 @@ import lombok.Data;
 public class Receipt {
 
 	// 영수증 번호 
-    private int receipt_seq;
-
-    // 주문 테이블 번호 
-    private int tb_no;
+    private int receipt_num;
 
     // 주문 시간 
     private Date receipt_date;
@@ -25,12 +22,6 @@ public class Receipt {
     // 주문 수량 
     private int order_cnt;
 
-    // 가격 합계 
-    private int total_price;
-
     // 할인 금액 
     private int dc_amount;
-
-    // 최종 결제 금액 
-    private int total_amount;
 }
