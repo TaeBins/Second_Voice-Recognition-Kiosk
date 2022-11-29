@@ -25,6 +25,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 </head>
 
 <body>
@@ -36,86 +38,57 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	</nav>
 	<!-- Header-->
 	<!-- Section-->
-	<div style="width: 100%;">
-		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
+	<div style="
+    display: inline-block;">
+		<section class="py-6" style="float: right; width: 19%; height: 702px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 				<ul id="orderList" style="list-style: none">
 				</ul>
 			</div>
 		</section>
-		<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+			<section class="py-6" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="/menu">메인 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/1">메인 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="side">사이드 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/2">사이드 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="beer">주류</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/3">주류</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="drink">음료</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/4">음료</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/receipt">주문 내역</a>
 					</div>
 				</div>
 				<div class="col mb-7">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="receipt">주문 내역</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
 					</div>
 				</div>
+	
+
 				<div class="col mb-6">
 					<div class="card h-100">
 						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
-						<script type="text/javascript">
-						/* onclick 으로 부른 callme 함수 실행 */
-						function callme(){
-							/* 첫 alert 창 */
-							Swal.fire({
-								  title: '직원을 호출 하시겠어요?',
-								  imageUrl: 'assets/immg.jpg',
-								  imageWidth: 400,
-								  imageHeight: 200,
-								  imageAlt: '으음',
-								  showDenyButton: true,
-								  confirmButtonText: '네 호출할게요!',
-								  denyButtonText: `잘못눌렀어요!`,
-								}).then((result) => {
-									/* 호출버튼 */
-								  if (result.isConfirmed) {
-								    Swal.fire({
-									  position: 'top',
-									  icon: 'success',
-									  title: '직원을 호출했습니다!',
-									  showConfirmButton: false,
-									  timer: 1500
-									})
-								    /* 취소버튼 */
-								  } else if (result.isDenied) {
-									  Swal.fire({
-										  position: 'top',
-										  icon: 'info',
-										  title: '아하! ',
-										  text: '다음부턴 신중히 눌러주시길 :)',
-										  showConfirmButton: false,
-										  timer: 1500
-										})
-									}
-								})
-						}
-						</script>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+		<section class="py-6" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
 			<div class="slide slide_wrap">
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
@@ -125,7 +98,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -165,7 +138,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -205,7 +178,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -251,7 +224,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Footer-->
 	</div>
 	</div>
-	</section>
+	</sectifon>
 	</div>
 	</div>
 	<!-- Footer-->

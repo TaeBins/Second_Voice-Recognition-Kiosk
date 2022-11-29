@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'LINESeedKR-Bd';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'RIDIBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*CSS Resets*/
+section.py-6, h1, h2, dl, dd {
+	margin : 0;
+	padding : 0;
+}
+
+/*Common Areas*/
+.info div{
+	display : flex;
+	margin : 10px 0;
+}
+
+.info dt {
+	width : 30%;
+	}
+	
+
+.info dt:after {
+	content: ' :';
+}
+
+.info dd {
+	width : 70%;
+	text-align: right;
+}	
+
+.price:before {
+	content: '₩';
+}
+/*Design Areas */
+section.py-6 {
+	font-family :'RIDIBatang';
+	font-weight : 300;
+	font-size : 20px;
+	background-color: #ccc;
+	color : #555;	
+
+}
+
+.wrap {
+	background-color: white;
+	width : 700px;
+	padding : 50px;
+	position : absolute;
+	top :55%;
+	left : 50%;
+	transform : translate(-50%, -50%);
+	box-shadow : 0px 2px 10px rgba(0,0,0,0.2);
+}
+
+header {
+	margin: 20px 0;
+}
+
+
+h1 {
+	text-align: center;
+	border-bottom: dashed 4px #666;
+	padding-bottom: 30px;
+	font-size: 4vw;
+}
+
+main {
+	border-top: dotted 4px #aaa; 
+	border-bottom: dotted 4px #aaa; 
+	padding : 20px 0;
+}
+
+main table col:first-child{
+	width : 50%;
+	
+}
+
+main table col:nth-child(2){
+	width : 10%;
+	
+}
+
+main table col:nth-child(3){
+	width : 20%;
+}
+
+
+main table th {
+	text-align: center;
+}
+
+main table th:first-child {
+	text-align: left; 
+	text-indent: -3px;
+}
+
+main table td {
+	text-align: right;
+	padding: 10px 0;
+}
+
+main table td:first-child {
+	text-align: left;
+}
+
+main table td:nth-child(2) {
+	text-align: right;
+}
+footer .discount {
+	margin : 20px 0;
+}
+footer .total {
+	border-top: dashed 4px #666;
+	border-bottom: dashed 4px #666;
+	padding: 20px 0;
+}
+
+footer .total h2 {
+	font-size: 3vw;
+}
+
+footer .total dt {
+	width : 50%;
+	text-align: right;
+	margin-right: 20px;
+}
+
+footer .total dt:after {
+	content: '';
+}
+
+footer .total dd {
+	width : 50%;
+	text-align: left;
+	margin-left: 20px;
+}
+
+footer .greeting {
+	text-align: center;
+	margin-top : 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

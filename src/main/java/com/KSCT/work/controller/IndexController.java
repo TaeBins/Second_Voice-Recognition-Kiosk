@@ -2,14 +2,23 @@ package com.KSCT.work.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.KSCT.work.model.Menus;
-import com.KSCT.work.model.testMenu;
+import com.KSCT.work.model.Orders;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -37,69 +46,45 @@ public class IndexController {
 
 	@Autowired
 	private IndexService indexService;
-
 	
-	
-	@PostMapping("/menu")
-	public String InsertMenu(testMenu menu, Model model) {
-		
-		indexService.insertList(menu);
-	
-		return "index";
-	}
-	@GetMapping("/order_list")
-	public String OrderList(Model model) {
-		List<testMenu> OrderList = indexService.getOrderList();
-		
-		model.addAttribute("OrderList", OrderList);
-		return "list";
-	}
-	
+	// "/" 주소로 가면 첫화면 뜨게 하기
 	@GetMapping("/")
 	public String index() {
-
-	
 		return "index";
 	}
 
-	// 메인 메뉴
-	@GetMapping("/menu")
-	public String menu(Model model) {
-		List<Menus> menuList  = indexService.gettlist();
+	// 메뉴 가져오기
+	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
+	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
+	public String menulist(@PathVariable("menu_type") int menu_type, HttpServletRequest request, HttpServletResponse response, Model model) {
+		// 서비스로 menu_type 보내주기
+		List<Menus> menuList  = indexService.menulist(menu_type);
 		model.addAttribute("menuList",menuList);
-		return "menu";
-	}
-	// 사이드 메뉴
-	@GetMapping("/side")
-	public String side(Model model) {
-		List<Menus> sideList  = indexService.sideList();
-		model.addAttribute("sideList",sideList);
-		return "side";
-	}
-	// 주류
-	@GetMapping("/beer")
-	public String beer(Model model) {
-		List<Menus> beerList  = indexService.beerList();
-		model.addAttribute("beerList",beerList);
-		return "beer";
-	}
-	// 음료
-	@GetMapping("/drink")
-	public String drink(Model model) {
-		List<Menus> drinkList  = indexService.drinkList();
-		model.addAttribute("drinkList",drinkList);
-		return "drink";
+		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
+		String next=null;
+		if(menu_type==1) {
+			next="menu";
+		}else if(menu_type==2) {
+			next="side";
+		}else if(menu_type==3) {
+			next="beer";
+		}else {
+			next="drink";
+		}		
+		return next;
 	}
 	
-//	@GetMapping("/sltestAjax")
-//		@ResponseBody
-//		public List<test> sl2(int i) {
-//			System.out.println(i);
-//			List<test> sl = indexService.getList2(i);
-//			System.out.println(sl);
-//			return sl;
-//			
-//		}
+	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
+	@PostMapping("/order")
+	@ResponseBody
+	public String order(@RequestBody Orders orders) {
+		//손님이 버튼 클릭 or 음성 주문 했을 경우
+		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
+		
+		
+		return "menu";
+	}
+
 
 
 	@GetMapping("/animation")
@@ -117,7 +102,10 @@ public class IndexController {
 	public String testTemplate() {
 		return "checkVoice";
 	}
-	
-	
+
+	@GetMapping("/time")
+	public String time() {
+		return "time";
+	}
 
 }

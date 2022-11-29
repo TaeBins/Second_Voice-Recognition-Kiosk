@@ -22,6 +22,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link href="css/receipt.css" rel="stylesheet" />
@@ -40,46 +41,52 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    </nav>
    <!-- Header-->
    <!-- Section-->
-   <section class="py-5" style="postion: fixed; float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
+   <section class="py-5" style="position: fixed; float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
       <div class="container px-4 px-lg-5 mt-5">
          <ul id="orderList" style="list-style: none">
          </ul>
       </div>
    </section>
-   <section class="py-5" style="position: fixed; float: left; width: 17%; height: 100%; margin-top: 100px; background-color: #F2F2F2;">
-      <div class="container px-4 px-lg-5 mt-5">
-         <div class="col mb-6">
-            <div class="card h-100">
-               <a class="btn1 btn-outline-dark mt-auto" href="/menu">메인 메뉴</a>
-            </div>
-         </div>
-         <div class="col mb-6">
-            <div class="card h-100">
-               <a class="btn1 btn-outline-dark mt-auto" href="/side">사이드 메뉴</a>
-            </div>
-         </div>
-         <div class="col mb-6">
-            <div class="card h-100">
-               <a class="btn1 btn-outline-dark mt-auto" href="/beer">주류</a>
-            </div>
-         </div>
-         <div class="col mb-6">
-            <div class="card h-100">
-               <a class="btn1 btn-outline-dark mt-auto" href="/drink">음료</a>
-            </div>
-         </div>
-         <div class="col mb-7">
-            <div class="card h-100">
-               <a class="btn1 btn-outline-dark mt-auto" href="/receipt">주문 내역</a>
-            </div>
-         </div>
-         <div class="col mb-6">
-            <div class="card h-100">
-            <a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
-            </div>
-         </div>
-      </div>
-   </section>
+	<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+			<div class="container px-4 px-lg-5 mt-5">
+
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/1">메인 메뉴</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/2">사이드 메뉴</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/3">주류</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/4">음료</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/receipt">주문 내역</a>
+					</div>
+				</div>
+				<div class="col mb-7">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
+					</div>
+				</div>
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
+					</div>
+				</div>
+			</div>
+		</section>
    <!-- receipt -->
    <section class="py-6" style="position: fixed; float: right; left: 17%; width: 66%; height: 773px; background-color: #F2F2F2;">
       <div style="height: 80%; overflow: scroll; overflow-y: auto" class="wrap">
