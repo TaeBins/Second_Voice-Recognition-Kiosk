@@ -81,43 +81,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="col mb-6">
 					<div class="card h-100">
 						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
-						<script type="text/javascript">
-						/* onclick 으로 부른 callme 함수 실행 */
-						function callme(){
-							/* 첫 alert 창 */
-							Swal.fire({
-								  title: '직원을 호출 하시겠어요?',
-								  imageUrl: 'assets/immg.jpg',
-								  imageWidth: 400,
-								  imageHeight: 200,
-								  imageAlt: '으음',
-								  showDenyButton: true,
-								  confirmButtonText: '네 호출할게요!',
-								  denyButtonText: `잘못눌렀어요!`,
-								}).then((result) => {
-									/* 호출버튼 */
-								  if (result.isConfirmed) {
-								    Swal.fire({
-									  position: 'top',
-									  icon: 'success',
-									  title: '직원을 호출했습니다!',
-									  showConfirmButton: false,
-									  timer: 1500
-									})
-								    /* 취소버튼 */
-								  } else if (result.isDenied) {
-									  Swal.fire({
-										  position: 'top',
-										  icon: 'info',
-										  title: '아하! ',
-										  text: '다음부턴 신중히 눌러주시길 :)',
-										  showConfirmButton: false,
-										  timer: 1500
-										})
-									}
-								})
-						}
-						</script>
 					</div>
 				</div>
 			</div>

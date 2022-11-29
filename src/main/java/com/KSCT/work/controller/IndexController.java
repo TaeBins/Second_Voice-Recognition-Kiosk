@@ -57,7 +57,7 @@ public class IndexController {
 	@PostMapping("/order")
 	public String order(@RequestBody Orders orders) {
 		System.out.println(orders.getMenu_name());
-//		indexService.order(orders);
+		indexService.order(orders);
 		
 		return "menu";
 	}
