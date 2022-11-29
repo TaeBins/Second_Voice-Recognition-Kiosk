@@ -24,6 +24,8 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/index.css" rel="stylesheet" />
 <link href="css/circle.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 </head>
 <body style="height: 100px;" id="page-top">
 	<!-- 배경 애니메이션 -->
