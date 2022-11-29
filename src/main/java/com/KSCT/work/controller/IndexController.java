@@ -2,12 +2,17 @@ package com.KSCT.work.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
@@ -46,11 +51,24 @@ public class IndexController {
 	}
 
 	// 메뉴 가져오기
-	@GetMapping("/menu")
-	public String menulist(Model model) {
-		List<Menus> menuList  = indexService.menulist();
+	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
+	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
+	public String menulist(@PathVariable("menu_type") int menu_type, HttpServletRequest request, HttpServletResponse response, Model model) {
+		// 서비스로 menu_type 보내주기
+		List<Menus> menuList  = indexService.menulist(menu_type);
 		model.addAttribute("menuList",menuList);
-		return "menu";
+		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
+		String next=null;
+		if(menu_type==1) {
+			next="menu";
+		}else if(menu_type==2) {
+			next="side";
+		}else if(menu_type==3) {
+			next="beer";
+		}else {
+			next="drink";
+		}		
+		return next;
 	}
 	
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)

@@ -49,22 +49,22 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="/menu">메인 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/1">메인 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">사이드 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/2">사이드 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">주류</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/3">주류</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">음료</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/4">음료</a>
 					</div>
 				</div>
 				<div class="col mb-6">
