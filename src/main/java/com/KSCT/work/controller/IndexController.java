@@ -79,5 +79,10 @@ public class IndexController {
 	public String testTemplate() {
 		return "testTemplate";
 	}
+	
+	@GetMapping("/time")
+	public String time() {
+		return "time";
+	}
 
 }

@@ -149,18 +149,6 @@
 .slide_item:nth-child(1) {
   background-color: #F2F2F2;
 }
-.slide_item:nth-child(2) {
-  background-color: ;
-}
-.slide_item:nth-child(3) {
-  background-color: ;
-}
-.slide_item:nth-child(4) {
-  background-color: ;
-}
-.slide_item:nth-child(5) {
-  background-color: ;
-}
 
 /* 페이지네이션 스타일 */
 ul,
@@ -214,8 +202,8 @@ hr {
   opacity: 0.25;
 }
 .cartbutton {
-      --background: black;
-      --text: #fff;
+      --background: #f8c0009c;
+      --text: #212529;
       --cart: #fff;
       --tick: var(--background);
       position: relative;
@@ -7277,6 +7265,7 @@ textarea.form-control-lg {
 
 .h-100 {
   height: 100% !important;
+  box-shadow : 0px 2px 10px #664d03ab;
 }
 
 .h-auto {
@@ -7673,7 +7662,7 @@ textarea.form-control-lg {
   
 }
 .mb-7 {
-  margin-bottom: 9.5rem !important;
+  margin-bottom: 6rem !important;
 }
 .mb-auto {
   margin-bottom: auto !important;
@@ -7787,6 +7776,12 @@ textarea.form-control-lg {
 }
 
 .py-5 {
+  padding-top: 6.1rem !important;
+  padding-bottom: 0.5rem !important;
+  
+}
+
+.py-6 {
   padding-top: 2.3rem !important;
   padding-bottom: 0.5rem !important;
   
@@ -10222,7 +10217,7 @@ textarea.form-control-lg {
   .text-lg-center {
     text-align: center !important;
   }
-}
+
 @media (min-width: 1200px) {
   .float-xl-start {
     float: left !important;
