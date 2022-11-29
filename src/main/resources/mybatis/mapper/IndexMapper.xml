@@ -27,7 +27,7 @@
 
 	<!-- 카트에 저장 하는 쿼리문 -->
 	<!-- order_seq값,  -->
-	<insert id="order" parameterType="Orders">
+	<insert id="order" parameterType="Menus">
 		insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
 		select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time
 		from menus m
