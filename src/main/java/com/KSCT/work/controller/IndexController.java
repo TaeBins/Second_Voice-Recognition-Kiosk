@@ -54,11 +54,13 @@ public class IndexController {
 	}
 
 	// 메뉴 가져오기
-	@RequestMapping(value = "/{menu_type}")
+	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
+	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
 	public String menulist(@PathVariable("menu_type") int menu_type, HttpServletRequest request, HttpServletResponse response, Model model) {
-		//System.out.println("page = "+page);
+		// 서비스로 menu_type 보내주기
 		List<Menus> menuList  = indexService.menulist(menu_type);
 		model.addAttribute("menuList",menuList);
+		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
 		String next=null;
 		if(menu_type==1) {
 			next="menu";

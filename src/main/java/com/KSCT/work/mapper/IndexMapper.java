@@ -13,7 +13,7 @@ import com.KSCT.work.model.Orders;
 @Mapper
 public interface IndexMapper {
 
-	// 메뉴 가져오기
+	// 메뉴 가져오기(서비스에서 보낸 menu_type mapper.xml로)
 	public List<Menus> menulist(int menu_type);
 
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
