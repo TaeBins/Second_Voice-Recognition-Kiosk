@@ -26,7 +26,7 @@ h_speech.start();
 //speech transcript 초기화 함수
 const restart = async () => {
 	await h_speech.stop();
-	await setTimeout(() => h_speech.start(), 100);
+	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
 let formTag = document.createElement("form");
@@ -42,9 +42,9 @@ let ordering = false;
 const goMainMenu = () => {
 	document.getElementById("formContainer").appendChild(formTag);
 	if(man > woman){
-		formTag.action = "/menu/남자";
+		formTag.action = "/menu/남자"+man+woman;
 		}else{
-					formTag.action = "/menu/여자";
+					formTag.action = "/menu/여자"+man+woman;
 
 		}
 	formTag.method = "get";
@@ -88,8 +88,8 @@ h_speech.onresult = function(e) {
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
 			audio.play();
 			
-			setTimeout(() => { starting = true, timer(); }, 4000);
-			starting = true;
+			setTimeout(() => { starting = true, timer(); }, 4500);
+			
 			h_speech.interimResults = false;
 			//하이 키코가 인식되면 transcript 초기화
 
@@ -170,7 +170,7 @@ h_speech.onresult = function(e) {
             } else{
                 document.getElementById('gender').innerHTML = "입력된 목소리는 여자입니다."
             } */ 
-        }, 1000)
+        }, 100)
     }
 
     async function init() {
@@ -195,11 +195,11 @@ h_speech.onresult = function(e) {
             
 
             //현재 분류한 데이터가 남자인지 여자인지 체크 (1은)
-            if(0.8 <= result.scores[0]){ //score 값이 0.8 이상인 값의
+            if(0.5 <= result.scores[0]){ //score 값이 0.8 이상인 값의
                 status = classLabels[0]; //class 이름(남자 or 여자) 가져오기
-            } else if (0.8 <= result.scores[1]){
+            } else if (0.5 <= result.scores[1]){
                 status = classLabels[1];
-            }else if (0.8 <= result.scores[2]){
+            }else if (0.5 <= result.scores[2]){
                 status = classLabels[2];
             }
 
@@ -210,7 +210,7 @@ h_speech.onresult = function(e) {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
             invokeCallbackOnNoiseAndUnknown: true,
-            overlapFactor: 0.10 // probably want between 0.5 and 0.75. More info in README
+            overlapFactor: 0.0 // probably want between 0.5 and 0.75. More info in README
         });
 
         // Stop the recognition in 5 seconds.
