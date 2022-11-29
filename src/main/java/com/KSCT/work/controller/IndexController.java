@@ -54,11 +54,11 @@ public class IndexController {
 	// 메뉴 가져오기
 	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
 	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
-	public String menulist(@PathVariable("menu_type") int menu_type, int menu_gender, HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String menulist(@PathVariable("menu_type") int menu_type, Menus menus, HttpServletRequest request, HttpServletResponse response, Model model) {
 		// 서비스로 menu_type 보내주기
-		Menus menus = new Menus();
+		
 		menus.setMenu_type(menu_type);
-		menus.setMenu_gender(menu_gender);
+		System.out.println(menus.getMenu_gender());
 		
 		List<Menus> menuList  = indexService.menulist(menus);
 		model.addAttribute("menuList",menuList);
