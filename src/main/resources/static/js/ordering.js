@@ -122,6 +122,8 @@ const checkMenu = (h_text) => {
 
 
 
+
+
 //speech api로 받은 transcript 로직처리
 h_speech.onresult = function(e) {
 
@@ -200,6 +202,7 @@ const orderList = document.querySelector("#orderList")
 
 let check = false;
 let a = 0;
+let orderCounts;
 //버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) =>{
 	cartButton.addEventListener("click", () => {
@@ -226,11 +229,25 @@ cartButton.forEach((cartButton) =>{
 			if(!check){
 				//메뉴 추가
 				const tempList = document.createElement("li");
+				orderCounts = 1;
 				tempList.innerText = `${cartButton.name} 1`
 				orderList.appendChild(tempList);
 				
 			}
 			check=false;
+			
+			$.ajax({
+				type : 'POST',
+				url : '/order',
+				contentType: 'application/json; charset=utf-8',
+				data : {
+					"menu_name" : cartButton.name,
+					"order_cnt" : orderCounts
+				},
+				success : () => console.log('data 삽입 완료'),
+				error : () => alert("에러")
+			});
+			
 //	children.forEach((child)=>{if(tempList.innerText != child.textContent){
 //		orderList.appendChild(tempList);
 //	}})

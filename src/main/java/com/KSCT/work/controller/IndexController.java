@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.KSCT.work.model.Menus;
+import com.KSCT.work.model.Orders;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -49,10 +52,18 @@ public class IndexController {
 		model.addAttribute("menuList",menuList);
 		return "menu";
 	}
+	
+	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
+	@PostMapping("/order")
+	public String order(@RequestBody Orders orders) {
+		System.out.println(orders.getMenu_name());
+//		indexService.order(orders);
+		
+		return "menu";
+	}
 
 
-<<<<<<< HEAD
-=======
+
 	@GetMapping("/animation")
 	public String ani() {
 		return "animation";
@@ -69,5 +80,4 @@ public class IndexController {
 		return "testTemplate";
 	}
 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 }

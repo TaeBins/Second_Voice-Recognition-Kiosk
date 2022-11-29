@@ -10,4 +10,8 @@
 		select * from menus
 	</select>
 	
+	<!-- 오른쪽 창에 뜨는 주문 목록 DB에 넣는 쿼리문 -->
+	<insert id="order"  parameterType="com.KSCT.work.model.Orders">
+	insert into orders values()
+	</insert>
 </mapper>

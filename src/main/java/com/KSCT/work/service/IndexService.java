@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.KSCT.work.mapper.IndexMapper;
 import com.KSCT.work.model.Menus;
+import com.KSCT.work.model.Orders;
 
 // @Transactional : 메소드 내부에서 일어나는 DB 로직이 전부성공 or 하나라도 실패시 다시롤백 해줌
 // @Service : 서비스 Class에 사용
@@ -18,10 +19,18 @@ public class IndexService {
 	@Autowired
 	private IndexMapper indexMapper;
 	
+	//모든 메뉴 가져오기
 	public List<Menus> menulist(){
 		List<Menus> menuList = indexMapper.menulist();
 		return menuList;
 	}
+	
+	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
+	public void order(Orders orders) {
+		indexMapper.order(orders);
+	}
+	
+	
 
 
 }

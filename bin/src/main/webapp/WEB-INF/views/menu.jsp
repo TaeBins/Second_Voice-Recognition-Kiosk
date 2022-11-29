@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+response.setHeader("Access-Control-Allow-Origin", "*");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,270 +19,254 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/menu.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#!">All Products</a></li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
-							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-						</ul></li>
-				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
-			</div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Logo</a>
 		</div>
 	</nav>
 	<!-- Header-->
-	<header class="bg-dark py-5">
-		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">Shop in style</h1>
-				<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-			</div>
-		</div>
-	</header>
 	<!-- Section-->
 	<div style="width: 100%;">
-		<section class="py-5" style="float: left; width: 20%; height: 700px; background-color: #212529;">
+		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
+			<div class="container px-4 px-lg-5 mt-5">
+				<ul id="orderList" style="list-style: none">
+				</ul>
+			</div>
+		</section>
+		<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/menu">메인 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="side">사이드 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="beer">주류</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="drink">음료</a>
 					</div>
 				</div>
 				<div class="col mb-7">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="receipt">주문 내역</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="#">View options</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
+						<script type="text/javascript">
+						/* onclick 으로 부른 callme 함수 실행 */
+						function callme(){
+							/* 첫 alert 창 */
+							Swal.fire({
+								  title: '직원을 호출 하시겠어요?',
+								  imageUrl: 'assets/immg.jpg',
+								  imageWidth: 400,
+								  imageHeight: 200,
+								  imageAlt: '으음',
+								  showDenyButton: true,
+								  confirmButtonText: '네 호출할게요!',
+								  denyButtonText: `잘못눌렀어요!`,
+								}).then((result) => {
+									/* 호출버튼 */
+								  if (result.isConfirmed) {
+								    Swal.fire({
+									  position: 'top',
+									  icon: 'success',
+									  title: '직원을 호출했습니다!',
+									  showConfirmButton: false,
+									  timer: 1500
+									})
+								    /* 취소버튼 */
+								  } else if (result.isDenied) {
+									  Swal.fire({
+										  position: 'top',
+										  icon: 'info',
+										  title: '아하! ',
+										  text: '다음부턴 신중히 눌러주시길 :)',
+										  showConfirmButton: false,
+										  timer: 1500
+										})
+									}
+								})
+						}
+						</script>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 80%; height: 700px; background-color: #212529;">
-			<div class="container px-4 px-lg-5 mt-5">
-				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Fancy Product</h5>
-									<!-- Product price-->
-									$40.00 - $80.00
+		<section class="py-5" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+			<div class="slide slide_wrap">
+				<div class="slide_item">
+					<div class="container px-4 px-lg-5 mt-5">
+						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+							<c:forEach var="vo" items="${menuList}" begin="0" end="5">
+								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
+									<div class="card h-100">
+										<!-- Sale badge-->
+										<!-- Product image-->
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<!-- Product details-->
+										<div class="card-body p-4">
+											<div class="text-center">
+												<!-- Product name-->
+												${vo.menu_name}
+												<h5 class="fw-bolder"></h5>
+												<!-- Product price-->
+												${vo.menu_price}원
+											</div>
+										</div>
+										<!-- Product actions-->
+										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+											<div class="text-center">
+												<button name="${vo.menu_name}" class="cartbutton">
+													<span>Add to cart</span>
+													<div class="cart">
+														<svg viewBox="0 0 36 26">
+            <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+													</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
+						<ul style="color: white">
+						</ul>
 					</div>
-
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					
-					
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Sale Item</h5>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$50.00</span> $25.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Product image-->
-							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">Fancy Product</h5>
-									<!-- Product price-->
-									$120.00 - $280.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-<<<<<<< HEAD
-                </div>
-                <ul style="color:white">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </ul>
-            </div>
-        </section>
-    </div>
-    </div>
-    <div id="formContainer" style="display:none">
-    <input name="id" value="1" />
-    <input name="menu" />
-    <input name="count" />
-</div>
-    <!-- Footer-->
-=======
 				</div>
-				<div id="formContainer">
-				<form id="formTag" "action="/menu" method="post">
-				<input id="id" name="id" type="text" value="1" />
-				<input id="menu" name="menu" type="text" value="test" />
-				<input id="count" name="count" type="number" value="1" />
-				<input type="submit" value="전송" />
-				</form>
+				<div class="slide_item">
+					<div class="container px-4 px-lg-5 mt-5">
+						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+							<c:forEach var="vo" items="${menuList}" begin="6" end="11">
+								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
+									<div class="card h-100">
+										<!-- Sale badge-->
+										<!-- Product image-->
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<!-- Product details-->
+										<div class="card-body p-4">
+											<div class="text-center">
+												<!-- Product name-->
+												${vo.menu_name}
+												<h5 class="fw-bolder"></h5>
+												<!-- Product price-->
+												${vo.menu_price}원
+											</div>
+										</div>
+										<!-- Product actions-->
+										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+											<div class="text-center">
+												<button name="${vo.menu_name}" class="cartbutton">
+													<span>Add to cart</span>
+													<div class="cart">
+														<svg viewBox="0 0 36 26">
+            <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<ul style="color: white">
+						</ul>
+					</div>
 				</div>
-				<div class="order_list">
-					<form action="/order_list">
-					<input type="submit" value="주문목록" />
-					</form>
+				<div class="slide_item">
+					<div class="container px-4 px-lg-5 mt-5">
+						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+							<c:forEach var="vo" items="${menuList}" begin="12" end="14">
+								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
+									<div class="card h-100">
+										<!-- Sale badge-->
+										<!-- Product image-->
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<!-- Product details-->
+										<div class="card-body p-4">
+											<div class="text-center">
+												<!-- Product name-->
+												${vo.menu_name}
+												<h5 class="fw-bolder"></h5>
+												<!-- Product price-->
+												${vo.menu_price}원
+											</div>
+										</div>
+										<!-- Product actions-->
+										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+											<div class="text-center">
+												<button name="${vo.menu_name}" class="cartbutton">
+													<span>Add to cart</span>
+													<div class="cart">
+														<svg viewBox="0 0 36 26">
+            <polyline points="1 2.5 6 2.5 10 18.5 25.5 18.5 28.5 7.5 7.5 7.5"></polyline>
+            <polyline points="15 13.5 17 15.5 22 10.5"></polyline>
+        </svg>
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<ul style="color: white">
+						</ul>
+					</div>
 				</div>
+				<div class="slide_prev_button slide_button">◀</div>
+				<div class="slide_next_button slide_button">▶</div>
 			</div>
+			<ul class="slide_pagination"></ul>
+			<script src="js/slide.js"></script>
 		</section>
+	</div>
+	</div>
+	<div id="formContainer" style="display: none">
+		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+	</div>
+	<!-- Footer-->
+	</div>
+	</div>
+	</section>
 	</div>
 	</div>
 	<!-- Footer-->
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
-
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/ordering.js"></script>
+	<script type="text/javascript">
+   document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
+       if(!button.classList.contains('loading')) {
+           button.classList.add('loading');
+           setTimeout(() => button.classList.remove('loading'), 3700);
+       }
+       e.preventDefault();
+   }));
+   </script>
 </body>
-
 </html>
