@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
@@ -55,9 +56,11 @@ public class IndexController {
 	
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	@PostMapping("/order")
+	@ResponseBody
 	public String order(@RequestBody Orders orders) {
-		System.out.println(orders.getMenu_name());
-		indexService.order(orders);
+		//손님이 버튼 클릭 or 음성 주문 했을 경우
+		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
+		
 		
 		return "menu";
 	}
