@@ -100,9 +100,9 @@ public class IndexController {
 
 	@GetMapping("/testTemplate")
 	public String testTemplate() {
-		return "testTemplate";
+		return "checkVoice";
 	}
-	
+
 	@GetMapping("/time")
 	public String time() {
 		return "time";
