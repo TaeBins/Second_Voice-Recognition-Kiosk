@@ -6,15 +6,18 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto-->
+	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
 	<select id="menulist" parameterType="int" resultType="Menus">
-	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
 		select * from menus where menu_type=#{menu_type}
 	</select>
-	
-	<!-- 오른쪽 창에 뜨는 주문 목록 DB에 넣는 쿼리문 -->
-	<insert id="order"  parameterType="Orders">
-	insert into orders(order_tb, menu_name, order_cnt, menu_price) values(1, #{menu_name}, #{order_cnt}, (select menu_price from menus where menu_name = #{menu_name}))
-	 
+
+	<!-- 카트에 저장 하는 쿼리문 -->
+	<!-- order_seq값,  -->
+	<insert id="order" parameterType="Orders">
+		insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
+		select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time
+		from menus m
+		where m.menu_name = #{menu_name};
 	</insert>
 </mapper>
