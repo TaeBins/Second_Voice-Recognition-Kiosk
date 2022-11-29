@@ -298,7 +298,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 							}, animationTime * 1000);
 
 						});
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
+
 	</script>
 </body>
 
