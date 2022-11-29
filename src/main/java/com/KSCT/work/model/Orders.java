@@ -5,10 +5,7 @@ import lombok.Data;
 @Data
 public class Orders {
 
-	// 주문 테이블 번호 
-    private int order_tb;
-
-    // 메뉴 순번 
+	 // 메뉴 순번 
     private int menu_seq;
 
     // 주문 번호 
