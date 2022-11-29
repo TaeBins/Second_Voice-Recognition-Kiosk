@@ -115,7 +115,9 @@ public class IndexController {
 
 	@GetMapping("/testTemplate")
 	public String testTemplate() {
-		return "testTemplate";
+		return "checkVoice";
 	}
+	
+	
 
 }
