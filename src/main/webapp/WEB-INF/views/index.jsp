@@ -84,6 +84,10 @@
 				height="70" width="200"></a>
 		</div>
 	</nav>
+	
+		<div id="formContainer" style="display: none">
+		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+	</div>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

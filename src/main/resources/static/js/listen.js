@@ -26,7 +26,7 @@ h_speech.start();
 //speech transcript 초기화 함수
 const restart = async () => {
 	await h_speech.stop();
-	await setTimeout(() => h_speech.start(), 100);
+	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
 let formTag = document.createElement("form");
@@ -41,24 +41,27 @@ let ordering = false;
 //formTag 생성 및 이동할 url 설정
 const goMainMenu = () => {
 	document.getElementById("formContainer").appendChild(formTag);
-	if(man > woman){
-		formTag.action = "/menu/남자";
-		}else{
-					formTag.action = "/menu/여자";
+			formTag.action = "/1"
 
-		}
+	if (man > woman) {
+		
+		formTag.innerHTML = `<input name='menu_gender' type="text" value="0" />`
+	} else {
+		formTag.innerHTML = `<input name='menu_gender' type="text" value="1" />`
+
+	}
 	formTag.method = "get";
-	
+
 	formTag.submit();
 	restart();
 
 }
 
 const orderComplete = () => {
-formTag.method = "post";
+	formTag.method = "post";
 	formTag.action = "/menu";
-	
-	
+
+
 	formTag.submit();
 	restart();
 }
@@ -66,7 +69,7 @@ formTag.method = "post";
 const goIndex = () => {
 	formTag.action = "/";
 	formTag.method = "get";
-	setTimeout(() =>formTag.submit(), 500);
+	setTimeout(() => formTag.submit(), 500);
 	starting = false;
 	order = false;
 	restart();
@@ -87,9 +90,9 @@ h_speech.onresult = function(e) {
 	if (!starting) {
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
 			audio.play();
-			
-			setTimeout(() => { starting = true, timer(); }, 4000);
-			starting = true;
+
+			setTimeout(() => { starting = true, timer(); }, 4500);
+
 			h_speech.interimResults = false;
 			//하이 키코가 인식되면 transcript 초기화
 
@@ -131,91 +134,91 @@ h_speech.onresult = function(e) {
 
 //남녀 목소리 구분 api
 
-  
-    // more documentation available at
-    // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
-    // the link to your model provided by Teachable Machine export panel
-    const URL = "https://teachablemachine.withgoogle.com/models/_FOcslroz/";
+// more documentation available at
+// https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
-    async function createModel() {
-        const checkpointURL = URL + "model.json"; // model topology
-        const metadataURL = URL + "metadata.json"; // model metadata
+// the link to your model provided by Teachable Machine export panel
+const URL = "https://teachablemachine.withgoogle.com/models/_FOcslroz/";
 
-        const recognizer = speechCommands.create(
-            "BROWSER_FFT", // fourier transform type, not useful to change
-            undefined, // speech commands vocabulary feature, not useful for your models
-            checkpointURL,
-            metadataURL);
+async function createModel() {
+	const checkpointURL = URL + "model.json"; // model topology
+	const metadataURL = URL + "metadata.json"; // model metadata
 
-        // check that model and metadata are loaded via HTTPS requests.
-        await recognizer.ensureModelLoaded();
+	const recognizer = speechCommands.create(
+		"BROWSER_FFT", // fourier transform type, not useful to change
+		undefined, // speech commands vocabulary feature, not useful for your models
+		checkpointURL,
+		metadataURL);
 
-        return recognizer;
-    }
-    console.log(man+"입니다.")
+	// check that model and metadata are loaded via HTTPS requests.
+	await recognizer.ensureModelLoaded();
 
-    function timer(){
+	return recognizer;
+}
+console.log(man + "입니다.")
 
-        let time = setInterval(() =>{
-            if(status == "남자"){
-                man++;
-            } else if(status =="여자"){
-                woman++;
-            }
-            
+function timer() {
 
-          /* if(man > woman){
-                document.getElementById('gender').innerHTML = "입력된 목소리는 남자입니다."
-            } else{
-                document.getElementById('gender').innerHTML = "입력된 목소리는 여자입니다."
-            } */ 
-        }, 1000)
-    }
+	let time = setInterval(() => {
+		if (status == "남자") {
+			man++;
+		} else if (status == "여자") {
+			woman++;
+		}
 
-    async function init() {
-        const recognizer = await createModel();
-        const classLabels = recognizer.wordLabels(); // get class labels
 
-       
-       
-        //현재 음성을 남자인지 여자인지 체크할 변수 하나 생성
-        let gender = "배경 소음";
+		/* if(man > woman){
+			  document.getElementById('gender').innerHTML = "입력된 목소리는 남자입니다."
+		  } else{
+			  document.getElementById('gender').innerHTML = "입력된 목소리는 여자입니다."
+		  } */
+	}, 100)
+}
+
+async function init() {
+	const recognizer = await createModel();
+	const classLabels = recognizer.wordLabels(); // get class labels
 
 
 
-        // listen() takes two arguments:
-        // 1. A callback function that is invoked anytime a word is recognized.
-        // 2. A configuration object with adjustable fields
-       
-        recognizer.listen(result => {
-            const scores = result.scores; // probability of prediction for each class
-           
-
-            
-
-            //현재 분류한 데이터가 남자인지 여자인지 체크 (1은)
-            if(0.8 <= result.scores[0]){ //score 값이 0.8 이상인 값의
-                status = classLabels[0]; //class 이름(남자 or 여자) 가져오기
-            } else if (0.8 <= result.scores[1]){
-                status = classLabels[1];
-            }else if (0.8 <= result.scores[2]){
-                status = classLabels[2];
-            }
-
-            
+	//현재 음성을 남자인지 여자인지 체크할 변수 하나 생성
+	let gender = "배경 소음";
 
 
-        }, {
-            includeSpectrogram: true, // in case listen should return result.spectrogram
-            probabilityThreshold: 0.75,
-            invokeCallbackOnNoiseAndUnknown: true,
-            overlapFactor: 0.10 // probably want between 0.5 and 0.75. More info in README
-        });
 
-        // Stop the recognition in 5 seconds.
-        // setTimeout(() => recognizer.stopListening(), 5000);
-    }
+	// listen() takes two arguments:
+	// 1. A callback function that is invoked anytime a word is recognized.
+	// 2. A configuration object with adjustable fields
+
+	recognizer.listen(result => {
+		const scores = result.scores; // probability of prediction for each class
+
+
+
+
+		//현재 분류한 데이터가 남자인지 여자인지 체크 (1은)
+		if (0.5 <= result.scores[0]) { //score 값이 0.8 이상인 값의
+			status = classLabels[0]; //class 이름(남자 or 여자) 가져오기
+		} else if (0.5 <= result.scores[1]) {
+			status = classLabels[1];
+		} else if (0.5 <= result.scores[2]) {
+			status = classLabels[2];
+		}
+
+
+
+
+	}, {
+		includeSpectrogram: true, // in case listen should return result.spectrogram
+		probabilityThreshold: 0.75,
+		invokeCallbackOnNoiseAndUnknown: true,
+		overlapFactor: 0.0 // probably want between 0.5 and 0.75. More info in README
+	});
+
+	// Stop the recognition in 5 seconds.
+	// setTimeout(() => recognizer.stopListening(), 5000);
+}
 init();
 
 

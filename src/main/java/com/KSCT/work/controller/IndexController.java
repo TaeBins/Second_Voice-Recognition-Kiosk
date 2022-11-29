@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
@@ -56,9 +54,13 @@ public class IndexController {
 	// 메뉴 가져오기
 	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
 	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
-	public String menulist(@PathVariable("menu_type") int menu_type, HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String menulist(@PathVariable("menu_type") int menu_type, int menu_gender, HttpServletRequest request, HttpServletResponse response, Model model) {
 		// 서비스로 menu_type 보내주기
-		List<Menus> menuList  = indexService.menulist(menu_type);
+		Menus menus = new Menus();
+		menus.setMenu_type(menu_type);
+		menus.setMenu_gender(menu_gender);
+		
+		List<Menus> menuList  = indexService.menulist(menus);
 		model.addAttribute("menuList",menuList);
 		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
 		String next=null;

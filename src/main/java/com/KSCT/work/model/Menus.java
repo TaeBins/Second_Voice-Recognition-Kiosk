@@ -12,7 +12,7 @@ public class Menus {
     private String menu_name;
 
     // 메뉴 타입 
-    private String menu_type;
+    private int menu_type;
 
     // 메뉴 단가 
     private int menu_price;
@@ -34,5 +34,8 @@ public class Menus {
 
     // 평균 조리시간 
     private int menu_time;
+    
+    // 선호 성별
+    private int menu_gender;
 
 }

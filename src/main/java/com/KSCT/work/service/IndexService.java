@@ -20,10 +20,16 @@ public class IndexService {
 	private IndexMapper indexMapper;
 	
 	//모든 메뉴 가져오기(컨트롤에서 보낸 menu_type int 형으로)
-	public List<Menus> menulist(int menu_type){
+	public List<Menus> menulist(Menus menus){
 		// 컨트롤에서 받은 menu_type mapper로 보내기
-		List<Menus> menuList = indexMapper.menulist(menu_type);
-		return menuList;
+		if(menus.getMenu_gender() == 0) {
+		 return indexMapper.manMenulist(menus);
+
+		}else {
+			return  indexMapper.womanMenulist(menus);
+
+		}
+
 	}
 	
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)

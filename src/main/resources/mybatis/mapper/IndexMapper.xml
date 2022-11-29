@@ -7,9 +7,15 @@
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
 	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto-->
-	<select id="menulist" parameterType="int" resultType="Menus">
+	<select id="manMenulist" parameterType="Menus" resultType="Menus">
 	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type}
+		select * from menus where menu_type=#{menu_type} order by  menu_gender
+	</select>
+	
+	
+		<select id="manMenulist" parameterType="Menus" resultType="Menus">
+	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by  menu_gender desc
 	</select>
 	
 	<!-- 오른쪽 창에 뜨는 주문 목록 DB에 넣는 쿼리문 -->
