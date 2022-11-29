@@ -12,25 +12,36 @@
 		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
 		select * from menus where menu_type=#{menu_type}
 	</select>
-	
-	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto-->
+
+	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
 	<select id="manMenulist" parameterType="Menus" resultType="Menus">
-	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by  menu_gender
+		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by menu_gender
 	</select>
-	
-	
-		<select id="womanMenulist" parameterType="Menus" resultType="Menus">
-	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by  menu_gender desc
+
+
+	<select id="womanMenulist" parameterType="Menus" resultType="Menus">
+		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by menu_gender desc
 	</select>
 
 	<!-- 카트에 저장 하는 쿼리문 -->
-	<!-- order_seq값,  -->
-	<insert id="order" parameterType="Menus">
-		insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
-		select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time
-		from menus m
-		where m.menu_name = #{menu_name};
+	<!-- order_seq값, -->
+	<!-- <insert id="order" parameterType="Orders"> insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time) select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time from menus m where m.menu_name = #{menu_name} </insert> -->
+
+	<!-- 카트에 저장 하는 쿼리문 -->
+	<!-- order_seq값, -->
+	<insert id="order" parameterType="Orders">
+		MERGE INTO orders o
+		USING menus m
+		ON (m.menu_name = #{menu_name})
+		WHEN MATCHED THEN
+		UPDATE SET
+		o.order_cnt = o.order_cnt + #{order_cnt}
+		WHEN NOT MATCHED THEN
+		INSERT
+		(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
+		VALUES
+		(m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 </mapper>

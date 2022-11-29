@@ -73,7 +73,7 @@ const six = [6, "여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", 
 const seven = [7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]
 const amount = [one, two, three, four, five, six, seven]
 
-   const menu_list = [오뎅탕, 감바스, 짜파구리, 콘치즈계란말이, 계란말이]
+//   const menu_list = [오뎅탕, 감바스, 짜파구리, 콘치즈계란말이, 계란말이]
   	
   	
   	//메뉴와 갯수를 매칭 시켜줄 오브젝트 만들기
@@ -91,14 +91,14 @@ const 바지락술국 = ["바지락술국", "바지락 술국", "바지락"]
 
 
 //무슨 메뉴를 주문했는지 체크하는 함수
-const checkMenu = (h_text) => {
+/*const checkMenu = (h_text) => {
 	menu_list.forEach((menu) => {
 		if (h_text.indexOf(menu) !== -1) {
 			checkAmount(menu, h_text)
 		}
 
 	})
-}
+}*/
 
 
 
@@ -126,7 +126,7 @@ const checkAmount = (menu, h_text) => {
 
 //speech api로 받은 transcript 로직처리
 h_speech.onresult = function(e) {
-init();
+
 	//transcript 값들 join으로 하나의 문장으로 바꿔주기
 	let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
 	console.log(h_text);
@@ -136,7 +136,7 @@ init();
 	}
 	console.log(menus);
 	//메뉴 읽어들이는 함수
-	checkMenu(h_text);
+//	checkMenu(h_text);
 
 	//갯수 파악하는 함수
 
