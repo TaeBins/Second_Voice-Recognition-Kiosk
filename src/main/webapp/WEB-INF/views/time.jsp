@@ -44,6 +44,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 	<!-- Section-->
 
+
 	<section class="py-6 style=" position:fixed;float:left; width: 15%; height: 702px; margin-top:68px;background-color:#F2F2F2;">
 		<div class="container px-4 px-lg-5 mt-5"></div>
 	</section>
@@ -167,9 +168,23 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				Deadline <span class="day">7</span> <span class="days">days</span>
 			</div>
 
+
 		</div>
 	</section>
 
+	<!-- 조리시간 -->
+	<section>
+		<h3>조리 시간</h3>
+		<p>Running progress bar from 0% to 100% in 10 seconds</p>
+		<div class="progress">
+			<div id="dynamic"
+				class="progress-bar progress-bar-success progress-bar-striped active"
+				role="progressbar" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100" style="width: 0%">
+				<span id="current-progress"></span>
+			</div>
+		</div>
+	</section>
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
@@ -179,6 +194,24 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 		var $ = jQuery;
 		var animationTime = 20, days = 7;
 
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/ordering.js"></script>
+	<script>
+	$(function() {
+		  var current_progress = 0;
+		  var interval = setInterval(function() {
+		      current_progress += 10;
+		      $("#dynamic")
+		      .css("width", current_progress + "%")
+		      .attr("aria-valuenow", current_progress)
+		      .text(current_progress + "% Complete");
+		      if (current_progress >= 100)
+		          clearInterval(interval);
+		  }, 1000);
+		});
 		$(document)
 				.ready(
 						function() {
@@ -265,6 +298,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 							}, animationTime * 1000);
 
 						});
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
 	</script>
 </body>
 

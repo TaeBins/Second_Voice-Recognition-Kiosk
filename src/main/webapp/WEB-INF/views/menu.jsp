@@ -38,7 +38,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	</nav>
 	<!-- Header-->
 	<!-- Section-->
-	<div style="width: 100%;">
+	<div style="
+    display: inline-block;">
 		<section class="py-6" style="float: right; width: 19%; height: 702px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 				<ul id="orderList" style="list-style: none">
@@ -223,7 +224,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Footer-->
 	</div>
 	</div>
-	</section>
+	</sectifon>
 	</div>
 	</div>
 	<!-- Footer-->
