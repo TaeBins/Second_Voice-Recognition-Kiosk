@@ -116,15 +116,15 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </colgroup>
                <tr>
                   <th>메뉴</th>
-                  <th>갯수</th>
                   <th>가격</th>
+                  <th>갯수</th>
                   <th>합계</th>
             </tr>
                <c:forEach var="vo" items="${menuList}">
                   <tr>
-                     <td>${vo.menu_name}</td>
-                     <td>${vo.menu_order_cnt}</td>
+                     <td>${vo.menu_name}</td>                     
                      <td><span class="price">${vo.menu_price}원</span></td>
+                      <td>${vo.menu_order_cnt}</td>
                      <td><span class="price">${vo.menu_order_cnt*vo.menu_price}원</span></td>
                      <c:set var="sum" value="${sum+(vo.menu_price*vo.menu_order_cnt)}" />
                   </tr>
