@@ -22,6 +22,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
@@ -47,22 +48,22 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="/menu">메인 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/1">메인 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="side">사이드 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/2">사이드 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="beer">주류</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/3">주류</a>
 					</div>
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="drink">음료</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/4">음료</a>
 					</div>
 				</div>
 				<div class="col mb-7">
@@ -82,12 +83,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-							<c:forEach var="vo" items="${beerList}" begin="0" end="5">
+							<c:forEach var="vo" items="${menuList}" begin="0" end="5">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -124,12 +125,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 
-							<c:forEach var="vo" items="${beerList}" begin="6" end="11">
+							<c:forEach var="vo" items="${menuList}" begin="6" end="11">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -164,12 +165,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-							<c:forEach var="vo" items="${beerList}" begin="12" end="14">
+							<c:forEach var="vo" items="${menuList}" begin="12" end="14">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
 									<div class="card h-100">
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img1}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">

@@ -6,8 +6,8 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<select id="menulist" resultType="Menus">
-		select * from menus
+	<select id="menulist" parameterType="int" resultType="Menus">
+		select * from menus where menu_type=#{menu_type}
 	</select>
 	
 	<!-- 오른쪽 창에 뜨는 주문 목록 DB에 넣는 쿼리문 -->

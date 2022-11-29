@@ -1,0 +1,30 @@
+.progress {
+  height: 30px;
+  width: 400px;
+}
+
+.progress-wrap {
+  background: #5fd9ff;
+  margin: 100px auto;
+  overflow: hidden;
+  position: relative;
+}
+.progress-wrap .progress-bar {
+  animation: run 4s ease-in-out infinite;
+  background: #f8f8f8;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 20%;
+  }
+  100% {
+    left: 100%;
+  }
+}
