@@ -31,19 +31,20 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Logo</a>
+			<a class="navbar-brand" href="/">키코네 맥주</a>
 		</div>
 	</nav>
 	<!-- Header-->
 	<!-- Section-->
-	<div style="width: 100%;">
-		<section class="py-5" style="float: right; width: 19%; height: 702px; background-color: white;">
+	<div style="
+    display: inline-block;">
+		<section class="py-6" style="float: right; width: 19%; height: 702px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
 				<ul id="orderList" style="list-style: none">
 				</ul>
 			</div>
 		</section>
-		<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+			<section class="py-6" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -66,19 +67,26 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 						<a class="btn1 btn-outline-dark mt-auto" href="/4">음료</a>
 					</div>
 				</div>
-				<div class="col mb-7">
-					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="receipt">주문 내역</a>
-					</div>
-				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/receipt">주문 내역</a>
+					</div>
+				</div>
+				<div class="col mb-7">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
+					</div>
+				</div>
+	
+
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="callme();">직원 호출</a>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="py-5" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+		<section class="py-6" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
 			<div class="slide slide_wrap">
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
