@@ -240,10 +240,10 @@ cartButton.forEach((cartButton) =>{
 				type : 'POST',
 				url : '/order',
 				contentType: 'application/json; charset=utf-8',
-				data : {
+				data : JSON.stringify({
 					"menu_name" : cartButton.name,
 					"order_cnt" : orderCounts
-				},
+				}),
 				success : () => console.log('data 삽입 완료'),
 				error : () => alert("에러")
 			});
