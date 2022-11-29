@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.KSCT.work.controller.IndexController;
 import com.KSCT.work.mapper.IndexMapper;
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
@@ -20,8 +21,8 @@ public class IndexService {
 	private IndexMapper indexMapper;
 	
 	//모든 메뉴 가져오기
-	public List<Menus> menulist(){
-		List<Menus> menuList = indexMapper.menulist();
+	public List<Menus> menulist(int menu_type){
+		List<Menus> menuList = indexMapper.menulist(menu_type);
 		return menuList;
 	}
 	
