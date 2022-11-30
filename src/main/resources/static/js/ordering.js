@@ -255,18 +255,14 @@ const addButtonEvent = (name) => {
 
 
 const cartButton = document.querySelectorAll(".cartbutton")
-const orderList = document.querySelector("#orderList")
-//오른쪽 영역 선택
+//오른쪽 영역을 담는 변수 생성
 const listContainer = document.getElementById("listContainer");
-const tempList = document.createElement("li")
 
 
 
-let check = false;
-let a = 0;
-let orderCounts;
+let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 변수
+let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
-
 cartButton.forEach((cartButton) => {
 	cartButton.addEventListener("click", () => {
 
@@ -314,7 +310,6 @@ cartButton.forEach((cartButton) => {
 			success: () => console.log('data 삽입 완료'),
 			error: () => alert("에러")
 		});
-		console.dir(orderList);
 	})
 });
 

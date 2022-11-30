@@ -27,6 +27,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+/*  overflow scroll 가려주는 스타일 */
+.container1::-webkit-scrollbar {
+   display: none;
+}
+</style>
+
 </head>
 
 <body>
@@ -41,17 +49,18 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<div class="bgbg" style="display: inline-block;">
 		<section class="py-6" style="float: right; width: 22%; height: 702px;" >
 			<div class="container px-4 px-lg-5 mt-5">
-				  <div class="container1">
+				  <div class="container1" style="overflow:scroll">
     <h1 style="color: #dee2e6;">ORDER</h1>
     <div id="listContainer">
 
     </div>
    
     
-    
+   <span style="color:white;position:absolute;left:50%;bottom:0"class="material-symbols-outlined">
+keyboard_arrow_down
+</span>
   </div>
-				<ul id="orderList" style="list-style: none">
-				</ul>
+				
 			</div>
 		</section>
 			<section class="py-6" style="float: left; width: 14%; height: 702px; ">

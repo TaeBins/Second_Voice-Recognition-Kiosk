@@ -27,6 +27,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link href="css/receipt.css" rel="stylesheet" />
 <style>
+/*  overflow scroll 가려주는 스타일 */
 .wrap::-webkit-scrollbar {
    display: none;
 }
