@@ -197,7 +197,7 @@ const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
 	const downButtons = document.querySelectorAll("button.downCount")
 	const upButtons = document.querySelectorAll("button.upCount")
-	
+
 	//Down 버튼 누를 경우
 	downButtons.forEach((downButton) => {
 
@@ -207,7 +207,7 @@ const addButtonEvent = (name) => {
 
 			//개수 값에 -1 적용
 			currentOrderCount.innerText -= 1;
-			
+
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
 				type: 'POST',
@@ -284,31 +284,15 @@ cartButton.forEach((cartButton) => {
 		}
 
 
-		for (i = 0; i < orderList.children.length; i++) {
-			//만약 현재 주문해놓은 메뉴가 orderList에 존재한다면
-			if (orderList.children[i].textContent.indexOf(cartButton.name) !== -1) {
-				// 주문해놓은 메뉴가 있다고 체크
-				check = true;
 
-				//주문해놓은 메뉴의 수량 가지고오기
-				orderCounts = orderList.children[i].textContent[orderList.children[i].textContent.length - 2];
-				//주문한 메뉴 수량 +1 시키기
-
-				orderCounts++;
-				orderList.children[i].innerHTML = `${cartButton.name} <button class="downCount">-</button><span class="orderCount">${orderCounts}</span><button class="upCount">+</button>`;
-
-			}
-
-		}
 		//현재 주문한 메뉴가 orderList에 없다면?
 		if (!check) {
 			//메뉴 추가
 			const tempList = document.createElement("li");
 			orderCounts = 1;
-			tempList.innerHTML = `${cartButton.name}<button class="downCount">-</button><span class="orderCount"> ${orderCounts}</span><button class="upCount">+</button>`
-			orderList.appendChild(tempList);
 			appendList(cartButton.name, orderCounts);
-						addButtonEvent(cartButton.name);
+			addButtonEvent(cartButton.name);
+			addDeleteButtonEvent();
 
 
 		}
@@ -399,10 +383,15 @@ const appendList = (name, orderCounts) => {
 	listContainer.appendChild(list);
 }
 
-
-
-
-
+//삭제 버튼 이벤트 리스너 추가해주는 함수
+const addDeleteButtonEvent = () => {
+	const deleteButtons = document.querySelectorAll("i.fa")
+	deleteButtons.forEach((deleteButton) => {
+		deleteButton.addEventListener("click", (event) => {
+			listContainer.removeChild(event.target.parentNode);
+		})
+	})
+}
 
 
 
