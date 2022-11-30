@@ -44,8 +44,13 @@ public class IndexService {
 		
 		//DB 목록 출력해주기 위해 orders의 현재 순번에 있는 데이터 모두 가지고오기
 		
+		
 	}
 	
+	//손님이 주문한 목록에서 삭제 하면 DB에서도 삭제시켜주기
+	public void deleteOrder(Orders orders) {
+		indexMapper.deleteOrder(orders);
+	}
 	
 
 

@@ -51,4 +51,11 @@
 		INSERT (menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
 		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
+	
+	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
+	<delete id="deleteOrder" parameterType="Orders">
+	delete from orders where menu_name = #{menu_name}
+	</delete>
+	
+	
 </mapper>
