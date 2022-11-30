@@ -118,7 +118,7 @@ keyboard_arrow_down
 										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
 										<!-- Product details-->
 										<div class="card-body p-4">
-											<div class="text-center">
+											<div  class="text-center">
 												<!-- Product name-->
 												${vo.menu_name}
 												<h5 class="fw-bolder"></h5>
@@ -129,7 +129,7 @@ keyboard_arrow_down
 										<!-- Product actions-->
 										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
-												<button name="${vo.menu_name}" class="cartbutton">
+												<button stock="${vo.menu_stock_cnt}" name="${vo.menu_name}" class="cartbutton">
 													<span>Add to cart</span>
 													<div class="cart">
 														<svg viewBox="0 0 36 26">

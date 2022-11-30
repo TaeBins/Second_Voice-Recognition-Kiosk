@@ -195,18 +195,19 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
-	const downButtons = document.querySelectorAll("button.downCount")
-	const upButtons = document.querySelectorAll("button.upCount")
+	const downButton = document.querySelector(`div.${name.replace(" ", "")} button.downCount`)
+	const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
 
 	//Down 버튼 누를 경우
-	downButtons.forEach((downButton) => {
-
 		downButton.addEventListener("click", (event) => {
 			//현재 입력되어 있는 개수 값 가지고오기
-			const currentOrderCount = event.target.parentNode.querySelector("span:nth-child(3)")
-
+			const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+			
 			//개수 값에 -1 적용
 			currentOrderCount.innerText -= 1;
+			if(currentOrderCount.innerText == 0){
+				listContainer.removeChild(event.target.parentNode.parentNode);
+			}
 
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
@@ -223,13 +224,14 @@ const addButtonEvent = (name) => {
 				}
 			});
 		})
-	})
+	
 
 	//Up 버튼 누를 경우
 
-	upButtons.forEach((upButton) => {
+
 		upButton.addEventListener("click", (event) => {
-			const currentOrderCount = event.target.parentNode.querySelector("span:nth-child(3)")
+			const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+			console.log(event.target.parentNode)
 			//개수 값에 +1 적용
 			currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
 
@@ -249,7 +251,7 @@ const addButtonEvent = (name) => {
 			});
 
 		})
-	})
+
 
 }
 
@@ -272,7 +274,6 @@ cartButton.forEach((cartButton) => {
 				check = true;
 				const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
 				newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
-				addButtonEvent(cartButton.name);
 
 
 			}
@@ -289,10 +290,10 @@ cartButton.forEach((cartButton) => {
 			appendList(cartButton.name, orderCounts);
 			addButtonEvent(cartButton.name);
 			addDeleteButtonEvent();
-			if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+			if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
 				document.getElementById("downArrow").style.visibility = "visible"
-			} else{
-								document.getElementById("downArrow").style.visibility = "hidden"
+			} else {
+				document.getElementById("downArrow").style.visibility = "hidden"
 
 			}
 
@@ -373,11 +374,11 @@ const appendList = (name, orderCounts) => {
 	list.className = "list1";
 	list.style = "height:80px"
 	list.innerHTML = `
-	<div class="wrapper">
-     <span style="color:white">${name}</span>
+	<div class="wrapper ${name.replace(" ", "")}">
+     <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-	<i class="fa fa-shopping-cart"></i>
+	<i style="display:block"class="fa fa-shopping-cart"></i>
     </div>`
 
 	listContainer.appendChild(list);
@@ -389,10 +390,10 @@ const addDeleteButtonEvent = () => {
 	deleteButtons.forEach((deleteButton) => {
 		deleteButton.addEventListener("click", (event) => {
 			listContainer.removeChild(event.target.parentNode);
-				if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+			if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
 				document.getElementById("downArrow").style.visibility = "visible"
-			} else{
-								document.getElementById("downArrow").style.visibility = "hidden"
+			} else {
+				document.getElementById("downArrow").style.visibility = "hidden"
 
 			}
 		})
