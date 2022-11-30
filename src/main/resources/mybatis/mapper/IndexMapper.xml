@@ -31,6 +31,7 @@
 
 	<!-- 카트에 저장 하는 쿼리문 -->
 	<!-- order_seq값, -->
+	
 	<insert id="order" parameterType="Orders">
 		<!-- 수정할 테이블 -->
 		MERGE INTO orders
@@ -42,11 +43,11 @@
 		<!-- 위 on 조건에 일치하는값이 있으면 실행 -->
 		WHEN MATCHED THEN
 		<!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
-		UPDATE SET order_cnt = order_cnt + #{order_cnt}
+		UPDATE SET order_cnt = #{order_cnt}
 		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
 		WHEN NOT MATCHED THEN
 		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
 		INSERT (menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
-		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time);
+		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 </mapper>
