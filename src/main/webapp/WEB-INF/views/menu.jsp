@@ -43,12 +43,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<div class="container px-4 px-lg-5 mt-5">
 				  <div class="container1">
     <h1 style="color: #dee2e6;">ORDER</h1>
-    <div ><ul id="orderList" style="list-style: none"class="list1" style="height: 80px;">
+    <div ><ul id="orderList" style="list-style: none">
 				</ul>
 	      <div class="wrapper">
      
       </div>
       <i class="fa fa-shopping-cart"></i>
+    <div id="listContainer">
+
     </div>
    
     
@@ -57,7 +59,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				
 			</div>
 		</section>
-			<section class="py-6" style="float: left; width: 14%; height: 702px; ">
+			<section class="py-6" style="float: left; width: 14.8%; height: 702px; ">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -99,7 +101,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-6" style="float: right; width: 64%; height: 702px; ">
+		<section class="py-6" style="float: right; width: 63.2%; height: 702px; ">
 			<div class="slide slide_wrap">
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">

@@ -197,16 +197,17 @@ const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
 	const downButtons = document.querySelectorAll("button.downCount")
 	const upButtons = document.querySelectorAll("button.upCount")
-
+	
 	//Down 버튼 누를 경우
 	downButtons.forEach((downButton) => {
 
 		downButton.addEventListener("click", (event) => {
 			//현재 입력되어 있는 개수 값 가지고오기
-			const currentOrderCount = event.target.parentNode.querySelector("span")
+			const currentOrderCount = event.target.parentNode.querySelector("span:nth-child(3)")
 
 			//개수 값에 -1 적용
 			currentOrderCount.innerText -= 1;
+			
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
 				type: 'POST',
@@ -228,10 +229,10 @@ const addButtonEvent = (name) => {
 
 	upButtons.forEach((upButton) => {
 		upButton.addEventListener("click", (event) => {
-			const currentOrderCount = event.target.parentNode.querySelector("span")
+			const currentOrderCount = event.target.parentNode.querySelector("span:nth-child(3)")
 			//개수 값에 +1 적용
 			currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
-			
+
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
 				type: 'POST',
@@ -253,10 +254,10 @@ const addButtonEvent = (name) => {
 }
 
 
-
 const cartButton = document.querySelectorAll(".cartbutton")
 const orderList = document.querySelector("#orderList")
-
+//오른쪽 영역 선택
+const listContainer = document.getElementById("listContainer");
 const tempList = document.createElement("li")
 
 
@@ -269,6 +270,18 @@ let orderCounts;
 cartButton.forEach((cartButton) => {
 	cartButton.addEventListener("click", () => {
 
+		//만약 현재 주문해놓은 메뉴가 listContainer에 존재한다면
+		for (j = 0; j < listContainer.children.length; j++) {
+			const newOrderName = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(1)`)
+			if (newOrderName.textContent.indexOf(cartButton.name) !== -1) {
+				check = true;
+				const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
+				newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
+				addButtonEvent(cartButton.name);
+
+			}
+
+		}
 
 
 		for (i = 0; i < orderList.children.length; i++) {
@@ -283,7 +296,6 @@ cartButton.forEach((cartButton) => {
 
 				orderCounts++;
 				orderList.children[i].innerHTML = `${cartButton.name} <button class="downCount">-</button><span class="orderCount">${orderCounts}</span><button class="upCount">+</button>`;
-				addButtonEvent(cartButton.name);
 
 			}
 
@@ -295,7 +307,9 @@ cartButton.forEach((cartButton) => {
 			orderCounts = 1;
 			tempList.innerHTML = `${cartButton.name}<button class="downCount">-</button><span class="orderCount"> ${orderCounts}</span><button class="upCount">+</button>`
 			orderList.appendChild(tempList);
-			addButtonEvent(cartButton.name);
+			appendList(cartButton.name, orderCounts);
+						addButtonEvent(cartButton.name);
+
 
 		}
 		check = false;
@@ -368,7 +382,22 @@ function callme() {
 
 
 
+//div 컨테이너에 데이터 넣기
 
+const appendList = (name, orderCounts) => {
+	const list = document.createElement("div");
+	list.className = "list1";
+	list.style = "height:80px"
+	list.innerHTML = `
+	<div class="wrapper">
+     <span style="color:white">${name}</span>
+     <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
+      </div>
+	<i class="fa fa-shopping-cart"></i>
+    </div>`
+
+	listContainer.appendChild(list);
+}
 
 
 
