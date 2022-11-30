@@ -192,6 +192,7 @@ h_speech.onresult = function(e) {
 
 
 };
+
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
@@ -439,5 +440,9 @@ const addDeleteButtonEvent = () => {
 }
 
 
+for(i=0; i<10; i++){
+addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
+addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
+}
 
 
