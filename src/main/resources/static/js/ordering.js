@@ -196,8 +196,8 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
-	const downButton = document.querySelector(`div.${name.replace(" ", "")} button.downCount`)
-	const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
+	const downButton = document.querySelector(`div.${name} button.downCount`)
+	const upButton = document.querySelector(`div.${name} button.upCount`)
 
 	//Down 버튼 누를 경우
 	downButton.addEventListener("click", (event) => {
@@ -385,7 +385,7 @@ const appendList = (name, orderCounts) => {
 	list.innerHTML = `
 	<div class="wrapper ${name.replace(" ", "")}">
      <span class="orderCount" style="color:white">${name}</span>
-     <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
+     <button class="downCount">-</button> <span style="color:white">${orderCounts}</span> <button class="upCount">+</button>
       </div>
 	<button value="${name}" class="fa fa-shopping-cart">삭제</button>
     </div>`
