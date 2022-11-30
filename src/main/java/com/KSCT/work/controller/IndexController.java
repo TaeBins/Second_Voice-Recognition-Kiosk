@@ -81,10 +81,12 @@ public class IndexController {
 	@ResponseBody
 	public String order(@RequestBody Orders orders) {
 		//손님이 버튼 클릭 or 음성 주문 했을 경우
-		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
+		System.out.println(orders.getOrder_cnt() + orders.getMenu_name());
+			
+		  indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
+		 
 		
-		
-		return "menu";
+		return "null";
 	}
 
 
