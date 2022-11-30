@@ -43,11 +43,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<div class="container px-4 px-lg-5 mt-5">
 				  <div class="container1">
     <h1 style="color: #dee2e6;">ORDER</h1>
-    <div class="list1" style="height: 80px;">
-	      <div class="wrapper">
-     
-      </div>
-      <i class="fa fa-shopping-cart"></i>
+    <div id="listContainer">
+
     </div>
    
     
