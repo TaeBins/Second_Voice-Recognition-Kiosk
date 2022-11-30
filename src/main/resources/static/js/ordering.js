@@ -192,6 +192,7 @@ h_speech.onresult = function(e) {
 
 
 };
+
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
@@ -199,61 +200,63 @@ const addButtonEvent = (name) => {
 	const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
 
 	//Down 버튼 누를 경우
-		downButton.addEventListener("click", (event) => {
-			//현재 입력되어 있는 개수 값 가지고오기
-			const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
-			
-			//개수 값에 -1 적용
-			currentOrderCount.innerText -= 1;
-			if(currentOrderCount.innerText == 0){
-				listContainer.removeChild(event.target.parentNode.parentNode);
-			}
+	downButton.addEventListener("click", (event) => {
+		//현재 입력되어 있는 개수 값 가지고오기
+		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+		//개수 값에 -1 적용
+		currentOrderCount.innerText -= 1;
+		
+		// 숫자가 0이 될경우 삭제 버튼 클릭
+		if (currentOrderCount.innerText == 0) {
+			//document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]	.click();			//Ajax로 DB Delete문 요청
+			document.querySelector(`button[value="${name}"]`).click();
+			return;
+		}
 
-			// 바뀐 개수 값 DB에 넣기
-			$.ajax({
-				type: 'POST',
-				url: '/order',
-				contentType: 'application/json; charset=utf-8',
-				data: JSON.stringify({
-					"menu_name": name,
-					"order_cnt": currentOrderCount.innerText
-				}),
-				success: () => console.log('data 삽입 완료'),
-				error: () => {
-					alert("에러")
-				}
-			});
-		})
-	
+		// 바뀐 개수 값 DB에 넣기
+		$.ajax({
+			type: 'POST',
+			url: '/order',
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify({
+				"menu_name": name,
+				"order_cnt": currentOrderCount.innerText
+			}),
+			success: () => console.log('data 삽입 완료'),
+			error: () => {
+				alert("에러")
+			}
+		});
+	})
+
 
 	//Up 버튼 누를 경우
 
 
-		upButton.addEventListener("click", (event) => {
-			const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
-			const stock = parseInt(document.querySelector(`button[name=${name}]`).value)
-			console.log(event.target.parentNode)
-			//개수 값에 +1 적용
-			if(parseInt(currentOrderCount.innerText) < stock){
+	upButton.addEventListener("click", (event) => {
+		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+		const stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
+		//개수 값에 +1 적용
+		if (parseInt(currentOrderCount.innerText) < stock) {
 			currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
-			}
-			
-			// 바뀐 개수 값 DB에 넣기
-			$.ajax({
-				type: 'POST',
-				url: '/order',
-				contentType: 'application/json; charset=utf-8',
-				data: JSON.stringify({
-					"menu_name": name,
-					"order_cnt": currentOrderCount.innerText
-				}),
-				success: () => console.log('data 삽입 완료'),
-				error: () => {
-					alert("에러")
-				}
-			});
+		}
 
-		})
+		// 바뀐 개수 값 DB에 넣기
+		$.ajax({
+			type: 'POST',
+			url: '/order',
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify({
+				"menu_name": name,
+				"order_cnt": currentOrderCount.innerText
+			}),
+			success: () => console.log('data 삽입 완료'),
+			error: () => {
+				alert("에러")
+			}
+		});
+
+	})
 
 
 }
@@ -292,7 +295,7 @@ cartButton.forEach((cartButton) => {
 			orderCounts = 1;
 			appendList(cartButton.name, orderCounts);
 			addButtonEvent(cartButton.name);
-			addDeleteButtonEvent();
+			addDeleteButtonEvent(cartButton.name);
 			if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
 				document.getElementById("downArrow").style.visibility = "visible"
 			} else {
@@ -381,7 +384,7 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-	<button class="fa fa-shopping-cart">삭제</button>
+	<button value="${name}" class="fa fa-shopping-cart">삭제</button>
     </div>`
 
 	listContainer.appendChild(list);
@@ -393,16 +396,29 @@ const addDeleteButtonEvent = () => {
 	deleteButtons.forEach((deleteButton) => {
 		deleteButton.addEventListener("click", (event) => {
 			listContainer.removeChild(event.target.parentNode);
-			if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
-				document.getElementById("downArrow").style.visibility = "visible"
-			} else {
-				document.getElementById("downArrow").style.visibility = "hidden"
-
+		
+		$.ajax({
+			type: 'DELETE',
+			url: '/deleteorder',
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify({
+				"menu_name": event.target.value,
+			}),
+			success: () => console.log('data 삭제 완료'),
+			error: () => {
+				alert("에러")
 			}
+		});
 		})
+			
+	
 	})
 }
 
 
+for(i=0; i<10; i++){
+addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
+addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
+}
 
 

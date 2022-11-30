@@ -68,4 +68,9 @@ VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0);
 truncate TABLE orders;
  -->
  
+	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
+	<delete id="deleteOrder" parameterType="Orders">
+	delete from orders where menu_name = #{menu_name}
+	</delete>
+	
 </mapper>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,7 +62,9 @@ public class IndexController {
 		System.out.println(menus.getMenu_gender());
 		
 		List<Menus> menuList  = indexService.menulist(menus);
+		List<Orders> orderList = indexService.selectOrderList();
 		model.addAttribute("menuList",menuList);
+		model.addAttribute("orderList", orderList);
 		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
 		String next=null;
 		if(menu_type==1) {
@@ -110,6 +113,14 @@ public class IndexController {
 	@GetMapping("/time")
 	public String time() {
 		return "time";
+	}
+	
+	@DeleteMapping("/deleteorder")
+	@ResponseBody
+	public String deleteOrder(@RequestBody Orders orders) {
+		System.out.println(orders.getMenu_name());
+		indexService.deleteOrder(orders);
+		return null;
 	}
 
 }
