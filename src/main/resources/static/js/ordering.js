@@ -204,7 +204,7 @@ const addButtonEvent = (name) => {
 		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
 		//개수 값에 -1 적용
 		currentOrderCount.innerText -= 1;
-		
+
 		// 숫자가 0이 될경우 삭제 버튼 클릭
 		if (currentOrderCount.innerText == 0) {
 			//document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]	.click();			//Ajax로 DB Delete문 요청
@@ -293,6 +293,8 @@ cartButton.forEach((cartButton) => {
 			const tempList = document.createElement("li");
 			orderCounts = 1;
 			appendList(cartButton.name, orderCounts);
+			appendList2(cartButton.name, orderCounts);
+
 			addButtonEvent(cartButton.name);
 			addDeleteButtonEvent(cartButton.name);
 			if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
@@ -375,7 +377,9 @@ function callme() {
 //div 컨테이너에 데이터 넣기
 
 const appendList = (name, orderCounts) => {
-const list = document.createElement("div");
+	const list = document.createElement("div");
+		const icon = document.createElement("i");
+
 	list.className = "list1";
 	list.style = "height:80px"
 	list.innerHTML = `
@@ -383,23 +387,27 @@ const list = document.createElement("div");
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-	<button class="fa fa-shopping-cart">삭제</button>
+	<span class="material-symbols-outlined">
+delete
+</span>
    
     `
 
-	listContainer.appendChild(list);
+	listContainer.appendChild(icon);
 }
 
 const appendList2 = (name, orderCounts) => {
 
-const icon = document.createElement("i");
+	const icon = document.createElement("i");
 	icon.className = "list1";
 	icon.innerHTML = `
 	<div class="wrapper ${name.replace(" ", "")}">
      <span class="orderCount" style="color:white">${name}</span>
  <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-<i class="fa-solid fa-trash-can "></i>`
+<span class="material-symbols-outlined">
+delete
+</span>`
 	listContainer.appendChild(icon);
 
 }
@@ -407,26 +415,26 @@ const icon = document.createElement("i");
 
 //삭제 버튼 이벤트 리스너 추가해주는 함수
 const addDeleteButtonEvent = () => {
-	const deleteButtons = document.querySelectorAll("button.fa")
+	const deleteButtons = document.querySelectorAll("span.material-symbols-outlined")
 	deleteButtons.forEach((deleteButton) => {
 		deleteButton.addEventListener("click", (event) => {
 			listContainer.removeChild(event.target.parentNode);
-		
-		$.ajax({
-			type: 'DELETE',
-			url: '/deleteorder',
-			contentType: 'application/json; charset=utf-8',
-			data: JSON.stringify({
-				"menu_name": event.target.value,
-			}),
-			success: () => console.log('data 삭제 완료'),
-			error: () => {
-				alert("에러")
-			}
-		});
+
+			$.ajax({
+				type: 'DELETE',
+				url: '/deleteorder',
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify({
+					"menu_name": event.target.value,
+				}),
+				success: () => console.log('data 삭제 완료'),
+				error: () => {
+					alert("에러")
+				}
+			});
 		})
-			
-	
+
+
 	})
 }
 
