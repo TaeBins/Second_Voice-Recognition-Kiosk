@@ -271,15 +271,17 @@ let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 �
 let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) => {
-	cartButton.addEventListener("click", () => {
+	cartButton.addEventListener("click", (event) => {
 
 		//만약 현재 주문해놓은 메뉴가 listContainer에 존재한다면
 		for (j = 0; j < listContainer.children.length; j++) {
 			const newOrderName = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(1)`)
 			if (newOrderName.textContent.indexOf(cartButton.name) !== -1) {
 				check = true;
-				const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
-				newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
+				//const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
+				//newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
+				document.querySelector(`div.${cartButton.name} button.upCount`).click();
+				console.log('test"')
 
 
 			}
@@ -302,6 +304,17 @@ cartButton.forEach((cartButton) => {
 				document.getElementById("downArrow").style.visibility = "hidden"
 
 			}
+			$.ajax({
+			type: 'POST',
+			url: '/order',
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify({
+				"menu_name": cartButton.name,
+				"order_cnt": orderCounts
+			}),
+			success: () => console.log('data 삽입 완료'),
+			error: () => alert("에러")
+		});
 
 
 
@@ -313,17 +326,7 @@ cartButton.forEach((cartButton) => {
 		//	children.forEach((child)=>{if(tempList.innerText != child.textContent){
 		//		orderList.appendChild(tempList);
 		//	}})	
-		$.ajax({
-			type: 'POST',
-			url: '/order',
-			contentType: 'application/json; charset=utf-8',
-			data: JSON.stringify({
-				"menu_name": cartButton.name,
-				"order_cnt": orderCounts
-			}),
-			success: () => console.log('data 삽입 완료'),
-			error: () => alert("에러")
-		});
+		
 	})
 });
 
@@ -416,7 +419,7 @@ const addDeleteButtonEvent = () => {
 }
 
 
-for(i=0; i<10; i++){
+for(i=0; i<100; i++){
 addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
 addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
