@@ -44,6 +44,7 @@
 		WHEN MATCHED THEN
 		<!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
 		UPDATE SET order_cnt = #{order_cnt}
+		DELETE where (order_cnt = 0)
 		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
 		WHEN NOT MATCHED THEN
 		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
