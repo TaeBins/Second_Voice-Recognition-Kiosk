@@ -343,7 +343,7 @@ function callme() {
 		/* 호출버튼 */
 		if (result.isConfirmed) {
 			Swal.fire({
-				position: 'top',
+				position: 'mid',
 				icon: 'success',
 				title: '직원을 호출했습니다!',
 				showConfirmButton: false,
@@ -352,7 +352,7 @@ function callme() {
 			/* 취소버튼 */
 		} else if (result.isDenied) {
 			Swal.fire({
-				position: 'top',
+				position: 'mid',
 				icon: 'info',
 				title: '아하! ',
 				text: '다음부턴 신중히 눌러주시길 :)',
