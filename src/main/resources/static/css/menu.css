@@ -69,7 +69,23 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
-
+.fa{
+		box-shadow:inset 0px 0px 4px -50px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border-radius:13px;
+	border:3px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 0px;
+	text-decoration:none;
+	text-shadow:-1px 0px 0px #ffee66;
+	
+}
 *,
 *::before,
 *::after {
@@ -107,15 +123,20 @@
   font-size: 2em;
 }
 .container1 .list1 {
-  position: relative;
-  background: rgba(0, 0, 0, 0.2);
-  width: 80%;
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  overflow: hidden;
+	
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    width: 87%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column-reverse;
+    align-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .container1 .list1 img {
   height: 100px;
@@ -275,10 +296,10 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-image: url("../css/bgbg.png");
+  background-image: url("../css/bg3.png");
 }
 .bgbg{
-	  background-image: url("../css/bgbg.png");
+	  background-image: url("../css/bg3.png");
 	  
 	
 }
@@ -292,7 +313,7 @@ hr {
 .cartbutton {
       --background: #f8c0009c;
       --text: #212529;
-      --cart: #fff;
+      --cart: #212529;
       --tick: var(--background);
       position: relative;
       border: none;
@@ -381,7 +402,7 @@ hr {
       display: block;
       position: relative;
       fill: none;
-      stroke: var(--cart);
+      stroke: #212529;
       stroke-width: 2px;
       stroke-linecap: round;
       stroke-linejoin: round;

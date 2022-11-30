@@ -197,7 +197,7 @@ const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
 	const downButtons = document.querySelectorAll("button.downCount")
 	const upButtons = document.querySelectorAll("button.upCount")
-	
+
 	//Down 버튼 누를 경우
 	downButtons.forEach((downButton) => {
 
@@ -207,7 +207,7 @@ const addButtonEvent = (name) => {
 
 			//개수 값에 -1 적용
 			currentOrderCount.innerText -= 1;
-			
+
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
 				type: 'POST',
@@ -255,18 +255,13 @@ const addButtonEvent = (name) => {
 
 
 const cartButton = document.querySelectorAll(".cartbutton")
-const orderList = document.querySelector("#orderList")
-//오른쪽 영역 선택
+//오른쪽 영역을 담는 변수 생성
 const listContainer = document.getElementById("listContainer");
-const tempList = document.createElement("li")
 
 
-
-let check = false;
-let a = 0;
-let orderCounts;
+let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 변수
+let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
-
 cartButton.forEach((cartButton) => {
 	cartButton.addEventListener("click", () => {
 
@@ -279,36 +274,28 @@ cartButton.forEach((cartButton) => {
 				newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
 				addButtonEvent(cartButton.name);
 
-			}
-
-		}
-
-
-		for (i = 0; i < orderList.children.length; i++) {
-			//만약 현재 주문해놓은 메뉴가 orderList에 존재한다면
-			if (orderList.children[i].textContent.indexOf(cartButton.name) !== -1) {
-				// 주문해놓은 메뉴가 있다고 체크
-				check = true;
-
-				//주문해놓은 메뉴의 수량 가지고오기
-				orderCounts = orderList.children[i].textContent[orderList.children[i].textContent.length - 2];
-				//주문한 메뉴 수량 +1 시키기
-
-				orderCounts++;
-				orderList.children[i].innerHTML = `${cartButton.name} <button class="downCount">-</button><span class="orderCount">${orderCounts}</span><button class="upCount">+</button>`;
 
 			}
 
 		}
+
+
+
 		//현재 주문한 메뉴가 orderList에 없다면?
 		if (!check) {
 			//메뉴 추가
 			const tempList = document.createElement("li");
 			orderCounts = 1;
-			tempList.innerHTML = `${cartButton.name}<button class="downCount">-</button><span class="orderCount"> ${orderCounts}</span><button class="upCount">+</button>`
-			orderList.appendChild(tempList);
 			appendList(cartButton.name, orderCounts);
-						addButtonEvent(cartButton.name);
+			addButtonEvent(cartButton.name);
+			addDeleteButtonEvent();
+			if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+				document.getElementById("downArrow").style.visibility = "visible"
+			} else{
+								document.getElementById("downArrow").style.visibility = "hidden"
+
+			}
+
 
 
 		}
@@ -330,11 +317,8 @@ cartButton.forEach((cartButton) => {
 			success: () => console.log('data 삽입 완료'),
 			error: () => alert("에러")
 		});
-		console.dir(orderList);
 	})
 });
-
-
 
 
 
@@ -393,16 +377,27 @@ const appendList = (name, orderCounts) => {
      <span style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-	<i class="fa fa-shopping-cart"></i>
+	<button class="fa fa-shopping-cart">삭제</button>
     </div>`
 
 	listContainer.appendChild(list);
 }
 
+//삭제 버튼 이벤트 리스너 추가해주는 함수
+const addDeleteButtonEvent = () => {
+	const deleteButtons = document.querySelectorAll("button.fa")
+	deleteButtons.forEach((deleteButton) => {
+		deleteButton.addEventListener("click", (event) => {
+			listContainer.removeChild(event.target.parentNode);
+				if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+				document.getElementById("downArrow").style.visibility = "visible"
+			} else{
+								document.getElementById("downArrow").style.visibility = "hidden"
 
-
-
-
+			}
+		})
+	})
+}
 
 
 
