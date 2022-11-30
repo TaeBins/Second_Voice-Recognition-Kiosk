@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -110,6 +111,14 @@ public class IndexController {
 	@GetMapping("/time")
 	public String time() {
 		return "time";
+	}
+	
+	@DeleteMapping("/deleteorder")
+	@ResponseBody
+	public String deleteOrder(@RequestBody Orders orders) {
+		System.out.println(orders.getMenu_name());
+		indexService.deleteOrder(orders);
+		return null;
 	}
 
 }

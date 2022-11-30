@@ -51,8 +51,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<div class="container px-4 px-lg-5 mt-5">
 				  <div class="container1" style="overflow:scroll">
     <h1 style="color: #dee2e6;">ORDER</h1>
-    <div ><ul id="orderList" style="list-style: none">
-				</ul>
+    <div >
 	      <div class="wrapper">
      
       </div>

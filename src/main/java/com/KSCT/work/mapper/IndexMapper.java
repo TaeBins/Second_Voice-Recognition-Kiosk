@@ -21,4 +21,9 @@ public interface IndexMapper {
 
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	public void order(Orders orders);
+	
+	//손님이 삭제한 목록 DB에서도 삭제하기 (오른쪽)
+
+	public void deleteOrder(Orders orders);
+
 }
