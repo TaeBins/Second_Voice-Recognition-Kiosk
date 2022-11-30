@@ -55,12 +55,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
     </div>
    
-    
-   <span style="color:white;position:absolute;left:50%;bottom:0"class="material-symbols-outlined">
+    				   
+
+  </div>
+<span id="downArrow" style="visibility:hidden; color:white;position:absolute;left:88.5%;top:660px"class="material-symbols-outlined">
 keyboard_arrow_down
 </span>
-  </div>
-				
 			</div>
 		</section>
 			<section class="py-6" style="float: left; width: 14%; height: 702px; ">

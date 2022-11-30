@@ -259,7 +259,6 @@ const cartButton = document.querySelectorAll(".cartbutton")
 const listContainer = document.getElementById("listContainer");
 
 
-
 let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 변수
 let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
@@ -275,6 +274,7 @@ cartButton.forEach((cartButton) => {
 				newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
 				addButtonEvent(cartButton.name);
 
+
 			}
 
 		}
@@ -289,6 +289,13 @@ cartButton.forEach((cartButton) => {
 			appendList(cartButton.name, orderCounts);
 			addButtonEvent(cartButton.name);
 			addDeleteButtonEvent();
+			if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+				document.getElementById("downArrow").style.visibility = "visible"
+			} else{
+								document.getElementById("downArrow").style.visibility = "hidden"
+
+			}
+
 
 
 		}
@@ -312,8 +319,6 @@ cartButton.forEach((cartButton) => {
 		});
 	})
 });
-
-
 
 
 
@@ -384,6 +389,12 @@ const addDeleteButtonEvent = () => {
 	deleteButtons.forEach((deleteButton) => {
 		deleteButton.addEventListener("click", (event) => {
 			listContainer.removeChild(event.target.parentNode);
+				if(document.querySelector("#listContainer div:last-child").offsetTop >=494){
+				document.getElementById("downArrow").style.visibility = "visible"
+			} else{
+								document.getElementById("downArrow").style.visibility = "hidden"
+
+			}
 		})
 	})
 }
