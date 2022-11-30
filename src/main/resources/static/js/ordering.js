@@ -231,10 +231,13 @@ const addButtonEvent = (name) => {
 
 		upButton.addEventListener("click", (event) => {
 			const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+			const stock = parseInt(document.querySelector(`button[name=${name}]`).value)
 			console.log(event.target.parentNode)
 			//개수 값에 +1 적용
+			if(parseInt(currentOrderCount.innerText) < stock){
 			currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
-
+			}
+			
 			// 바뀐 개수 값 DB에 넣기
 			$.ajax({
 				type: 'POST',
