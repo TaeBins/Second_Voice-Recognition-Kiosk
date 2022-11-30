@@ -62,7 +62,9 @@ public class IndexController {
 		System.out.println(menus.getMenu_gender());
 		
 		List<Menus> menuList  = indexService.menulist(menus);
+		List<Orders> orderList = indexService.selectOrderList();
 		model.addAttribute("menuList",menuList);
+		model.addAttribute("orderList", orderList);
 		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
 		String next=null;
 		if(menu_type==1) {
