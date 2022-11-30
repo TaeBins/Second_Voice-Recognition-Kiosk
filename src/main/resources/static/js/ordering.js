@@ -74,17 +74,17 @@ const seven = [7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개"
 const amount = [one, two, three, four, five, six, seven]
 
 //   const menu_list = [오뎅탕, 감바스, 짜파구리, 콘치즈계란말이, 계란말이]
-  	
-  	
-  	//메뉴와 갯수를 매칭 시켜줄 오브젝트 만들기
-  	const menus = {
-	"바지락술국" : 0,
-	"간장불고기" : 0,
-	"순대술국" : 0,
-	"골뱅이소면" : 0,
-	"비빔국수" : 0,
-	"화덕피자" : 0,
-	}
+
+
+//메뉴와 갯수를 매칭 시켜줄 오브젝트 만들기
+const menus = {
+	"바지락술국": 0,
+	"간장불고기": 0,
+	"순대술국": 0,
+	"골뱅이소면": 0,
+	"비빔국수": 0,
+	"화덕피자": 0,
+}
 
 //음식 이름 받아내는 리스트, menu_list에 들어갈 각각의 리스트 만들기
 const 바지락술국 = ["바지락술국", "바지락 술국", "바지락"]
@@ -136,7 +136,7 @@ h_speech.onresult = function(e) {
 	}
 	console.log(menus);
 	//메뉴 읽어들이는 함수
-//	checkMenu(h_text);
+	//	checkMenu(h_text);
 
 	//갯수 파악하는 함수
 
@@ -204,6 +204,7 @@ let check = false;
 let a = 0;
 let orderCounts;
 //버튼에 클릭 이벤트 생성
+
 cartButton.forEach((cartButton) => {
 	cartButton.addEventListener("click", () => {
 
@@ -216,11 +217,24 @@ cartButton.forEach((cartButton) => {
 				check = true;
 
 				//주문해놓은 메뉴의 수량 가지고오기
-				orderCounts = orderList.children[i].textContent.split(" ")[orderList.children[i].textContent.split(" ").length - 1];
+				orderCounts = orderList.children[i].textContent[orderList.children[i].textContent.length - 2];
 				//주문한 메뉴 수량 +1 시키기
 
 				orderCounts++;
-				orderList.children[i].textContent = cartButton.name + " " + orderCounts;
+				orderList.children[i].innerHTML = `${cartButton.name} <button class="downCount">-</button><span class="orderCount">${orderCounts}</span><button class="upCount">+</button>`;
+				const downButtons = document.querySelectorAll("button.downCount")
+				console.log(downButtons)
+				downButtons.forEach((downButton) => {
+					downButton.addEventListener("click", (event) => {
+						const currentOrderCount = event.target.parentNode.querySelector("span")
+						
+						currentOrderCount.innerText -=  1;
+						
+						
+						
+
+					})
+				})
 
 			}
 
@@ -230,8 +244,9 @@ cartButton.forEach((cartButton) => {
 			//메뉴 추가
 			const tempList = document.createElement("li");
 			orderCounts = 1;
-			tempList.innerText = `${cartButton.name} 1`
+			tempList.innerHTML = `${cartButton.name}<button class="downCount">-</button><span class="orderCount"> ${orderCounts}</span><button class="upCount">+</button>`
 			orderList.appendChild(tempList);
+
 
 		}
 		check = false;
@@ -254,6 +269,13 @@ cartButton.forEach((cartButton) => {
 		console.dir(orderList);
 	})
 });
+
+
+
+
+
+
+
 
 /* onclick 으로 부른 callme 함수 실행 */
 function callme() {
