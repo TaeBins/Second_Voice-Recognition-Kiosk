@@ -192,6 +192,67 @@ h_speech.onresult = function(e) {
 
 
 };
+// 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
+const addButtonEvent = (name) => {
+	//각 메뉴의 -, + 버튼 가지고 오기
+	const downButtons = document.querySelectorAll("button.downCount")
+	const upButtons = document.querySelectorAll("button.upCount")
+
+	//Down 버튼 누를 경우
+	downButtons.forEach((downButton) => {
+
+		downButton.addEventListener("click", (event) => {
+			//현재 입력되어 있는 개수 값 가지고오기
+			const currentOrderCount = event.target.parentNode.querySelector("span")
+
+			//개수 값에 -1 적용
+			currentOrderCount.innerText -= 1;
+			// 바뀐 개수 값 DB에 넣기
+			$.ajax({
+				type: 'POST',
+				url: '/order',
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify({
+					"menu_name": name,
+					"order_cnt": currentOrderCount.innerText
+				}),
+				success: () => console.log('data 삽입 완료'),
+				error: () => {
+					alert("에러")
+				}
+			});
+		})
+	})
+
+	//Up 버튼 누를 경우
+
+	upButtons.forEach((upButton) => {
+		upButton.addEventListener("click", (event) => {
+			const currentOrderCount = event.target.parentNode.querySelector("span")
+			//개수 값에 +1 적용
+			currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
+			
+			// 바뀐 개수 값 DB에 넣기
+			$.ajax({
+				type: 'POST',
+				url: '/order',
+				contentType: 'application/json; charset=utf-8',
+				data: JSON.stringify({
+					"menu_name": name,
+					"order_cnt": currentOrderCount.innerText
+				}),
+				success: () => console.log('data 삽입 완료'),
+				error: () => {
+					alert("에러")
+				}
+			});
+
+		})
+	})
+
+}
+
+
 
 const cartButton = document.querySelectorAll(".cartbutton")
 const orderList = document.querySelector("#orderList")
@@ -222,19 +283,7 @@ cartButton.forEach((cartButton) => {
 
 				orderCounts++;
 				orderList.children[i].innerHTML = `${cartButton.name} <button class="downCount">-</button><span class="orderCount">${orderCounts}</span><button class="upCount">+</button>`;
-				const downButtons = document.querySelectorAll("button.downCount")
-				console.log(downButtons)
-				downButtons.forEach((downButton) => {
-					downButton.addEventListener("click", (event) => {
-						const currentOrderCount = event.target.parentNode.querySelector("span")
-						
-						currentOrderCount.innerText -=  1;
-						
-						
-						
-
-					})
-				})
+				addButtonEvent(cartButton.name);
 
 			}
 
@@ -246,11 +295,16 @@ cartButton.forEach((cartButton) => {
 			orderCounts = 1;
 			tempList.innerHTML = `${cartButton.name}<button class="downCount">-</button><span class="orderCount"> ${orderCounts}</span><button class="upCount">+</button>`
 			orderList.appendChild(tempList);
-
+			addButtonEvent(cartButton.name);
 
 		}
 		check = false;
 
+
+
+		//	children.forEach((child)=>{if(tempList.innerText != child.textContent){
+		//		orderList.appendChild(tempList);
+		//	}})	
 		$.ajax({
 			type: 'POST',
 			url: '/order',
@@ -262,10 +316,6 @@ cartButton.forEach((cartButton) => {
 			success: () => console.log('data 삽입 완료'),
 			error: () => alert("에러")
 		});
-
-		//	children.forEach((child)=>{if(tempList.innerText != child.textContent){
-		//		orderList.appendChild(tempList);
-		//	}})
 		console.dir(orderList);
 	})
 });
