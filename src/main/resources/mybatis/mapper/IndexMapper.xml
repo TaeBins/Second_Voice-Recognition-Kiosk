@@ -12,25 +12,42 @@
 		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
 		select * from menus where menu_type=#{menu_type}
 	</select>
-	
-	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto-->
+
+	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
 	<select id="manMenulist" parameterType="Menus" resultType="Menus">
-	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by  menu_gender
+		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by menu_gender
 	</select>
-	
-	
-		<select id="womanMenulist" parameterType="Menus" resultType="Menus">
-	<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by  menu_gender desc
+
+
+	<select id="womanMenulist" parameterType="Menus" resultType="Menus">
+		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+		select * from menus where menu_type=#{menu_type} order by menu_gender desc
 	</select>
 
 	<!-- 카트에 저장 하는 쿼리문 -->
-	<!-- order_seq값,  -->
+	<!-- order_seq값, -->
+	<!-- <insert id="order" parameterType="Orders"> insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time) select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time from menus m where m.menu_name = #{menu_name} </insert> -->
+
+	<!-- 카트에 저장 하는 쿼리문 -->
+	<!-- order_seq값, -->
+	
 	<insert id="order" parameterType="Orders">
-		insert into orders(menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
-		select m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time
-		from menus m
-		where m.menu_name = #{menu_name};
+		<!-- 수정할 테이블 -->
+		MERGE INTO orders
+		<!-- 사용할 서브쿼리 (menus 테이블에서 그안에 menu_name과 사용자가 누른 menu_name이 같은것만 조회해서 별명 m 지정) -->
+		USING (select * from menus where menu_name = #{menu_name}) m
+		<!-- 조건생성 (orders 테이블안에 있는 order_seq가 1이고 menu_name이 사용자가 누른 menu_name과 일치하는게 있는지) -->
+		<!-- menu_name이 어디에 있는 menu_name인지 못찾아서 orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
+		ON (order_seq = 1 and orders.menu_name = #{menu_name})
+		<!-- 위 on 조건에 일치하는값이 있으면 실행 -->
+		WHEN MATCHED THEN
+		<!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
+		UPDATE SET order_cnt = #{order_cnt}
+		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
+		WHEN NOT MATCHED THEN
+		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
+		INSERT (menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
+		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 </mapper>

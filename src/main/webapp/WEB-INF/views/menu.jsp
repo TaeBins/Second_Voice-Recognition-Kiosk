@@ -228,15 +228,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<script src="js/slide.js"></script>
 		</section>
 	</div>
-	</div>
 	<div id="formContainer" style="display: none">
 		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
-	</div>
-	<!-- Footer-->
-	</div>
-	</div>
-	</sectifon>
-	</div>
 	</div>
 	<!-- Footer-->
 	<!-- Bootstrap core JS-->
