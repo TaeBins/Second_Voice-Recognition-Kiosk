@@ -381,11 +381,7 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white">${orderCounts}</span><button class="upCount">+</button>
       </div>
-<<<<<<< HEAD
 	<button class="fa fa-shopping-cart">삭제</button>
-=======
-	<i style="display:block"class="fa fa-shopping-cart"></i>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
     </div>`
 
 	listContainer.appendChild(list);
