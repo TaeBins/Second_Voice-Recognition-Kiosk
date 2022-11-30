@@ -57,7 +57,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
      
       </div>
       </div>
-      <i class="fa fa-shopping-cart"></i>
     <div id="listContainer">
 
     </div>
