@@ -31,7 +31,7 @@
 
 	<!-- 카트에 저장 하는 쿼리문 -->
 	<!-- order_seq값, -->
-	
+
 	<insert id="order" parameterType="Orders">
 		<!-- 수정할 테이블 -->
 		MERGE INTO orders
@@ -50,27 +50,17 @@
 		INSERT (menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
 		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
-	
-<!-- 
-MERGE INTO receipt r
-USING (select * from orders) o
-ON (r.receipt_num = 1 and r.menu_name = o.menu_name)
-WHEN MATCHED THEN
-UPDATE SET 
-r.order_cnt = r.order_cnt + o.order_cnt,
-r.receipt_date = sysdate
-WHEN NOT MATCHED THEN
-INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
-VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0); 
--->
 
-<!-- 
-truncate TABLE orders;
- -->
- 
+	<!-- 아래 3개 지우면 안댐! -->
+	<!-- MERGE INTO receipt r USING (select * from orders) o ON (r.receipt_num = 1 and r.menu_name = o.menu_name) WHEN MATCHED THEN UPDATE SET r.order_cnt = r.order_cnt + o.order_cnt, r.receipt_date = sysdate WHEN NOT MATCHED THEN INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount) VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0) -->
+
+	<!-- UPDATE menus m SET m.menu_stock_cnt = m.menu_stock_cnt - (select order_cnt from orders where menu_name = m.menu_name), m.menu_order_cnt = m.menu_order_cnt + (select order_cnt from orders where menu_name = m.menu_name) WHERE m.menu_name = (select menu_name from orders where menu_name = m.menu_name) -->
+
+	<!-- truncate TABLE orders -->
+
 	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
 	<delete id="deleteOrder" parameterType="Orders">
-	delete from orders where menu_name = #{menu_name}
+		delete from orders where menu_name = #{menu_name}
 	</delete>
-	
+
 </mapper>
