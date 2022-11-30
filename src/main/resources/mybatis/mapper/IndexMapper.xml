@@ -44,7 +44,6 @@
 		WHEN MATCHED THEN
 		<!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
 		UPDATE SET order_cnt = #{order_cnt}
-		DELETE where (order_cnt = 0)
 		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
 		WHEN NOT MATCHED THEN
 		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
@@ -52,10 +51,26 @@
 		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 	
+<!-- 
+MERGE INTO receipt r
+USING (select * from orders) o
+ON (r.receipt_num = 1 and r.menu_name = o.menu_name)
+WHEN MATCHED THEN
+UPDATE SET 
+r.order_cnt = r.order_cnt + o.order_cnt,
+r.receipt_date = sysdate
+WHEN NOT MATCHED THEN
+INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
+VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0); 
+-->
+
+<!-- 
+truncate TABLE orders;
+ -->
+ 
 	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
 	<delete id="deleteOrder" parameterType="Orders">
 	delete from orders where menu_name = #{menu_name}
 	</delete>
-	
 	
 </mapper>
