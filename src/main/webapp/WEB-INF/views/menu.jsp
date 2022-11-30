@@ -70,7 +70,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
     <div id="listContainer">
 <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height:80px;">
-                        <div class="wrapper ${vo.menu_name}">
+                        <div class='wrapper ${vo.menu_name.replace(" ", "")}'> <!-- 공백 제거해주어야함 -->
                            <!-- << 공백 제거해줘야함 -->
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
                            <button class="downCount">-</button>
