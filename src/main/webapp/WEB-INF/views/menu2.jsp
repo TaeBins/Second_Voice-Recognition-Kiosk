@@ -38,31 +38,20 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	</nav>
 	<!-- Header-->
 	<!-- Section-->
-	<div class="bgbg" style="display: inline-block;">
-		<section class="py-6" style="float: right; width: 22%; height: 702px;" >
+	<div style="
+    display: inline-block;">
+		<section class="py-6" style="float: right; width: 19%; height: 702px; background-color: white;">
 			<div class="container px-4 px-lg-5 mt-5">
-				  <div class="container1">
-    <h1 style="color: #dee2e6;">ORDER</h1>
-    <div class="list1" style="height: 80px;">
-	      <div class="wrapper">
-     
-      </div>
-      <i class="fa fa-shopping-cart"></i>
-    </div>
-   
-    
-    
-  </div>
 				<ul id="orderList" style="list-style: none">
 				</ul>
 			</div>
 		</section>
-			<section class="py-6" style="float: left; width: 14%; height: 702px; ">
+			<section class="py-6" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="/1">메인 메뉴</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/">메인 메뉴</a>
 					</div>
 				</div>
 				<div class="col mb-6">
@@ -99,7 +88,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-6" style="float: right; width: 64%; height: 702px; ">
+		<section class="py-6" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
 			<div class="slide slide_wrap">
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
@@ -228,8 +217,15 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<script src="js/slide.js"></script>
 		</section>
 	</div>
+	</div>
 	<div id="formContainer" style="display: none">
 		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
+	</div>
+	<!-- Footer-->
+	</div>
+	</div>
+	</sectifon>
+	</div>
 	</div>
 	<!-- Footer-->
 	<!-- Bootstrap core JS-->
