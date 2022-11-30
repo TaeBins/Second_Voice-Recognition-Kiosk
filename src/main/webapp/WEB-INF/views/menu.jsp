@@ -43,7 +43,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			<div class="container px-4 px-lg-5 mt-5">
 				  <div class="container1">
     <h1 style="color: #dee2e6;">ORDER</h1>
-    <div class="list1" style="height: 80px;">
+    <div ><ul id="orderList" style="list-style: none"class="list1" style="height: 80px;">
+				</ul>
 	      <div class="wrapper">
      
       </div>
@@ -53,8 +54,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
     
     
   </div>
-				<ul id="orderList" style="list-style: none">
-				</ul>
+				
 			</div>
 		</section>
 			<section class="py-6" style="float: left; width: 14%; height: 702px; ">
