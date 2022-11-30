@@ -38,13 +38,13 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Section-->
 	<div style="
     display: inline-block;">
-		<section class="py-6" style="float: right; width: 19%; height: 702px; background-color: white;">
+		<section class="py-6" style="float: right; width: 19%; height: 702px;">
 			<div class="container px-4 px-lg-5 mt-5">
 				<ul id="orderList" style="list-style: none">
 				</ul>
 			</div>
 		</section>
-			<section class="py-6" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+			<section class="py-6" style="float: left; width: 15%; height: 702px; ">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -86,7 +86,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 			</div>
 		</section>
-		<section class="py-6" style="float: right; width: 66%; height: 702px; background-color: #F2F2F2;">
+		<section class="py-6" style="float: right; width: 66%; height: 702px;">
 			<div class="slide slide_wrap">
 				<div class="slide_item">
 					<div class="container px-4 px-lg-5 mt-5">
