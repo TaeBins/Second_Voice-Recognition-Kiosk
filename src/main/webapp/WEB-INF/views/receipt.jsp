@@ -104,7 +104,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </div>
                <div>
                   <dt>Date</dt>
-                  <dd>MM / DD / YYYY</dd>
+                  <dd>${receiptList[0].receipt_date}</dd>
                </div>
          </header>
          <main>
@@ -121,13 +121,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <th>갯수</th>
                   <th>합계</th>
             </tr>
-               <c:forEach var="vo" items="${menuList}">
+               <c:forEach var="rl" items="${receiptList}">
                   <tr>
-                     <td>${vo.menu_name}</td>                     
-                     <td><span class="price">${vo.menu_price}원</span></td>
-                      <td>${vo.menu_order_cnt}</td>
-                     <td><span class="price">${vo.menu_order_cnt*vo.menu_price}원</span></td>
-                     <c:set var="sum" value="${sum+(vo.menu_price*vo.menu_order_cnt)}" />
+                     <td>${rl.menu_name}</td>                     
+                     <td><span class="price">${rl.menu_price}원</span></td>
+                      <td>${rl.order_cnt}</td>
+                     <td><span class="price">${rl.order_cnt*rl.menu_price}원</span></td>
+                     <c:set var="sum" value="${sum+(rl.menu_price*rl.order_cnt)}" />
+                     
                   </tr>
                </c:forEach>
             </table>

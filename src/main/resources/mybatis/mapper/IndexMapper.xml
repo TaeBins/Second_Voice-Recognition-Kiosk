@@ -88,7 +88,7 @@
 
 	<!-- 영수증 페이지로 들어갈 때 영수증 db 최근꺼 데이터 가져오기(영수증번호가 ? 인거) -->
 	<select id="receiptList" resultType="Receipt">
-		select * from Receipt where receipt_num = 1
+		select * from Receipt where receipt_num = 1 order by order_cnt desc
 	</select>
 
 	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
