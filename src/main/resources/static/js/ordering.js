@@ -383,13 +383,15 @@ const appendList = (name, orderCounts) => {
    list.className = "list1";
    list.style = "height:80px"
    list.innerHTML = `
-   <div class="wrapper ${name.replace(" ", "")}">
-     <span class="orderCount" style="color:white">${name}</span>
+<div class="wrapper ${name.replace(" ", "")}">
+     <span class="orderCount" style="color:white">${name}</span><br>
      <button class="downCount">-</button> <span style="color:white">${orderCounts}</span> <button class="upCount">+</button>
       </div>
+      
       <span class="material-symbols-outlined trash" value="${name}">
 delete
 </span>
+</div>
     </div>`
 
    listContainer.appendChild(list);
