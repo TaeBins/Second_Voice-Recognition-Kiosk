@@ -387,7 +387,7 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button> <span style="color:white">${orderCounts}</span> <button class="upCount">+</button>
       </div>
-   <button value="${name}" class="fa fa-shopping-cart">삭제</button>
+   <span name="${name}" class="fa fa-shopping-cart">test</span>
     </div>`
 
    listContainer.appendChild(list);
@@ -395,12 +395,11 @@ const appendList = (name, orderCounts) => {
 
 //삭제 버튼 이벤트 리스너 추가해주는 함수
 const addDeleteButtonEvent = () => {
-   const deleteButtons = document.querySelectorAll("button.fa")
+   const deleteButtons = document.querySelectorAll("span.fa")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
-         listContainer.removeChild(event.target.parentNode);
-      
-      $.ajax({
+	console.log(event.target.getAttribute('name'))
+	    $.ajax({
          type: 'DELETE',
          url: '/deleteorder',
          contentType: 'application/json; charset=utf-8',
@@ -408,10 +407,13 @@ const addDeleteButtonEvent = () => {
             "menu_name": event.target.value,
          }),
          success: () => console.log('data 삭제 완료'),
-         error: () => {
-            alert("에러")
+         error: (e) => {
+            alert(e)
          }
       });
+         listContainer.removeChild(event.target.parentNode);
+      
+  
       })
          
    
