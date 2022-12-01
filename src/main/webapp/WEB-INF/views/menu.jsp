@@ -60,13 +60,23 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
+<<<<<<< HEAD
                            <!-- 공백 제거해주어야함 -->
                            <!-- << 공백 제거해줘야함 -->
                            <span class="orderCount" style="color: white">${vo.menu_name}</span><br>
+=======
+                 
+                           <span class="orderCount" style="color: white">${vo.menu_name}</span>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
+<<<<<<< HEAD
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: #f8c000;">
+=======
+
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
                         
                         <span class="material-symbols-outlined trash" value="${vo.menu_name}">
 delete
@@ -300,6 +310,13 @@ delete
        e.preventDefault();
    }));
    
+
+   const cartButtons = document.querySelectorAll("button.cartbutton");
+   cartButtons.forEach((cartButton)=> {
+	   if(cartButton.value == 0){
+	   cartButton.disabled = true}
+	   })
+
 
    </script>
 </body>

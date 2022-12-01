@@ -196,8 +196,8 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
-	const downButton = document.querySelector(`div.${name.replace(" ", "")} button.downCount`)
-	const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
+	const downButton = document.querySelector(`div.${name.replace(' ', '')} button.downCount`)
+	const upButton = document.querySelector(`div.${(name)} button.upCount`)
 
 	//Down 버튼 누를 경우
 	downButton.addEventListener("click", (event) => {
@@ -205,11 +205,11 @@ const addButtonEvent = (name) => {
 		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
 		//개수 값에 -1 적용
 		currentOrderCount.innerText -= 1;
-
+		console.log(currentOrderCount.innerText)
 		// 숫자가 0이 될경우 삭제 버튼 클릭
-		if (currentOrderCount.innerText == 0) {
+		if (currentOrderCount.innerText <= 0) {
 			//document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]   .click();         //Ajax로 DB Delete문 요청
-			document.querySelector(`button[value="${name}"]`).click();
+			document.querySelector(`span[value="${name}"]`).click();
 			return;
 		}
 
@@ -284,6 +284,7 @@ cartButton.forEach((cartButton) => {
 			}
 
 		}
+
 
 
 
@@ -414,7 +415,7 @@ const addDeleteButtonEvent = () => {
 	})
 }
 
-for (i = 0; i < 15; i++) {
-	addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
+for (i = 0; i < document.querySelectorAll("div.list1 > div:first-child").length; i++) {
+	addButtonEvent(document.querySelectorAll("div.list1 > div:first-child")[i].classList[1])
 	addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
