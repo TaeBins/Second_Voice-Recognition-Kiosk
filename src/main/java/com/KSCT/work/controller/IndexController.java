@@ -128,7 +128,7 @@ public class IndexController {
 	public String orderComplete(Receipt receipt) {
 		indexService.orderComplete(receipt);
 		
-		return null;
+		return "receipt";
 	}
 
 }

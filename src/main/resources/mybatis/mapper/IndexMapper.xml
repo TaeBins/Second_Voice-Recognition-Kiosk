@@ -51,7 +51,7 @@
 		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 
-	<insert id="ordercomplete" parameterType="Receipt">
+	<insert id="orderComplete" parameterType="Receipt">
 	<!-- 수정할 테이블 -->
 	MERGE INTO receipt r
 	<!-- 사용할 서브쿼리 (orders 테이블 전체를 별명 o로 가져오기) -->
