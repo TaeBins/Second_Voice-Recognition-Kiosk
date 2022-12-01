@@ -33,6 +33,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 #listContainer::-webkit-scrollbar {
    display: none;
 }
+background-image: url("../css/bg3.png");
 </style>
 
 </head>
