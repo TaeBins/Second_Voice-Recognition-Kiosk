@@ -93,24 +93,6 @@ public class IndexController {
 		return "null";
 	}
 
-
-
-	@GetMapping("/animation")
-	public String ani() {
-		return "animation";
-	}
-
-	
-	@GetMapping("/receipt")
-	public String receipt(Model model) {
-		return "receipt";
-	}
-
-	@GetMapping("/testTemplate")
-	public String testTemplate() {
-		return "checkVoice";
-	}
-
 	@GetMapping("/time")
 	public String time() {
 		return "time";
@@ -124,10 +106,26 @@ public class IndexController {
 		return null;
 	}
 	
+	// 메뉴 화면에서 오른쪽 주문목록 주문 하기 버튼 누르면 실행
 	@PostMapping("/ordercomplete")
-	public String orderComplete(Receipt receipt) {
+	// 영수증 모델과 주문목록 모델을 사용해야해서 가져오기
+	public String orderComplete(Receipt receipt, Orders orders) {
+		// 영수증 모델 서비스로 보내기
 		indexService.orderComplete(receipt);
-		
+		// 주문목록 모델 서비스로 보내기
+		indexService.menusUpdate(orders);
+		// 영수증 페이지로 가기전에 최신화 시키기위해 "/" 이걸 붙여서 맵핑 실행하도록
+		return "/receipt";
+	}
+	
+	// 위에서 마지막에 실행된 /receipt 로 와지면 실행
+	@GetMapping("/receipt")
+	// 리스트 가져오기위해 model 함수 가져오기
+	public String receiptlist(Model model) {
+		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
+		List<Receipt> receiptlist = indexService.receiptList();
+		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
+		model.addAttribute("receiptList", receiptlist);
 		return "receipt";
 	}
 
