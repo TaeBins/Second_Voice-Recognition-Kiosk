@@ -9,6 +9,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <html lang="en">
 
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <meta charset="utf-8" />
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -38,11 +39,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script
    src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet"
-
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-<link rel="stylesheet"  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .container1::-webkit-scrollbar {
@@ -64,7 +61,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    <div class="bgbg" style="display: inline-block;">
       <section class="py-6" style="float: right; width: 22%; height: 702px;" >
          <div class="container px-4 px-lg-5 mt-5">
-              <div class="container1" style="overflow:scroll;position:relative;">
+              <div class="container1" style="overflow:scroll">
     <h1 style="color: #dee2e6;">ORDER</h1>
     <div >
          <div class="wrapper">
@@ -74,26 +71,24 @@ response.setHeader("Access-Control-Allow-Origin", "*");
     <div id="listContainer">
 <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height:80px;">
-                        <div class="wrapper ${vo.menu_name}"> <!-- 공백 제거해주어야함 -->
+                        <div class='wrapper ${vo.menu_name.replace(" ", "")}'> <!-- 공백 제거해주어야함 -->
                            <!-- << 공백 제거해줘야함 -->
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
                         </div>
-                        <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
+                        <button value="${vo.menu_name}" class="fa fa-shopping-cart">삭제</button>
                      </div>
                   </c:forEach>
-   
-                  
-
     </div>
- <span style="position:fixed; left:88%; color:#ffffff7d; bottom:11%" id="downArrow"  class="material-symbols-outlined">
-expand_more
-</span>
+   
+                   
 
   </div>
-    
+
+<span id="downArrow" style="visibility:hidden; color:white;position:absolute;left:88.5%;top:660px"class="material-symbols-outlined">
+</span>
          </div>
       </section>
    <section class="py-6" style="float: left; width: 14.8%; height: 702px;">
@@ -167,7 +162,7 @@ expand_more
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name.replace(' ', '')}"
+                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name}"
                                     class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
@@ -212,7 +207,7 @@ expand_more
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name.replace(' ', '')}" class="cartbutton">
+                                 <button name="${vo.menu_name}" class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
                                        <svg viewBox="0 0 36 26">
@@ -256,7 +251,7 @@ expand_more
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button value="${vo.menu_stock_cnt}"name="${vo.menu_name.replace(' ','')}" class="cartbutton">
+                                 <button name="${vo.menu_name}" class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
                                        <svg viewBox="0 0 36 26">
