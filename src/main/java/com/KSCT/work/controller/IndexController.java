@@ -93,24 +93,6 @@ public class IndexController {
 		return "null";
 	}
 
-
-
-	@GetMapping("/animation")
-	public String ani() {
-		return "animation";
-	}
-
-	
-	@GetMapping("/receipt")
-	public String receipt(Model model) {
-		return "receipt";
-	}
-
-	@GetMapping("/testTemplate")
-	public String testTemplate() {
-		return "checkVoice";
-	}
-
 	@GetMapping("/time")
 	public String time() {
 		return "time";
@@ -129,7 +111,9 @@ public class IndexController {
 		indexService.orderComplete(receipt);
 		System.out.println("값이 뭐니 : " + receipt);
 		
-		return "receipt";
+		return "/receipt";
 	}
+	@GetMapping("/receipt")
+	public String receiptlist
 
 }

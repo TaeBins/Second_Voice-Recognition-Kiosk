@@ -65,12 +65,12 @@
 	<!-- receipt_cnt에 order_cnt 만큼 더해서 수정하고 receipt_date를 수정한 시간으로 수정 -->
 	UPDATE SET
 	r.order_cnt = r.order_cnt + o.order_cnt,
-	r.receipt_date = to_date(sysdate, 'YYYY.MM.DD HH24:MI:SS')
+	r.receipt_date = sysdate
 	<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
 	WHEN NOT MATCHED THEN
 	<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
 	INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
-	VALUES (1, TO_DATE(sysdate, 'YYYY.MM.DD HH24:MI:SS'), o.menu_name, o.menu_price, o.order_cnt, 0)
+	VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0)
 	</insert>
 	
 	<!-- 아래 2개 지우면 안댐! -->
