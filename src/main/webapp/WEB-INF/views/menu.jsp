@@ -66,9 +66,17 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
-                        </div>
-                        <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
+   </div>                   <section class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+                        
+                        <span class="material-symbols-outlined trash" value="${menu_name}">
+delete
+</span>
+
+</section>
+
                      </div>
+
+                     
                   </c:forEach>
                </div>
                <div style="text-align:center;">
@@ -270,6 +278,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
        }
        e.preventDefault();
    }));
+   
+
    </script>
 </body>
 </html>

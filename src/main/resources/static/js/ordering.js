@@ -391,7 +391,7 @@ const addDeleteButtonEvent = () => {
    const deleteButtons = document.querySelectorAll("span.trash")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
-         listContainer.removeChild(event.target.parentNode);
+         listContainer.removeChild(event.target.parentNode.parentNode);
       
       $.ajax({
          type: 'DELETE',
@@ -410,7 +410,6 @@ const addDeleteButtonEvent = () => {
    
    })
 }
-
 
 for(i=0; i<15; i++){
 addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
