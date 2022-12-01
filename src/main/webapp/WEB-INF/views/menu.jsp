@@ -30,7 +30,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
-.container1::-webkit-scrollbar {
+#listContainer::-webkit-scrollbar {
    display: none;
 }
 </style>
@@ -49,12 +49,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    <div class="bgbg" style="display: inline-block;">
       <section class="py-6" style="float: right; width: 22%; height: 702px;">
          <div class="container px-4 px-lg-5 mt-5">
-            <div class="container1" style="overflow: scroll">
+            <div class="container1" >
                <h1 style="color: #dee2e6;">ORDER</h1>
                <div>
                   <div class="wrapper"></div>
                </div>
-               <div id="listContainer">
+               <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
@@ -72,9 +72,9 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                <div style="text-align:center;">
                <form action="/ordercomplete" method="post">
                   <button class="fa fa-shopping-cart" type="submit">주문하기</button>
-               </form>
                </div>
 
+               </form>
 
             </div>
 
