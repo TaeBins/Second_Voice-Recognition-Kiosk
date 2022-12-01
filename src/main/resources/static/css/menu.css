@@ -91,6 +91,15 @@
 *::after {
   box-sizing: border-box;
 }
+.trash{
+	color:#ffc107;
+	position: absolute;
+    left: 143px;
+   
+}
+.color1{
+	color:white;
+}
 * {
   margin: 0;
   padding: 0;

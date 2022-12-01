@@ -279,7 +279,7 @@ cartButton.forEach((cartButton) => {
          if (newOrderName.textContent.indexOf(cartButton.name) !== -1) {
             check = true;
             const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
-			document.querySelector(`div.${cartButton.name} button.upCount`).click()
+         document.querySelector(`div.${cartButton.name} button.upCount`).click()
 
          }
 
@@ -378,7 +378,9 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button><span style="color:white"> ${orderCounts} </span><button class="upCount">+</button>
       </div>
-   <button value="${name}" class="fa fa-shopping-cart">삭제</button>
+      <span class="material-symbols-outlined trash" value="${name}">
+delete
+</span>
     </div>`
 
    listContainer.appendChild(list);
@@ -386,7 +388,7 @@ const appendList = (name, orderCounts) => {
 
 //삭제 버튼 이벤트 리스너 추가해주는 함수
 const addDeleteButtonEvent = () => {
-   const deleteButtons = document.querySelectorAll("button.fa")
+   const deleteButtons = document.querySelectorAll("span.trash")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
          listContainer.removeChild(event.target.parentNode);
@@ -396,7 +398,7 @@ const addDeleteButtonEvent = () => {
          url: '/deleteorder',
          contentType: 'application/json; charset=utf-8',
          data: JSON.stringify({
-            "menu_name": event.target.value,
+            "menu_name": event.target.getAttribute('value'),
          }),
          success: () => console.log('data 삭제 완료'),
          error: () => {
