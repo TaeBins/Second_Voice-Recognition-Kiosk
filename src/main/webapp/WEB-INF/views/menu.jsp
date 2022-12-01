@@ -58,7 +58,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </div>
                <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
-                  <section style="background-color:white;">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
                            <!-- 공백 제거해주어야함 -->
@@ -70,7 +69,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                         </div>
                         <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
                      </div>
-                     </section>
                   </c:forEach>
                </div>
                <div style="text-align:center;">
