@@ -143,7 +143,14 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
+                              <c:choose>
+                              <c:when test="${vo.menu_stock_cnt <= 0}">
+                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
+                                 </c:when>
+                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              </c:otherwise>
+                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -183,7 +190,14 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
+                             <c:choose>
+                              <c:when test="${vo.menu_stock_cnt <= 0}">
+                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
+                                 </c:when>
+                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              </c:otherwise>
+                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -223,7 +237,14 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
+                             <c:choose>
+                              <c:when test="${vo.menu_stock_cnt <= 0}">
+                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
+                                 </c:when>
+                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              </c:otherwise>
+                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
