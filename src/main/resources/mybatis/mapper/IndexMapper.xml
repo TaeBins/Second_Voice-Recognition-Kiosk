@@ -51,9 +51,28 @@
 		VALUES (m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
 	</insert>
 
-	<!-- 아래 3개 지우면 안댐! -->
-	<!-- MERGE INTO receipt r USING (select * from orders) o ON (r.receipt_num = 1 and r.menu_name = o.menu_name) WHEN MATCHED THEN UPDATE SET r.order_cnt = r.order_cnt + o.order_cnt, r.receipt_date = sysdate WHEN NOT MATCHED THEN INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount) VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0) -->
-
+	<insert id="orderComplete" parameterType="Receipt">
+	<!-- 수정할 테이블 -->
+	MERGE INTO receipt r
+	<!-- 사용할 서브쿼리 (orders 테이블 전체를 별명 o로 가져오기) -->
+	USING (select * from orders) o
+	<!-- 조건생성 (receipt 테이블안에 있는 receipt_num이 1이고 menu_name이 orders에 있는 menu_name과 일치하는게 있는지) -->
+	<!-- menu_name이 어디에 있는 menu_name인지 못찾아서 receipt, orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
+	ON (r.receipt_num = 1 and r.menu_name = o.menu_name)
+	<!-- 위 on 조건에 일치하는값이 있으면 실행 -->
+	WHEN MATCHED THEN
+	<!-- receipt_cnt에 order_cnt 만큼 더해서 수정하고 receipt_date를 수정한 시간으로 수정 -->
+	UPDATE SET
+	r.order_cnt = r.order_cnt + o.order_cnt,
+	r.receipt_date = sysdate
+	<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
+	WHEN NOT MATCHED THEN
+	<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
+	INSERT (receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
+	VALUES (1, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0)
+	</insert>
+	
+	<!-- 아래 2개 지우면 안댐! -->
 	<!-- UPDATE menus m SET m.menu_stock_cnt = m.menu_stock_cnt - (select order_cnt from orders where menu_name = m.menu_name), m.menu_order_cnt = m.menu_order_cnt + (select order_cnt from orders where menu_name = m.menu_name) WHERE m.menu_name = (select menu_name from orders where menu_name = m.menu_name) -->
 
 	<!-- truncate TABLE orders -->
