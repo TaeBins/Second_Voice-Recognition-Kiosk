@@ -419,7 +419,7 @@ const addDeleteButtonEvent = () => {
 }
 
 
-for(i=0; i<100; i++){
+for(i=0; i<document.querySelectorAll("div.list1 > div").length; i++){
 addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
 addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
