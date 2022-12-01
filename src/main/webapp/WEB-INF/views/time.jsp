@@ -31,7 +31,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 </head>
 
 
-<body style="background-color: #F2F2F2;">
+<body>
 	<!-- Navigation-->
 
 	<nav style="width: 100%; position: fixed; z-index: 1000; right: 0" class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -45,11 +45,11 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Section-->
 
 
-	<section class="py-6 style=" position:fixed;float:left; width: 15%; height: 702px; margin-top:68px;background-color:#F2F2F2;">
+	<section class="py-6 style=" position:fixed;float:left; width: 15%; height: 702px; margin-top:68px;">
 		<div class="container px-4 px-lg-5 mt-5"></div>
 	</section>
 
-	<section class="py-6" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+	<section class="py-6" style="float: left; width: 15%; height: 702px;">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="col mb-6">
 				<div class="card h-100">
