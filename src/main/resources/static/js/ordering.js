@@ -387,6 +387,9 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount" style="color:white">${name}</span>
      <button class="downCount">-</button> <span style="color:white">${orderCounts}</span> <button class="upCount">+</button>
       </div>
+      <span class="material-symbols-outlined" value="${name}">
+delete
+</span>
    <button value="${name}" class="fa fa-shopping-cart">삭제</button>
     </div>`
 
@@ -395,7 +398,7 @@ const appendList = (name, orderCounts) => {
 
 //삭제 버튼 이벤트 리스너 추가해주는 함수
 const addDeleteButtonEvent = () => {
-   const deleteButtons = document.querySelectorAll("button.fa")
+   const deleteButtons = document.querySelectorAll("span.material-symbols-outlined")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
          listContainer.removeChild(event.target.parentNode);
