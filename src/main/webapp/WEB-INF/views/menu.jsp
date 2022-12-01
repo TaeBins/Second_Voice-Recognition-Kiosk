@@ -60,14 +60,15 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
-                           <!-- 공백 제거해주어야함 -->
-                           <!-- << 공백 제거해줘야함 -->
+                 
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
                         </div>
-                        <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
+                    <span class="material-symbols-outlined trash" value="${vo.menu_name}">
+delete
+</span>
                      </div>
                   </c:forEach>
                </div>
@@ -291,6 +292,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
        }
        e.preventDefault();
    }));
+   
+   const cartButtons = document.querySelectorAll("button.cartbutton");
+   cartButtons.forEach((cartButton)=> {
+	   if(cartButton.value == 0){
+	   cartButton.disabled = true}
+	   })
    </script>
 </body>
 </html>

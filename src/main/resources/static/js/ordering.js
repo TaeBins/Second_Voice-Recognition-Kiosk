@@ -292,6 +292,7 @@ cartButton.forEach((cartButton) => {
          //메뉴 추가
          const tempList = document.createElement("li");
          orderCounts = 1;
+      
          appendList(cartButton.name, orderCounts);
          addButtonEvent(cartButton.name);
          addDeleteButtonEvent(cartButton.name);
@@ -410,7 +411,6 @@ const addDeleteButtonEvent = () => {
    
    })
 }
-
 
 for(i=0; i<15; i++){
 addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
