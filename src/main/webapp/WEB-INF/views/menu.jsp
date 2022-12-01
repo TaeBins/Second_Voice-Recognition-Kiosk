@@ -50,7 +50,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 		<section class="py-6" style="float: right; width: 22%; height: 702px;">
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="container1" style="overflow: scroll">
-					<h1 style="color: #dee2e6;">ORDERD</h1>
+					<h1 style="color: #dee2e6;">ORDER</h1>
 					<div>
 						<div class="wrapper"></div>
 					</div>
