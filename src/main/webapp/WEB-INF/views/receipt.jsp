@@ -42,13 +42,13 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    </nav>
    <!-- Header-->
    <!-- Section-->
-   <section class="py-5" style="position: fixed; float: right; width: 17%; height: 773px; background-color: #F2F2F2;">
+   <section class="py-5" style="position: fixed; float: right; width: 17%; height: 773px; ">
       <div class="container px-4 px-lg-5 mt-5">
          <ul id="orderList" style="list-style: none">
          </ul>
       </div>
    </section>
-	<section class="py-5" style="float: left; width: 15%; height: 702px; background-color: #F2F2F2;">
+	<section class="py-5" style="float: left; width: 15%; height: 702px;">
 			<div class="container px-4 px-lg-5 mt-5">
 
 				<div class="col mb-6">
@@ -89,7 +89,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 			</div>
 		</section>
    <!-- receipt -->
-   <section class="py-6" style="position: fixed; float: right; left: 17%; width: 66%; height: 773px; background-color: #F2F2F2;">
+   <section class="py-6" style="position: fixed; float: right; left: 17%; width: 66%; height: 773px;">
       <div style="height: 80%; overflow: scroll; overflow-y: auto" class="wrap">
          <h1>영수증</h1>
          <header>

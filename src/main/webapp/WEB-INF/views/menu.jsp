@@ -9,7 +9,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <meta charset="utf-8" />
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -71,14 +70,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
     <div id="listContainer">
 <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height:80px;">
-                        <div class='wrapper ${vo.menu_name.replace(" ", "")}'> <!-- 공백 제거해주어야함 -->
+                        <div class="wrapper ${vo.menu_name}"> <!-- 공백 제거해주어야함 -->
                            <!-- << 공백 제거해줘야함 -->
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
                         </div>
-                        <button value="${vo.menu_name}" class="fa fa-shopping-cart">삭제</button>
+                        <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
                      </div>
                   </c:forEach>
     </div>
@@ -162,7 +161,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name}"
+                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name.replace(' ', '')}"
                                     class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
@@ -207,7 +206,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button name="${vo.menu_name}" class="cartbutton">
+                                 <button value="${vo.menu_stock_cnt}" name="${vo.menu_name.replace(' ', '')}" class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
                                        <svg viewBox="0 0 36 26">
@@ -251,7 +250,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <!-- Product actions-->
                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                               <div class="text-center">
-                                 <button name="${vo.menu_name}" class="cartbutton">
+                                 <button value="${vo.menu_stock_cnt}"name="${vo.menu_name.replace(' ','')}" class="cartbutton">
                                     <span>Add to cart</span>
                                     <div class="cart">
                                        <svg viewBox="0 0 36 26">
