@@ -124,9 +124,9 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                <c:forEach var="rl" items="${receiptList}">
                   <tr>
                      <td>${rl.menu_name}</td>                     
-                     <td><span class="price">${rl.menu_price}원</span></td>
+                     <td><span class="price">${rl.menu_price}</span></td>
                       <td>${rl.order_cnt}</td>
-                     <td><span class="price">${rl.order_cnt*rl.menu_price}원</span></td>
+                     <td><span class="price">${rl.order_cnt*rl.menu_price}</span></td>
                      <c:set var="sum" value="${sum+(rl.menu_price*rl.order_cnt)}" />
                      
                   </tr>
