@@ -39,6 +39,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .container1::-webkit-scrollbar {
@@ -60,7 +61,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<div class="bgbg" style="display: inline-block;">
 		<section class="py-6" style="float: right; width: 22%; height: 702px;" >
          <div class="container px-4 px-lg-5 mt-5">
-              <div class="container1" style="overflow:scroll">
+              <div class="container1" style="overflow:scroll;position:relative;">
     <h1 style="color: #dee2e6;">ORDER</h1>
     <div >
          <div class="wrapper">
@@ -80,14 +81,16 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                         <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
                      </div>
                   </c:forEach>
-    </div>
    
-                   
+                  
+
+    </div>
+ <span style="position:fixed; left:88%; color:#ffffff7d; bottom:11%" id="downArrow"  class="material-symbols-outlined">
+expand_more
+</span>
 
   </div>
-
-<span id="downArrow" style="visibility:hidden; color:white;position:absolute;left:88.5%;top:660px"class="material-symbols-outlined">
-</span>
+    
          </div>
       </section>
 	<section class="py-6" style="float: left; width: 14.8%; height: 702px;">
