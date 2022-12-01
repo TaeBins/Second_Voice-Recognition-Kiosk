@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.KSCT.work.mapper.IndexMapper;
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
+import com.KSCT.work.model.Receipt;
 
 // @Transactional : 메소드 내부에서 일어나는 DB 로직이 전부성공 or 하나라도 실패시 다시롤백 해줌
 // @Service : 서비스 Class에 사용
@@ -55,6 +56,9 @@ public class IndexService {
 		indexMapper.deleteOrder(orders);
 	}
 	
+	public void orderComplete(Receipt receipt) {
+		indexMapper.orderComplete(receipt);
+	}
 
 
 }

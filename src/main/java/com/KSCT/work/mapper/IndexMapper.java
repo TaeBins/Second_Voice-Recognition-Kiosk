@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
+import com.KSCT.work.model.Receipt;
 
 // @Repository : DAO class(mapper)같은 DataBase에 접근하는 method를 가진 클래스에 쓰임
 @Repository
@@ -33,4 +34,5 @@ public interface IndexMapper {
 
 	public void deleteOrder(Orders orders);
 
+	public void orderComplete(Receipt receipt);
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
+import com.KSCT.work.model.Receipt;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -120,6 +121,13 @@ public class IndexController {
 	public String deleteOrder(@RequestBody Orders orders) {
 		System.out.println(orders.getMenu_name());
 		indexService.deleteOrder(orders);
+		return null;
+	}
+	
+	@PostMapping("/ordercomplete")
+	public String orderComplete(Receipt receipt) {
+		indexService.orderComplete(receipt);
+		
 		return null;
 	}
 
