@@ -127,6 +127,7 @@ public class IndexController {
 	@PostMapping("/ordercomplete")
 	public String orderComplete(Receipt receipt) {
 		indexService.orderComplete(receipt);
+		System.out.println("값이 뭐니 : " + receipt);
 		
 		return "receipt";
 	}
