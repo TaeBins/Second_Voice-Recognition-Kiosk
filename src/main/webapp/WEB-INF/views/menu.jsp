@@ -65,11 +65,18 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
-                        </div>
-                    <span class="material-symbols-outlined trash" value="${vo.menu_name}">
+
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+                        
+                        <span class="material-symbols-outlined trash" value="${vo.menu_name}">
 delete
 </span>
+
+</div>
+
                      </div>
+
+                     
                   </c:forEach>
                </div>
                <div style="text-align:center;">
@@ -293,11 +300,14 @@ delete
        e.preventDefault();
    }));
    
+
    const cartButtons = document.querySelectorAll("button.cartbutton");
    cartButtons.forEach((cartButton)=> {
 	   if(cartButton.value == 0){
 	   cartButton.disabled = true}
 	   })
+
+
    </script>
 </body>
 </html>

@@ -95,6 +95,7 @@
 	color:#ffc107;
 	position: absolute;
     left: 143px;
+    top:32%;
    
 }
 .color1{
@@ -136,7 +137,7 @@
     position: relative;
     background: rgba(0, 0, 0, 0.2);
     width: 87%;
-    margin: 20px auto;
+    margin: 13px auto;
     display: flex;
     align-items: center;
     backdrop-filter: blur(10px);
