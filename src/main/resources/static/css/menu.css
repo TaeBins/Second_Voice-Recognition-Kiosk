@@ -91,6 +91,9 @@
 *::after {
   box-sizing: border-box;
 }
+.trash{
+	color:#ffc107;
+}
 * {
   margin: 0;
   padding: 0;
