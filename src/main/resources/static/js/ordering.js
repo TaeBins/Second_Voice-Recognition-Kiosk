@@ -419,3 +419,36 @@ for (i = 0; i < document.querySelectorAll("div.list1 > div:first-child").length;
 	addButtonEvent(document.querySelectorAll("div.list1 > div:first-child")[i].classList[1])
 	addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
+
+
+function orderT(){
+   var ordertrue = document.getElementById('ordertrue');
+   var ordertlist = document.querySelectorAll("div.list1 > div").length;
+   if(ordertlist>0){
+      // 주문목록이 있을 때 주문을 하게되면 완료 창
+      ordertrue.setAttribute('type', 'submit');
+      Swal.fire({
+         toast: true,
+         position: 'mid',
+      title: '메뉴를 주문중 잠시 기달!',
+      imageUrl: 'assets/cooker.jpg',
+      imageWidth: 400,
+      imageHeight: 300,
+      showConfirmButton: false,
+      timer: 2000
+      })
+   }else{
+      // 주문목록이 없을 때 버튼이 작동하지 않게하고 만약 누르면 경고창
+      ordertrue.setAttribute('type', 'button');
+      Swal.fire({
+         toast: true,
+         position: 'mid',
+      title: '메뉴 선택하고 오셈!',
+      imageUrl: 'assets/cooker.jpg',
+      imageWidth: 400,
+      imageHeight: 300,
+      showConfirmButton: false,
+      timer: 2000
+   })
+   }
+}

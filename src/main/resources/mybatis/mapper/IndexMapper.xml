@@ -82,9 +82,9 @@
 	</update>
 
 	<!-- 주문하기 누르면 영수증에 데이터 보내고 마지막에 orders 테이블 초기화 시켜주기 -->
-	<sql id="menusUpdate">
+	<delete id="menusTruncate">
 		truncate TABLE orders
-	</sql>
+	</delete>
 
 	<!-- 영수증 페이지로 들어갈 때 영수증 db 최근꺼 데이터 가져오기(영수증번호가 ? 인거) -->
 	<select id="receiptList" resultType="Receipt">

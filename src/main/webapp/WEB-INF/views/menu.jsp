@@ -79,12 +79,12 @@ delete
                      
                   </c:forEach>
                </div>
-               <div style="text-align:center;">
-               <form action="/ordercomplete" method="post">
-                  <button class="fa fa-shopping-cart" type="submit">주문하기</button>
+              <div style="text-align: center;">
+                  <form action="/ordercomplete" method="post">
+                     <button class="fa fa-shopping-cart" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
+                  </form>
                </div>
 
-               </form>
 
             </div>
 
