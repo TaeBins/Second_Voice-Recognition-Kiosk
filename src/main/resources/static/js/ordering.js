@@ -196,8 +196,8 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
    //각 메뉴의 -, + 버튼 가지고 오기
-   const downButton = document.querySelector(`div.${name} button.downCount`)
-   const upButton = document.querySelector(`div.${name} button.upCount`)
+   const downButton = document.querySelector(`div.${name.replace(" ", "")} button.downCount`)
+   const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
 
    //Down 버튼 누를 경우
    downButton.addEventListener("click", (event) => {
@@ -234,11 +234,11 @@ const addButtonEvent = (name) => {
 
 
    upButton.addEventListener("click", (event) => {
-      const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
-      const stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
+      let currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+      let stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
       //개수 값에 +1 적용
       if (parseInt(currentOrderCount.innerText) < stock) {
-         currentOrderCount.innerText = parseInt(currentOrderCount.innerText) + 1;
+         currentOrderCount.innerText = ` ${parseInt(currentOrderCount.innerText) + 1} `;
       }
 
       // 바뀐 개수 값 DB에 넣기
@@ -271,18 +271,15 @@ let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 �
 let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) => {
-   cartButton.addEventListener("click", (event) => {
+   cartButton.addEventListener("click", () => {
 
       //만약 현재 주문해놓은 메뉴가 listContainer에 존재한다면
       for (j = 0; j < listContainer.children.length; j++) {
          const newOrderName = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(1)`)
          if (newOrderName.textContent.indexOf(cartButton.name) !== -1) {
             check = true;
-            //const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
-            //newOrderCnt.innerText = parseInt(newOrderCnt.innerText) + 1
-            document.querySelector(`div.${cartButton.name} button.upCount`).click();
-            console.log('test"')
-
+            const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
+			document.querySelector(`div.${cartButton.name} button.upCount`).click()
 
          }
 
@@ -298,13 +295,7 @@ cartButton.forEach((cartButton) => {
          appendList(cartButton.name, orderCounts);
          addButtonEvent(cartButton.name);
          addDeleteButtonEvent(cartButton.name);
-         if (document.querySelector("#listContainer div:last-child").offsetTop >= 494) {
-            document.getElementById("downArrow").style.visibility = "visible"
-         } else {
-            document.getElementById("downArrow").style.visibility = "hidden"
-
-         }
-         $.ajax({
+            $.ajax({
          type: 'POST',
          url: '/order',
          contentType: 'application/json; charset=utf-8',
@@ -326,7 +317,7 @@ cartButton.forEach((cartButton) => {
       //   children.forEach((child)=>{if(tempList.innerText != child.textContent){
       //      orderList.appendChild(tempList);
       //   }})   
-      
+ 
    })
 });
 
@@ -385,9 +376,9 @@ const appendList = (name, orderCounts) => {
    list.innerHTML = `
    <div class="wrapper ${name.replace(" ", "")}">
      <span class="orderCount" style="color:white">${name}</span>
-     <button class="downCount">-</button> <span style="color:white">${orderCounts}</span> <button class="upCount">+</button>
+     <button class="downCount">-</button><span style="color:white"> ${orderCounts} </span><button class="upCount">+</button>
       </div>
-   <span name="${name}" class="fa fa-shopping-cart">test</span>
+   <button value="${name}" class="fa fa-shopping-cart">삭제</button>
     </div>`
 
    listContainer.appendChild(list);
@@ -395,11 +386,12 @@ const appendList = (name, orderCounts) => {
 
 //삭제 버튼 이벤트 리스너 추가해주는 함수
 const addDeleteButtonEvent = () => {
-   const deleteButtons = document.querySelectorAll("span.fa")
+   const deleteButtons = document.querySelectorAll("button.fa")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
-	console.log(event.target.getAttribute('name'))
-	    $.ajax({
+         listContainer.removeChild(event.target.parentNode);
+      
+      $.ajax({
          type: 'DELETE',
          url: '/deleteorder',
          contentType: 'application/json; charset=utf-8',
@@ -407,13 +399,10 @@ const addDeleteButtonEvent = () => {
             "menu_name": event.target.value,
          }),
          success: () => console.log('data 삭제 완료'),
-         error: (e) => {
-            alert(e)
+         error: () => {
+            alert("에러")
          }
       });
-         listContainer.removeChild(event.target.parentNode);
-      
-  
       })
          
    
@@ -421,8 +410,7 @@ const addDeleteButtonEvent = () => {
 }
 
 
-for(i=0; i<document.querySelectorAll("div.list1 > div").length; i++){
+for(i=0; i<15; i++){
 addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
 addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
-

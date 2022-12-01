@@ -33,12 +33,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 #listContainer::-webkit-scrollbar {
    display: none;
 }
+background-image: url("../css/bg3.png");
 </style>
 
 </head>
 
 <body>
-
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">

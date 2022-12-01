@@ -20,19 +20,23 @@ public interface IndexMapper {
 
 	public List<Menus> womanMenulist(Menus menus); //여자용
 	
-
-	
 	//손님이 주문한 목록 출력
 	@Select("select * from orders")
 	public List<Orders> selectOrderList();
-	
 	
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	public void order(Orders orders);
 	
 	//손님이 삭제한 목록 DB에서도 삭제하기 (오른쪽)
-
 	public void deleteOrder(Orders orders);
 
+	// 주문하기 누르면 영수증에 주문한 내용 추가
 	public void orderComplete(Receipt receipt);
+	// 주문한 내용 토대로 menus 테이블에서는 재고, 주문횟수 수정
+	public void menusUpdate(Orders orders);
+	
+	//주문접수 되면 주문목록 초기화시키기
+	public void menusTruncate();
+	// 영수증 목록 가져오기
+	public List<Receipt> receiptList();
 }

@@ -32,7 +32,7 @@ public class IndexService {
 		}
 
 	}
-	
+
 	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	public void order(Orders orders) {
 		
@@ -56,9 +56,20 @@ public class IndexService {
 		indexMapper.deleteOrder(orders);
 	}
 	
+	// 주문하기 누르면 영수증에 주문한 내용 추가
 	public void orderComplete(Receipt receipt) {
 		indexMapper.orderComplete(receipt);
 	}
-
+	
+	// 주문한 내용 토대로 menus 테이블에서는 재고, 주문횟수 수정
+	public void menusUpdate(Orders orders) {
+		indexMapper.menusUpdate(orders);
+		indexMapper.menusTruncate();
+	}
+	
+	// 영수증 목록 가져오기
+	public List<Receipt> receiptList(){
+		return indexMapper.receiptList();
+	}
 
 }
