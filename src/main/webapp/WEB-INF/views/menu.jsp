@@ -62,11 +62,11 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                         <div class="wrapper ${vo.menu_name}">
                            <!-- 공백 제거해주어야함 -->
                            <!-- << 공백 제거해줘야함 -->
-                           <span class="orderCount" style="color: white">${vo.menu_name}</span>
+                           <span class="orderCount" style="color: white">${vo.menu_name}</span><br>
                            <button class="downCount">-</button>
                            <span style="color: white">${vo.order_cnt}</span>
                            <button class="upCount">+</button>
-   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: #f8c000;">
                         
                         <span class="material-symbols-outlined trash" value="${vo.menu_name}">
 delete
