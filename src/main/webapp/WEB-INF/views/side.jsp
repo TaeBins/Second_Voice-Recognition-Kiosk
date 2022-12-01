@@ -143,7 +143,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 										<!-- Product actions-->
 										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
-												<button name="${vo.menu_name}" class="cartbutton">
+												<button value="${vo.menu_stock_cnt}" name="${vo.menu_name}" class="cartbutton">
 													<span>Add to cart</span>
 													<div class="cart">
 														<svg viewBox="0 0 36 26">
