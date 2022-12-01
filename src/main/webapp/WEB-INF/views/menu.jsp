@@ -8,6 +8,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <html lang="en">
 
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -33,12 +34,12 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 #listContainer::-webkit-scrollbar {
    display: none;
 }
-background-image: url("../css/bg3.png");
 </style>
 
 </head>
 
 <body>
+
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
