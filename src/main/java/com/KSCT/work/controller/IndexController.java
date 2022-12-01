@@ -114,6 +114,7 @@ public class IndexController {
 		indexService.orderComplete(receipt);
 		// 주문목록 모델 서비스로 보내기
 		indexService.menusUpdate(orders);
+
 		// 영수증 페이지로 가기전에 최신화 시키기위해 "/" 이걸 붙여서 맵핑 실행하도록
 		return "redirect:/receipt";
 	}

@@ -64,6 +64,7 @@ public class IndexService {
 	// 주문한 내용 토대로 menus 테이블에서는 재고, 주문횟수 수정
 	public void menusUpdate(Orders orders) {
 		indexMapper.menusUpdate(orders);
+		indexMapper.menusTruncate();
 	}
 	
 	// 영수증 목록 가져오기
