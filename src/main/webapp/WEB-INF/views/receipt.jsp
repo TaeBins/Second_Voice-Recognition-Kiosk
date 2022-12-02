@@ -14,7 +14,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Keys-Core</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -109,6 +109,10 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                <div>
                   <dt>Date</dt>
                   <dd>${receiptList[0].receipt_date}</dd>
+               </div>
+               <div>
+                  <dt>영수증 번호</dt>
+                  <dd>${receiptList[0].receipt_num}</dd>
                </div>
          </header>
          <main>
