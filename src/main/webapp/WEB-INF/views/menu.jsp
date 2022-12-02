@@ -83,7 +83,7 @@ delete
                </div>
               <div style="text-align: center;">
                   <form action="/ordercomplete" method="post">
-                     <button class="fa fa-shopping-cart" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
+                     <button class="bubbly-button" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
                   </form>
                </div>
 
@@ -311,6 +311,24 @@ delete
 
 
    </script>
+   <script>var animateButton = function(e) {
+
+	   e.preventDefault;
+	   //reset animation
+	   e.target.classList.remove('animate');
+	   
+	   e.target.classList.add('animate');
+	   setTimeout(function(){
+	     e.target.classList.remove('animate');
+	   },700);
+	 };
+
+	 var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+	 for (var i = 0; i < bubblyButtons.length; i++) {
+	   bubblyButtons[i].addEventListener('click', animateButton, false);
+	 }</script>
   <script src="js/ordering.js"></script>
+  
 </body>
 </html>
