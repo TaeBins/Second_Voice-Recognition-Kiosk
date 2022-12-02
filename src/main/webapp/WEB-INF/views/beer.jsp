@@ -38,39 +38,49 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Section-->
 	<div style="
     display: inline-block;">
-		<section class="py-6" style="float: right; width: 22%; height: 702px;">
-			<div class="container px-4 px-lg-5 mt-5">
-						<div class="container1" style="overflow: scroll">
-					<h1 style="color: #dee2e6;">ORDER</h1>
-					<div>
-						<div class="wrapper"></div>
-					</div>
-					<div id="listContainer">
-						<c:forEach var="vo" items="${orderList}" begin="0" end="5">
-							<div class="list1" style="height: 80px;">
-								<div class="wrapper ${vo.menu_name}">
-									<!-- 공백 제거해주어야함 -->
-									<!-- << 공백 제거해줘야함 -->
-									<span class="orderCount" style="color: white">${vo.menu_name}</span>
-									<button class="downCount">-</button>
-									<span style="color: white">${vo.order_cnt}</span>
-									<button class="upCount">+</button>
-								</div>
-								<button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
-							</div>
-						</c:forEach>
-					</div>
-					<form action="/ordercomplete" method="post">
-						<button class="fa fa-shopping-cart" type="submit">주문하기</button>
-					</form>
+	      <section class="py-6" style="float: right; width: 22%; height: 702px;">
+         <div class="container px-4 px-lg-5 mt-5">
+            <div class="container1" >
+               <h1 style="color: #dee2e6;">ORDER</h1>
+               <div>
+                  <div class="wrapper"></div>
+               </div>
+               <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
+                  <c:forEach var="vo" items="${orderList}" begin="0" end="5">
+                     <div class="list1" style="height: 80px;">
+                        <div class="wrapper ${vo.menu_name}">
+                           <!-- 공백 제거해주어야함 -->
+                           <!-- << 공백 제거해줘야함 -->
+                           <span class="orderCount" style="color: white">${vo.menu_name}</span><br>
+                 
+                           <button class="downCount">-</button>
+                           <span style="color: white">${vo.order_cnt}</span>
+                           <button class="upCount">+</button>
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: #f8c000;">
+                        
+                        <span class="material-symbols-outlined trash" value="${vo.menu_name}">
+delete
+</span>
 
+</div>
 
-				</div>
+                     </div>
 
-				<span id="downArrow" style="visibility: hidden; color: white; position: absolute; left: 88.5%; top: 660px" class="material-symbols-outlined"> </span>
-			
-			</div>
-		</section>
+                     
+                  </c:forEach>
+               </div>
+               <div style="text-align:center;">
+               <form action="/ordercomplete" method="post">
+                  <button class="fa fa-shopping-cart" type="submit">주문하기</button>
+               </div>
+
+               </form>
+
+            </div>
+
+            <span id="downArrow" style="visibility: hidden; color: white; position: absolute; left: 88.5%; top: 660px" class="material-symbols-outlined"> </span>
+         </div>
+      </section>
 			<section class="py-6" style="float: left; width: 14.8%; height: 702px;">
 			<div class="container px-4 px-lg-5 mt-5">
 
