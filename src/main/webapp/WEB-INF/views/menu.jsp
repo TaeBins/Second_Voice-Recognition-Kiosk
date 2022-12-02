@@ -8,7 +8,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -40,7 +39,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 </style>
 
 </head>
-
 <body style="background-color: #F2F2F2;">
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -124,7 +122,7 @@ delete
             </div>
             <div class="col mb-7">
                <div class="card h-100">
-                  <a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
+                  <a class="btn1 btn-outline-dark mt-auto" href="/time">더치페이</a>
                </div>
             </div>
 
@@ -146,14 +144,7 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <c:choose>
-                              <c:when test="${vo.menu_stock_cnt <= 0}">
-                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
-                                 </c:when>
-                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
-                              </c:otherwise>
-                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -193,14 +184,7 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
-                             <c:choose>
-                              <c:when test="${vo.menu_stock_cnt <= 0}">
-                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
-                                 </c:when>
-                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
-                              </c:otherwise>
-                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -240,14 +224,7 @@ delete
                            <div class="card h-100">
                               <!-- Sale badge-->
                               <!-- Product image-->
-                             <c:choose>
-                              <c:when test="${vo.menu_stock_cnt <= 0}">
-                                 <img class="card-img-top" src="assets/menu/재고소진.jpg" alt="..." />
-                                 </c:when>
-                                 <c:otherwise>
                               <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
-                              </c:otherwise>
-                              </c:choose>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">

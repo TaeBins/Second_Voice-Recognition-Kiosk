@@ -25,4 +25,9 @@ public class Receipt {
 
     // 할인 금액 
     private int dc_amount;
+    
+    //테이블 번호
+    private int tbl_number;
+    
+    
 }

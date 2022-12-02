@@ -362,7 +362,7 @@ function callme() {
             icon: 'info',
             title: '아하! ',
             text: '다음부턴 신중히 눌러주시길 :)',
-            showConfirmButton: false,
+            showConfirmButton: false,	
             timer: 1500
          })
       }
