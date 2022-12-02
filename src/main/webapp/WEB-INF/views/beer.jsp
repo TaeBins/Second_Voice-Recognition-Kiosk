@@ -101,7 +101,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 				</div>
 				<div class="col mb-7">
 					<div class="card h-100">
-						<a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
+						<a class="btn1 btn-outline-dark mt-auto" href="/time">더치페이</a>
 					</div>
 				</div>
 	
