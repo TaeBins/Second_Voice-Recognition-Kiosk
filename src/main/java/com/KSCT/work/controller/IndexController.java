@@ -137,42 +137,15 @@ public class IndexController {
 		model.addAttribute("receiptList", receiptlist);
 		return "receipt";
 	}
-	
-	// 관리자 페이지
-	@GetMapping("/manager")
-	public String manager() {
-		return "manager";
-	}
-	
-	// 재고 수정 페이지
-	@GetMapping("/m_modify")
-	public String modify() {
-		return "m_modify";
-	}
-	
-	// 이전 영수증 페이지
-	@GetMapping("/m_previous")
-	public String previous() {
-		return "m_previous";
-	}
-	// 매출 페이지
-	@GetMapping("/m_sumsales")
-	public String sumsales() {
-		return "m_sumsales";
-	}
 
-	// 최종 결제 페이지
-	@GetMapping("/m_payment")
+	// 관리자 최종 결제 페이지
+	@GetMapping("/manager")
 	public String payment(Model model) {
 		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
 		List<Receipt> receiptlist = indexService.receiptList();
 		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
 		model.addAttribute("receiptList", receiptlist);
-		return "m_payment";
+		return "manager";
 	}
-	
-	@PostMapping("/m_rpayment")
-	public void m_rpayment() {
-		
-	}
+
 }
