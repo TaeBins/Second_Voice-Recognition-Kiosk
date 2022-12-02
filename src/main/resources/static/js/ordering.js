@@ -196,20 +196,20 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
 	//각 메뉴의 -, + 버튼 가지고 오기
-	const downButton = document.querySelector(`div.${name.replace(' ', '')} button.downCount`)
-	const upButton = document.querySelector(`div.${(name)} button.upCount`)
+	const downButton = document.querySelector(`div.${name.replace(" ", "")} span.downCount`)
+	const upButton = document.querySelector(`div.${name.replace(" ", "")} span.upCount`)
 
 	//Down 버튼 누를 경우
 	downButton.addEventListener("click", (event) => {
 		//현재 입력되어 있는 개수 값 가지고오기
-		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+		const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(4)`)
 		//개수 값에 -1 적용
 		currentOrderCount.innerText -= 1;
-		console.log(currentOrderCount.innerText)
+
 		// 숫자가 0이 될경우 삭제 버튼 클릭
-		if (currentOrderCount.innerText <= 0) {
+		if (currentOrderCount.innerText == 0) {
 			//document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]   .click();         //Ajax로 DB Delete문 요청
-			document.querySelector(`span[value="${name}"]`).click();
+			document.querySelector(`button[value="${name}"]`).click();
 			return;
 		}
 
@@ -234,7 +234,7 @@ const addButtonEvent = (name) => {
 
 
 	upButton.addEventListener("click", (event) => {
-		let currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+		let currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(4)`)
 		let stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
 		//개수 값에 +1 적용
 		if (parseInt(currentOrderCount.innerText) < stock) {
@@ -287,7 +287,6 @@ cartButton.forEach((cartButton) => {
 
 
 
-
 		//현재 주문한 메뉴가 orderList에 없다면?
 		if (!check) {
 			//메뉴 추가
@@ -296,6 +295,8 @@ cartButton.forEach((cartButton) => {
 			appendList(cartButton.name, orderCounts);
 			addButtonEvent(cartButton.name);
 			addDeleteButtonEvent(cartButton.name);
+			const maxScroll = document.querySelector('#listContainer').scrollHeight
+			document.querySelector('#listContainer').scrollTo(0, maxScroll);
 			$.ajax({
 				type: 'POST',
 				url: '/order',
@@ -375,13 +376,17 @@ const appendList = (name, orderCounts) => {
 	list.className = "list1";
 	list.style = "height:80px"
 	list.innerHTML = `
-   <div class="wrapper ${name.replace(" ", "")}">
-     <span class="orderCount" style="color:white">${name}</span>
-     <button class="downCount">-</button><span style="color:white"> ${orderCounts} </span><button class="upCount">+</button>
-      </div>
-      <div value="${name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
-                        
-      <span class="material-symbols-outlined trash" value="${name}">
+<div class="wrapper ${name.replace(" ", "")}">
+<span class="orderCount" style="color:white">${name}</span><br>
+<span class="material-symbols-outlined downCount">
+navigate_before </span>
+<span style="color:white"> ${orderCounts} </span>
+<span class="material-symbols-outlined upCount">
+navigate_next </span>
+</div>
+<div value="${name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+
+<span class="material-symbols-outlined trash" value="${name}">
 delete
 </span>
 </div>
@@ -415,7 +420,7 @@ const addDeleteButtonEvent = () => {
 	})
 }
 
-for (i = 0; i < document.querySelectorAll("div.list1 > div:first-child").length; i++) {
-	addButtonEvent(document.querySelectorAll("div.list1 > div:first-child")[i].classList[1])
+for (i = 0; i < 15; i++) {
+	addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
 	addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
 }
