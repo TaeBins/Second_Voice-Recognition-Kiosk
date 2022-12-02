@@ -91,9 +91,13 @@ public class IndexService {
 	}
 	
 	// 영수증 목록 가져오기
-	public List<Receipt> receiptList(){
+	public List<Receipt> receiptList(TableInfo table){
 		
-		return indexMapper.receiptList();
+		return indexMapper.receiptList(table);
 	}
 
+	// 메뉴 재고 수량 리셋
+	public void stockReset() {
+		indexMapper.stockReset();
+	}
 }

@@ -53,8 +53,9 @@ public class IndexController {
 	@GetMapping("/")
 	public String index(HttpSession session) {
 		TableInfo table = indexService.getTable(session);
-		System.out.println("이 테이블의 테이블 번호는 " +table.getTbl_number() +"입니다.");
+		System.out.println("이 테이블의 테이블 번호는 " +table.getTbl_number() +", 영수증 번호는 "+table.getReceipt_num()+"입니다.");
 		session.setAttribute("table", table);
+		
 		
 		return "index";
 	}
@@ -92,7 +93,7 @@ public class IndexController {
 	public String order(@RequestBody Orders orders) {
 		// 손님이 버튼 클릭 or 음성 주문 했을 경우
 		System.out.println(orders.getOrder_cnt() + orders.getMenu_name());
-
+		
 		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
 
 		return "null";
@@ -116,9 +117,9 @@ public class IndexController {
 	// 영수증 모델과 주문목록 모델을 사용해야해서 가져오기
 	public String orderComplete(Receipt receipt, Orders orders, HttpSession session) {
 		// 영수증 모델 서비스로 보내기
-		TableInfo tbl_info = (TableInfo) session.getAttribute("table");
-		orders.setTbl_number(tbl_info.getTbl_number());
-		receipt.setTbl_number(tbl_info.getTbl_number());
+		TableInfo table = (TableInfo) session.getAttribute("table");
+		receipt.setReceipt_num(table.getReceipt_num());
+		receipt.setTbl_number(table.getTbl_number());
 		indexService.orderComplete(receipt);
 		// 주문목록 모델 서비스로 보내기
 		indexService.menusUpdate(orders);
@@ -132,7 +133,8 @@ public class IndexController {
 	// 리스트 가져오기위해 model 함수 가져오기
 	public String receiptlist(Model model, HttpSession session) {
 		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
-		List<Receipt> receiptlist = indexService.receiptList();
+		TableInfo table = (TableInfo) session.getAttribute("table");
+		List<Receipt> receiptlist = indexService.receiptList(table);
 		int totalPrice = 0;
 		for (Receipt receipt : receiptlist) {
 			totalPrice += receipt.getMenu_price() * receipt.getOrder_cnt();
@@ -153,4 +155,10 @@ public class IndexController {
 		return "manager";
 	}
 
+	// 재고 수량 리셋
+	@PostMapping("/stockreset")
+	public String stockreset() {
+		indexService.stockReset();
+		return "/manager";
+	}
 }

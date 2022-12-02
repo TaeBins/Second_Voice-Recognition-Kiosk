@@ -1,4 +1,4 @@
-/* onclick 으로 부른 callme 함수 실행 */
+/* onclick 으로 부른 payment 함수 실행 */
 function payment() {
 	/* 첫 alert 창 */
 	Swal.fire({
@@ -50,4 +50,14 @@ function payment() {
 		}
 	})
 }
-/* call me 함수 끝 */
+/* payment 함수 끝 */
+
+/* onclick 으로 부른 stock_reset 함수 실행 */
+function stock_reset() {
+	/* 첫 alert 창 */
+	Swal.fire({
+		title: 'Reset ~!',
+		showConfirmButton: false,
+	})
+}
+/* stock_reset 함수 끝 */

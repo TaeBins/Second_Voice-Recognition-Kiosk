@@ -33,9 +33,11 @@
 	<section class="py-5" style="float: left; width: 15%; height: 702px;">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="col mb-6">
-				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" onclick="">재고 수정</a>
-				</div>
+				<form action="/stockreset" method="post">
+					<div class="card h-100">
+						<input type="submit" class="btn1 btn-outline-dark mt-auto" value="재고 리셋" onclick="stock_reset()">
+					</div>
+				</form>
 			</div>
 			<div class="col mb-6">
 				<div class="card h-100">

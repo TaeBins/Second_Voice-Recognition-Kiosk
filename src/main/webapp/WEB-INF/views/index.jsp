@@ -27,7 +27,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 </head>
-<body style="height: 100px;" id="page-top">
+<body style="height: 100px;" id="page-top" style="background-color: #F2F2F2;">
 	<!-- 배경 애니메이션 -->
 	<div style="height: 100px;" class="context">
 		<!-- 간판-->

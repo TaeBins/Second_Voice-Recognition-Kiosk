@@ -45,5 +45,8 @@ public interface IndexMapper {
 	//주문접수 되면 주문목록 초기화시키기
 	public void menusTruncate();
 	// 영수증 목록 가져오기
-	public List<Receipt> receiptList();
+	public List<Receipt> receiptList(TableInfo table);
+	
+	// 재고 리셋
+	public void stockReset();
 }

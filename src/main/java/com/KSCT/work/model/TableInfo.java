@@ -7,7 +7,7 @@ public class TableInfo {
 
 	private int tbl_number;
 	
-	private int receipt_number;
+	private int receipt_num;
 	
 	
 }
