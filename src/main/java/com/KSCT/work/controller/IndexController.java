@@ -147,9 +147,10 @@ public class IndexController {
 
 	// 관리자 최종 결제 페이지
 	@GetMapping("/manager")
-	public String payment(Model model) {
+	public String payment(Model model, HttpSession session) {
+		TableInfo table = (TableInfo) session.getAttribute("table");
 		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
-		List<Receipt> receiptlist = indexService.receiptList();
+		List<Receipt> receiptlist = indexService.receiptList(table);
 		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
 		model.addAttribute("receiptList", receiptlist);
 		return "manager";
