@@ -286,6 +286,8 @@ delete
       if(cartButton.value == 0){
       cartButton.disabled = true}
       })
+      
+
 
 
    </script>
@@ -305,7 +307,9 @@ delete
 
 	 for (var i = 0; i < bubblyButtons.length; i++) {
 	   bubblyButtons[i].addEventListener('click', animateButton, false);
-	 }</script>
+	 }
+	    alert("css 적용이 안 되냐고...")
+	 </script>
   <script src="js/ordering.js"></script>
   
 </body>
