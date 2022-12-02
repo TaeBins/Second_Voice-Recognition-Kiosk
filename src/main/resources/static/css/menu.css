@@ -91,10 +91,34 @@
 *::after {
   box-sizing: border-box;
 }
-.position{
+.position5 {
+    position: absolute;
+    top: 52px;
+    left: 64px;
+}
+.position1{
 	  position: absolute;
-    top: 37px;
-    left: 30px;
+    top: 24px;
+left: 67px;
+    transform: translate(-50%,-50%);
+}
+.position2{
+		  position: absolute;
+	    top: 40px;
+	    left: 60px;
+		
+}
+.position3{
+		  position: absolute;
+			    top: 40px;
+				left:18px;
+}
+.position4{
+		  position: absolute;
+	
+			    top: 40px;
+			    				left:65px;
+			    
 }
 .trash{
 	color:#212529;
