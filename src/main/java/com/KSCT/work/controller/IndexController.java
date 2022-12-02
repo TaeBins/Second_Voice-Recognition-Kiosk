@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.KSCT.work.model.Menus;
 import com.KSCT.work.model.Orders;
 import com.KSCT.work.model.Receipt;
+import com.KSCT.work.model.TableInfo;
 import com.KSCT.work.service.IndexService;
 
 // @Controller : Controller 클래스에 쓰이며 API와 View를 같이 사용할경우
@@ -47,50 +48,54 @@ public class IndexController {
 
 	@Autowired
 	private IndexService indexService;
-	
+
 	// "/" 주소로 가면 첫화면 뜨게 하기
 	@GetMapping("/")
-	public String index() {
+	public String index(HttpSession session) {
+		TableInfo table = indexService.getTable(session);
+		System.out.println("이 테이블의 테이블 번호는 " +table.getTbl_number() +", 영수증 번호는 "+table.getReceipt_num()+"입니다.");
+		session.setAttribute("table", table);
+		
+		
 		return "index";
 	}
 
 	// 메뉴 가져오기
 	@RequestMapping(value = "/{menu_type}") // 페이지 들어갈때 가져올 각 페이지의 값
 	// pathvariable 위에서 지정한 값을 가져와서 int형으로 저장
-	public String menulist(@PathVariable("menu_type") int menu_type, Menus menus, HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String menulist(@PathVariable("menu_type") int menu_type, Menus menus, HttpServletRequest request,
+			HttpServletResponse response, Model model, HttpSession session) {
 		// 서비스로 menu_type 보내주기
-		
 		menus.setMenu_type(menu_type);
 		System.out.println(menus.getMenu_gender());
-		
-		List<Menus> menuList  = indexService.menulist(menus);
+
+		List<Menus> menuList = indexService.menulist(menus);
 		List<Orders> orderList = indexService.selectOrderList();
-		model.addAttribute("menuList",menuList);
+		model.addAttribute("menuList", menuList);
 		model.addAttribute("orderList", orderList);
 		// 맵핑값에 따라 리턴값도 바뀌어야 해서 if문으로 따로 설정
-		String next=null;
-		if(menu_type==1) {
-			next="menu";
-		}else if(menu_type==2) {
-			next="side";
-		}else if(menu_type==3) {
-			next="beer";
-		}else {
-			next="drink";
-		}		
+		String next = null;
+		if (menu_type == 1) {
+			next = "menu";
+		} else if (menu_type == 2) {
+			next = "side";
+		} else if (menu_type == 3) {
+			next = "beer";
+		} else {
+			next = "drink";
+		}
 		return next;
 	}
-	
-	//손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
+
+	// 손님이 주문한 목록 DB에 저장하기 (오른쪽에 뜨는 메뉴목록)
 	@PostMapping("/order")
 	@ResponseBody
 	public String order(@RequestBody Orders orders) {
-		//손님이 버튼 클릭 or 음성 주문 했을 경우
+		// 손님이 버튼 클릭 or 음성 주문 했을 경우
 		System.out.println(orders.getOrder_cnt() + orders.getMenu_name());
-			
-		  indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
-		 
 		
+		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
+
 		return "null";
 	}
 
@@ -98,7 +103,7 @@ public class IndexController {
 	public String time() {
 		return "time";
 	}
-	
+
 	@DeleteMapping("/deleteorder")
 	@ResponseBody
 	public String deleteOrder(@RequestBody Orders orders) {
@@ -106,12 +111,15 @@ public class IndexController {
 		indexService.deleteOrder(orders);
 		return null;
 	}
-	
+
 	// 메뉴 화면에서 오른쪽 주문목록 주문 하기 버튼 누르면 실행
 	@PostMapping("/ordercomplete")
 	// 영수증 모델과 주문목록 모델을 사용해야해서 가져오기
-	public String orderComplete(Receipt receipt, Orders orders) {
+	public String orderComplete(Receipt receipt, Orders orders, HttpSession session) {
 		// 영수증 모델 서비스로 보내기
+		TableInfo table = (TableInfo) session.getAttribute("table");
+		receipt.setReceipt_num(table.getReceipt_num());
+		receipt.setTbl_number(table.getTbl_number());
 		indexService.orderComplete(receipt);
 		// 주문목록 모델 서비스로 보내기
 		indexService.menusUpdate(orders);
@@ -119,18 +127,19 @@ public class IndexController {
 		// 영수증 페이지로 가기전에 최신화 시키기위해 "/" 이걸 붙여서 맵핑 실행하도록
 		return "redirect:/receipt";
 	}
-	
+
 	// 위에서 마지막에 실행된 /receipt 로 와지면 실행
 	@GetMapping("/receipt")
 	// 리스트 가져오기위해 model 함수 가져오기
 	public String receiptlist(Model model, HttpSession session) {
 		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
-		List<Receipt> receiptlist = indexService.receiptList();
+		TableInfo table = (TableInfo) session.getAttribute("table");
+		List<Receipt> receiptlist = indexService.receiptList(table);
 		int totalPrice = 0;
-	      for(Receipt receipt : receiptlist) {
-	         totalPrice += receipt.getMenu_price() * receipt.getOrder_cnt();
-	      }
-	      session.setAttribute("totalPrice", totalPrice);
+		for (Receipt receipt : receiptlist) {
+			totalPrice += receipt.getMenu_price() * receipt.getOrder_cnt();
+		}
+		session.setAttribute("totalPrice", totalPrice);
 		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
 		model.addAttribute("receiptList", receiptlist);
 		return "receipt";
@@ -139,5 +148,22 @@ public class IndexController {
 	@GetMapping("/modal")
 	public String modal() {
 		return "modal";
+	}
+	// 관리자 최종 결제 페이지
+	@GetMapping("/manager")
+	public String payment(Model model, HttpSession session) {
+		TableInfo table = (TableInfo) session.getAttribute("table");
+		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
+		List<Receipt> receiptlist = indexService.receiptList(table);
+		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
+		model.addAttribute("receiptList", receiptlist);
+		return "manager";
+	}
+
+	// 재고 수량 리셋
+	@PostMapping("/stockreset")
+	public String stockreset() {
+		indexService.stockReset();
+		return "/manager";
 	}
 }

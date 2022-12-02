@@ -7,15 +7,13 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Keys-Core</title>
 <!-- Favicon-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -45,6 +43,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	display: none;
 }
 </style>
+
 </head>
 <body style="background-color: #F2F2F2;">
 	<!-- Navigation-->
@@ -192,7 +191,6 @@ response.setHeader("Access-Control-Allow-Origin", "*");
        e.preventDefault();
    }));
    </script>
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 	<div style="visibility: hidden;" id="formContainer"></div>
@@ -244,8 +242,6 @@ function count(type)  {
   document.querySelector("div.modal-footer-1").innerHTML = `분할 금액 :` + Math.round(parseInt(${totalPrice}) / parseInt(number))
 
 }
-  // 나누기 함수
-			
 	</script>
 </body>
 </html>

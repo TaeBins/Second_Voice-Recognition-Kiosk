@@ -12,7 +12,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Keys-Core</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -28,16 +28,17 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
 #listContainer::-webkit-scrollbar {
    display: none;
 }
+
 </style>
 
 </head>
-
-<body>
+<body style="background-color: #F2F2F2;">
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
@@ -58,23 +59,32 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
-                           <!-- 공백 제거해주어야함 -->
-                           <!-- << 공백 제거해줘야함 -->
-                           <span class="orderCount" style="color: white">${vo.menu_name}</span>
-                           <button class="downCount">-</button>
-                           <span style="color: white">${vo.order_cnt}</span>
-                           <button class="upCount">+</button>
-                        </div>
-                        <button value="${vo.menu_name.replace(' ', '')}" class="fa fa-shopping-cart">삭제</button>
+                 
+                           <span class="orderCount position1" style="color: white ">${vo.menu_name}</span>
+                           <br>
+                           <span style="color: white" class="material-symbols-outlined downCount position3"> do_not_disturb_on&nbsp; </span>
+                           <span style="color: white" class="position2"> ${vo.order_cnt} </span>
+                           <span style="color: white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
+
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+                        
+                        <span class="material-symbols-outlined trash" value="${vo.menu_name}">
+delete
+</span>
+
+</div>
+
                      </div>
+
+                     
                   </c:forEach>
                </div>
-               <div style="text-align:center;">
-               <form action="/ordercomplete" method="post">
-                  <button class="fa fa-shopping-cart" type="submit">주문하기</button>
+              <div style="text-align: center;">
+                  <form action="/ordercomplete" method="post">
+                     <button class="fa fa-shopping-cart" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
+                  </form>
                </div>
 
-               </form>
 
             </div>
 
@@ -259,7 +269,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
-   <script src="js/ordering.js"></script>
+ 
    <script type="text/javascript">
    document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
        if(!button.classList.contains('loading')) {
@@ -268,6 +278,16 @@ response.setHeader("Access-Control-Allow-Origin", "*");
        }
        e.preventDefault();
    }));
+   
+
+   const cartButtons = document.querySelectorAll("button.cartbutton");
+   cartButtons.forEach((cartButton)=> {
+      if(cartButton.value == 0){
+      cartButton.disabled = true}
+      })
+
+
    </script>
+  <script src="js/ordering.js"></script>
 </body>
 </html>

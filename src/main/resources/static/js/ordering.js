@@ -93,9 +93,9 @@ const 바지락술국 = ["바지락술국", "바지락 술국", "바지락"]
 //무슨 메뉴를 주문했는지 체크하는 함수
 /*const checkMenu = (h_text) => {
    menu_list.forEach((menu) => {
-      if (h_text.indexOf(menu) !== -1) {
-         checkAmount(menu, h_text)
-      }
+     if (h_text.indexOf(menu) !== -1) {
+       checkAmount(menu, h_text)
+     }
 
    })
 }*/
@@ -196,20 +196,22 @@ h_speech.onresult = function(e) {
 // 버튼 누르면 orderCount 값 바꾸고, DB에 저장하는 함수
 const addButtonEvent = (name) => {
    //각 메뉴의 -, + 버튼 가지고 오기
-   const downButton = document.querySelector(`div.${name.replace(" ", "")} button.downCount`)
-   const upButton = document.querySelector(`div.${name.replace(" ", "")} button.upCount`)
+   const downButton = document.querySelector(`div.${name.replace(' ', '')} span.downCount`)
+   const upButton = document.querySelector(`div.${(name)} span.upCount`)
+   const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(4)`)
 
    //Down 버튼 누를 경우
    downButton.addEventListener("click", (event) => {
       //현재 입력되어 있는 개수 값 가지고오기
-      const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
+
+      console.log(currentOrderCount)
       //개수 값에 -1 적용
       currentOrderCount.innerText -= 1;
-      
+      console.log(currentOrderCount.innerText)
       // 숫자가 0이 될경우 삭제 버튼 클릭
-      if (currentOrderCount.innerText == 0) {
+      if (currentOrderCount.innerText <= 0) {
          //document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]   .click();         //Ajax로 DB Delete문 요청
-         document.querySelector(`button[value="${name}"]`).click();
+         document.querySelector(`span[value="${name}"]`).click();
          return;
       }
 
@@ -234,7 +236,6 @@ const addButtonEvent = (name) => {
 
 
    upButton.addEventListener("click", (event) => {
-      let currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(3)`)
       let stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
       //개수 값에 +1 적용
       if (parseInt(currentOrderCount.innerText) < stock) {
@@ -272,18 +273,19 @@ let orderCounts; // 각 메뉴들의 개수를 담을 변수
 //버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) => {
    cartButton.addEventListener("click", () => {
-
+      const upButton = document.querySelector(`div.${cartButton.name} span.upCount`)
       //만약 현재 주문해놓은 메뉴가 listContainer에 존재한다면
       for (j = 0; j < listContainer.children.length; j++) {
          const newOrderName = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(1)`)
          if (newOrderName.textContent.indexOf(cartButton.name) !== -1) {
             check = true;
             const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
-         document.querySelector(`div.${cartButton.name} button.upCount`).click()
+            upButton.click()
 
          }
 
       }
+
 
 
 
@@ -295,17 +297,22 @@ cartButton.forEach((cartButton) => {
          appendList(cartButton.name, orderCounts);
          addButtonEvent(cartButton.name);
          addDeleteButtonEvent(cartButton.name);
-            $.ajax({
-         type: 'POST',
-         url: '/order',
-         contentType: 'application/json; charset=utf-8',
-         data: JSON.stringify({
-            "menu_name": cartButton.name,
-            "order_cnt": orderCounts
-         }),
-         success: () => console.log('data 삽입 완료'),
-         error: () => alert("에러")
-      });
+         const maxScroll = document.querySelector('#listContainer').scrollHeight
+         document.querySelector('#listContainer').scrollTo(0, maxScroll);
+         //5개 이상 주문시 스크롤 자동으로 아래로 내리기
+
+
+         $.ajax({
+            type: 'POST',
+            url: '/order',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+               "menu_name": cartButton.name,
+               "order_cnt": orderCounts
+            }),
+            success: () => console.log('data 삽입 완료'),
+            error: () => alert("에러")
+         });
 
 
 
@@ -317,7 +324,7 @@ cartButton.forEach((cartButton) => {
       //   children.forEach((child)=>{if(tempList.innerText != child.textContent){
       //      orderList.appendChild(tempList);
       //   }})   
- 
+
    })
 });
 
@@ -372,15 +379,21 @@ function callme() {
 const appendList = (name, orderCounts) => {
    const list = document.createElement("div");
    list.className = "list1";
-   list.style = "height:80px"
+   list.style = "height:80px "
    list.innerHTML = `
    <div class="wrapper ${name.replace(" ", "")}">
-     <span class="orderCount" style="color:white">${name}</span>
-     <button class="downCount">-</button><span style="color:white"> ${orderCounts} </span><button class="upCount">+</button>
+     <span class="orderCount position1" style="color:white">${name}</span>
+     <br>
+     <span style="color:white" class="material-symbols-outlined downCount position3">  do_not_disturb_on&nbsp; </span> 
+     <span style="color:white"class=" position2"> ${orderCounts} </span>
+     <span style="color:white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
       </div>
+      <div value="${name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
+                        
       <span class="material-symbols-outlined trash" value="${name}">
 delete
 </span>
+</div>
     </div>`
 
    listContainer.appendChild(list);
@@ -391,28 +404,60 @@ const addDeleteButtonEvent = () => {
    const deleteButtons = document.querySelectorAll("span.trash")
    deleteButtons.forEach((deleteButton) => {
       deleteButton.addEventListener("click", (event) => {
-         listContainer.removeChild(event.target.parentNode);
-      
-      $.ajax({
-         type: 'DELETE',
-         url: '/deleteorder',
-         contentType: 'application/json; charset=utf-8',
-         data: JSON.stringify({
-            "menu_name": event.target.getAttribute('value'),
-         }),
-         success: () => console.log('data 삭제 완료'),
-         error: () => {
-            alert("에러")
-         }
-      });
+         console.log(event.target.parentNode.parentNode);
+         listContainer.removeChild(event.target.parentNode.parentNode);
+         console.log(event.target.getAttribute('value'))
+         $.ajax({
+            type: 'DELETE',
+            url: '/deleteorder',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({
+               "menu_name": event.target.getAttribute('value'),
+            }),
+            success: () => console.log('data 삭제 완료'),
+            error: () => {
+               alert("에러")
+            }
+         });
       })
-         
-   
+
+
    })
 }
 
+for (i = 0; i < document.querySelectorAll("div.list1 > div:first-child").length; i++) {
+   addButtonEvent(document.querySelectorAll("div.list1 > div:first-child")[i].classList[1])
+   addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
+}
 
-for(i=0; i<15; i++){
-addButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1])
-addDeleteButtonEvent(document.querySelectorAll("div.list1 > div")[i].classList[1]);
+
+function orderT() {
+   var ordertrue = document.getElementById('ordertrue');
+   var ordertlist = document.querySelectorAll("div.list1 > div").length;
+   if (ordertlist > 0) {
+      // 주문목록이 있을 때 주문을 하게되면 완료 창
+      ordertrue.setAttribute('type', 'submit');
+      Swal.fire({
+         position: 'mid',
+         title: '메뉴 주문중입니다',
+         imageUrl: 'assets/cooker.jpg',
+         imageWidth: 400,
+         imageHeight: 300,
+         showConfirmButton: false,
+         timer: 2000
+      })
+   } else {
+      // 주문목록이 없을 때 버튼이 작동하지 않게하고 만약 누르면 경고창
+      ordertrue.setAttribute('type', 'button');
+      Swal.fire({
+         toast: true,
+         position: 'mid',
+         title: '메뉴를 선택해주세요!',
+         imageUrl: 'assets/plz.png',
+         imageWidth: 400,
+         imageHeight: 300,
+         showConfirmButton: false,
+         timer: 2000
+      })
+   }
 }
