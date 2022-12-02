@@ -379,7 +379,7 @@ function callme() {
 const appendList = (name, orderCounts) => {
    const list = document.createElement("div");
    list.className = "list1";
-   list.style = "height:80px"
+   list.style = "height:80px "
    list.innerHTML = `
    <div class="wrapper ${name.replace(" ", "")}">
      <span class="orderCount position1" style="color:white">${name}</span>
