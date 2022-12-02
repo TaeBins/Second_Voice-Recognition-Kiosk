@@ -27,7 +27,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
-<body>
+<body style="background-color: #F2F2F2;">
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">

@@ -29,7 +29,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
 #listContainer::-webkit-scrollbar {
@@ -40,7 +40,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 </head>
 
-<body>
+<body style="background-color: #F2F2F2;">
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
@@ -62,11 +62,11 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
                  
-                           <span class="orderCount" style="color: white">${vo.menu_name}</span>
+                           <span class="orderCount position1" style="color: white ">${vo.menu_name}</span>
                            <br>
-                           <span style="color: white" class="material-symbols-outlined downCount">navigate_before</span>
-                           <span style="color: white">${vo.order_cnt}</span>
-                           <span style="color: white" class="material-symbols-outlined upCount">navigate_next</span>
+                           <span style="color: white" class="material-symbols-outlined downCount position3"> do_not_disturb_on&nbsp; </span>
+                           <span style="color: white" class="position2"> ${vo.order_cnt} </span>
+                           <span style="color: white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
 
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
                         

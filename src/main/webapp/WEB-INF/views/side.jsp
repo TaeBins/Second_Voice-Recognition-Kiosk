@@ -34,7 +34,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 </head>
 
-<body>
+<body style="background-color: #F2F2F2;">
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
