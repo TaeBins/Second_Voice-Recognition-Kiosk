@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,9 +123,14 @@ public class IndexController {
 	// 위에서 마지막에 실행된 /receipt 로 와지면 실행
 	@GetMapping("/receipt")
 	// 리스트 가져오기위해 model 함수 가져오기
-	public String receiptlist(Model model) {
+	public String receiptlist(Model model, HttpSession session) {
 		// 리스트 타입으로 영수증목록을 불러와야해서 영수증 모델 적용해서 receiptlist로 지정
 		List<Receipt> receiptlist = indexService.receiptList();
+		int totalPrice = 0;
+		for(Receipt receipt : receiptlist) {
+			totalPrice += receipt.getMenu_price() * receipt.getOrder_cnt();
+		}
+		session.setAttribute("totalPrice", totalPrice);
 		// receipt.jsp 에서 가져온 리스트값을 출력할수 있도록 addAttribute 해주기
 		model.addAttribute("receiptList", receiptlist);
 		return "receipt";

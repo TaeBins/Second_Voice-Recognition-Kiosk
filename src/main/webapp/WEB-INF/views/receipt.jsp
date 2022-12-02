@@ -8,6 +8,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <html lang="en">
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -32,6 +34,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    display: none;
 }
 </style>
+
 </head>
 <body style="background-color: #F2F2F2;">
    <!-- Navigation-->
@@ -80,6 +83,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 					<div class="card h-100">
 						<a class="btn1 btn-outline-dark mt-auto" href="/time">조리 시간</a>
 					</div>
+					
 				</div>
 				<div class="col mb-6">
 					<div class="card h-100">
@@ -147,7 +151,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   </dt>
                   <dd>
                      <h2>
-                        <span class="price">${sum}</span>
+                        <span class="price">${totalPrice}</span>
                      </h2>
                   </dd>
                </div>
@@ -170,5 +174,38 @@ response.setHeader("Access-Control-Allow-Origin", "*");
    }));
    </script>
    <div style="visibility: hidden;" id="formContainer"></div>
+   
+   
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+   
+   
+   
+   
+   
 </body>
 </html>
