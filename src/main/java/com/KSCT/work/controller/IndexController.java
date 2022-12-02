@@ -142,4 +142,10 @@ public class IndexController {
 		return "manager";
 	}
 
+	// 재고 수량 리셋
+	@PostMapping("/stockreset")
+	public String stockreset() {
+		indexService.stockReset();
+		return "/manager";
+	}
 }

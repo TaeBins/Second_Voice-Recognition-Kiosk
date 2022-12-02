@@ -39,4 +39,7 @@ public interface IndexMapper {
 	public void menusTruncate();
 	// 영수증 목록 가져오기
 	public List<Receipt> receiptList();
+	
+	// 재고 리셋
+	public void stockReset();
 }

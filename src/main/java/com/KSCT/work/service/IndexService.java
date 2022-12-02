@@ -72,4 +72,8 @@ public class IndexService {
 		return indexMapper.receiptList();
 	}
 
+	// 메뉴 재고 수량 리셋
+	public void stockReset() {
+		indexMapper.stockReset();
+	}
 }

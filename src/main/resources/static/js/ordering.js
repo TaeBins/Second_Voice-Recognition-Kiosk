@@ -438,9 +438,8 @@ function orderT() {
       // 주문목록이 있을 때 주문을 하게되면 완료 창
       ordertrue.setAttribute('type', 'submit');
       Swal.fire({
-         toast: true,
          position: 'mid',
-         title: '메뉴를 주문중 잠시 기달!',
+         title: '메뉴 주문중입니다',
          imageUrl: 'assets/cooker.jpg',
          imageWidth: 400,
          imageHeight: 300,
@@ -453,8 +452,8 @@ function orderT() {
       Swal.fire({
          toast: true,
          position: 'mid',
-         title: '메뉴 선택하고 오셈!',
-         imageUrl: 'assets/cooker.jpg',
+         title: '메뉴를 선택해주세요!',
+         imageUrl: 'assets/plz.png',
          imageWidth: 400,
          imageHeight: 300,
          showConfirmButton: false,

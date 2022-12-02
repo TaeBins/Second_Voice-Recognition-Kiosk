@@ -95,5 +95,9 @@
 	<delete id="deleteOrder" parameterType="Orders">
 		delete from orders where menu_name = #{menu_name}
 	</delete>
-	
+
+	<!-- 재고 리셋버튼 누를때 menus 테이블 재고 리셋해주기 -->
+	<update id="stockReset">
+		update menus set menu_stock_cnt = 10
+	</update>
 </mapper>
