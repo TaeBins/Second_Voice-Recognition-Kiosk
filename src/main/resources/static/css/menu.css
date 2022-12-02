@@ -91,6 +91,11 @@
 *::after {
   box-sizing: border-box;
 }
+.position{
+	  position: absolute;
+    top: 37px;
+    left: 30px;
+}
 .trash{
 	color:#212529;
 	position: absolute;

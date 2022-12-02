@@ -40,7 +40,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 
 </head>
 
-<body>
+<body style="background-color: #F2F2F2;">
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
@@ -65,7 +65,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
                            <br>
                            <span style="color: white" class="material-symbols-outlined downCount">navigate_before</span>
-                           <span style="color: white">${vo.order_cnt}</span>
+                           <span style="color: white" class="position">${vo.order_cnt}</span>
                            <span style="color: white" class="material-symbols-outlined upCount">navigate_next</span>
 
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
