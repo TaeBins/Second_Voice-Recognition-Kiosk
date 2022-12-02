@@ -29,17 +29,19 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <style>
 /*  overflow scroll 가려주는 스타일 */
 #listContainer::-webkit-scrollbar {
    display: none;
 }
+
 </style>
 
 </head>
 
 <body>
-
+<center>
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
@@ -62,9 +64,10 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                         <div class="wrapper ${vo.menu_name}">
                  
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
-                           <button class="downCount">-</button>
+                           <br>
+                           <span style="color: white" class="material-symbols-outlined downCount">navigate_before</span>
                            <span style="color: white">${vo.order_cnt}</span>
-                           <button class="upCount">+</button>
+                           <span style="color: white" class="material-symbols-outlined upCount">navigate_next</span>
 
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
                         
@@ -290,7 +293,7 @@ delete
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
-   <script src="js/ordering.js"></script>
+ 
    <script type="text/javascript">
    document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
        if(!button.classList.contains('loading')) {
@@ -309,5 +312,6 @@ delete
 
 
    </script>
+  <script src="js/ordering_junghyun.js"></script>
 </body>
 </html>
