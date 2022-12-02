@@ -29,17 +29,18 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <style>
 /*  overflow scroll 가려주는 스타일 */
 #listContainer::-webkit-scrollbar {
    display: none;
 }
+
 </style>
 
 </head>
 
 <body>
-
    <!-- Navigation-->
    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container-fluid">
@@ -60,23 +61,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
-<<<<<<< HEAD
-                           <!-- 공백 제거해주어야함 -->
-                           <!-- << 공백 제거해줘야함 -->
-                           <span class="orderCount" style="color: white">${vo.menu_name}</span><br>
-=======
                  
                            <span class="orderCount" style="color: white">${vo.menu_name}</span>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
-                           <button class="downCount">-</button>
+                           <br>
+                           <span style="color: white" class="material-symbols-outlined downCount">navigate_before</span>
                            <span style="color: white">${vo.order_cnt}</span>
-                           <button class="upCount">+</button>
-<<<<<<< HEAD
-   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: #f8c000;">
-=======
+                           <span style="color: white" class="material-symbols-outlined upCount">navigate_next</span>
 
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-3/KeysCore.git
                         
                         <span class="material-symbols-outlined trash" value="${vo.menu_name}">
 delete
@@ -89,12 +81,12 @@ delete
                      
                   </c:forEach>
                </div>
-               <div style="text-align:center;">
-               <form action="/ordercomplete" method="post">
-                  <button class="fa fa-shopping-cart" type="submit">주문하기</button>
+              <div style="text-align: center;">
+                  <form action="/ordercomplete" method="post">
+                     <button class="fa fa-shopping-cart" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
+                  </form>
                </div>
 
-               </form>
 
             </div>
 
@@ -300,7 +292,7 @@ delete
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
-   <script src="js/ordering.js"></script>
+ 
    <script type="text/javascript">
    document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
        if(!button.classList.contains('loading')) {
@@ -313,11 +305,12 @@ delete
 
    const cartButtons = document.querySelectorAll("button.cartbutton");
    cartButtons.forEach((cartButton)=> {
-	   if(cartButton.value == 0){
-	   cartButton.disabled = true}
-	   })
+      if(cartButton.value == 0){
+      cartButton.disabled = true}
+      })
 
 
    </script>
+  <script src="js/ordering.js"></script>
 </body>
 </html>
