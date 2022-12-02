@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Keys-Core</title>
 </head>
 <body>
 <div>Teachable Machine Audio Model</div>
