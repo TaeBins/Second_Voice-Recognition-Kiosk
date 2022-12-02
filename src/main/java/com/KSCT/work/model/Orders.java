@@ -22,4 +22,7 @@ public class Orders {
 
     // 예상 조리시간 
     private int order_time;
+    // 테이블 번호
+    private int tbl_number;
+    
 }
