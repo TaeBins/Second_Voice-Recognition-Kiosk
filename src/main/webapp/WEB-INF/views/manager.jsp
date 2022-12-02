@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="@sweetalert2/theme-wordpress-admin/wordpress-admin.css">
 <script src="sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/manager.js"></script>
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .wrap::-webkit-scrollbar {
@@ -29,29 +30,98 @@
 			<a class="navbar-brand" href="/manager">관리자 페이지</a>
 		</div>
 	</nav>
-	<section class="py-5" style="width: 20%; margin-left: 40%;">
+	<section class="py-5" style="float: left; width: 15%; height: 702px;">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="col mb-6">
 				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="/m_modify">재고 수정</a>
+					<a class="btn1 btn-outline-dark mt-auto" onclick="">재고 수정</a>
 				</div>
 			</div>
 			<div class="col mb-6">
 				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="/m_previous">이전 영수증</a>
-				</div>
-			</div>
-			<div class="col mb-6">
-				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="/m_payment">최종 결제</a>
-				</div>
-			</div>
-			<div class="col mb-6">
-				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="/m_sumsales">누적 판매량</a>
+					<a class="btn1 btn-outline-dark mt-auto" href="/manager">최종 결제</a>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- 해당 영수증 -->
+	<section class="py-6">
+		<div style="height: 80%; overflow: scroll; overflow-y: auto" class="wrap">
+			<h1>영수증</h1>
+			<header>
+				<dl class="info">
+					<div>
+						<dt>키코네 맥주</dt>
+						<dd>광주광역시 서구 경열로 20</dd>
+					</div>
+					<div>
+						<dt>전화번호</dt>
+						<dd>062-123-4567</dd>
+					</div>
+					<div>
+						<dt>Date</dt>
+						<dd>${receiptList[0].receipt_date}</dd>
+					</div>
+					<div>
+						<dt>영수증 번호</dt>
+						<dd>${receiptList[0].receipt_num}</dd>
+					</div>
+			</header>
+			<main>
+				<table style="width: 580px;">
+					<colgroup>
+						<col>
+						<col>
+						<col>
+						<col>
+					</colgroup>
+					<tr>
+						<th>메뉴</th>
+						<th>가격</th>
+						<th>갯수</th>
+						<th>합계</th>
+				</tr>
+					<c:forEach var="rl" items="${receiptList}">
+						<tr>
+							<td>${rl.menu_name}</td>
+							<td><span class="price">${rl.menu_price}</span></td>
+							<td>${rl.order_cnt}</td>
+							<td><span class="price">${rl.order_cnt*rl.menu_price}</span></td>
+							<c:set var="sum" value="${sum+(rl.menu_price*rl.order_cnt)}" />
+
+						</tr>
+					</c:forEach>
+				</table>
+			</main>
+			<footer>
+				<dl class="info">
+					<div class="discount">
+						<dt>할인금액</dt>
+						<dd>
+							<span class="price">0</span>
+						</dd>
+					</div>
+					<div class="total">
+						<dt>
+							<h2>총액</h2>
+						</dt>
+						<dd>
+							<h2>
+								<span class="price">${sum}</span>
+							</h2>
+						</dd>
+					</div>
+				</dl>
+			</footer>
+			<br>
+			<br>
+			<div class="col mb-6">
+				<div class="card h-100">
+					<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="payment();">결제 완료</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 해당 영수증 -->
 </body>
 </html>
