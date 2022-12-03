@@ -24,7 +24,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .container1::-webkit-scrollbar {
@@ -45,7 +45,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 	<!-- Section-->
 	<div style="
     display: inline-block;">
-		      <section class="py-6" style="float: right; width: 22%; height: 702px;">
+	   <section class="py-6" style="float: right; width: 22%; height: 702px;">
          <div class="container px-4 px-lg-5 mt-5">
             <div class="container1" >
                <h1 style="color: #dee2e6;">ORDER</h1>
@@ -56,14 +56,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
                      <div class="list1" style="height: 80px;">
                         <div class="wrapper ${vo.menu_name}">
-                           <!-- 공백 제거해주어야함 -->
-                           <!-- << 공백 제거해줘야함 -->
-                           <span class="orderCount" style="color: white">${vo.menu_name}</span><br>
                  
-                           <button class="downCount">-</button>
-                           <span style="color: white">${vo.order_cnt}</span>
-                           <button class="upCount">+</button>
-   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: #f8c000;">
+                           <span class="orderCount position1" style="color: white ">${vo.menu_name}</span>
+                           <br>
+                           <span style="color: white" class="material-symbols-outlined downCount position3"> do_not_disturb_on&nbsp; </span>
+                           <span style="color: white" class="position2"> ${vo.order_cnt} </span>
+                           <span style="color: white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
+
+   </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
                         
                         <span class="material-symbols-outlined trash" value="${vo.menu_name}">
 delete
@@ -76,12 +76,12 @@ delete
                      
                   </c:forEach>
                </div>
-               <div style="text-align:center;">
-               <form action="/ordercomplete" method="post">
-                  <button class="fa fa-shopping-cart" type="submit">주문하기</button>
+              <div style="text-align: center;">
+                  <form action="/ordercomplete" method="post">
+                     <button class="bubbly-button" id="ordertrue" type="button" onclick="orderT()">주문하기</button>
+                  </form>
                </div>
 
-               </form>
 
             </div>
 

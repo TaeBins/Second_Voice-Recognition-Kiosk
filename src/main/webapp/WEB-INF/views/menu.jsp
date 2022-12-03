@@ -29,6 +29,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 
 <style>
 /*  overflow scroll 가려주는 스타일 */
@@ -308,7 +309,7 @@ delete
 	 for (var i = 0; i < bubblyButtons.length; i++) {
 	   bubblyButtons[i].addEventListener('click', animateButton, false);
 	 }
-	    alert("css 적용이 안 되냐고...")
+	   
 	 </script>
   <script src="js/ordering.js"></script>
   
