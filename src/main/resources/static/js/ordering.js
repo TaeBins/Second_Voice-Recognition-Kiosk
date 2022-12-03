@@ -129,7 +129,7 @@ h_speech.onresult = function(e) {
 
    //transcript 값들 join으로 하나의 문장으로 바꿔주기
    let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
-   console.log(h_text);
+   
    //main_menu request 함수
    if (h_text.indexOf("아메리카노") !== -1) {
 
@@ -160,7 +160,7 @@ h_speech.onresult = function(e) {
 
    }
    console.log(h_text);
-   if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
+   if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1 || h_text.indexOf("메뉴 보여줘")) {
       goMainMenu();
    }
 

@@ -25,7 +25,7 @@ h_speech.start();
 
 //speech transcript 초기화 함수
 const restart = async () => {
-	await h_speech.stop();
+	await h_speech.abort();
 	await setTimeout(() => h_speech.start(), 500);
 }
 //request 보낼 form태그 생성
@@ -80,9 +80,10 @@ const goIndex = () => {
 h_speech.onresult = function(e) {
 
 	//transcript 값들 join으로 하나의 문장으로 바꿔주기
+	
 	let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
-	console.log(h_text);
-	console.log(man)
+	
+console.log(h_text)
 	//main_menu request 함수
 
 
@@ -93,7 +94,7 @@ h_speech.onresult = function(e) {
 
 			setTimeout(() => { starting = true, timer(); }, 4500);
 
-			h_speech.interimResults = false;
+			h_speech.interimResults = true;
 			//하이 키코가 인식되면 transcript 초기화
 
 			restart();

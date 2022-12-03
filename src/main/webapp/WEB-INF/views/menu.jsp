@@ -308,7 +308,7 @@ delete
 	 for (var i = 0; i < bubblyButtons.length; i++) {
 	   bubblyButtons[i].addEventListener('click', animateButton, false);
 	 }
-	    alert("css 적용이 안 되냐고...")
+	
 	 </script>
   <script src="js/ordering.js"></script>
   
