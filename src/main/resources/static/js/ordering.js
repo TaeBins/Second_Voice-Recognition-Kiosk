@@ -12,8 +12,8 @@ h_speech.start();
 
 //speech transcript 초기화 함수
 const restart = async () => {
-   await h_speech.stop();
-   await setTimeout(() => h_speech.start(), 100);
+	await h_speech.abort();
+	await setTimeout(()=>h_speech.start(), 100);
 }
 //request 보낼 form태그 생성
 const formTag = document.createElement("form");
@@ -33,7 +33,7 @@ const orderCount = document.getElementById("count");
 //formTag 생성 및 이동할 url 설정
 const goMainMenu = () => {
 
-   formTag.action = "/menu";
+   formTag.action = "/1";
    formTag.method = "get"
    document.getElementById("formContainer").appendChild(formTag);
 
@@ -44,12 +44,12 @@ const goMainMenu = () => {
 
 const goIndex = () => {
 
-   formTag.action = "/menu";
+   formTag.action = "/1";
    formTag.submit();
    restart();
 }
 const order = (id, menu, count) => {
-   formTag.action = "/menu";
+   formTag.action = "/1";
    formTag.method = "post";
    formTag.submit();
    restart();
@@ -64,13 +64,13 @@ const goReceipt = () => {
    restart();
 }
 // 음식 주문 갯수 받아내는 리스트
-const amount= [[1, "한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '일인분'],
+const amount= [ [1, "한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '일인분'],
 [2, "두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분'],
 [3, "세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분"],
  [4, "네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
 [5, "다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
 [6, "여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", "6인분", "육인분"],
-[7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]];
+[7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]]
 
 
 //   const menu_list = [오뎅탕, 감바스, 짜파구리, 콘치즈계란말이, 계란말이]
@@ -85,7 +85,13 @@ const menus = {
    "비빔국수": 0,
    "화덕피자": 0,
 }
-
+//문장에 메뉴가 들어있는지 확인
+const checkForMenus = (sentence) => {
+  const words = sentence.split(" ").join(""); //마이크로 입력한 내용에 띄어쓰기 없애기
+  const menuItems = Object.keys(menus); //만들어둔 메뉴판 불러오기
+  
+  return menuItems.filter((menuItem) => words.includes(menuItem)); // 메뉴판에 해당하는 메뉴 존재하는지 확인
+}
 //음식 이름 받아내는 리스트, menu_list에 들어갈 각각의 리스트 만들기
 const 바지락술국 = ["바지락술국", "바지락 술국", "바지락"]
 
@@ -131,9 +137,14 @@ h_speech.onresult = function(e) {
    let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
    
    //main_menu request 함수
-   if (h_text.indexOf("아메리카노") !== -1) {
-
+   if (h_text.indexOf("화덕피자") !== -1) {
+		document.querySelector(`button[name=화덕피자]`).click()
+		restart();
+		
    }
+   
+   console.log(checkForMenus(h_text)+"가 메뉴안에 있습니다.");
+   const menuItems = Object.keys(menus);
    //메뉴 읽어들이는 함수
    //   checkMenu(h_text);
 
@@ -142,12 +153,12 @@ h_speech.onresult = function(e) {
 
 
 
-   one.forEach((e) => {
-      if (h_text.indexOf(e) !== -1) {
-         console.log(h_text.indexOf(e))
-      }
-
-   })
+//   one.forEach((e) => {
+//      if (h_text.indexOf(e) !== -1) {
+//         console.log(h_text.indexOf(e))
+//      }
+//
+//   })
 
    //하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
    if (h_text.indexOf("영수증") !== -1 || h_text.indexOf("주문 내역") !== -1) {
@@ -159,18 +170,18 @@ h_speech.onresult = function(e) {
 
    }
    console.log(h_text);
-   if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1 || h_text.indexOf("메뉴 보여줘")) {
-      goMainMenu();
-   }
+//   if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1 || h_text.indexOf("메뉴 보여줘")) {
+//      goMainMenu();
+//   }
+//
 
-
-
-   if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
-      ordering = false;
-      starting = false;
-      goIndex();
-      restart();
-   }
+//
+//   if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
+//      ordering = false;
+//      starting = false;
+//      goIndex();
+//      restart();
+//   }
 
    if (starting && !ordering) {
 
