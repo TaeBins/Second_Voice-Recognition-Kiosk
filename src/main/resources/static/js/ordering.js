@@ -64,14 +64,14 @@ const goReceipt = () => {
    restart();
 }
 // 음식 주문 갯수 받아내는 리스트
-const one = [1, "한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '일인분']
-const two = [2, "두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분']
-const three = [3, "세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분"]
-const four = [4, "네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"]
-const five = [5, "다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"]
-const six = [6, "여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", "6인분", "육인분"]
-const seven = [7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]
-const amount = [one, two, three, four, five, six, seven]
+const amount= [[1, "한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '일인분'],
+[2, "두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분'],
+[3, "세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분"],
+ [4, "네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
+[5, "다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
+[6, "여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", "6인분", "육인분"],
+[7, "일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]];
+
 
 //   const menu_list = [오뎅탕, 감바스, 짜파구리, 콘치즈계란말이, 계란말이]
 
@@ -134,7 +134,6 @@ h_speech.onresult = function(e) {
    if (h_text.indexOf("아메리카노") !== -1) {
 
    }
-   console.log(menus);
    //메뉴 읽어들이는 함수
    //   checkMenu(h_text);
 
@@ -198,16 +197,16 @@ const addButtonEvent = (name) => {
    //각 메뉴의 -, + 버튼 가지고 오기
    const downButton = document.querySelector(`div.${name.replace(' ', '')} span.downCount`)
    const upButton = document.querySelector(`div.${(name)} span.upCount`)
-   const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span:nth-child(4)`)
+   const currentOrderCount = document.querySelector(`div.${name.replace(" ", "")} span.count`)
 
    //Down 버튼 누를 경우
    downButton.addEventListener("click", (event) => {
       //현재 입력되어 있는 개수 값 가지고오기
 
-      console.log(currentOrderCount)
       //개수 값에 -1 적용
-      currentOrderCount.innerText -= 1;
-      console.log(currentOrderCount.innerText)
+      
+      currentOrderCount.textContent = Math.max(0, currentOrderCount.textContent - 1);
+     
       // 숫자가 0이 될경우 삭제 버튼 클릭
       if (currentOrderCount.innerText <= 0) {
          //document.querySelector(`div.${name.replace(" ", "")}`).parentNode.children[1]   .click();         //Ajax로 DB Delete문 요청
@@ -236,11 +235,9 @@ const addButtonEvent = (name) => {
 
 
    upButton.addEventListener("click", (event) => {
-      let stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
+      const stock = parseInt(document.querySelector(`button[name="${name}"]`).value)
       //개수 값에 +1 적용
-      if (parseInt(currentOrderCount.innerText) < stock) {
-         currentOrderCount.innerText = ` ${parseInt(currentOrderCount.innerText) + 1} `;
-      }
+     currentOrderCount.textContent = ` ${Math.min(stock, parseInt(currentOrderCount.textContent) + 1)} `;
 
       // 바뀐 개수 값 DB에 넣기
       $.ajax({
@@ -385,7 +382,7 @@ const appendList = (name, orderCounts) => {
      <span class="orderCount position1" style="color:white">${name}</span>
      <br>
      <span style="color:white" class="material-symbols-outlined downCount position3">  do_not_disturb_on&nbsp; </span> 
-     <span style="color:white"class=" position2"> ${orderCounts} </span>
+     <span style="color:white"class="position2 count"> ${orderCounts} </span>
      <span style="color:white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
       </div>
       <div value="${name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">

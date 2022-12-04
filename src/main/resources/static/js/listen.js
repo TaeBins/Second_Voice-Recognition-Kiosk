@@ -5,29 +5,39 @@
  */
 const synth = window.speechSynthesis;
 
-var audio = new Audio('js/testvoice.mp3');
-
+const audio = new Audio('js/startVoice.mp3');
+audio.autoplay =true;
 // index 화면
 // speech api 불러오기
 
-
-let man = 0;
-let woman = 0;
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 //speech api 초기 설정
 const h_speech = new SpeechRecognition();
 h_speech.interimResults = true;
 h_speech.continuous = true;
 h_speech.lang = "ko-KR";
-
-//speech api 시작
+//서버 시작 시 바로 speech api 시작
 h_speech.start();
-
+let man = 0;
+let woman = 0;
 //speech transcript 초기화 함수
 const restart = async () => {
 	await h_speech.abort();
-	await setTimeout(() => h_speech.start(), 500);
+	await setTimeout(()=>h_speech.start(), 100);
 }
+
+const startButton = document.getElementById("start-button");
+const stopButton = document.getElementById("stop-button");
+const bars = document.querySelectorAll("[id^=bar]");
+
+
+ bars.forEach(function(bar) {
+    bar.style.animationPlayState = "paused";
+  });
+
+
+
+
 //request 보낼 form태그 생성
 let formTag = document.createElement("form");
 
@@ -85,37 +95,33 @@ h_speech.onresult = function(e) {
 	
 console.log(h_text)
 	//main_menu request 함수
-
+init();
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (!starting) {
+		console.log(starting)
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
+			 bars.forEach(function(bar) {
+    bar.style.animationPlayState = "running";
+  });
+			starting = true;
+			
 			audio.play();
-
-			setTimeout(() => { starting = true, timer(); }, 4500);
-
+			
+			setTimeout(() => { 
+				console.log("timer가 실행되었습니다.");
+				timer(); }, 1000);
+			
 			h_speech.interimResults = true;
 			//하이 키코가 인식되면 transcript 초기화
-
+			man=0;
+			woman=0;
 			restart();
-
+	
 		}
 	} else {
-
-
-
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
 			goMainMenu();
-		}
-
-
-
-
-		if (starting && !ordering) {
-
-			starting = false;
-			ordering = true;
-
 		}
 
 		// if (h_text.indexOf("메뉴") !== -1) {
@@ -164,8 +170,10 @@ function timer() {
 	let time = setInterval(() => {
 		if (status == "남자") {
 			man++;
+			console.log("남자 : " + man);
 		} else if (status == "여자") {
 			woman++;
+			console.log("여자 : " + woman);
 		}
 
 
@@ -174,7 +182,7 @@ function timer() {
 		  } else{
 			  document.getElementById('gender').innerHTML = "입력된 목소리는 여자입니다."
 		  } */
-	}, 100)
+	}, 500)
 }
 
 async function init() {
@@ -220,7 +228,7 @@ async function init() {
 	// Stop the recognition in 5 seconds.
 	// setTimeout(() => recognizer.stopListening(), 5000);
 }
-init();
+
 
 
 
