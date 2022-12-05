@@ -3,10 +3,14 @@
 /**
  * 
  */
+
 const synth = window.speechSynthesis;
 
 const audio = new Audio('js/startVoice.mp3');
-audio.autoplay =true;
+audio.muted = true
+audio.autoplay =false;
+const img = document.querySelector("#page-top > div.area > ul");
+
 // index 화면
 // speech api 불러오기
 
@@ -25,7 +29,7 @@ const restart = async () => {
 	await h_speech.abort();
 	await setTimeout(()=>h_speech.start(), 100);
 }
-
+img.addEventListener("click", ()=> audio.play());
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
 const bars = document.querySelectorAll("[id^=bar]");
@@ -105,8 +109,9 @@ init();
     bar.style.animationPlayState = "running";
   });
 			starting = true;
+			audio.muted = false;
+			img.click()
 			
-			audio.play();
 			
 			setTimeout(() => { 
 				console.log("timer가 실행되었습니다.");

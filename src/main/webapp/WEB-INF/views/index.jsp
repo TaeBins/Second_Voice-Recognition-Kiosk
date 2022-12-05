@@ -88,8 +88,7 @@
 		<div id="formContainer" style="display: none">
 		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
 	</div>
-
-	<!-- Bootstrap core JS-->
+<audio id="myAudio" src="https://www.example.com/myAudio.mp3"></audio>	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->
