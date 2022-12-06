@@ -53,10 +53,7 @@ public class IndexController {
 	@GetMapping("/")
 	public String index(HttpSession session) {
 		TableInfo table = indexService.getTable(session);
-		System.out.println("이 테이블의 테이블 번호는 " +table.getTbl_number() +", 영수증 번호는 "+table.getReceipt_num()+"입니다.");
 		session.setAttribute("table", table);
-		
-		
 		return "index";
 	}
 
@@ -67,8 +64,6 @@ public class IndexController {
 			HttpServletResponse response, Model model, HttpSession session) {
 		// 서비스로 menu_type 보내주기
 		menus.setMenu_type(menu_type);
-		System.out.println(menus.getMenu_gender());
-
 		List<Menus> menuList = indexService.menulist(menus);
 		List<Orders> orderList = indexService.selectOrderList();
 		model.addAttribute("menuList", menuList);
@@ -92,10 +87,7 @@ public class IndexController {
 	@ResponseBody
 	public String order(@RequestBody Orders orders) {
 		// 손님이 버튼 클릭 or 음성 주문 했을 경우
-		System.out.println(orders.getOrder_cnt() + orders.getMenu_name());
-		
 		indexService.order(orders); // 주문목록 테이블에 데이터 채워넣기
-
 		return "null";
 	}
 
@@ -160,10 +152,16 @@ public class IndexController {
 		return "manager";
 	}
 
+	// 결제완료 버튼
+	@PostMapping("/rpayment")
+	public String updatereceipt() {
+		indexService.updatereceipt();
+		return "manager";
+	}
 	// 재고 수량 리셋
 	@PostMapping("/stockreset")
 	public String stockreset() {
 		indexService.stockReset();
-		return "/manager";
+		return "manager";
 	}
 }

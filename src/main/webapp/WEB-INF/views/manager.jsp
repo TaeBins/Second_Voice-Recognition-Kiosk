@@ -100,7 +100,7 @@
 					<div class="discount">
 						<dt>할인금액</dt>
 						<dd>
-							<span class="price">0</span>
+							<span class="price">${rl.dc_amount}</span>
 						</dd>
 					</div>
 					<div class="total">
@@ -109,21 +109,21 @@
 						</dt>
 						<dd>
 							<h2>
-								<span class="price">${sum}</span>
+								<span class="price" id="sumhere">${sum}</span>
 							</h2>
 						</dd>
 					</div>
 				</dl>
 			</footer>
-			<br>
-			<br>
-			<div class="col mb-6">
-				<div class="card h-100">
-					<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="payment();">결제 완료</a>
+			<br> <br>
+			<form method="get" id="rform" onsubmit="return false;">
+				<div class="col mb-6">
+					<div class="card h-100">
+						<a class="btn1 btn-outline-dark mt-auto" href="#" onclick="payment();">결제 완료</a>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</section>
-	<!-- 해당 영수증 -->
 </body>
 </html>

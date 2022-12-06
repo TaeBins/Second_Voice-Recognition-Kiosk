@@ -47,6 +47,7 @@ public interface IndexMapper {
 	// 영수증 목록 가져오기
 	public List<Receipt> receiptList(TableInfo table);
 	
+	public void updatereceipt();
 	// 재고 리셋
 	public void stockReset();
 }
