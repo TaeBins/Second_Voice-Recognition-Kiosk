@@ -100,7 +100,7 @@ const menus = {
 	"순대술국": ["순대술국", "순대철분", "순댓국", "썬더술국", "손잡고", "순대전골", "춘자신곡", "순대실국"],
 	"떡갈비": ["떡갈비", "닭갈비"],
 	"화덕피자": ["화덕피자", "마석피자"],
-	"바지락술국": ["바지락술국", "바지락쑥국", "바지랑수국", "바지락"],
+	"바지락술국": ["바지락술국", "바지락쑥국", "바지랑수국"],
 	"비빔국수": ["비빔국수", "해물국수", "비밀복수", "이민국수"],
 	"쥐포": ["지붕", "G4", "김포", "지프", "지퍼", "지코", "쥐포", "지솔", "집구", "짐볼", "제발", "지파"],
 	"한치구이": ["한치구이", "한지훈", "1시보이", "1792", "179있", "1시구이", "1지구2", "반칙우유", "1시소리", "잔치92", "1시브이"],
@@ -173,18 +173,34 @@ const checkIndex = (h_text, obj) => {
 	temp_list = []
 }
 
-const voiceOrder = () => {
+const voiceOrder = async () => {
 	const sortedMenus = orderedMenus.sort((a, b)=> a[1] - b[1])
 	const sortedAmount = amount_list.sort((a, b)=> a[1] - b[1])
 	console.log(sortedMenus)
 	console.log(amount_list)
 	for(let i=0; i<sortedMenus.length;i++){
 	let orderedMenuName = Object.entries(menus).filter((kv)=> kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0];
-	document.querySelector(`button[name=${Object.entries(menus).filter((kv)=> kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0]}]`).click()
-	document.querySelector(`div.${orderedMenuName} span.count`).textContent = Object.entries(amount).filter((kv)=> kv[1].indexOf(sortedAmount[i][0]) !== -1)[0][0]
-
+	
+	document.querySelector(`button[name=${orderedMenuName}]`).click()
+	let orderedMenuCount = document.querySelector(`div.${orderedMenuName} span.count`)
+	orderedMenuCount.textContent = Object.entries(amount).filter((kv)=> kv[1].indexOf(sortedAmount[i][0]) !== -1)[0][0]
+	
 	restart();
-	}
+	if(parseInt(orderedMenuCount) !== 1){
+		setTimeout(()=>{$.ajax({
+			type: 'POST',
+			url: '/order',
+			contentType: 'application/json; charset=utf-8',
+			data: JSON.stringify({
+				"menu_name": orderedMenuName,
+				"order_cnt": orderedMenuCount.textContent
+			}),
+			success: () => console.log('data 삽입 완료'),
+			error: () => {
+				alert("에러")
+			}
+		})}, 1500)
+	}}
 }
 
 //speech api로 받은 transcript 로직처리

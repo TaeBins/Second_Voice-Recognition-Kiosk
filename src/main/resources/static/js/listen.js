@@ -7,7 +7,7 @@
 const synth = window.speechSynthesis;
 
 const audio = new Audio('js/startVoice.mp3');
-audio.autoplay =false;
+audio.autoplay = false;
 
 // index 화면
 // speech api 불러오기
@@ -23,18 +23,18 @@ h_speech.start();
 let man = 0;
 let woman = 0;
 //speech transcript 초기화 함수
-const restart = async () => {
-	await h_speech.abort();
-	await setTimeout(()=>h_speech.start(), 100);
+const restart = () => {
+	h_speech.abort();
+	setTimeout(() => h_speech.start(), 1000);
 }
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
 const bars = document.querySelectorAll("[id^=bar]");
 
 
- bars.forEach(function(bar) {
-    bar.style.animationPlayState = "paused";
-  });
+bars.forEach(function(bar) {
+	bar.style.animationPlayState = "paused";
+});
 
 
 
@@ -52,10 +52,10 @@ let ordering = false;
 //formTag 생성 및 이동할 url 설정
 const goMainMenu = () => {
 	document.getElementById("formContainer").appendChild(formTag);
-			formTag.action = "/1"
+	formTag.action = "/1"
 
 	if (man > woman) {
-		
+
 		formTag.innerHTML = `<input name='menu_gender' type="text" value="0" />`
 	} else {
 		formTag.innerHTML = `<input name='menu_gender' type="text" value="1" />`
@@ -91,34 +91,36 @@ const goIndex = () => {
 h_speech.onresult = function(e) {
 
 	//transcript 값들 join으로 하나의 문장으로 바꿔주기
-	
+
 	let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
-	
-console.log(h_text)
+
+	console.log(h_text)
 	//main_menu request 함수
-init();
+	init();
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (!starting) {
 		console.log(starting)
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
-			 bars.forEach(function(bar) {
-    bar.style.animationPlayState = "running";
-  });
+			bars.forEach(function(bar) {
+				bar.style.animationPlayState = "running";
+			});
 			starting = true;
 			audio.play();
+
 			
-			
-			setTimeout(() => { 
+			setTimeout(() => {
 				console.log("timer가 실행되었습니다.");
-				timer(); }, 1000);
-			
+				timer();
+			}, 1000);
+
 			h_speech.interimResults = true;
 			//하이 키코가 인식되면 transcript 초기화
-			man=0;
-			woman=0;
+			man = 0;
+			woman = 0;
 			restart();
-	
+			h_speech.interimResults = false;
+
 		}
 	} else {
 		if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1) {
