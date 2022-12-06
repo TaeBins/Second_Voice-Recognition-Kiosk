@@ -13,7 +13,7 @@ h_speech.start();
 //speech transcript 초기화 함수
 const restart = async () => {
 	await h_speech.abort();
-	await setTimeout(() => h_speech.start(), 100);
+	await setTimeout(() => h_speech.start(), 200);
 }
 //request 보낼 form태그 생성
 const formTag = document.createElement("form");
@@ -65,79 +65,73 @@ const goReceipt = () => {
 }
 
 //주문한 메뉴 리스트 만들기
-const orderedMenus = []
+let orderedMenus = []
 
 
 // 음식 주문 갯수 받아내는 리스트
 const amount = {
-    1: ["한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '안아', '일인분'],
-    2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분'],
-    3: ["세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분"],
-    4: ["네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
-    5: ["다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
-    6: ["여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", "6인분", "육인분"],
-    7: ["일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]
+	1: ["한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '안아', '일인분'],
+	2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분',"2개" ],
+	3: ["세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분", "3개"],
+	4: ["네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
+	5: ["다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
+	6: ["여섯 잔", "여섯잔", "여섯", "여섯개", "여섯 개", "6인분", "육인분"],
+	7: ["일곱 잔", "일곱잔", "일곱", "일곱개", "일곱 개", "7인분", "칠인분"]
 }
 
 
 
 
 //메뉴와 갯수를 매칭 시켜줄 오브젝트 만들기
+//메뉴와 갯수를 매칭 시켜줄 오브젝트 만들기
 const menus = {
 	"통닭": ["통닭"],
 	"감자튀김": ["감자튀김"],
-//	"왕새우튀김볼": 0,
-//	"롱치즈돈까스": 0,
-//	"오뎅탕": 0,
-//	"짬뽕탕": 0,
-	"짜빠구리": ["짜파구리"],
-	"모듬소세지": ["모든소시지"],
-//	"치즈라볶이": 0,
-//	"오징어버터구이": 0,
-//	"순두부찌개": 0,
-//	"수제소세지": 0,
-//	"순대술국": 0,
-	"떡갈비": ["떡갈비"],
-//	"화덕피자": 0,
-	"바지락술국": ["바지락술국", "바지락쑥국", "바지랑수국"],
-//	"비빔국수": 0,
-//	"쥐포": 0,
-//	"한치구이": 0,
-//	"콘치즈": 0,
-//	"먹태": 0,
-//	"새끼먹태": 0,
-//	"오징어입구이": 0,
-//	"튀김 쥐포": 0,
-//	"라면땅": 0,
-//	"파인샤베트": 0,
-//	"버터문어구이": 0,
-//	"불꽃오징어": 0,
-//	"참이슬": 0,
-//	"처음처럼": 0,
-//	"잎새주": 0,
-//	"하이트": 0,
-//	"카스": 0,
-//	"청하": 0,
-//	"생맥주": 0,
-//	"코카콜라": 0,
-//	"코카콜라제로": 0,
-//	"펩시": 0,
-//	"사이다": 0,
-//	"토닉워터": 0,
-//	"레몬에이드": 0,
-//	"모히또": 0,
+	"왕새우튀김볼": ["왕새우튀김몰", "왕새우튀김벌", "새우퇴김볼", "새우튀김벌"],
+	"롱치즈돈까스": ["치즈돈가스", "치즈돈까스"],
+	"오뎅탕": ["오뎅탕"],
+	"짬뽕탕": ["짬뽕탕"],
+	"짜빠구리": ["짜파구리", "딱따구리"],
+	"모듬소세지": ["모듬소세지", "모듬소시지", "모둠소시지", "모둠소세지"],
+	"치즈라볶이": ["치즈라볶이"],
+	"오징어버터구이": ["오징어버터구이"],
+	"순두부찌개": ["순두부찌개", "천두부찌개"],
+	"수제소세지": ["수제소세지", "수제소시지"],
+	"순대술국": ["순대술국", "순대철분", "순댓국", "썬더술국", "손잡고", "순대전골", "춘자신곡", "순대실국"],
+	"떡갈비": ["떡갈비", "닭갈비"],
+	"화덕피자": ["화덕피자", "마석피자"],
+	"바지락술국": ["바지락술국", "바지락쑥국", "바지랑수국", "바지락"],
+	"비빔국수": ["비빔국수", "해물국수", "비밀복수", "이민국수"],
+	"쥐포": ["지붕", "G4", "김포", "지프", "지퍼", "지코", "쥐포", "지솔", "집구", "짐볼", "제발", "지파"],
+	"한치구이": ["한치구이", "한지훈", "1시보이", "1792", "179있", "1시구이", "1지구2", "반칙우유", "1시소리", "잔치92", "1시브이"],
+	"콘치즈": ["콘치즈", "펀치", "황치즈"],
+	"먹태": ["목재", "먹태"],
+	"새끼먹태": ["새끼먹태", "새끼호텔", "새끼먹자"],
+	"오징어입구이": ["오징어입구에"],
+	"튀김 쥐포": ["튀김쥐포"],
+	"라면땅": ["라면땅"],
+	"파인샤베트": ["샤베트", "파인샤베트"],
+	"버터문어구이": ["버터문어구이",],
+	"불꽃오징어": ["두건오징어", "건오징어", "불꽃오징어"],
+	"참이슬": ["참이슬"],
+	"처음처럼": ["처음처럼"],
+	"잎새주": ["잎새주", "소주"],
+	"하이트": ["하이트", "라이트"],
+	"카스": ["카스"],
+	"청하": ["청라", "전화", "청담동", "청하"],
+	"생맥주": ["생맥주"],
+	"코카콜라": ["코카콜라"],
+	"코카콜라제로": ["코카콜라제로"],
+	"펩시": ["택시", "혹시", "10시"],
+	"사이다": ["사이다"],
+	"토닉워터": ["토닉워터", "허니버터"],
+	"레몬에이드": ["레몬에이드", "레모네이드"],
+	"모히또": ["모히또"]
 }
 
 
-const amount_list = [];
+let amount_list = [];
 
-//문장에 메뉴가 들어있는지 확인
-const checkForMenus = (sentence) => {
-	const words = sentence.split(" ").join(""); //마이크로 입력한 내용에 띄어쓰기 없애기
-	const menuItems = Object.keys(menus); //만들어둔 메뉴판 불러오기
-
-	return menuItems.filter((menuItem) => words.includes(menuItem)); // 메뉴판에 해당하는 메뉴 존재하는지 확인
-}
 
 //음식 이름 받아내는 리스트, menu_list에 들어갈 각각의 리스트 만들기
 
@@ -151,30 +145,55 @@ const checkForMenus = (sentence) => {
 
    })
 }*/
+let temp_list = []
 
-
-
-// 각 메뉴 몇 개 주문했는지 체크하는 함수  
-const checkAmountIndex = (text, amount, index) => {
+// 어떤 메뉴를 몇 개 주문했는지 체크하는 함수  
+const checkAmountIndex = (text, amount, index, obj) => {
 	if (text.indexOf(amount, index) !== -1) {
-		amount_list.push([amount, index]);
+	
+		temp_list.push([amount, text.indexOf(amount, index)]);
 		return checkAmountIndex(text, amount, text.indexOf(amount, index) + 1)
 	} else {
 		return;
 	}
 }
 
+const checkIndex = (h_text, obj) => {
+	for (let i = 0; i < Object.keys(obj).length; i++)
+		obj[Object.keys(obj)[i]].forEach((obj_value) => {
 
+			checkAmountIndex(h_text, obj_value, 0, obj)
+			if (obj === menus) {
+				orderedMenus = temp_list;
 
+			} else {
+				amount_list = temp_list;
+			}
+		})
+	temp_list = []
+}
 
+const voiceOrder = () => {
+	const sortedMenus = orderedMenus.sort((a, b)=> a[1] - b[1])
+	const sortedAmount = amount_list.sort((a, b)=> a[1] - b[1])
+	console.log(sortedMenus)
+	console.log(amount_list)
+	for(let i=0; i<sortedMenus.length;i++){
+	let orderedMenuName = Object.entries(menus).filter((kv)=> kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0];
+	document.querySelector(`button[name=${Object.entries(menus).filter((kv)=> kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0]}]`).click()
+	document.querySelector(`div.${orderedMenuName} span.count`).textContent = Object.entries(amount).filter((kv)=> kv[1].indexOf(sortedAmount[i][0]) !== -1)[0][0]
 
+	restart();
+	}
+}
 
 //speech api로 받은 transcript 로직처리
 h_speech.onresult = function(e) {
 
 	//transcript 값들 join으로 하나의 문장으로 바꿔주기
 	let h_text = (Array.from(e.results).map(result => result[0].transcript).join("")).split(" ").join("");
-
+	checkIndex(h_text, amount)
+	checkIndex(h_text, menus)
 	//main_menu request 함수
 	if (h_text.indexOf("화덕피자") !== -1) {
 		document.querySelector(`button[name=화덕피자]`).click()
@@ -182,22 +201,25 @@ h_speech.onresult = function(e) {
 
 	}
 
-	console.log(checkForMenus(h_text) + "가 메뉴안에 있습니다.");
+
 	const menuItems = Object.keys(menus);
 	//메뉴 읽어들이는 함수
 	//   checkMenu(h_text);
 
 	//갯수 파악하는 함수
+	const checkMenuIndex = (h_text) => {
+		for (const k in menus) {
+			menus[k].forEach((e) => {
+				const index = h_text.indexOf(e)
+				if (index !== -1)
+					orderedMenus.push(k, index)
+			})
 
-for (const k in menus) {
-            
-            menus[k].forEach((e) => {
-                const index = h_text.indexOf(e)
-                if (index !== -1)
-                    orderedMenus.push(k, index)
-            })
+		}
+	}
 
-        }
+
+
 
 
 
@@ -207,6 +229,7 @@ for (const k in menus) {
 	//      }
 	//
 	//   })
+
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (h_text.indexOf("영수증") !== -1 || h_text.indexOf("주문 내역") !== -1) {
@@ -246,15 +269,16 @@ for (const k in menus) {
 	if (h_text.indexOf("메인 화면") !== -1) {
 		location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
 	}
-	amount.forEach((number) => number.forEach((number_element) => {
-		checkAmountIndex(h_text, number_element, 0)
 
-	}))
+
+	
+
+
 
 	console.log(amount_list)
 	console.log(orderedMenus)
 
-
+	voiceOrder();
 
 };
 
@@ -295,8 +319,6 @@ const addButtonEvent = (name) => {
 			}
 		});
 	})
-
-
 	//Up 버튼 누를 경우
 
 
