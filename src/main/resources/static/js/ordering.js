@@ -486,11 +486,11 @@ const appendList = (name, orderCounts) => {
 	list.style = "height:80px "
 	list.innerHTML = `
    <div class="wrapper ${name.replace(" ", "")}">
-     <span class="orderCount position1" style="color:white">${name}</span>
+     <span class="orderCount position1" style="color:#302402">${name}</span>
      <br>
-     <span style="color:white" class="material-symbols-outlined downCount position3">  do_not_disturb_on&nbsp; </span> 
-     <span style="color:white"class="position2 count"> ${orderCounts} </span>
-     <span style="color:white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
+     <span style="color:#302402" class="material-symbols-outlined downCount position3">  do_not_disturb_on&nbsp; </span> 
+     <span style="color:#302402"class="position2 count"> ${orderCounts} </span>
+     <span style="color:#302402" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
       </div>
       <div value="${name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
                         
