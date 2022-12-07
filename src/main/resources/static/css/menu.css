@@ -432,7 +432,8 @@ hr {
   opacity: 0.25;
 }
 .cartbutton {
-	
+	left: 90px;
+    top: -142px;
 	 height: 60px;
  width: 60px;
  border-radius: 50%;
@@ -5114,7 +5115,7 @@ textarea.form-control-lg {
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  width: 100%;
+  width: 95%;
   height: 50%;
   
 }
@@ -7886,7 +7887,7 @@ textarea.form-control-lg {
 }
 
 .mb-5 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: -4.3rem !important;
 }
 .mb-6 {
   margin-bottom: 1rem !important;
