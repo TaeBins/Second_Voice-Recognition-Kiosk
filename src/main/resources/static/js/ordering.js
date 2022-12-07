@@ -1,5 +1,46 @@
 // menu 화면
 // speech api 불러오기
+
+//TTS API 불러오기 
+const audios = new Audio();
+
+AWS.config.region = 'ap-northeast-1';
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+	IdentityPoolId: 'ap-northeast-1:09e0dd25-5506-41c1-9ecd-c427f1320d9f',
+});
+
+function speakText(Text) {
+	// Create the JSON parameters for getSynthesizeSpeechUrl
+	var speechParams = {
+		OutputFormat: "mp3",
+		SampleRate: "16000",
+		Text,
+		TextType: "text",
+		VoiceId: "Seoyeon",
+
+	};
+
+	// Create the Polly service object and presigner object
+	var polly = new AWS.Polly({ apiVersion: '2016-06-10' });
+	var signer = new AWS.Polly.Presigner(speechParams, polly)
+
+	// Create presigned URL of synthesized speech file
+	signer.getSynthesizeSpeechUrl(speechParams, function(error, url) {
+		if (error) {
+			document.getElementById('result').innerHTML = error;
+		} else {
+			audios.src = url;
+			audios.play();
+		}
+	});
+}
+
+//TTS API불러오기 끝
+
+
+let timeCheck = 0;
+
+
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 //speech api 초기 설정
 const h_speech = new SpeechRecognition();
@@ -32,15 +73,55 @@ const orderCount = document.getElementById("count");
 
 //formTag 생성 및 이동할 url 설정
 const goMainMenu = () => {
-
+	
 	formTag.action = "/1";
 	formTag.method = "get"
 	document.getElementById("formContainer").appendChild(formTag);
 
 	formTag.submit();
+
 	restart();
 
 }
+
+const goSideMenu = () => {
+
+	formTag.action = "/2";
+	formTag.method = "get"
+	document.getElementById("formContainer").appendChild(formTag);
+
+	formTag.submit();
+
+	restart();
+
+}
+
+
+const goDrinkMenu = () => {
+
+	formTag.action = "/3";
+	formTag.method = "get"
+	document.getElementById("formContainer").appendChild(formTag);
+
+	formTag.submit();
+
+	restart();
+
+}
+
+
+const goBeverageMenu = () => {
+
+	formTag.action = "/4";
+	formTag.method = "get"
+	document.getElementById("formContainer").appendChild(formTag);
+
+	formTag.submit();
+
+	restart();
+
+}
+
 
 const goIndex = () => {
 
@@ -48,7 +129,9 @@ const goIndex = () => {
 	formTag.submit();
 	restart();
 }
-const order = (id, menu, count) => {
+
+//메뉴 이동 함수 끝
+const order = () => {
 	formTag.action = "/1";
 	formTag.method = "post";
 	formTag.submit();
@@ -71,7 +154,7 @@ let orderedMenus = []
 // 음식 주문 갯수 받아내는 리스트
 const amount = {
 	1: ["한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '안아', '일인분'],
-	2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분',"2개" ],
+	2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분', "2개"],
 	3: ["세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분", "3개"],
 	4: ["네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
 	5: ["다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
@@ -100,7 +183,7 @@ const menus = {
 	"순대술국": ["순대술국", "순대철분", "순댓국", "썬더술국", "손잡고", "순대전골", "춘자신곡", "순대실국"],
 	"떡갈비": ["떡갈비", "닭갈비"],
 	"화덕피자": ["화덕피자", "마석피자"],
-	"바지락술국": ["바지락술국", "바지락쑥국", "바지랑수국"],
+	"바지락술국": ["바지락"],
 	"비빔국수": ["비빔국수", "해물국수", "비밀복수", "이민국수"],
 	"쥐포": ["지붕", "G4", "김포", "지프", "지퍼", "지코", "쥐포", "지솔", "집구", "짐볼", "제발", "지파"],
 	"한치구이": ["한치구이", "한지훈", "1시보이", "1792", "179있", "1시구이", "1지구2", "반칙우유", "1시소리", "잔치92", "1시브이"],
@@ -150,7 +233,7 @@ let temp_list = []
 // 어떤 메뉴를 몇 개 주문했는지 체크하는 함수  
 const checkAmountIndex = (text, amount, index, obj) => {
 	if (text.indexOf(amount, index) !== -1) {
-	
+
 		temp_list.push([amount, text.indexOf(amount, index)]);
 		return checkAmountIndex(text, amount, text.indexOf(amount, index) + 1)
 	} else {
@@ -174,33 +257,35 @@ const checkIndex = (h_text, obj) => {
 }
 
 const voiceOrder = async () => {
-	const sortedMenus = orderedMenus.sort((a, b)=> a[1] - b[1])
-	const sortedAmount = amount_list.sort((a, b)=> a[1] - b[1])
-	console.log(sortedMenus)
-	console.log(amount_list)
-	for(let i=0; i<sortedMenus.length;i++){
-	let orderedMenuName = Object.entries(menus).filter((kv)=> kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0];
-	
-	document.querySelector(`button[name=${orderedMenuName}]`).click()
-	let orderedMenuCount = document.querySelector(`div.${orderedMenuName} span.count`)
-	orderedMenuCount.textContent = Object.entries(amount).filter((kv)=> kv[1].indexOf(sortedAmount[i][0]) !== -1)[0][0]
-	
-	restart();
-	if(parseInt(orderedMenuCount) !== 1){
-		setTimeout(()=>{$.ajax({
-			type: 'POST',
-			url: '/order',
-			contentType: 'application/json; charset=utf-8',
-			data: JSON.stringify({
-				"menu_name": orderedMenuName,
-				"order_cnt": orderedMenuCount.textContent
-			}),
-			success: () => console.log('data 삽입 완료'),
-			error: () => {
-				alert("에러")
-			}
-		})}, 1500)
-	}}
+	const sortedMenus = orderedMenus.sort((a, b) => a[1] - b[1])
+	const sortedAmount = amount_list.sort((a, b) => a[1] - b[1])
+
+	for (let i = 0; i < sortedMenus.length; i++) {
+		let orderedMenuName = Object.entries(menus).filter((kv) => kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0];
+
+		document.querySelector(`button[name=${orderedMenuName}]`).click()
+		let orderedMenuCount = document.querySelector(`div.${orderedMenuName} span.count`)
+		orderedMenuCount.textContent = Object.entries(amount).filter((kv) => kv[1].indexOf(sortedAmount[i][0]) !== -1)[0][0]
+
+		restart();
+		if (parseInt(orderedMenuCount) !== 1) {
+			setTimeout(() => {
+				$.ajax({
+					type: 'POST',
+					url: '/order',
+					contentType: 'application/json; charset=utf-8',
+					data: JSON.stringify({
+						"menu_name": orderedMenuName,
+						"order_cnt": orderedMenuCount.textContent
+					}),
+					success: () => console.log('data 삽입 완료'),
+					error: () => {
+						alert("에러")
+					}
+				})
+			}, 1500)
+		}
+	}
 }
 
 //speech api로 받은 transcript 로직처리
@@ -211,40 +296,7 @@ h_speech.onresult = function(e) {
 	checkIndex(h_text, amount)
 	checkIndex(h_text, menus)
 	//main_menu request 함수
-	if (h_text.indexOf("화덕피자") !== -1) {
-		document.querySelector(`button[name=화덕피자]`).click()
-		restart();
 
-	}
-
-
-	const menuItems = Object.keys(menus);
-	//메뉴 읽어들이는 함수
-	//   checkMenu(h_text);
-
-	//갯수 파악하는 함수
-	const checkMenuIndex = (h_text) => {
-		for (const k in menus) {
-			menus[k].forEach((e) => {
-				const index = h_text.indexOf(e)
-				if (index !== -1)
-					orderedMenus.push(k, index)
-			})
-
-		}
-	}
-
-
-
-
-
-
-	//   one.forEach((e) => {
-	//      if (h_text.indexOf(e) !== -1) {
-	//         console.log(h_text.indexOf(e))
-	//      }
-	//
-	//   })
 
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
@@ -252,49 +304,54 @@ h_speech.onresult = function(e) {
 		goReceipt();
 	}
 
-	if (h_text.indexOf("주문 완료") !== -1 || h_text.indexOf("주문완료") !== -1) {
-		order();
 
+	if (h_text.indexOf("추가") !== -1) {
+		voiceOrder();
 	}
-	console.log(h_text);
-	//   if (h_text.indexOf("메인 메뉴") !== -1 || h_text.indexOf("메인메뉴") !== -1 || h_text.indexOf("메뉴 보여줘")) {
-	//      goMainMenu();
-	//   }
-	//
-
-	//
-	//   if (h_text.indexOf("주문 종료") !== -1 || h_text.indexOf("주문종료") !== -1) {
-	//      ordering = false;
-	//      starting = false;
-	//      goIndex();
-	//      restart();
-	//   }
-
-	if (starting && !ordering) {
-
-		starting = false;
-		ordering = true;
+	if (h_text.indexOf("주문") !== -1) {
+		document.querySelector("button.bubbly-button").click()
 
 	}
 
-	// if (h_text.indexOf("메뉴") !== -1) {
-	//    console.log("네~");
-	//    h_speech.onend;
-	//    speech.start();
-	// }
-	if (h_text.indexOf("메인 화면") !== -1) {
-		location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
+	//슬라이드 페이지 음성인식으로 이동하기
+	if (h_text.indexOf("이전") !== -1) {
+		document.querySelector("div.slide_prev_button").click()
+		speakText("이전 화면으로 이동하였습니다.");
+
+		restart();
 	}
+	if (h_text.indexOf("다음") !== -1) {
+		document.querySelector("div.slide_next_button").click()
+		speakText("다음 화면으로 이동하였습니다.");
+		restart();
+	}
+	//슬라이드 페이지 이동 끝
 
-
+	//메뉴 탭 이동 하기
+	if(h_text.indexOf("메인") !== -1){
+		goMainMenu();
+	}
 	
+	if(h_text.indexOf("사이드") !== -1){
+		goSideMenu();
+	}
+	
+	if(h_text.indexOf("주류") !== -1 || h_text.indexOf("술") !== -1){
+		goDrinkMenu();
+	}
+	if(h_text.indexOf("음료") !== -1){
+		goBeverageMenu();
+	}
+	
+	//메뉴탭 이동하기 끝
 
 
 
-	console.log(amount_list)
-	console.log(orderedMenus)
 
-	voiceOrder();
+	console.log(h_text);
+
+
+
 
 };
 
