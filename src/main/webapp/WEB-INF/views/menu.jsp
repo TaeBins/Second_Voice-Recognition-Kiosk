@@ -30,6 +30,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
 
 <style>
 /*  overflow scroll 가려주는 스타일 */
@@ -312,6 +313,9 @@ delete
 
 	 </script>
   <script src="js/ordering.js"></script>
+  <script>
+  speakText("메인메뉴로 이동하였습니다.");
+  </script>
   
 </body>
 </html>

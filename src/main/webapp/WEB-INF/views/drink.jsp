@@ -25,6 +25,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+ <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
+
 </head>
 
 <body style="background-color: #F2F2F2;">
@@ -238,6 +240,9 @@ delete
        }
        e.preventDefault();
    }));
+   </script>
+   <script>
+   speakText("음료 메뉴로 이동하였습니다.")
    </script>
 </body>
 </html>

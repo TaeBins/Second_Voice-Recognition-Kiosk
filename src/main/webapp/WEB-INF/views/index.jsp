@@ -26,6 +26,7 @@
 <link href="css/circle.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
 </head>
 <body style="height: 100px;" id="page-top" style="background-color: #F2F2F2;">
 	<!-- 배경 애니메이션 -->
@@ -88,7 +89,6 @@
 		<div id="formContainer" style="display: none">
 		<input name="id" value="1" /> <input name="menu" /> <input name="count" />
 	</div>
-<audio id="myAudio" src="https://www.example.com/myAudio.mp3"></audio>	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->

@@ -37,6 +37,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link href="css/receipt.css" rel="stylesheet" />
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
+
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .wrap::-webkit-scrollbar {
@@ -242,6 +244,9 @@ function count(type)  {
   document.querySelector("div.modal-footer-1").innerHTML = `분할 금액 :` + Math.round(parseInt(${totalPrice}) / parseInt(number))
 
 }
+
+speakText("주문 내역입니다.")
+
 	</script>
 </body>
 </html>
