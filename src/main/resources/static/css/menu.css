@@ -412,7 +412,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
+  color: #302402;
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
@@ -432,7 +432,7 @@ hr {
   opacity: 0.25;
 }
 .cartbutton {
-	left: 90px;
+	left: 80px;
     top: -142px;
 	 height: 60px;
  width: 60px;
