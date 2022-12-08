@@ -49,7 +49,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </div>
                <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
-                     <div class="list1" style="height: 80px;">
+                     <div class="list1" style="height: 80px;filter: drop-shadow(5px 5px 5px #000);">
                         <div class="wrapper ${vo.menu_name}">
                  
                            <span class="orderCount position1" style="color: #302402 ">${vo.menu_name}</span>
@@ -135,7 +135,7 @@ delete
 									<div>
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -177,7 +177,7 @@ delete
 									<div>
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
