@@ -69,11 +69,237 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
+.fa{
+		box-shadow:inset 0px 0px 4px -50px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color:#ffec64;
+	border-radius:13px;
+	border:3px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 0px;
+	text-decoration:none;
+	text-shadow:-1px 0px 0px #ffee66;
+	
+}
 
+.bubbly-button {
+  font-family: "Helvetica", "Arial", sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #f1ca53;
+  color: #000000;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  font-weight: bolder;
+  
+}
+.bubbly-button:focus {
+  outline: 0;
+}
+.bubbly-button:before, .bubbly-button:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+.bubbly-button:before {
+  display: none;
+  top: -75%;
+  background-image:radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, transparent 20%, #f1ca53 20%, transparent 30%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, transparent 10%, #f1ca53 15%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%);
+   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubbly-button:after {
+  display: none;
+  bottom: -75%;
+  background-image:radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, transparent 20%, #f1ca53 20%, transparent 30%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, transparent 10%, #f1ca53 15%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%), radial-gradient(circle, #f1ca53 20%, transparent 20%);
+     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubbly-button:active {
+  transform: scale(0.9);
+  background-color: #ffc107;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+}
+.bubbly-button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubbly-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+.position5 {
+    position: absolute;
+    top: 52px;
+    left: 64px;
+}
+.position1{
+	  position: absolute;
+    top: 24px;
+left: 67px;
+    transform: translate(-50%,-50%);
+}
+.position2{
+		  position: absolute;
+	    top: 40px;
+	    left: 60px;
+		
+}
+.position3{
+		  position: absolute;
+			    top: 40px;
+				left:18px;
+}
+.position4{
+		  position: absolute;
+	
+			    top: 40px;
+			    				left:65px;
+			    
+}
+.trash{
+	color:#302402;
+	position: absolute;
+    left: 167px;
+    top:32%;
+   
+}
+.color1{
+	color:white;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*font-family: "Exo 2", sans-serif;*/
+}
+/*body {
+ 
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: grid;
+  place-items: Center;
+  color: #fff;
+}*/
+.container1 {
+  background-color: rgba(0, 0, 0, 55%);
+  max-width: 600px;
+  width: 100%;
+  padding: 1em 0px;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+      height: 570px;
+  
+}
+.container1 h1 {
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 2px;
+  font-size: 2em;
+}
+.container1 .list1 {
+	
+    position: relative;
+    background: #FFD33E;
+    width: 87%;
+    margin: 13px auto;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column-reverse;
+    align-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.container1 .list1 img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.container1 .list1 i {
+  position: absolute;
+  right: 0;
+  padding: 0 5rem;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  padding: 0px 20px;
+  background: #f90c;
+  background-size: 100px 100px;
+  font-size: 1.3em;
+  opacity: 0.5;
+  transition: 0.2s;
+  overflow: hidden;
+}
+.container1 .list1:hover > i {
+  opacity: 1;
+}
+.container1 .list1 .wrapper {
+  padding-left: 10px;
+}
+.container1 .list1 .wrapper h3 {
+  text-align: center;
+  padding: 10px;
+  letter-spacing: 2px;
+  /*font-family: sans-serif;*/
+  font-size: 1.2em;
+}
+.container1 .list1 .wrapper p {
+  padding: 5px;
+  margin-left: 9px;
+  letter-spacing: 2px;
+  /*font-family: sans-serif;*/
+  font-size: 0.7em;
+  color: #c6c6c6;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -147,19 +373,6 @@
 
 /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
 .slide_item:nth-child(1) {
-  background-color: #F2F2F2;
-}
-.slide_item:nth-child(2) {
-  background-color: ;
-}
-.slide_item:nth-child(3) {
-  background-color: ;
-}
-.slide_item:nth-child(4) {
-  background-color: ;
-}
-.slide_item:nth-child(5) {
-  background-color: ;
 }
 
 /* 페이지네이션 스타일 */
@@ -204,8 +417,13 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: url("../css/bgbg.jpg");
 }
-
+.bgbg{
+	  background-image: url("../css/bgbg.jpg");
+	  
+	
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -214,22 +432,24 @@ hr {
   opacity: 0.25;
 }
 .cartbutton {
-      --background: black;
-      --text: #fff;
-      --cart: #fff;
+	left: 90px;
+    top: -142px;
+	 height: 60px;
+ width: 60px;
+ border-radius: 50%;
+      --background: #1D9847;
+      --text: #f9fafb;
+      --cart: #f9fafb;
       --tick: var(--background);
       position: relative;
-      border: none;
       background: none;
       padding: 8px 0px;
-      border-radius: 8px;
       -webkit-appearance: none;
       -webkit-tap-highlight-color: transparent;
       -webkit-mask-image: -webkit-radial-gradient(white, black);
       overflow: hidden;
       cursor: pointer;
       text-align: center;
-      width:120px;
       align-self:center;
       color: var(--text);
       background: var(--background);
@@ -248,7 +468,9 @@ hr {
       position: relative;
       padding-left: 0px;
       margin-left: 0px;
-      line-height: 26px;
+      line-height: 14px;
+          margin-top:6px;
+      
       transform: translateY(var(--span-y, 0));
       transition: transform 0.7s ease;
    }
@@ -305,7 +527,7 @@ hr {
       display: block;
       position: relative;
       fill: none;
-      stroke: var(--cart);
+      stroke: #f9fafb;
       stroke-width: 2px;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -320,7 +542,7 @@ hr {
 
    .cartbutton.loading {
       --scale: .95;
-      --span-y: -32px;
+      --span-y: -50px;
       --icon-r: 180deg;
       --fill: 1;
       --fill-d: .8s;
@@ -903,8 +1125,8 @@ progress {
 .container-md,
 .container-sm {
   width: 100%;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
+  padding-right: var(--bs-gutter-x, 0.5rem);
+  padding-left: var(--bs-gutter-x, 0.5rem);
   margin-right: auto;
   margin-left: auto;
 }
@@ -1791,7 +2013,7 @@ progress {
 
   .g-lg-5,
 .gx-lg-5 {
-    --bs-gutter-x: 3rem;
+   /* --bs-gutter-x: 3rem;*/
   }
 
   .g-lg-5,
@@ -3264,7 +3486,7 @@ textarea.form-control-lg {
   display: inline-block;
   font-weight: 400;
   line-height: 2.5;
-  color: #212529;
+  color: #f9fafb;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -3733,10 +3955,6 @@ textarea.form-control-lg {
   background-color: transparent;
 }
 
-.btn-outline-dark {
-  color: #212529;
-  border-color: #212529;
-}
 .btn-outline-dark:hover {
   color: #fff;
   background-color: #212529;
@@ -4803,10 +5021,10 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #1A9948;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 2.25rem;
 }
 .card > hr {
   margin-right: 0;
@@ -4897,7 +5115,9 @@ textarea.form-control-lg {
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  width: 100%;
+  width: 95%;
+  height: 50%;
+  
 }
 
 .card-img,
@@ -7277,6 +7497,7 @@ textarea.form-control-lg {
 
 .h-100 {
   height: 100% !important;
+  box-shadow : 0px 2px 10px #664d03ab;
 }
 
 .h-auto {
@@ -7666,14 +7887,14 @@ textarea.form-control-lg {
 }
 
 .mb-5 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: -4.3rem !important;
 }
 .mb-6 {
   margin-bottom: 1rem !important;
   
 }
 .mb-7 {
-  margin-bottom: 9.5rem !important;
+  margin-bottom: 6rem !important;
 }
 .mb-auto {
   margin-bottom: auto !important;
@@ -7752,8 +7973,8 @@ textarea.form-control-lg {
 }
 
 .px-4 {
-  padding-right: 1.5rem !important;
-  /*padding-left: 1.5rem !important;*/
+  /*padding-right: 1.5rem !important;*/
+  padding-left: 1rem !important;
 }
 
 .px-5 {
@@ -7787,7 +8008,13 @@ textarea.form-control-lg {
 }
 
 .py-5 {
-  padding-top: 2.3rem !important;
+  padding-top: 6.48rem !important;
+  padding-bottom: 0.5rem !important;
+  
+}
+
+.py-6 {
+  padding-top: 2.45rem !important;
   padding-bottom: 0.5rem !important;
   
 }
@@ -10222,7 +10449,7 @@ textarea.form-control-lg {
   .text-lg-center {
     text-align: center !important;
   }
-}
+
 @media (min-width: 1200px) {
   .float-xl-start {
     float: left !important;

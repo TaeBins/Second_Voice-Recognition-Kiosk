@@ -6,106 +6,104 @@
 <!-- 오라클에서 사용할 쿼리문 mapper -->
 <mapper namespace="com.KSCT.work.mapper.IndexMapper">
 
-	<!-- 시작할 때 테이블 정보 가져오기 -->
-	<select id="getTable" resultType="TableInfo">
-		select * from tableinfo where tbl_number=1
-	</select>
+   <!-- 시작할 때 테이블 정보 가져오기 -->
+   <select id="getTable" resultType="TableInfo">
+      select * from tableinfo where tbl_number=1
+   </select>
 
-	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
-	<select id="menulist" parameterType="int" resultType="Menus">
-		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type}
-	</select>
+   <!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
+   <select id="menulist" parameterType="int" resultType="Menus">
+      <!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+      select * from menus where menu_type=#{menu_type}
+   </select>
 
-	<!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
-	<select id="manMenulist" parameterType="Menus" resultType="Menus">
-		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by menu_gender
-	</select>
+   <!-- 컨트롤에서부터 받아온 menu_type 값이 int 라서 파라미터는 int 결과값을 넣어줄곳은 menus dto -->
+   <select id="manMenulist" parameterType="Menus" resultType="Menus">
+      <!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+      select * from menus where menu_type=#{menu_type} order by menu_gender
+   </select>
 
-	<select id="womanMenulist" parameterType="Menus" resultType="Menus">
-		<!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
-		select * from menus where menu_type=#{menu_type} order by menu_gender desc
-	</select>
+   <select id="womanMenulist" parameterType="Menus" resultType="Menus">
+      <!-- 각페이지 타입에 맞게 메인이면 메인메뉴 이런식으로 가져올수 있도록 조건문 설정 -->
+      select * from menus where menu_type=#{menu_type} order by menu_gender desc
+   </select>
 
-	<insert id="order" parameterType="Orders">
-		<!-- 수정할 테이블 -->
-		MERGE INTO orders
-		<!-- 사용할 서브쿼리 (menus 테이블에서 그안에 menu_name과 사용자가 누른 menu_name이 같은것만 조회해서 별명 m 지정) -->
-		USING (select * from menus where menu_name = #{menu_name}) m
-		<!-- 조건생성 (orders 테이블안에 있는 order_seq가 1이고 menu_name이 사용자가 누른 menu_name과 일치하는게 있는지) -->
-		<!-- menu_name이 어디에 있는 menu_name인지 못찾아서 orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
-		ON (order_seq = 1 and orders.menu_name = #{menu_name})
-		<!-- 위 on 조건에 일치하는값이 있으면 실행 -->
-		WHEN MATCHED THEN
-		<!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
-		UPDATE SET order_cnt = #{order_cnt}
-		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
-		WHEN NOT MATCHED THEN
-		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
-		INSERT (tbl_number, menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
-		VALUES (#{tbl_number}, m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
-	</insert>
+   <insert id="order" parameterType="Orders">
+      <!-- 수정할 테이블 -->
+      MERGE INTO orders
+      <!-- 사용할 서브쿼리 (menus 테이블에서 그안에 menu_name과 사용자가 누른 menu_name이 같은것만 조회해서 별명 m 지정) -->
+      USING (select * from menus where menu_name = #{menu_name}) m
+      <!-- 조건생성 (orders 테이블안에 있는 order_seq가 1이고 menu_name이 사용자가 누른 menu_name과 일치하는게 있는지) -->
+      <!-- menu_name이 어디에 있는 menu_name인지 못찾아서 orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
+      ON (order_seq = 1 and orders.menu_name = #{menu_name})
+      <!-- 위 on 조건에 일치하는값이 있으면 실행 -->
+      WHEN MATCHED THEN
+      <!-- order_cnt에 사용자가 누른 order_cnt 만큼 더해서 수정하기 -->
+      UPDATE SET order_cnt = #{order_cnt}
+      <!-- 위 on 조건에 일치하는값이 없으면 실행 -->
+      WHEN NOT MATCHED THEN
+      <!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
+      INSERT (tbl_number, menu_seq, order_seq, menu_name, menu_price, order_cnt, order_time)
+      VALUES (#{tbl_number}, m.menu_seq, 1, m.menu_name, m.menu_price, #{order_cnt}, m.menu_time)
+   </insert>
 
-	<insert id="orderComplete" parameterType="Receipt">
-		<!-- 수정할 테이블 -->
-		MERGE INTO receipt r
-		<!-- 사용할 서브쿼리 (orders 테이블 전체를 별명 o로 가져오기) -->
-		USING (select * from orders) o
-		<!-- 조건생성 (receipt 테이블안에 있는 receipt_num이 1이고 menu_name이 orders에 있는 menu_name과 일치하는게 있는지) -->
-		<!-- menu_name이 어디에 있는 menu_name인지 못찾아서 receipt, orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
-		ON (r.receipt_num = #{receipt_num} and r.menu_name = o.menu_name)
-		<!-- 위 on 조건에 일치하는값이 있으면 실행 -->
-		WHEN MATCHED THEN
-		<!-- receipt_cnt에 order_cnt 만큼 더해서 수정하고 receipt_date를 수정한 시간으로 수정 -->
-		UPDATE SET
-		r.order_cnt = r.order_cnt + o.order_cnt,
-		r.receipt_date = sysdate
-		<!-- 위 on 조건에 일치하는값이 없으면 실행 -->
-		WHEN NOT MATCHED THEN
-		<!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
-		INSERT (tbl_number, receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
-		VALUES (#{tbl_number}, #{receipt_num}, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0)
-	</insert>
+   <insert id="orderComplete" parameterType="Receipt">
+      <!-- 수정할 테이블 -->
+      MERGE INTO receipt r
+      <!-- 사용할 서브쿼리 (orders 테이블 전체를 별명 o로 가져오기) -->
+      USING (select * from orders) o
+      <!-- 조건생성 (receipt 테이블안에 있는 receipt_num이 1이고 menu_name이 orders에 있는 menu_name과 일치하는게 있는지) -->
+      <!-- menu_name이 어디에 있는 menu_name인지 못찾아서 receipt, orders 테이블안에 있는 menu_name이라고 지정 해줘야함 -->
+      ON (r.receipt_num = #{receipt_num} and r.menu_name = o.menu_name)
+      <!-- 위 on 조건에 일치하는값이 있으면 실행 -->
+      WHEN MATCHED THEN
+      <!-- receipt_cnt에 order_cnt 만큼 더해서 수정하고 receipt_date를 수정한 시간으로 수정 -->
+      UPDATE SET
+      r.order_cnt = r.order_cnt + o.order_cnt,
+      r.receipt_date = sysdate
+      <!-- 위 on 조건에 일치하는값이 없으면 실행 -->
+      WHEN NOT MATCHED THEN
+      <!-- 각 컬럼들의 로우값에 values에 있는값으로 넣어주기 -->
+      INSERT (tbl_number, receipt_num, receipt_date, menu_name, menu_price, order_cnt, dc_amount)
+      VALUES (#{tbl_number}, #{receipt_num}, sysdate, o.menu_name, o.menu_price, o.order_cnt, 0)
+   </insert>
 
-	<!-- 영수증테이블에 데이터 넣으면서 menus 테이블에서는 주문메뉴 수량에 따른 주문횟수 증가 재고 감소 -->
-	<update id="menusUpdate" parameterType="Orders">
-		UPDATE menus m SET
-		m.menu_stock_cnt = m.menu_stock_cnt - (select order_cnt from orders where menu_name = m.menu_name),
-		m.menu_order_cnt = m.menu_order_cnt + (select order_cnt from orders where menu_name = m.menu_name)
-		WHERE m.menu_name = (select menu_name from orders where menu_name = m.menu_name) and m.menu_stock_cnt > 0
-	</update>
-	<!-- 주문하기 버튼을 눌렀을 경우 추가 주문인지 신규 주문인지 체크 -->
-	<select id="checkReceiptNum" parameterType="Orders" resultType="int">
-		select count(*)
-		from receipt
-		where tbl_number = #{tbl_number}
-	</select>
-	<!-- 주문하기 누르면 영수증에 데이터 보내고 마지막에 orders 테이블 초기화 시켜주기 -->
-	<delete id="menusTruncate">
-		truncate TABLE orders
-	</delete>
+   <!-- 영수증테이블에 데이터 넣으면서 menus 테이블에서는 주문메뉴 수량에 따른 주문횟수 증가 재고 감소 -->
+   <update id="menusUpdate" parameterType="Orders">
+      UPDATE menus m SET
+      m.menu_stock_cnt = m.menu_stock_cnt - (select order_cnt from orders where menu_name = m.menu_name),
+      m.menu_order_cnt = m.menu_order_cnt + (select order_cnt from orders where menu_name = m.menu_name)
+      WHERE m.menu_name = (select menu_name from orders where menu_name = m.menu_name) and m.menu_stock_cnt > 0
+   </update>
+   <!-- 주문하기 버튼을 눌렀을 경우 추가 주문인지 신규 주문인지 체크 -->
+   <select id="checkReceiptNum" parameterType="Orders" resultType="int">
+      select count(*)
+      from receipt
+      where tbl_number = #{tbl_number}
+   </select>
+   <!-- 주문하기 누르면 영수증에 데이터 보내고 마지막에 orders 테이블 초기화 시켜주기 -->
+   <delete id="menusTruncate">
+      truncate TABLE orders
+   </delete>
 
-	<!-- 영수증 페이지로 들어갈 때 영수증 db 최근꺼 데이터 가져오기(영수증번호가 ? 인거) -->
+   <!-- 영수증 페이지로 들어갈 때 영수증 db 최근꺼 데이터 가져오기(영수증번호가 ? 인거) -->
 
-	<select id="receiptList" parameterType="TableInfo" resultType="Receipt">
-		select * from Receipt where
-		receipt_num = #{receipt_num} order by order_cnt desc
-	</select>
+   <select id="receiptList" parameterType="TableInfo" resultType="Receipt">
+      select * from Receipt where receipt_num = #{receipt_num} order by order_cnt desc
+   </select>
 
-	<!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
-	<delete id="deleteOrder" parameterType="Orders">
-		delete from orders where
-		menu_name = #{menu_name}
-	</delete>
+   <!-- 주문 목록에서 삭제할 시 DB에서도 삭제하는 쿼리문 -->
+   <delete id="deleteOrder" parameterType="Orders">
+      delete from orders where menu_name = #{menu_name}
+   </delete>
 
-	<!-- 결제 완료 버튼 -->
-	<update id="updatereceipt">
-		update tableinfo set receipt_num = receipt_num + 1
-	</update>
+   <!-- 결제 완료 버튼 -->
+   <update id="updatereceipt">
+      update tableinfo set receipt_num = receipt_num + 1
+   </update>
 
-	<!-- 재고 리셋버튼 누를때 menus 테이블 재고 리셋해주기 -->
-	<update id="stockReset">
-		update menus set menu_stock_cnt = 10
-	</update>
+   <!-- 재고 리셋버튼 누를때 menus 테이블 재고 리셋해주기 -->
+   <update id="stockReset">
+      update menus set menu_stock_cnt = 10
+   </update>
 </mapper>
