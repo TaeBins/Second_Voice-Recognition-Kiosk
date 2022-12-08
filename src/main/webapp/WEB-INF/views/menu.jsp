@@ -315,6 +315,7 @@ delete
 
 	 </script>
   <script>
+  h_speech.abort();
   speakText("메인메뉴로 이동하였습니다.");
   </script>
   

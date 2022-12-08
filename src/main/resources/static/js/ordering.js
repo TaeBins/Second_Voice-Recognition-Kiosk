@@ -49,12 +49,12 @@ h_speech.continuous = true;
 h_speech.lang = "ko-KR";
 
 //speech api 시작
-h_speech.start();
-
+//오디오가 끝나면 api start
+audios.addEventListener("ended", ()=>h_speech.start())
 //speech transcript 초기화 함수
 const restart = async () => {
-	await h_speech.abort();
-	await setTimeout(() => h_speech.start(), 200);
+	 h_speech.abort();
+	 setTimeout(() => h_speech.start(), 200);
 }
 //request 보낼 form태그 생성
 const formTag = document.createElement("form");
@@ -72,9 +72,9 @@ const orderCount = document.getElementById("count");
 
 
 //formTag 생성 및 이동할 url 설정
-const goMainMenu = () => {
+const goMenu = (number) => {
 	
-	formTag.action = "/1";
+	formTag.action = `/${number}`;
 	formTag.method = "get"
 	document.getElementById("formContainer").appendChild(formTag);
 
@@ -154,7 +154,7 @@ let orderedMenus = []
 // 음식 주문 갯수 받아내는 리스트
 const amount = {
 	1: ["한 잔", "한잔", "하나", "한개", "한 개", "한계", '1인분', '안아', '일인분'],
-	2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분', "2개"],
+	2: ["두 잔", "두잔", "둘", "두개", "두 개", '2인분', '이인분', "2개", "보게"],
 	3: ["세 잔", "세잔", "셋", "세개", "세 개", "세계", "3인분", "삼인분", "3개"],
 	4: ["네 잔", "네잔", "넷", "네개", "네 개", "4인분", "사인분"],
 	5: ["다섯 잔", "다섯잔", "다섯", "다섯개", "다섯 개", "5인분", "오인분"],
@@ -185,12 +185,12 @@ const menus = {
 	"화덕피자": ["화덕피자", "마석피자"],
 	"바지락술국": ["바지락"],
 	"비빔국수": ["비빔국수", "해물국수", "비밀복수", "이민국수"],
-	"쥐포": ["지붕", "G4", "김포", "지프", "지퍼", "지코", "쥐포", "지솔", "집구", "짐볼", "제발", "지파"],
+	"쥐포": ["기포", "식초", "지붕", "G4", "김포", "지프", "지퍼", "지코", "쥐포", "지솔", "집구", "짐볼", "제발", "지파"],
 	"한치구이": ["한치구이", "한지훈", "1시보이", "1792", "179있", "1시구이", "1지구2", "반칙우유", "1시소리", "잔치92", "1시브이"],
 	"콘치즈": ["콘치즈", "펀치", "황치즈"],
-	"먹태": ["목재", "먹태"],
-	"새끼먹태": ["새끼먹태", "새끼호텔", "새끼먹자"],
-	"오징어입구이": ["오징어입구에"],
+	"먹태": ["목재", "먹태", "먹자"],
+	"새끼먹태": ["새끼"],
+	"오징어입구이": ["오징어입"],
 	"튀김 쥐포": ["튀김쥐포"],
 	"라면땅": ["라면땅"],
 	"파인샤베트": ["샤베트", "파인샤베트"],
@@ -241,6 +241,7 @@ const checkAmountIndex = (text, amount, index, obj) => {
 	}
 }
 
+//여러가지 경우의수로 인식 된 음성을 동일한 문자열로 인식하여 처리
 const checkIndex = (h_text, obj) => {
 	for (let i = 0; i < Object.keys(obj).length; i++)
 		obj[Object.keys(obj)[i]].forEach((obj_value) => {
@@ -255,7 +256,7 @@ const checkIndex = (h_text, obj) => {
 		})
 	temp_list = []
 }
-
+const realOrderList = []
 const voiceOrder = async () => {
 	const sortedMenus = orderedMenus.sort((a, b) => a[1] - b[1])
 	const sortedAmount = amount_list.sort((a, b) => a[1] - b[1])
@@ -284,8 +285,13 @@ const voiceOrder = async () => {
 					}
 				})
 			}, 1500)
+			realOrderList.push([orderedMenuName, orderedMenuCount.textContent]);
+
 		}
+		
 	}
+	h_speech.abort()
+	speakText("추가하신 메뉴는" + realOrderList+ "입니다.");
 }
 
 //speech api로 받은 transcript 로직처리
@@ -330,18 +336,16 @@ h_speech.onresult = function(e) {
 	//메뉴 탭 이동 하기
 	
 	if(h_text.indexOf("메인") !== -1){
-		goMainMenu();
+		goMenu(1);
 	}
-	
 	if(h_text.indexOf("사이드") !== -1){
-		goSideMenu();
+		goMenu(2);
 	}
-	
-	if(h_text.indexOf("주류") !== -1 || h_text.indexOf("술") !== -1){
-		goDrinkMenu();
+	if(h_text.indexOf("주류") !== -1 || h_text.indexOf("술") !== -1 && h_text.indexOf("추가") === -1){
+		goMenu(3);
 	}
 	if(h_text.indexOf("음료") !== -1){
-		goBeverageMenu();
+		goMenu(4);
 	}
 	
 	//메뉴탭 이동하기 끝
@@ -429,6 +433,7 @@ const listContainer = document.getElementById("listContainer");
 
 let check = false; // 현재 listContainer에 메뉴가 있는지 체크하는 변수
 let orderCounts; // 각 메뉴들의 개수를 담을 변수
+
 //버튼에 클릭 이벤트 생성
 cartButton.forEach((cartButton) => {
 	cartButton.addEventListener("click", () => {
@@ -440,7 +445,8 @@ cartButton.forEach((cartButton) => {
 				check = true;
 				const newOrderCnt = document.querySelector(`#listContainer > div:nth-child(${j + 1}) > div > span:nth-child(3)`)
 				upButton.click()
-
+				
+				
 			}
 
 		}

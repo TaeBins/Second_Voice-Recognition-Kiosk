@@ -5,7 +5,16 @@ const synth = window.speechSynthesis;
  * 
  */
 //TTS API 불러오기 
+
 const audios = new Audio();
+//오디오가 끝나면 api start
+audios.addEventListener("ended", ()=>{
+	h_speech.start()
+	man = 0;
+	woman = 0;
+	})
+
+
 
  AWS.config.region = 'ap-northeast-1';
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -45,7 +54,7 @@ const audios = new Audio();
 
 
 
-const audio = new Audio('js/startVoice.mp3');
+
 
 
 // index 화면
@@ -127,20 +136,28 @@ const goIndex = () => {
 
 
 //speech api로 받은 transcript 로직처리
-h_speech.onresult = function(e) {
+	h_speech.onresult = function(transcript) {
 
 	//transcript 값들 join으로 하나의 문장으로 바꿔주기
-
-	let h_text = Array.from(e.results).map(result => result[0].transcript).join("");
+	//h_speech가 읽은 음성을 문자데이터로 바꾼 transcript들을 모아 하나의 문장으로 변경
+	let h_text = Array.from(transcript.results).map(result => (
+		result[0].transcript
+		)).join("").split(" ").join("");  //띄어쓰기를 제거하기 위한 split 후 join
 
 	console.log(h_text)
+	
+	
+	
 	//main_menu request 함수
 	init();
 
 	//하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
 	if (!starting) {
-		console.log(starting)
-		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
+		if (h_text.indexOf("하이코") !== -1 ||
+		 h_text.indexOf("하이킥") !== -1 ||
+		  h_text.indexOf("아이쿠") !== -1) {
+			
+			h_speech.abort();
 			speakText("어서오세요 하이키코입니다. 메인메뉴로 가고 싶으시면 '메인메뉴 보여줘' 이라고 말씀해주세요.")
 			bars.forEach(function(bar) {
 				bar.style.animationPlayState = "running";
@@ -158,12 +175,13 @@ h_speech.onresult = function(e) {
 			//하이 키코가 인식되면 transcript 초기화
 			man = 0;
 			woman = 0;
-			h_speech.abosrt();
-			setTimeout(()=>{h_speech.start()
-			man = 0;
-			woman = 0;
-			}, 4000);
+			
+			
+			h_speech.abort();
+			speakText("어서오세요 하이키코입니다. 메인메뉴로 가고 싶으시면 '메인메뉴 보여줘' 이라고 말씀해주세요.")
+			
 			h_speech.interimResults = false;
+			h_speech.start();
 
 		}
 	} else {
@@ -171,11 +189,7 @@ h_speech.onresult = function(e) {
 			goMainMenu();
 		}
 
-		// if (h_text.indexOf("메뉴") !== -1) {
-		// 	console.log("네~");
-		// 	h_speech.onend;
-		// 	speech.start();
-		// }
+		
 		if (h_text.indexOf("메인 화면") !== -1 || h_text.indexOf("메인화면") !== -1) {
 			location.href = "http://127.0.0.1:5500/src/main/webapp/index.html";
 		}
