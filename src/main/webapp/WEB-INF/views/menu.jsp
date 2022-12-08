@@ -146,8 +146,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);
-                              "/>
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -187,7 +186,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -227,7 +226,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..."style="    filter: drop-shadow(5px 5px 5px #000);" />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
