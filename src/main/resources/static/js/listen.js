@@ -1,13 +1,52 @@
-//TTS API 불러오기
+//STT API 불러오기
+const synth = window.speechSynthesis;
 
 /**
  * 
  */
+//TTS API 불러오기 
+const audios = new Audio();
 
-const synth = window.speechSynthesis;
+ AWS.config.region = 'ap-northeast-1';
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'ap-northeast-1:09e0dd25-5506-41c1-9ecd-c427f1320d9f',
+        });
+        
+        function speakText(Text) {
+            // Create the JSON parameters for getSynthesizeSpeechUrl
+            var speechParams = {
+                OutputFormat: "mp3",
+                SampleRate: "16000",
+                Text ,
+                TextType: "text",
+                VoiceId: "Seoyeon",
+
+            };
+
+            // Create the Polly service object and presigner object
+            var polly = new AWS.Polly({ apiVersion: '2016-06-10' });
+            var signer = new AWS.Polly.Presigner(speechParams, polly)
+
+            // Create presigned URL of synthesized speech file
+            signer.getSynthesizeSpeechUrl(speechParams, function (error, url) {
+                if (error) {
+                    document.getElementById('result').innerHTML = error;
+                } else {
+                    audios.src = url;
+                    audios.play();
+                }
+            });
+        }
+
+//TTS API불러오기 끝
+
+
+
+
+
 
 const audio = new Audio('js/startVoice.mp3');
-audio.autoplay = false;
+
 
 // index 화면
 // speech api 불러오기
@@ -102,11 +141,12 @@ h_speech.onresult = function(e) {
 	if (!starting) {
 		console.log(starting)
 		if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
+			speakText("어서오세요 하이키코입니다. 메인메뉴로 가고 싶으시면 '메인메뉴 보여줘' 이라고 말씀해주세요.")
 			bars.forEach(function(bar) {
 				bar.style.animationPlayState = "running";
 			});
 			starting = true;
-			audio.play();
+			
 
 			
 			setTimeout(() => {
@@ -118,7 +158,11 @@ h_speech.onresult = function(e) {
 			//하이 키코가 인식되면 transcript 초기화
 			man = 0;
 			woman = 0;
-			restart();
+			h_speech.abosrt();
+			setTimeout(()=>{h_speech.start()
+			man = 0;
+			woman = 0;
+			}, 4000);
 			h_speech.interimResults = false;
 
 		}

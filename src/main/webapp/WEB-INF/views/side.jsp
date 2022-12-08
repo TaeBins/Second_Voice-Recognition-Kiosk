@@ -25,6 +25,8 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
+
 <style>
 /*  overflow scroll 가려주는 스타일 */
 .container1::-webkit-scrollbar {
@@ -54,14 +56,14 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </div>
                <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
-                     <div class="list1" style="height: 80px;">
+                     <div class="list1" style="height: 80px; filter: drop-shadow(5px 5px 5px #000);">
                         <div class="wrapper ${vo.menu_name}">
                  
-                           <span class="orderCount position1" style="color: white ">${vo.menu_name}</span>
+                           <span class="orderCount position1" style="color: #302402 ">${vo.menu_name}</span>
                            <br>
-                           <span style="color: white" class="material-symbols-outlined downCount position3"> do_not_disturb_on&nbsp; </span>
-                           <span style="color: white" class="position2"> ${vo.order_cnt} </span>
-                           <span style="color: white" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
+                           <span style="color: #302402" class="material-symbols-outlined downCount position3"> do_not_disturb_on&nbsp; </span>
+                           <span style="color: #302402" class="position2"> ${vo.order_cnt} </span>
+                           <span style="color: #302402" class="material-symbols-outlined upCount position4"> &nbsp;add_circle </span>
 
    </div>                   <div value="${vo.menu_name}" class="trashContainer"style="position:static;width:23%; float: right; height: 100%; background-color: white;">
                         
@@ -137,10 +139,10 @@ delete
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 							<c:forEach var="vo" items="${menuList}" begin="0" end="5">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
-									<div class="card h-100">
+									<div>
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -179,10 +181,10 @@ delete
 
 							<c:forEach var="vo" items="${menuList}" begin="6" end="11">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
-									<div class="card h-100">
+									<div>
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..."style="    filter: drop-shadow(5px 5px 5px #000);" />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -219,10 +221,10 @@ delete
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 							<c:forEach var="vo" items="${menuList}" begin="12" end="14">
 								<div class="col mb-5" style="padding-left: 15px; padding-right: 15px;">
-									<div class="card h-100">
+									<div >
 										<!-- Sale badge-->
 										<!-- Product image-->
-										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+										<img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..."style="    filter: drop-shadow(5px 5px 5px #000);" />
 										<!-- Product details-->
 										<div class="card-body p-4">
 											<div class="text-center">
@@ -285,5 +287,8 @@ delete
        e.preventDefault();
    }));
    </script>
+    <script>
+  speakText("사이드메뉴로 이동하였습니다.");
+  </script>
 </body>
 </html>

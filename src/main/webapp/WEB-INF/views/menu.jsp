@@ -30,6 +30,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
 
 <style>
 /*  overflow scroll 가려주는 스타일 */
@@ -59,7 +60,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
                </div>
                <div id="listContainer" style="height:400px;overflow: scroll;margin-bottom:10px;">
                   <c:forEach var="vo" items="${orderList}" begin="0" end="5">
-                     <div class="list1" style="height: 80px;">
+                     <div class="list1" style="height: 80px; filter: drop-shadow(5px 5px 5px #000);">
                         <div class="wrapper ${vo.menu_name}">
                  
                            <span class="orderCount position1" style="color: #302402 ">${vo.menu_name}</span>
@@ -145,7 +146,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -185,7 +186,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." style="    filter: drop-shadow(5px 5px 5px #000);"/>
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -225,7 +226,7 @@ delete
                            <div>
                               <!-- Sale badge-->
                               <!-- Product image-->
-                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..." />
+                              <img class="card-img-top" src="assets/menu/${vo.menu_img}" alt="..."style="    filter: drop-shadow(5px 5px 5px #000);" />
                               <!-- Product details-->
                               <div class="card-body p-4">
                                  <div class="text-center">
@@ -312,6 +313,9 @@ delete
 
 	 </script>
   <script src="js/ordering.js"></script>
+  <script>
+  speakText("메인메뉴로 이동하였습니다.");
+  </script>
   
 </body>
 </html>
