@@ -77,6 +77,7 @@ public class IndexService {
 	
 	// 영수증 목록 가져오기
 	public List<Receipt> receiptList(TableInfo table){
+		
 		return indexMapper.receiptList(table);
 	}
 

@@ -259,7 +259,7 @@ const checkIndex = (h_text, obj) => {
 const voiceOrder = async () => {
 	const sortedMenus = orderedMenus.sort((a, b) => a[1] - b[1])
 	const sortedAmount = amount_list.sort((a, b) => a[1] - b[1])
-
+//메뉴 + 수량 / 메뉴 + 수량,  메뉴 + 메뉴 + 수량, Queue 메뉴 + 수량 + 메뉴 + 메뉴 + 수량 
 	for (let i = 0; i < sortedMenus.length; i++) {
 		let orderedMenuName = Object.entries(menus).filter((kv) => kv[1].indexOf(sortedMenus[i][0]) !== -1)[0][0];
 
@@ -328,6 +328,7 @@ h_speech.onresult = function(e) {
 	//슬라이드 페이지 이동 끝
 
 	//메뉴 탭 이동 하기
+	
 	if(h_text.indexOf("메인") !== -1){
 		goMainMenu();
 	}

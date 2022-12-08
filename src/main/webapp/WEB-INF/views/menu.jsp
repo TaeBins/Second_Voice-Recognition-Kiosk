@@ -273,6 +273,7 @@ delete
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
+   <script src="js/ordering.js"></script>
  
    <script type="text/javascript">
    document.querySelectorAll('.cartbutton').forEach(button => button.addEventListener('click', e => {
@@ -313,7 +314,6 @@ delete
 	 }
 
 	 </script>
-  <script src="js/ordering.js"></script>
   <script>
   speakText("메인메뉴로 이동하였습니다.");
   </script>
