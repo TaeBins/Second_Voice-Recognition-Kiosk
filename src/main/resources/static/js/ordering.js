@@ -541,7 +541,7 @@ function callme() {
 const appendList = (name, orderCounts) => {
 	const list = document.createElement("div");
 	list.className = "list1";
-	list.style = "height:80px "
+	list.style = "height:80px; filter: drop-shadow(5px 5px 5px #000);"
 	list.innerHTML = `
    <div class="wrapper ${name.replace(" ", "")}">
      <span class="orderCount position1" style="color:#302402">${name}</span>
