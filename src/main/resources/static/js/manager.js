@@ -1,7 +1,7 @@
 /* onclick 으로 부른 payment 함수 실행 */
 function payment() {
 	var sumhere = document.getElementById('sumhere');
-	if (sumhere.textContent == "") {
+	if (sumhere.textContent == "원") {
 		Swal.fire({
 			imageUrl: 'assets/manager/payq.png',
 			imageWidth: 400,
