@@ -8,68 +8,6 @@ const makeBar = () => {
    }
    return barText;
 }
-   
-
-document.body.innerHTML=`<!-- 배경 애니메이션 -->
-   <div style="height: 100px;" class="context">
-      <!-- 간판-->
-      <header style="position: relative; bottom: 200px; height: 10px;"
-         class="masthead">
-         <div class="container px-4 px-lg-5 h-100">
-            <div
-               class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
-               <div class="col-lg-8 align-self-end">
-                  <h1 class="text-black font-weight-bold">키코네 맥주</h1>
-                  <hr class="divider" />
-               </div>
-               <div class="col-lg-8 align-self-baseline">
-                  <p class="text-black-7``5 mb-5">
-                     <!-- 마이크 아이콘 -->
-                     <i style="color: black; font-size: 40px;" class="bi bi-mic"></i>
-                  <ul class="music">
-                     <!-- 음성막대 효과 -->
-                                    ${makeBar()}
-
-                  </ul>
-                  </p>
-                  <!-- 안내문 -->
-                  <p style="color: black">
-                     1. "하이키코"를 부릅니다. <br>2. "메인 메뉴 보여줘" 라고 카테고리를 말합니다.<br>
-                     3. "생맥주 2잔이랑 바지락 술국 주문해줘" 라고 주문사항을 말합니다.<br> <br> <br>
-                  </p>
-                  <!-- 터치주문 버튼 -->
-               </div>
-            </div>
-         </div>
-         <a style="position: relative; z-index: 7; top: 350px; left: 42%;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);"
-            class="btn btn-primary btn-xl" 
-            href="/1">터치로 주문하기</a>
-      </header>
-   </div>
-   <div class="area">
-      <ul class="circles">
-         <!-- 배경에 나오는 노란 큐브 갯수 -->
-         <c:forEach begin="1" end="10">
-            <li></li>
-         </c:forEach>
-      </ul>
-   </div>
-   <!-- Navigation-->
-   <!-- 로고헤더-->
-   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-      id="mainNav">
-      <div class="container px-4 px-lg-5">
-         <a class="navbar-brand"><img src="assets/index/logowhite.png"
-            height="70" width="200"></a>
-      </div>
-   </nav>
-   
-      <div id="formContainer" style="display: none">
-      <input name="id" value="1" /> <input name="menu" /> <input name="count" />
-   </div>`
-
-
 
 
 const originalJS = () => {
@@ -216,7 +154,7 @@ h_speech.onresult = function(e) {
    //하이 키코 라는 단어가 존재하지 않아 하이코 or 하이킥으로 인식함으로 하이코 및 하이킥으로 인식 처리
    if (!starting) {
       console.log(starting)
-      if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1) {
+      if (h_text.indexOf("하이코") !== -1 || h_text.indexOf("하이킥") !== -1 ||  h_text.indexOf("아이쿠") !== -1) {
          speakText("어서오세요 하이키코입니다. 메인메뉴로 가고 싶으시면 '메인메뉴 보여줘' 이라고 말씀해주세요.")
          bars.forEach(function(bar) {
             bar.style.animationPlayState = "running";
