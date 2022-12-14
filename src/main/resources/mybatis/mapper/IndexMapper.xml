@@ -69,7 +69,7 @@
    </insert>
 
    <!-- 영수증테이블에 데이터 넣으면서 menus 테이블에서는 주문메뉴 수량에 따른 주문횟수 증가 재고 감소 -->
-   <update id="menusUpdate" parameterType="Orders">
+   <update id="menusUpdate">
       UPDATE menus m SET
       m.menu_stock_cnt = m.menu_stock_cnt - (select order_cnt from orders where menu_name = m.menu_name),
       m.menu_order_cnt = m.menu_order_cnt + (select order_cnt from orders where menu_name = m.menu_name)

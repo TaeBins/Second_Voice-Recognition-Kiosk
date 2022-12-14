@@ -40,7 +40,7 @@ public interface IndexMapper {
 	// 주문하기 누르면 영수증에 주문한 내용 추가
 	public void orderComplete(Receipt receipt);
 	// 주문한 내용 토대로 menus 테이블에서는 재고, 주문횟수 수정
-	public void menusUpdate(Orders orders);
+	public void menusUpdate();
 	
 	//주문접수 되면 주문목록 초기화시키기
 	public void menusTruncate();

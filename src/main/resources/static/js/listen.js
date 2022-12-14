@@ -295,4 +295,3 @@ async function init() {
 }
 
 originalJS();
-originalJS();

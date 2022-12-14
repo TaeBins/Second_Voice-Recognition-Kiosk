@@ -104,21 +104,7 @@ public class IndexController {
       return null;
    }
 
-   // 메뉴 화면에서 오른쪽 주문목록 주문 하기 버튼 누르면 실행
-   @PostMapping("/ordercomplete")
-   // 영수증 모델과 주문목록 모델을 사용해야해서 가져오기
-   public String orderComplete(Receipt receipt, Orders orders, HttpSession session) {
-      // 영수증 모델 서비스로 보내기
-      TableInfo table = (TableInfo) session.getAttribute("table");
-      receipt.setReceipt_num(table.getReceipt_num());
-      receipt.setTbl_number(table.getTbl_number());
-      indexService.orderComplete(receipt);
-      // 주문목록 모델 서비스로 보내기
-      indexService.menusUpdate(orders);
-
-      // 영수증 페이지로 가기전에 최신화 시키기위해 "/" 이걸 붙여서 맵핑 실행하도록
-      return "redirect:/receipt";
-   }
+  
 
    // 위에서 마지막에 실행된 /receipt 로 와지면 실행
    @GetMapping("/receipt")

@@ -7,9 +7,11 @@
 		<version>2.7.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.KSCT</groupId>
 	<artifactId>KSCT</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>KSCT</name>
 	<description>KSCT_Project</description>
 	<properties>

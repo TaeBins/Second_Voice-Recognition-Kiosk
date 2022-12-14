@@ -206,7 +206,7 @@ left: 67px;
 .trash{
 	color:#302402;
 	position: absolute;
-    left: 167px;
+    left: 154px;
     top:32%;
    
 }
@@ -1525,7 +1525,7 @@ progress {
 
 .g-4,
 .gx-4 {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: -0.5rem;
 }
 
 .g-4,
@@ -6256,7 +6256,8 @@ textarea.form-control-lg {
 }
 
 .modal-footer {
-    right: 145px;
+	    align-self: center;
+	
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;

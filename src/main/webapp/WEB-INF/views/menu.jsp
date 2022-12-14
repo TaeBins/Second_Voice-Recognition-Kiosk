@@ -32,6 +32,7 @@ response.setHeader("Access-Control-Allow-Origin", "*");
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1269.0.min.js"></script>
+<link href="css/receipt.css" rel="stylesheet" />
 
 
 </head>
