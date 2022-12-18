@@ -1,8 +1,8 @@
 음성인식을 활용한 테이블형 키오스크
 
-[목차]
-https://www.notion.so/junior-dvp-tabs/f06b75f6eb404fc8837788a7398d6b87
+[노션] https://www.notion.so/junior-dvp-tabs/f06b75f6eb404fc8837788a7398d6b87
 
+[목차]
 어떤 프로젝트 인가요?
   프로젝트를 진행하게 된 계기
   팀원 역할 분배
