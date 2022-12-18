@@ -22,8 +22,8 @@
   - 느낀 점
   
 웹구동
-프로젝트 run as sts
-크롬 주소창에 localhost:8082/ 입력
+- 프로젝트 run as sts
+- 크롬 주소창에 localhost:8082/ 입력
 
 기능
 - 음성인식
