@@ -1,6 +1,6 @@
 음성인식을 활용한 테이블형 키오스크
 
-[노션] https://www.notion.so/junior-dvp-tabs/f06b75f6eb404fc8837788a7398d6b87
+[노션] https://tabs-developer.notion.site/18faffbcc0a14886aaa7d66e4a8d9679
 
 
 목차
